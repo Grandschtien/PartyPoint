@@ -1,0 +1,2 @@
+# PartyPoint
+Graduation project BMSTU
