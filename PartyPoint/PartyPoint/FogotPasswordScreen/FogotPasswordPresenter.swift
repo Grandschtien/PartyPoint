@@ -25,7 +25,11 @@ extension FogotPasswordPresenter: FogotPasswordModuleInput {
 }
 
 extension FogotPasswordPresenter: FogotPasswordViewOutput {
+    func backButtonPressed() {
+        router.routeBack()
+    }
 }
 
 extension FogotPasswordPresenter: FogotPasswordInteractorOutput {
+    
 }

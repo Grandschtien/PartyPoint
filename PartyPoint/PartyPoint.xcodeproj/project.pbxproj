@@ -61,7 +61,7 @@
 		60971776287DB9F60084A63C /* AppTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60971775287DB9F60084A63C /* AppTextField.swift */; };
 		60971778287DBBD50084A63C /* DynamicStackWithTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60971777287DBBD50084A63C /* DynamicStackWithTF.swift */; };
 		6097177C287EC2C90084A63C /* HowToEnterStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097177B287EC2C90084A63C /* HowToEnterStackView.swift */; };
-		6097177E287ED0DD0084A63C /* UILabel+Recognizers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097177D287ED0DD0084A63C /* UILabel+Recognizers.swift */; };
+		6097177E287ED0DD0084A63C /* UIView+Recognizers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097177D287ED0DD0084A63C /* UIView+Recognizers.swift */; };
 		60971787287EDE4A0084A63C /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60971781287EDE4A0084A63C /* RegisterPresenter.swift */; };
 		60971788287EDE4A0084A63C /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60971782287EDE4A0084A63C /* RegisterRouter.swift */; };
 		60971789287EDE4A0084A63C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60971783287EDE4A0084A63C /* RegisterViewController.swift */; };
@@ -75,6 +75,7 @@
 		60971797287EDE5D0084A63C /* FogotPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60971791287EDE5D0084A63C /* FogotPasswordInteractor.swift */; };
 		60971798287EDE5D0084A63C /* FogotPasswordContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60971792287EDE5D0084A63C /* FogotPasswordContainer.swift */; };
 		6097179A287EF5B80084A63C /* AuthRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60971799287EF5B70084A63C /* AuthRouterProtocol.swift */; };
+		6097179C287F172C0084A63C /* NotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097179B287F172C0084A63C /* NotificationCenterManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,7 +135,7 @@
 		60971775287DB9F60084A63C /* AppTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
 		60971777287DBBD50084A63C /* DynamicStackWithTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicStackWithTF.swift; sourceTree = "<group>"; };
 		6097177B287EC2C90084A63C /* HowToEnterStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToEnterStackView.swift; sourceTree = "<group>"; };
-		6097177D287ED0DD0084A63C /* UILabel+Recognizers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Recognizers.swift"; sourceTree = "<group>"; };
+		6097177D287ED0DD0084A63C /* UIView+Recognizers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Recognizers.swift"; sourceTree = "<group>"; };
 		60971781287EDE4A0084A63C /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		60971782287EDE4A0084A63C /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
 		60971783287EDE4A0084A63C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +149,7 @@
 		60971791287EDE5D0084A63C /* FogotPasswordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FogotPasswordInteractor.swift; sourceTree = "<group>"; };
 		60971792287EDE5D0084A63C /* FogotPasswordContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FogotPasswordContainer.swift; sourceTree = "<group>"; };
 		60971799287EF5B70084A63C /* AuthRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouterProtocol.swift; sourceTree = "<group>"; };
+		6097179B287F172C0084A63C /* NotificationCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 				609716E0287D75230084A63C /* Main.storyboard */,
 				609716E3287D752B0084A63C /* Assets.xcassets */,
 				60971799287EF5B70084A63C /* AuthRouterProtocol.swift */,
+				6097179B287F172C0084A63C /* NotificationCenterManager.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -237,7 +240,7 @@
 				60971734287D875B0084A63C /* ResuseIdentifire.swift */,
 				60971736287D87C90084A63C /* UIView+Constraints.swift */,
 				60971738287D8B7B0084A63C /* UIFont + size.swift */,
-				6097177D287ED0DD0084A63C /* UILabel+Recognizers.swift */,
+				6097177D287ED0DD0084A63C /* UIView+Recognizers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				60971731287D840A0084A63C /* InitialRouter.swift in Sources */,
 				609716F8287D7D880084A63C /* AppCoordinator.swift in Sources */,
 				609716F3287D7C1D0084A63C /* AuthCoordinator.swift in Sources */,
+				6097179C287F172C0084A63C /* NotificationCenterManager.swift in Sources */,
 				6097172A287D83360084A63C /* FavouritesPresenter.swift in Sources */,
 				60971761287D94710084A63C /* AppButton.swift in Sources */,
 				6097179A287EF5B80084A63C /* AuthRouterProtocol.swift in Sources */,
@@ -484,7 +488,7 @@
 				60971788287EDE4A0084A63C /* RegisterRouter.swift in Sources */,
 				60971739287D8B7B0084A63C /* UIFont + size.swift in Sources */,
 				609716DB287D75230084A63C /* AppDelegate.swift in Sources */,
-				6097177E287ED0DD0084A63C /* UILabel+Recognizers.swift in Sources */,
+				6097177E287ED0DD0084A63C /* UIView+Recognizers.swift in Sources */,
 				6097171E287D824A0084A63C /* ProfilePresenter.swift in Sources */,
 				609716F5287D7C720084A63C /* MainFlowCoordinator.swift in Sources */,
 				6097176D287DA60D0084A63C /* EnterPresenter.swift in Sources */,

@@ -12,20 +12,22 @@ protocol FogotPasswordModuleInput {
 	var moduleOutput: FogotPasswordModuleOutput? { get }
 }
 
-protocol FogotPasswordModuleOutput: class {
+protocol FogotPasswordModuleOutput: AnyObject {
 }
 
-protocol FogotPasswordViewInput: class {
+protocol FogotPasswordViewInput: AnyObject {
 }
 
-protocol FogotPasswordViewOutput: class {
+protocol FogotPasswordViewOutput: AnyObject {
+    func backButtonPressed()
 }
 
-protocol FogotPasswordInteractorInput: class {
+protocol FogotPasswordInteractorInput: AnyObject {
 }
 
-protocol FogotPasswordInteractorOutput: class {
+protocol FogotPasswordInteractorOutput: AnyObject {
 }
 
-protocol FogotPasswordRouterInput: class {
+protocol FogotPasswordRouterInput: AnyObject {
+    func routeBack()
 }

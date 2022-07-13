@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-extension UILabel {
+extension UIView {
     func addTapRecognizer(target: Any?, action: Selector?) {
         let tapRec = UITapGestureRecognizer(target: target, action: action)
         tapRec.numberOfTapsRequired = 1

@@ -19,6 +19,7 @@ final class FogotPasswordContainer {
         let presenter = FogotPasswordPresenter(router: router, interactor: interactor)
 		let viewController = FogotPasswordViewController(output: presenter)
 
+        router.setViewController(viewController: viewController)
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
 

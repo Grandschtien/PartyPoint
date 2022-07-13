@@ -27,9 +27,11 @@ final class EnterViewController: UIViewController {
         let stack = DynamicStackWithTF(frame: .zero, placeholders: placeholders)
         return stack
     }()
+    private var topTobottomConstraintOfEntryLabel: NSLayoutConstraint?
+    private var topTobottomConstraintOfButton: NSLayoutConstraint?
     
     private lazy var forgotPaaswdButton: UIButton = {
-       let btn = UIButton()
+        let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitle(LabelTexts.forgotPaaswdButton.rawValue, for: .normal)
         btn.titleLabel?.font = UIFont(name: UIFont.SFProDisplayBold, size: 14)
@@ -40,13 +42,13 @@ final class EnterViewController: UIViewController {
     }()
     
     private lazy var howToEnterStack: HowToEnterStackView = {
-       let stack = HowToEnterStackView()
+        let stack = HowToEnterStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.delegate = self
         return stack
     }()
-	private let output: EnterViewOutput
-
+    private let output: EnterViewOutput
+    
     init(output: EnterViewOutput) {
         self.output = output
         
@@ -57,12 +59,26 @@ final class EnterViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setupUI()
-	}
+        NotificationCenterManager.addObserver(observer: self,
+                                              selector: #selector(keyboardWillShow(_:)),
+                                              name: UIWindow.keyboardWillShowNotification,
+                                              object: nil)
+        NotificationCenterManager.addObserver(observer: self,
+                                              selector: #selector(keyboardWillHide(_:)),
+                                              name: UIWindow.keyboardWillHideNotification,
+                                              object: nil)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillHideNotification, object: nil)
+    }
     func setupUI() {
         view.backgroundColor = .mainColor
+        view.addTapRecognizer(target: self, action: #selector(endEnditing))
         navigationController?.isNavigationBarHidden = true
         view.addConstrained(subview: entryLabel,
                             top: nil,
@@ -70,10 +86,12 @@ final class EnterViewController: UIViewController {
                             bottom: nil,
                             right: nil)
         NSLayoutConstraint.activate([
-            entryLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             entryLabel.heightAnchor.constraint(equalToConstant: 108),
             entryLabel.widthAnchor.constraint(equalToConstant: 180)
         ])
+        topTobottomConstraintOfEntryLabel = entryLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50)
+        topTobottomConstraintOfEntryLabel?.isActive = true
+
         
         view.addConstrained(subview: tfStack,
                             top: nil,
@@ -98,10 +116,11 @@ final class EnterViewController: UIViewController {
                             left: 30,
                             bottom: nil,
                             right: -30)
-        howToEnterStack.topAnchor.constraint (
+        topTobottomConstraintOfButton = howToEnterStack.topAnchor.constraint (
             equalTo: forgotPaaswdButton.bottomAnchor,
             constant: 110
-        ).isActive = true
+        )
+        topTobottomConstraintOfButton?.isActive = true
         
     }
 }
@@ -126,5 +145,32 @@ extension EnterViewController: HowToEnterStackViewDelegate {
     @objc
     func fogotButtonPressed(_ sender: UIButton) {
         output.fogotPasswordButtonPressed()
+    }
+}
+//MARK: - KeyBoardLogic
+extension EnterViewController {
+    @objc
+    func keyboardWillShow(_ notification: Notification) {
+        if topTobottomConstraintOfEntryLabel?.constant == 50 {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.topTobottomConstraintOfEntryLabel?.constant -= 120
+                self?.topTobottomConstraintOfButton?.constant -= 50
+                self?.view.layoutIfNeeded()
+            }
+        }
+    }
+    @objc
+    func keyboardWillHide(_ notification: Notification) {
+        if topTobottomConstraintOfEntryLabel?.constant == -70 {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.topTobottomConstraintOfEntryLabel?.constant += 120
+                self?.topTobottomConstraintOfButton?.constant += 50
+                self?.view.layoutIfNeeded()
+            }
+        }
+    }
+    @objc
+    func endEnditing() {
+        view.endEditing(false)
     }
 }
