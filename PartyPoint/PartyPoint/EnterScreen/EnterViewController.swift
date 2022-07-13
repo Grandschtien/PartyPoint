@@ -35,6 +35,7 @@ final class EnterViewController: UIViewController {
         btn.titleLabel?.font = UIFont(name: UIFont.SFProDisplayBold, size: 14)
         btn.titleLabel?.textColor = .miniColor?.withAlphaComponent(0.75)
         btn.backgroundColor = .clear
+        btn.addTarget(self, action: #selector(fogotButtonPressed(_:)), for: .touchUpInside)
         return btn
     }()
     
@@ -111,16 +112,19 @@ extension EnterViewController: EnterViewInput {
 
 extension EnterViewController: HowToEnterStackViewDelegate {
     func enterButtonPressed() {
-        print("Enter")
+        output.enterButtonPressed()
     }
     
     func registerButtonPressed() {
-        print("register")
+        output.registerButtonPressed()
     }
     
     func noAccounButtonPressed() {
-        print("no acc")
+        output.noAccountButtonPressed()
     }
     
-    
+    @objc
+    func fogotButtonPressed(_ sender: UIButton) {
+        output.fogotPasswordButtonPressed()
+    }
 }

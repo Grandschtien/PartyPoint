@@ -13,8 +13,8 @@ final class InitialAssembly {
     init(viewController: UIViewController) {
         self.viewController = viewController
     }
-    static func assembly() -> InitialAssembly {
-        let router = InitialRouter()
+    static func assembly(window: UIWindow) -> InitialAssembly {
+        let router = InitialRouter(window: window)
         let initialVC = InitialViewController(router: router)
         router.viewController = initialVC
         return InitialAssembly(viewController: initialVC)

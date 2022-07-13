@@ -14,11 +14,12 @@ final class EnterContainer {
 	private(set) weak var router: EnterRouterInput!
 
 	static func assemble(with context: EnterContext) -> EnterContainer {
-        let router = EnterRouter()
+        let router = EnterRouter(window: context.window)
         let interactor = EnterInteractor()
         let presenter = EnterPresenter(router: router, interactor: interactor)
 		let viewController = EnterViewController(output: presenter)
 
+        router.setViewController(viewContrller: viewController)
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
 
@@ -36,4 +37,5 @@ final class EnterContainer {
 
 struct EnterContext {
 	weak var moduleOutput: EnterModuleOutput?
+    let window: UIWindow
 }

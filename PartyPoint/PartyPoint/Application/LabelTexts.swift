@@ -17,11 +17,21 @@ enum LabelTexts: String {
     case registerLabel = "Нет аккаунта? Зарегистрироваться"
     case orLabel = "или"
     case withoutAccLabel = "Войти без аккаунта"
+    case photoLabel = "Фото необязательно, однако с ним другим людям будет проще понять кто вы 😉"
+    case registerButton = "Зарегистрироваться"
+    case registrationScreenLabel = "Регистрация"
 }
 
 enum EnterTfPlaceholders: String {
     case email = "Почта"
     case password = "Пароль"
+}
+enum RegisterTfPlaceholders: String {
+    case name = "Имя"
+    case surname = "Фамилия"
+    case email = "Почта"
+    case password = "Пароль"
+    case checkPassword = "Повторите пароль"
 }
 
 enum RegisterTfPlaceHolders: String {

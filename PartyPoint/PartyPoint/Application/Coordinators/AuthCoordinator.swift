@@ -19,7 +19,7 @@ final class AuthCoordinator: CoordinatorProtocol {
       }
     
       func start() {
-          let initialAssembly = InitialAssembly.assembly()
+          let initialAssembly = InitialAssembly.assembly(window: window)
           navigationController.setViewControllers([initialAssembly.viewController], animated: false)
           window.rootViewController = navigationController
           window.makeKeyAndVisible()

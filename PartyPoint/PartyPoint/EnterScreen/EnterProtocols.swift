@@ -12,20 +12,28 @@ protocol EnterModuleInput {
 	var moduleOutput: EnterModuleOutput? { get }
 }
 
-protocol EnterModuleOutput: class {
+protocol EnterModuleOutput: AnyObject {
 }
 
-protocol EnterViewInput: class {
+protocol EnterViewInput: AnyObject {
 }
 
-protocol EnterViewOutput: class {
+protocol EnterViewOutput: AnyObject {
+    func enterButtonPressed()
+    func fogotPasswordButtonPressed()
+    func registerButtonPressed()
+    func noAccountButtonPressed()
 }
 
-protocol EnterInteractorInput: class {
+protocol EnterInteractorInput: AnyObject {
 }
 
-protocol EnterInteractorOutput: class {
+protocol EnterInteractorOutput: AnyObject {
 }
 
-protocol EnterRouterInput: class {
+protocol EnterRouterInput: AnyObject {
+    func routeToRegisterscreen()
+    func routeToFogotPasswordScreen()
+    func startMainWithAccountFlow()
+    func startMainWithoutAccountFlow()
 }

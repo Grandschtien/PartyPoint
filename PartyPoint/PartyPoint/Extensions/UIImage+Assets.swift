@@ -22,5 +22,6 @@ extension UIImage {
     static let shareOutline = UIImage(named: "shareOutline")
     static let time = UIImage(named: "time")
     static let wine = UIImage(named: "wine")
+    static let personPhoto = UIImage(named: "personPhoto")
 }
 

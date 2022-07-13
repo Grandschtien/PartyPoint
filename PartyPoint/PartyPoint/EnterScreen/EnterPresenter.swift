@@ -25,6 +25,22 @@ extension EnterPresenter: EnterModuleInput {
 }
 
 extension EnterPresenter: EnterViewOutput {
+    func enterButtonPressed() {
+        router.startMainWithAccountFlow()
+    }
+    
+    func fogotPasswordButtonPressed() {
+        router.routeToFogotPasswordScreen()
+    }
+    
+    func registerButtonPressed() {
+        router.routeToRegisterscreen()
+    }
+    
+    func noAccountButtonPressed() {
+        router.startMainWithoutAccountFlow()
+    }
+    
 }
 
 extension EnterPresenter: EnterInteractorOutput {

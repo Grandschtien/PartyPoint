@@ -9,7 +9,7 @@ import UIKit
 
 class NavigationBarWithLogo: UIView {
     
-    private lazy var imageView: UIView = {
+    internal lazy var imageView: UIView = {
         let view = UIView(frame: .zero)
         view.layer.contents = UIImage.logo?.cgImage
         return view
