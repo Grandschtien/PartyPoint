@@ -13,13 +13,11 @@ protocol InitilaRouterProtocol: AnyObject {
 }
 
 final class InitialRouter: InitilaRouterProtocol {
-    let viewController: UIViewController
-    init(viewController: UIViewController) {
-        self.viewController = viewController
-    }
+    weak var viewController: UIViewController?
     
     func navigateToEnter() {
-        
+        let context = EnterContext(moduleOutput: nil)
+        let assembly = EnterContainer.assemble(with: context)
+        viewController?.navigationController?.pushViewController(assembly.viewController, animated: true)
     }
-    
 }
