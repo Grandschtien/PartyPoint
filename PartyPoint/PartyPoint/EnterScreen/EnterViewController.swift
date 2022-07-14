@@ -18,11 +18,11 @@ final class EnterViewController: UIViewController {
         return label
     }()
     
-    private lazy var tfStack: UIStackView = {
+    private lazy var tfStack: DynamicStackWithTF = {
         //TODO: Make localize list
         let placeholders: [String] = [
-            EnterTfPlaceholders.email.rawValue,
-            EnterTfPlaceholders.password.rawValue
+            LabelTexts.email.rawValue,
+            LabelTexts.password.rawValue
         ]
         let stack = DynamicStackWithTF(frame: .zero, placeholders: placeholders)
         return stack
@@ -62,6 +62,10 @@ final class EnterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+       
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         NotificationCenterManager.addObserver(observer: self,
                                               selector: #selector(keyboardWillShow(_:)),
                                               name: UIWindow.keyboardWillShowNotification,

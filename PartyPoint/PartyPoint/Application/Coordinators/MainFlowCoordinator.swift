@@ -53,7 +53,6 @@ private extension MainFlowCoordinator {
         
         let container = FavouritesContainer.assemble(with: context)
         navController.setViewControllers([container.viewController], animated: false)
-        container.viewController.navigationItem.title = NavControllerType.favourites.title
     }
     
     func setupProfile() {
@@ -64,44 +63,31 @@ private extension MainFlowCoordinator {
         
         let container = ProfileContainer.assemble(with: context)
         navController.setViewControllers([container.viewController], animated: false)
-        container.viewController.navigationItem.title = NavControllerType.profile.title
     }
     
     func setupAppearance() {
-//        UINavigationBar.appearance().barTintColor = .white
-//        UINavigationBar.appearance().tintColor = .black
-//
-//        let appearance = UINavigationBarAppearance()
-//        appearance.backgroundColor = .white
-//
-//        UINavigationBar.appearance().tintColor = .black
-//        UINavigationBar.appearance().standardAppearance = appearance
-//        UINavigationBar.appearance().compactAppearance = appearance
-//        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-//
-//        UINavigationBar.appearance().shadowImage = UIImage()
-//
-//        UINavigationBar.appearance().titleTextAttributes = [
-//            NSAttributedString.Key.foregroundColor: UIColor.black,
-//            NSAttributedString.Key.font : UIFont(name: "AppleSDGothicNeo-SemiBold", size: 18)
-//        ]
-//
-//        UITabBarItem.appearance().setTitleTextAttributes([
-//            NSAttributedString.Key.font : UIFont(name: "AppleSDGothicNeo-SemiBold", size: 12)
-//        ], for: .normal)
-//
-//
-//        UITabBar.appearance().barTintColor = .white
+        
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [
+            .font : UIFont(name: UIFont.SFProDisplayRegular, size: 12)!,
+            .foregroundColor: UIColor.tabBarSelected!
+            ], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [
+            .font : UIFont(name: UIFont.SFProDisplayRegular, size: 12)!,
+            .foregroundColor: UIColor.tabBarBarUnselected!
+            ], for: .normal)
+        UITabBar.appearance().barTintColor = .mainColor
     }
     
     static func makeNavigationControllers() -> [NavControllerType: UINavigationController] {
         var result: [NavControllerType: UINavigationController] = [:]
         NavControllerType.allCases.forEach { navControllerKey in
             let navigationController = UINavigationController()
-            let tabBarItem = UITabBarItem(title: navControllerKey.title,
-                                          image: navControllerKey.image,
-                                          tag: navControllerKey.rawValue)
-            navigationController.tabBarItem = tabBarItem
+                let tabBarItem = UITabBarItem(title: navControllerKey.title,
+                                              image: navControllerKey.unselectedImage,
+                                              selectedImage: navControllerKey.image)
+                navigationController.tabBarItem = tabBarItem
             result[navControllerKey] = navigationController
         }
         return result
@@ -125,11 +111,22 @@ fileprivate enum NavControllerType: Int, CaseIterable {
     var image: UIImage? {
         switch self {
         case .events:
-            return .wine
+            return .wine?.withRenderingMode(.alwaysOriginal)
         case .favourites:
-            return .heartFill
+            return .heartFill?.withRenderingMode(.alwaysOriginal)
         case .profile:
-            return .person
+            return .person?.withRenderingMode(.alwaysOriginal)
+        }
+    }
+    
+    var unselectedImage: UIImage? {
+        switch self {
+        case .events:
+            return .unselectedWine?.withRenderingMode(.alwaysOriginal)
+        case .favourites:
+            return .unselectedHeart?.withRenderingMode(.alwaysOriginal)
+        case .profile:
+            return .unselectedPerson?.withRenderingMode(.alwaysOriginal)
         }
     }
 }

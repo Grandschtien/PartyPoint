@@ -23,5 +23,8 @@ extension UIImage {
     static let time = UIImage(named: "time")
     static let wine = UIImage(named: "wine")
     static let personPhoto = UIImage(named: "personPhoto")
+    static let unselectedWine = UIImage(named: "unselectedWine")
+    static let unselectedPerson = UIImage(named: "unselectedPerson")
+    static let unselectedHeart = UIImage(named: "unselectedHeart")
 }
 

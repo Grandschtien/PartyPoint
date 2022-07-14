@@ -76,6 +76,7 @@
 		60971798287EDE5D0084A63C /* FogotPasswordContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60971792287EDE5D0084A63C /* FogotPasswordContainer.swift */; };
 		6097179A287EF5B80084A63C /* AuthRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60971799287EF5B70084A63C /* AuthRouterProtocol.swift */; };
 		6097179C287F172C0084A63C /* NotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097179B287F172C0084A63C /* NotificationCenterManager.swift */; };
+		60DA33B428802FF6004E52A3 /* UIStackView+convenieceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA33B328802FF6004E52A3 /* UIStackView+convenieceInit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +151,7 @@
 		60971792287EDE5D0084A63C /* FogotPasswordContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FogotPasswordContainer.swift; sourceTree = "<group>"; };
 		60971799287EF5B70084A63C /* AuthRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouterProtocol.swift; sourceTree = "<group>"; };
 		6097179B287F172C0084A63C /* NotificationCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterManager.swift; sourceTree = "<group>"; };
+		60DA33B328802FF6004E52A3 /* UIStackView+convenieceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+convenieceInit.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 				60971736287D87C90084A63C /* UIView+Constraints.swift */,
 				60971738287D8B7B0084A63C /* UIFont + size.swift */,
 				6097177D287ED0DD0084A63C /* UIView+Recognizers.swift */,
+				60DA33B328802FF6004E52A3 /* UIStackView+convenieceInit.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				6097176D287DA60D0084A63C /* EnterPresenter.swift in Sources */,
 				60971722287D824A0084A63C /* ProfileInteractor.swift in Sources */,
 				609716FA287D7EBF0084A63C /* UIImage+Assets.swift in Sources */,
+				60DA33B428802FF6004E52A3 /* UIStackView+convenieceInit.swift in Sources */,
 				60971737287D87C90084A63C /* UIView+Constraints.swift in Sources */,
 				60971733287D84CA0084A63C /* InitialAssembly.swift in Sources */,
 				609716DD287D75230084A63C /* SceneDelegate.swift in Sources */,

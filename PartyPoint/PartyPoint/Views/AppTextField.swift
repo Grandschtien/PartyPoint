@@ -21,7 +21,16 @@ final class AppTextField: UITextField {
                 .font: UIFont(name: UIFont.SFProDisplayBold, size: 16) ?? UIFont.systemFont(ofSize: 14),
             ]
         )
-        
+        self.textColor = .mainColor
+        self.font = UIFont(name: UIFont.SFProDisplaySemibold, size: 16)
+        switch placeholder {
+        case LabelTexts.password.rawValue:
+            self.isSecureTextEntry = true
+        case LabelTexts.checkPassword.rawValue:
+            self.isSecureTextEntry = true
+        default:
+            break
+        }
         setupUI()
     }
     required init?(coder: NSCoder) {

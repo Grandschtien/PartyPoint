@@ -33,6 +33,7 @@ final class DynamicStackWithTF: UIStackView {
         self.spacing = 22
         for placeholder in placeholders {
             let appTF = AppTextField(frame: frame, placeholder: placeholder)
+            
             appTF.translatesAutoresizingMaskIntoConstraints = false
             textFields?.append(appTF)
             self.addArrangedSubview(appTF)

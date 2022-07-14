@@ -11,5 +11,7 @@ extension UIColor {
     static let buttonColor = UIColor(named: "buttonColor")
     static let mainColor = UIColor(named: "mainColor")
     static let miniColor = UIColor(named: "miniColor")
+    static let tabBarSelected = UIColor(named: "tabBarSelected")
+    static let tabBarBarUnselected = UIColor(named: "tabBarBarUnselected")
 }
 

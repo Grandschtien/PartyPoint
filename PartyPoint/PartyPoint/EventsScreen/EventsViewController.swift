@@ -21,9 +21,15 @@ final class EventsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-	override func viewDidLoad() {
-		super.viewDidLoad()
-	}
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+    }
+    
+    private func setupUI() {
+        view.backgroundColor = .mainColor
+        navigationController?.isNavigationBarHidden = true
+    }
 }
 
 extension EventsViewController: EventsViewInput {
