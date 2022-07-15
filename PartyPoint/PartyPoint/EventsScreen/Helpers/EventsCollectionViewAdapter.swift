@@ -10,6 +10,9 @@ import UIKit
 protocol EventsAdapterDelegate: AnyObject {
     func loadNetxtPage(page: Int)
     func didTapOnEvent(_ event: Event)
+}
+
+protocol EventsAdapterScrollDelegate: AnyObject {
     func collectionDidScrollVertical(_ scrollView: UIScrollView,
                                      withVelocity velocity: CGPoint)
 }
@@ -20,7 +23,9 @@ final class EventsCollectionViewAdapter: NSObject {
     private var sections: [Section]
     //Weak refereces
     private weak var collectionView: UICollectionView?
+    
     weak var delegate: EventsAdapterDelegate?
+    weak var scrollDelegate: EventsAdapterScrollDelegate?
     
     private lazy var dataSource: DataSource = setupDataSource()
     
@@ -86,13 +91,14 @@ extension EventsCollectionViewAdapter: UICollectionViewDelegate {
     func collectionView(
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
-    ) {
-    }
+    ) {}
+    
     func scrollViewWillEndDragging(
         _ scrollView: UIScrollView,
         withVelocity velocity: CGPoint,
         targetContentOffset: UnsafeMutablePointer<CGPoint>
     ) {
-        delegate?.collectionDidScrollVertical(scrollView, withVelocity: velocity)
+        scrollDelegate?.collectionDidScrollVertical(scrollView, withVelocity: velocity)
     }
+    
 }

@@ -33,12 +33,13 @@ final class EventsViewController: UIViewController {
     private lazy var eventsCollectionAdapter: EventsCollectionViewAdapter = {
         let adapter = EventsCollectionViewAdapter(eventsCollection)
         adapter.delegate = self
+        adapter.scrollDelegate = self
         return adapter
     }()
     private var collectionTopAnchor: NSLayoutConstraint?
     private var navigationBarTopAnchor: NSLayoutConstraint?
     private let output: EventsViewOutput
-    
+    private var scrollViewOriginY: CGFloat = 0
     init(output: EventsViewOutput) {
         self.output = output
         
@@ -119,11 +120,11 @@ final class EventsViewController: UIViewController {
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .estimated(250))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        group.edgeSpacing = .init(leading: nil, top: .fixed(10), trailing: nil, bottom: nil)
         let section = NSCollectionLayoutSection(group: group)
         section.boundarySupplementaryItems = [setupHeader()]
         section.contentInsets.leading = 20
         section.contentInsets.trailing = 20
+        section.contentInsets.top = 10
         return section
     }
     
@@ -142,7 +143,6 @@ extension EventsViewController: EventsViewInput {
 }
 
 extension EventsViewController: EventsAdapterDelegate {
-    
     func loadNetxtPage(page: Int) {
         
     }
@@ -150,9 +150,13 @@ extension EventsViewController: EventsAdapterDelegate {
     func didTapOnEvent(_ event: Event) {
         
     }
-    func collectionDidScrollVertical(_ scrollView: UIScrollView, withVelocity velocity: CGPoint) {
-        if(velocity.y>0) {
-            UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {[weak self] in
+}
+
+extension EventsViewController: EventsAdapterScrollDelegate {
+    func collectionDidScrollVertical(_ scrollView: UIScrollView,
+                                     withVelocity velocity: CGPoint) {
+        if(velocity.y > 0) {
+            UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {[weak self] in
                 guard let `self` = self,
                       let constant = self.navigationBarTopAnchor?.constant
                 else { return }
@@ -162,13 +166,14 @@ extension EventsViewController: EventsAdapterDelegate {
                 }
             }, completion: nil)
         } else {
-            UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {[weak self] in
+            UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {[weak self] in
                 guard let `self` = self, let constant = self.navigationBarTopAnchor?.constant  else { return }
                 if constant < 0 {
                     self.navigationBarTopAnchor?.constant += 150
                     self.view.layoutIfNeeded()
                 }
             }, completion: nil)
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
         }
     }
 }
