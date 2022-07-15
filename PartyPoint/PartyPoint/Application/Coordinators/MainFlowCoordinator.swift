@@ -66,7 +66,6 @@ private extension MainFlowCoordinator {
     }
     
     func setupAppearance() {
-        
         UITabBarItem.appearance().setTitleTextAttributes(
             [
             .font : UIFont(name: UIFont.SFProDisplayRegular, size: 12)!,
@@ -78,6 +77,7 @@ private extension MainFlowCoordinator {
             .foregroundColor: UIColor.tabBarBarUnselected!
             ], for: .normal)
         UITabBar.appearance().barTintColor = .mainColor
+        UITabBar.appearance().backgroundColor = .mainColor
     }
     
     static func makeNavigationControllers() -> [NavControllerType: UINavigationController] {

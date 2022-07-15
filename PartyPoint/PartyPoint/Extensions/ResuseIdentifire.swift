@@ -22,7 +22,6 @@ extension ReuseIdentifiable {
 }
 
 
-
 extension UICollectionReusableView: ReuseIdentifiable {}
 
 extension UICollectionView {
@@ -35,11 +34,29 @@ extension UICollectionView {
         }
         return cell
     }
+    func dequeueSupplementary<T: UICollectionReusableView>(
+        ofType type: T.Type,
+        ofKind kind: String,
+        withReuseIdentifier identifier: String,
+        for indexPath: IndexPath
+    ) -> T {
+        guard let view = self.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: identifier,
+            for: indexPath) as? T else {
+            fatalError("Can't deque")
+        }
+        return view
+    }
     
     func register<T: UICollectionViewCell>(_ cellType: T.Type) {
         self.register(cellType, forCellWithReuseIdentifier: cellType.reuseIdentifier)
     }
-    func registerWithNib<T: UICollectionViewCell>(_ cellType: T.Type, nib: UINib) {
-        self.register(nib, forCellWithReuseIdentifier: cellType.reuseIdentifier)
+    func registerWithNib<T: UICollectionViewCell>(_ cellType: T.Type) {
+        self.register(
+            UINib(nibName: cellType.nibName, bundle: nil),
+            forCellWithReuseIdentifier: cellType.reuseIdentifier
+        )
     }
+    
 }

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6073B8702881936A00AF07FA /* EventsCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073B86F2881936A00AF07FA /* EventsCollectionViewAdapter.swift */; };
+		6073B8722881942A00AF07FA /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073B8712881942A00AF07FA /* Event.swift */; };
+		6073B8752881962700AF07FA /* CollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073B8742881962700AF07FA /* CollectionHeader.swift */; };
+		6073B87728819A2F00AF07FA /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073B87628819A2F00AF07FA /* Section.swift */; };
+		6073B87B2881A01800AF07FA /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073B8792881A01800AF07FA /* EventCell.swift */; };
+		6073B87C2881A01800AF07FA /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6073B87A2881A01800AF07FA /* EventCell.xib */; };
 		609716DB287D75230084A63C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609716DA287D75230084A63C /* AppDelegate.swift */; };
 		609716DD287D75230084A63C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609716DC287D75230084A63C /* SceneDelegate.swift */; };
 		609716DF287D75230084A63C /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609716DE287D75230084A63C /* InitialViewController.swift */; };
@@ -80,6 +86,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6073B86F2881936A00AF07FA /* EventsCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewAdapter.swift; sourceTree = "<group>"; };
+		6073B8712881942A00AF07FA /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		6073B8742881962700AF07FA /* CollectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeader.swift; sourceTree = "<group>"; };
+		6073B87628819A2F00AF07FA /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		6073B8792881A01800AF07FA /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		6073B87A2881A01800AF07FA /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		609716D7287D75230084A63C /* PartyPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartyPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		609716DA287D75230084A63C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		609716DC287D75230084A63C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +177,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6073B86E2881933300AF07FA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6073B86F2881936A00AF07FA /* EventsCollectionViewAdapter.swift */,
+				6073B87628819A2F00AF07FA /* Section.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		6073B873288194B100AF07FA /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				6073B8712881942A00AF07FA /* Event.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		6073B87828819FFD00AF07FA /* EventCell */ = {
+			isa = PBXGroup;
+			children = (
+				6073B8792881A01800AF07FA /* EventCell.swift */,
+				6073B87A2881A01800AF07FA /* EventCell.xib */,
+			);
+			path = EventCell;
+			sourceTree = "<group>";
+		};
 		609716CE287D75230084A63C = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +222,7 @@
 		609716D9287D75230084A63C /* PartyPoint */ = {
 			isa = PBXGroup;
 			children = (
+				6073B873288194B100AF07FA /* Entities */,
 				609716E8287D752B0084A63C /* Info.plist */,
 				60971766287DA5FE0084A63C /* EnterScreen */,
 				60971780287EDE280084A63C /* RegisterScreen */,
@@ -261,6 +300,7 @@
 		609716FD287D81F80084A63C /* EventsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				6073B86E2881933300AF07FA /* Helpers */,
 				60971700287D821A0084A63C /* EventsPresenter.swift */,
 				60971701287D821A0084A63C /* EventsRouter.swift */,
 				60971702287D821A0084A63C /* EventsViewController.swift */,
@@ -314,12 +354,14 @@
 		6097175F287D94150084A63C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6073B87828819FFD00AF07FA /* EventCell */,
 				60971760287D94710084A63C /* AppButton.swift */,
 				60971762287D9BD80084A63C /* NavigationBarWithLogo.swift */,
 				60971764287D9C630084A63C /* NavigationBarWithLogoAndActions.swift */,
 				60971775287DB9F60084A63C /* AppTextField.swift */,
 				60971777287DBBD50084A63C /* DynamicStackWithTF.swift */,
 				6097177B287EC2C90084A63C /* HowToEnterStackView.swift */,
+				6073B8742881962700AF07FA /* CollectionHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -422,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				609716E7287D752B0084A63C /* LaunchScreen.storyboard in Resources */,
+				6073B87C2881A01800AF07FA /* EventCell.xib in Resources */,
 				609716E4287D752B0084A63C /* Assets.xcassets in Resources */,
 				609716E2287D75230084A63C /* Main.storyboard in Resources */,
 				6097174F287D8F200084A63C /* SFProDisplay-Bold.ttf in Resources */,
@@ -448,6 +491,7 @@
 				60971708287D821A0084A63C /* EventsViewController.swift in Sources */,
 				6097176E287DA60D0084A63C /* EnterRouter.swift in Sources */,
 				6097178C287EDE4A0084A63C /* RegisterContainer.swift in Sources */,
+				6073B87B2881A01800AF07FA /* EventCell.swift in Sources */,
 				60971731287D840A0084A63C /* InitialRouter.swift in Sources */,
 				609716F8287D7D880084A63C /* AppCoordinator.swift in Sources */,
 				609716F3287D7C1D0084A63C /* AuthCoordinator.swift in Sources */,
@@ -457,6 +501,7 @@
 				6097179A287EF5B80084A63C /* AuthRouterProtocol.swift in Sources */,
 				60971796287EDE5D0084A63C /* FogotPasswordProtocols.swift in Sources */,
 				6097170A287D821A0084A63C /* EventsInteractor.swift in Sources */,
+				6073B8752881962700AF07FA /* CollectionHeader.swift in Sources */,
 				60971721287D824A0084A63C /* ProfileProtocols.swift in Sources */,
 				60971776287DB9F60084A63C /* AppTextField.swift in Sources */,
 				60971706287D821A0084A63C /* EventsPresenter.swift in Sources */,
@@ -496,9 +541,12 @@
 				609716F5287D7C720084A63C /* MainFlowCoordinator.swift in Sources */,
 				6097176D287DA60D0084A63C /* EnterPresenter.swift in Sources */,
 				60971722287D824A0084A63C /* ProfileInteractor.swift in Sources */,
+				6073B8722881942A00AF07FA /* Event.swift in Sources */,
 				609716FA287D7EBF0084A63C /* UIImage+Assets.swift in Sources */,
 				60DA33B428802FF6004E52A3 /* UIStackView+convenieceInit.swift in Sources */,
 				60971737287D87C90084A63C /* UIView+Constraints.swift in Sources */,
+				6073B8702881936A00AF07FA /* EventsCollectionViewAdapter.swift in Sources */,
+				6073B87728819A2F00AF07FA /* Section.swift in Sources */,
 				60971733287D84CA0084A63C /* InitialAssembly.swift in Sources */,
 				609716DD287D75230084A63C /* SceneDelegate.swift in Sources */,
 			);

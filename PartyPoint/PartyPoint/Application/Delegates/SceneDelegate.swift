@@ -24,8 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //TODO: Condition
         
-//        coordinator?.startMain()
-        coordinator?.atartAuth()
+        coordinator?.startMain()
+//        coordinator?.atartAuth()
     }
 }
 

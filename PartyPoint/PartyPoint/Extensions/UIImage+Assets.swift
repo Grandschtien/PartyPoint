@@ -26,5 +26,7 @@ extension UIImage {
     static let unselectedWine = UIImage(named: "unselectedWine")
     static let unselectedPerson = UIImage(named: "unselectedPerson")
     static let unselectedHeart = UIImage(named: "unselectedHeart")
+    
+    static let moc = UIImage(named: "moc")
 }
 
