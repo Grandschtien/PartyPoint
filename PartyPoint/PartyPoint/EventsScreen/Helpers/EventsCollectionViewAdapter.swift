@@ -7,19 +7,24 @@
 
 import UIKit
 
+
+/// This delegate needs to handle taps on cell in collection view and  for pagination
 protocol EventsAdapterDelegate: AnyObject {
     func loadNetxtPage(page: Int)
     func didTapOnEvent(_ event: Event)
 }
 
+/// This delegate have to be implemented if you want to use delegates methods of scroll view
+@objc
 protocol EventsAdapterScrollDelegate: AnyObject {
-    func collectionDidScrollVertical(_ scrollView: UIScrollView,
-                                     withVelocity velocity: CGPoint)
+    @objc func collectionViewDidScroll(_ scrollView: UIScrollView)
 }
 
 final class EventsCollectionViewAdapter: NSObject {
+    
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Event>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Event>
+    
     private var sections: [Section]
     //Weak refereces
     private weak var collectionView: UICollectionView?
@@ -36,6 +41,8 @@ final class EventsCollectionViewAdapter: NSObject {
         collectionView.delegate = self
     }
     
+    /// This function must be envoked after initialize, because it configurates adapter
+    /// - Parameter sections: Array of sections you want to have
     func configure(_ sections: [Section]) {
         self.sections.append(contentsOf: sections)
         applySnapshot()
@@ -92,13 +99,7 @@ extension EventsCollectionViewAdapter: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {}
-    
-    func scrollViewWillEndDragging(
-        _ scrollView: UIScrollView,
-        withVelocity velocity: CGPoint,
-        targetContentOffset: UnsafeMutablePointer<CGPoint>
-    ) {
-        scrollDelegate?.collectionDidScrollVertical(scrollView, withVelocity: velocity)
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollDelegate?.collectionViewDidScroll(scrollView)
     }
-    
 }

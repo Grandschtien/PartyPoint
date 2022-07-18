@@ -66,28 +66,41 @@ private extension MainFlowCoordinator {
     }
     
     func setupAppearance() {
+        if #available(iOS 13, *) {
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.configureWithTransparentBackground()
+            navigationBarAppearance.backgroundColor = UIColor.mainColor
+            UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+            UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        }
+        tabBarController.tabBar.isTranslucent = false
+        tabBarController.tabBar.barTintColor = .mainColor
+        tabBarController.tabBar.backgroundColor = .mainColor
+        tabBarController.tabBar.shadowImage = nil
         UITabBarItem.appearance().setTitleTextAttributes(
             [
-            .font : UIFont(name: UIFont.SFProDisplayRegular, size: 12)!,
-            .foregroundColor: UIColor.tabBarSelected!
+                .font : UIFont(name: UIFont.SFProDisplayRegular, size: 12)!,
+                .foregroundColor: UIColor.tabBarSelected!
             ], for: .selected)
         UITabBarItem.appearance().setTitleTextAttributes(
             [
-            .font : UIFont(name: UIFont.SFProDisplayRegular, size: 12)!,
-            .foregroundColor: UIColor.tabBarBarUnselected!
+                .font : UIFont(name: UIFont.SFProDisplayRegular, size: 12)!,
+                .foregroundColor: UIColor.tabBarBarUnselected!
             ], for: .normal)
-        UITabBar.appearance().barTintColor = .mainColor
-        UITabBar.appearance().backgroundColor = .mainColor
     }
     
     static func makeNavigationControllers() -> [NavControllerType: UINavigationController] {
         var result: [NavControllerType: UINavigationController] = [:]
         NavControllerType.allCases.forEach { navControllerKey in
             let navigationController = UINavigationController()
-                let tabBarItem = UITabBarItem(title: navControllerKey.title,
-                                              image: navControllerKey.unselectedImage,
-                                              selectedImage: navControllerKey.image)
-                navigationController.tabBarItem = tabBarItem
+            let tabBarItem = UITabBarItem(title: navControllerKey.title,
+                                          image: navControllerKey.unselectedImage,
+                                          selectedImage: navControllerKey.image)
+            
+            navigationController.tabBarItem = tabBarItem
+            UINavigationBar.appearance().barTintColor = .mainColor
+            UINavigationBar.appearance().backgroundColor = .mainColor
             result[navControllerKey] = navigationController
         }
         return result

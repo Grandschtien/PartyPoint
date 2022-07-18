@@ -36,10 +36,10 @@ final class EventsViewController: UIViewController {
         adapter.scrollDelegate = self
         return adapter
     }()
-    private var collectionTopAnchor: NSLayoutConstraint?
-    private var navigationBarTopAnchor: NSLayoutConstraint?
+    
     private let output: EventsViewOutput
-    private var scrollViewOriginY: CGFloat = 0
+    private var statusBarFrame: CGRect?
+    
     init(output: EventsViewOutput) {
         self.output = output
         
@@ -58,26 +58,39 @@ final class EventsViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .mainColor
-        view.clipsToBounds = true
-        navigationController?.isNavigationBarHidden = true
+        let label = UILabel(frame: .zero)
+        label.font = UIFont(name: UIFont.SFProDisplaySemibold, size: 17)
+        label.textColor = .miniColor
+        label.text = LabelTexts.events.rawValue
+        navigationItem.titleView = label
+        
+        
+        //setup collection
         eventsCollection.showsVerticalScrollIndicator = false
         eventsCollection.showsHorizontalScrollIndicator = false
-        view.addConstrained(subview: navigationBar, top: nil, left: 0, bottom: nil, right: 0)
-        navigationBarTopAnchor = navigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
-        navigationBarTopAnchor?.isActive = true
-        navigationBar.heightAnchor.constraint(equalToConstant: 78).isActive = true
         view.addConstrained(subview: eventsCollection, top: nil, left: 0, bottom: 0, right: 0)
-        collectionTopAnchor = eventsCollection.topAnchor.constraint(equalTo: navigationBar.bottomAnchor)
-        collectionTopAnchor?.isActive = true
+        eventsCollection.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         
+        //This needs to set background for status bar
         let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         guard let statusBarFrame = window?.windowScene?.statusBarManager?.statusBarFrame else {
             return
         }
+        self.statusBarFrame = statusBarFrame
         let statusBarView = UIView(frame: statusBarFrame)
         self.view.addSubview(statusBarView)
         statusBarView.backgroundColor = .mainColor
+        
+        //setup navigation bar
+        view.addConstrained(subview: navigationBar, top: nil, left: 0, bottom: nil, right: 0)
+        navigationBar.topAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.topAnchor
+        ).isActive = true
+        navigationBar.backgroundColor = .mainColor
+        eventsCollection.contentInset.top = navigationBar.frame.height
+        
     }
+    
     
     private func setupLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout {[weak self] section, env in
@@ -90,7 +103,8 @@ final class EventsViewController: UIViewController {
         }
         return layout
     }
-    
+    /// This function setups horizontal layout for collection view
+    /// - Returns: Layout for horizontal section
     private func configureHorizontalLayoutSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
@@ -109,6 +123,9 @@ final class EventsViewController: UIViewController {
         section.contentInsets.bottom = 10
         return section
     }
+    
+    /// This function setups vertical layout for collection view
+    /// - Returns: Layout for vertical section
     private func configureVerticalLayoutSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
@@ -128,6 +145,8 @@ final class EventsViewController: UIViewController {
         return section
     }
     
+    /// This function setups header layout for collection view
+    /// - Returns: Layout for section header
     private func setupHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         let headerItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(20))
         let header = NSCollectionLayoutBoundarySupplementaryItem(
@@ -153,27 +172,12 @@ extension EventsViewController: EventsAdapterDelegate {
 }
 
 extension EventsViewController: EventsAdapterScrollDelegate {
-    func collectionDidScrollVertical(_ scrollView: UIScrollView,
-                                     withVelocity velocity: CGPoint) {
-        if(velocity.y > 0) {
-            UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {[weak self] in
-                guard let `self` = self,
-                      let constant = self.navigationBarTopAnchor?.constant
-                else { return }
-                if constant >= 0 {
-                    self.navigationBarTopAnchor?.constant = -150
-                    self.view.layoutIfNeeded()
-                }
-            }, completion: nil)
-        } else {
-            UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {[weak self] in
-                guard let `self` = self, let constant = self.navigationBarTopAnchor?.constant  else { return }
-                if constant < 0 {
-                    self.navigationBarTopAnchor?.constant += 150
-                    self.view.layoutIfNeeded()
-                }
-            }, completion: nil)
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-        }
+    func collectionViewDidScroll(_ scrollView: UIScrollView) {
+        let contentOffset = navigationBar.frame.height
+        let offset = scrollView.contentOffset.y + contentOffset
+        let alpha: CGFloat = 1 - (scrollView.contentOffset.y + contentOffset) / contentOffset
+        navigationBar.alpha = alpha
+        navigationItem.titleView?.alpha = -alpha
+        navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
     }
 }

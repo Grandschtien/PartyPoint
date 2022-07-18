@@ -19,7 +19,8 @@ class NavigationBarWithLogo: UIView {
     init(background: UIColor = .clear,
          image: UIImage? = .logo,
          frame: CGRect) {
-        super.init(frame: frame)
+        let navFrame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.width, height: 78)
+        super.init(frame: navFrame)
         self.backgroundColor = background
         self.imageView.layer.contents = image?.cgImage
         configure()
@@ -34,5 +35,6 @@ class NavigationBarWithLogo: UIView {
                             left: 130,
                             bottom: -6,
                             right: -130)
+        self.heightAnchor.constraint(equalToConstant: 78).isActive = true
     }
 }

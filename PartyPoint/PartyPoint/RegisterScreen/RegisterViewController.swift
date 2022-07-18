@@ -122,7 +122,6 @@ final class RegisterViewController: UIViewController {
                             bottom: nil,
                             right: 0)
         NSLayoutConstraint.activate([
-            navigationBar.heightAnchor.constraint(equalToConstant: 60),
             navigationBar.topAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.topAnchor,
                 constant: 0

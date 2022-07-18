@@ -84,7 +84,6 @@ final class FogotPasswordViewController: UIViewController {
                              bottom: nil,
                              right: 0)
          NSLayoutConstraint.activate([
-             navigationBar.heightAnchor.constraint(equalToConstant: 75),
              navigationBar.topAnchor.constraint(
                  equalTo: view.safeAreaLayoutGuide.topAnchor,
                  constant: 0
