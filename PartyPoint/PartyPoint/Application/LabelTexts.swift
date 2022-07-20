@@ -28,6 +28,7 @@ enum LabelTexts: String {
     case checkPassword = "Повторите пароль"
     case sendButton = "Выслать пароль"
     case events = "Мероприятия"
+    case favourites = "Избранное"
 }
 
 

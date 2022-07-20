@@ -17,7 +17,10 @@ final class EventsViewController: UIViewController {
     }()
     
     private lazy var eventsCollection: UICollectionView = {
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: setupLayout())
+        let collection = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: UICollectionViewFlowLayout()
+        )
         collection.registerWithNib(
             EventCell.self
         )
@@ -38,7 +41,6 @@ final class EventsViewController: UIViewController {
     }()
     
     private let output: EventsViewOutput
-    private var statusBarFrame: CGRect?
     
     init(output: EventsViewOutput) {
         self.output = output
@@ -64,7 +66,6 @@ final class EventsViewController: UIViewController {
         label.text = LabelTexts.events.rawValue
         navigationItem.titleView = label
         
-        
         //setup collection
         eventsCollection.showsVerticalScrollIndicator = false
         eventsCollection.showsHorizontalScrollIndicator = false
@@ -76,7 +77,6 @@ final class EventsViewController: UIViewController {
         guard let statusBarFrame = window?.windowScene?.statusBarManager?.statusBarFrame else {
             return
         }
-        self.statusBarFrame = statusBarFrame
         let statusBarView = UIView(frame: statusBarFrame)
         self.view.addSubview(statusBarView)
         statusBarView.backgroundColor = .mainColor
@@ -90,78 +90,12 @@ final class EventsViewController: UIViewController {
         eventsCollection.contentInset.top = navigationBar.frame.height
         
     }
-    
-    
-    private func setupLayout() -> UICollectionViewCompositionalLayout {
-        let layout = UICollectionViewCompositionalLayout {[weak self] section, env in
-            switch section {
-            case 2:
-                return self?.configureVerticalLayoutSection()
-            default:
-                return self?.configureHorizontalLayoutSection()
-            }
-        }
-        return layout
-    }
-    /// This function setups horizontal layout for collection view
-    /// - Returns: Layout for horizontal section
-    private func configureHorizontalLayoutSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.8),
-            heightDimension: .estimated(200))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.edgeSpacing = .init(leading: .fixed(10), top: .fixed(10), trailing: .fixed(10), bottom: nil)
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
-        section.boundarySupplementaryItems = [setupHeader()]
-        section.contentInsets.trailing = 10
-        section.contentInsets.leading = 10
-        section.contentInsets.bottom = 10
-        return section
-    }
-    
-    /// This function setups vertical layout for collection view
-    /// - Returns: Layout for vertical section
-    private func configureVerticalLayoutSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets.top = 5
-        item.contentInsets.bottom = 15
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(250))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        let section = NSCollectionLayoutSection(group: group)
-        section.boundarySupplementaryItems = [setupHeader()]
-        section.contentInsets.leading = 20
-        section.contentInsets.trailing = 20
-        section.contentInsets.top = 10
-        return section
-    }
-    
-    /// This function setups header layout for collection view
-    /// - Returns: Layout for section header
-    private func setupHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let headerItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(20))
-        let header = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerItemSize,
-            elementKind: UICollectionView.elementKindSectionHeader,
-            alignment: .top
-        )
-        return header
-    }
 }
 
 extension EventsViewController: EventsViewInput {
 }
 
-extension EventsViewController: EventsAdapterDelegate {
+extension EventsViewController: EventsDelegate {
     func loadNetxtPage(page: Int) {
         
     }
@@ -171,7 +105,7 @@ extension EventsViewController: EventsAdapterDelegate {
     }
 }
 
-extension EventsViewController: EventsAdapterScrollDelegate {
+extension EventsViewController: EventsScrollDelegate {
     func collectionViewDidScroll(_ scrollView: UIScrollView) {
         let contentOffset = navigationBar.frame.height
         let offset = scrollView.contentOffset.y + contentOffset

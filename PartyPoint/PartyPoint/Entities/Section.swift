@@ -9,7 +9,7 @@ import Foundation
 
 struct Section: Hashable {
     var id = UUID()
-    let header: String
+    let header: String?
     let items: [Event]
     
     func hash(into hasher: inout Hasher) {
