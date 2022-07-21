@@ -15,8 +15,14 @@
 		6073B87C2881A01800AF07FA /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6073B87A2881A01800AF07FA /* EventCell.xib */; };
 		60918EDA2888334B00D9E032 /* FavouritesCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60918ED92888334B00D9E032 /* FavouritesCollectionAdapter.swift */; };
 		60918EDD288835E400D9E032 /* EventsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60918EDC288835E400D9E032 /* EventsDelegate.swift */; };
-		60918EDF2888383B00D9E032 /* EventsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60918EDE2888383B00D9E032 /* EventsCollectionView.swift */; };
 		60918EE128883F7800D9E032 /* EventsScrollDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60918EE028883F7800D9E032 /* EventsScrollDelegate.swift */; };
+		60918EE62888626900D9E032 /* ProfileTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60918EE52888626900D9E032 /* ProfileTableAdapter.swift */; };
+		60918EE82888630D00D9E032 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60918EE72888630D00D9E032 /* UserInfo.swift */; };
+		60918EEB2888639D00D9E032 /* UserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60918EE92888639D00D9E032 /* UserInfoCell.swift */; };
+		60918EEC2888639D00D9E032 /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60918EEA2888639D00D9E032 /* UserInfoCell.xib */; };
+		60918EF0288863BA00D9E032 /* AboutMeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60918EEE288863BA00D9E032 /* AboutMeCell.swift */; };
+		60918EF1288863BA00D9E032 /* AboutMeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60918EEF288863BA00D9E032 /* AboutMeCell.xib */; };
+		60918EF428895D3D00D9E032 /* AbstractEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60918EF328895D3D00D9E032 /* AbstractEventsViewController.swift */; };
 		609716DB287D75230084A63C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609716DA287D75230084A63C /* AppDelegate.swift */; };
 		609716DD287D75230084A63C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609716DC287D75230084A63C /* SceneDelegate.swift */; };
 		609716DF287D75230084A63C /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609716DE287D75230084A63C /* InitialViewController.swift */; };
@@ -98,8 +104,14 @@
 		6073B87A2881A01800AF07FA /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		60918ED92888334B00D9E032 /* FavouritesCollectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesCollectionAdapter.swift; sourceTree = "<group>"; };
 		60918EDC288835E400D9E032 /* EventsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDelegate.swift; sourceTree = "<group>"; };
-		60918EDE2888383B00D9E032 /* EventsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionView.swift; sourceTree = "<group>"; };
 		60918EE028883F7800D9E032 /* EventsScrollDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsScrollDelegate.swift; sourceTree = "<group>"; };
+		60918EE52888626900D9E032 /* ProfileTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableAdapter.swift; sourceTree = "<group>"; };
+		60918EE72888630D00D9E032 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		60918EE92888639D00D9E032 /* UserInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCell.swift; sourceTree = "<group>"; };
+		60918EEA2888639D00D9E032 /* UserInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoCell.xib; sourceTree = "<group>"; };
+		60918EEE288863BA00D9E032 /* AboutMeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeCell.swift; sourceTree = "<group>"; };
+		60918EEF288863BA00D9E032 /* AboutMeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutMeCell.xib; sourceTree = "<group>"; };
+		60918EF328895D3D00D9E032 /* AbstractEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractEventsViewController.swift; sourceTree = "<group>"; };
 		609716D7287D75230084A63C /* PartyPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartyPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		609716DA287D75230084A63C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		609716DC287D75230084A63C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -198,6 +210,7 @@
 			children = (
 				6073B87628819A2F00AF07FA /* Section.swift */,
 				6073B8712881942A00AF07FA /* Event.swift */,
+				60918EE72888630D00D9E032 /* UserInfo.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -226,6 +239,32 @@
 				60918EE028883F7800D9E032 /* EventsScrollDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		60918EE42888624100D9E032 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				60918EE52888626900D9E032 /* ProfileTableAdapter.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		60918EED288863A100D9E032 /* UserInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				60918EE92888639D00D9E032 /* UserInfoCell.swift */,
+				60918EEA2888639D00D9E032 /* UserInfoCell.xib */,
+			);
+			path = UserInfoCell;
+			sourceTree = "<group>";
+		};
+		60918EF2288863CA00D9E032 /* AboutMeCell */ = {
+			isa = PBXGroup;
+			children = (
+				60918EEE288863BA00D9E032 /* AboutMeCell.swift */,
+				60918EEF288863BA00D9E032 /* AboutMeCell.xib */,
+			);
+			path = AboutMeCell;
 			sourceTree = "<group>";
 		};
 		609716CE287D75230084A63C = {
@@ -354,6 +393,7 @@
 		609716FF287D820C0084A63C /* ProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
+				60918EE42888624100D9E032 /* Helpers */,
 				60971718287D82490084A63C /* ProfilePresenter.swift */,
 				60971719287D82490084A63C /* ProfileRouter.swift */,
 				6097171A287D82490084A63C /* ProfileViewController.swift */,
@@ -381,6 +421,8 @@
 		6097175F287D94150084A63C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				60918EF2288863CA00D9E032 /* AboutMeCell */,
+				60918EED288863A100D9E032 /* UserInfoCell */,
 				6073B87828819FFD00AF07FA /* EventCell */,
 				60971760287D94710084A63C /* AppButton.swift */,
 				60971762287D9BD80084A63C /* NavigationBarWithLogo.swift */,
@@ -389,7 +431,7 @@
 				60971777287DBBD50084A63C /* DynamicStackWithTF.swift */,
 				6097177B287EC2C90084A63C /* HowToEnterStackView.swift */,
 				6073B8742881962700AF07FA /* CollectionHeader.swift */,
-				60918EDE2888383B00D9E032 /* EventsCollectionView.swift */,
+				60918EF328895D3D00D9E032 /* AbstractEventsViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -499,7 +541,9 @@
 				60971751287D8F200084A63C /* SFProDisplay-Black.ttf in Resources */,
 				60971754287D8F200084A63C /* SFProDisplay-Medium.ttf in Resources */,
 				6097174E287D8F200084A63C /* SFProDisplay-Semibold.ttf in Resources */,
+				60918EEC2888639D00D9E032 /* UserInfoCell.xib in Resources */,
 				6097175C287D8F200084A63C /* SFProDisplay-Heavy.ttf in Resources */,
+				60918EF1288863BA00D9E032 /* AboutMeCell.xib in Resources */,
 				6097175B287D8F200084A63C /* SFProDisplay-Light.ttf in Resources */,
 				6097174D287D8F200084A63C /* SFProDisplay-Regular.ttf in Resources */,
 			);
@@ -529,7 +573,7 @@
 				6097179A287EF5B80084A63C /* AuthRouterProtocol.swift in Sources */,
 				60971796287EDE5D0084A63C /* FogotPasswordProtocols.swift in Sources */,
 				6097170A287D821A0084A63C /* EventsInteractor.swift in Sources */,
-				60918EDF2888383B00D9E032 /* EventsCollectionView.swift in Sources */,
+				60918EF428895D3D00D9E032 /* AbstractEventsViewController.swift in Sources */,
 				6073B8752881962700AF07FA /* CollectionHeader.swift in Sources */,
 				60971721287D824A0084A63C /* ProfileProtocols.swift in Sources */,
 				60971776287DB9F60084A63C /* AppTextField.swift in Sources */,
@@ -550,6 +594,7 @@
 				6097176F287DA60D0084A63C /* EnterViewController.swift in Sources */,
 				60971797287EDE5D0084A63C /* FogotPasswordInteractor.swift in Sources */,
 				60971763287D9BD80084A63C /* NavigationBarWithLogo.swift in Sources */,
+				60918EEB2888639D00D9E032 /* UserInfoCell.swift in Sources */,
 				60971709287D821A0084A63C /* EventsProtocols.swift in Sources */,
 				60971794287EDE5D0084A63C /* FogotPasswordRouter.swift in Sources */,
 				60971789287EDE4A0084A63C /* RegisterViewController.swift in Sources */,
@@ -563,11 +608,13 @@
 				60971795287EDE5D0084A63C /* FogotPasswordViewController.swift in Sources */,
 				6097178A287EDE4A0084A63C /* RegisterProtocols.swift in Sources */,
 				6097172E287D83360084A63C /* FavouritesInteractor.swift in Sources */,
+				60918EE82888630D00D9E032 /* UserInfo.swift in Sources */,
 				60971707287D821A0084A63C /* EventsRouter.swift in Sources */,
 				6097172D287D83360084A63C /* FavouritesProtocols.swift in Sources */,
 				60971788287EDE4A0084A63C /* RegisterRouter.swift in Sources */,
 				60971739287D8B7B0084A63C /* UIFont + size.swift in Sources */,
 				609716DB287D75230084A63C /* AppDelegate.swift in Sources */,
+				60918EF0288863BA00D9E032 /* AboutMeCell.swift in Sources */,
 				6097177E287ED0DD0084A63C /* UIView+Recognizers.swift in Sources */,
 				6097171E287D824A0084A63C /* ProfilePresenter.swift in Sources */,
 				609716F5287D7C720084A63C /* MainFlowCoordinator.swift in Sources */,
@@ -579,6 +626,7 @@
 				60971737287D87C90084A63C /* UIView+Constraints.swift in Sources */,
 				6073B8702881936A00AF07FA /* EventsCollectionViewAdapter.swift in Sources */,
 				6073B87728819A2F00AF07FA /* Section.swift in Sources */,
+				60918EE62888626900D9E032 /* ProfileTableAdapter.swift in Sources */,
 				60971733287D84CA0084A63C /* InitialAssembly.swift in Sources */,
 				609716DD287D75230084A63C /* SceneDelegate.swift in Sources */,
 			);

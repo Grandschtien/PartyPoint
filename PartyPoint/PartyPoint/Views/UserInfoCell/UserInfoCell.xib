@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="90" id="KGk-i7-Jjw" customClass="UserInfoCell" customModule="PartyPoint" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XUw-fd-hJy">
+                        <rect key="frame" x="5" y="5" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="7NK-jQ-eZw"/>
+                            <constraint firstAttribute="height" constant="80" id="m3v-8d-zBl"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="366-r6-rmd">
+                        <rect key="frame" x="107" y="10" width="258" height="70"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Шкарин Егор" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAy-wy-dKn">
+                                <rect key="frame" x="0.0" y="0.0" width="258" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Возраст: 20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKj-xb-fpd">
+                                <rect key="frame" x="0.0" y="31" width="258" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="День рождения: 16 ноября 2001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jsh-ME-uMh">
+                                <rect key="frame" x="0.0" y="53" width="258" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="YAy-wy-dKn" firstAttribute="top" secondItem="366-r6-rmd" secondAttribute="top" id="Sz0-h8-tSF"/>
+                            <constraint firstAttribute="trailing" secondItem="YAy-wy-dKn" secondAttribute="trailing" id="Zdy-l2-sSn"/>
+                            <constraint firstItem="YAy-wy-dKn" firstAttribute="leading" secondItem="366-r6-rmd" secondAttribute="leading" id="mIi-0T-TjI"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="366-r6-rmd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="CS1-Gb-dsI"/>
+                    <constraint firstAttribute="bottom" secondItem="366-r6-rmd" secondAttribute="bottom" constant="10" id="VUb-HL-4Fu"/>
+                    <constraint firstAttribute="bottom" secondItem="XUw-fd-hJy" secondAttribute="bottom" constant="5" id="YRc-ze-atI"/>
+                    <constraint firstItem="XUw-fd-hJy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="agW-iY-Ikq"/>
+                    <constraint firstItem="366-r6-rmd" firstAttribute="leading" secondItem="XUw-fd-hJy" secondAttribute="trailing" constant="22" id="prY-Nm-Usp"/>
+                    <constraint firstAttribute="trailing" secondItem="366-r6-rmd" secondAttribute="trailing" constant="10" id="pwP-9F-1On"/>
+                    <constraint firstItem="XUw-fd-hJy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="ukG-PW-iWG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="136.23188405797103" y="72.321428571428569"/>
+        </tableViewCell>
+    </objects>
+</document>

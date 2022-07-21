@@ -9,6 +9,13 @@
 import UIKit
 
 final class ProfileViewController: UIViewController {
+    
+    private lazy var navigationBar: NavigationBarWithLogoAndActions = {
+        let nav = NavigationBarWithLogoAndActions(frame: .zero, buttons: [.exit])
+        nav.delegate = self
+        return nav
+    }()
+    
 	private let output: ProfileViewOutput
 
     init(output: ProfileViewOutput) {
@@ -28,8 +35,16 @@ final class ProfileViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .mainColor
+        navigationController?.isNavigationBarHidden = true
+        view.addConstrained(subview: navigationBar, top: nil, left: 0, bottom: nil, right: 0)
+        navigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
     }
 }
 
 extension ProfileViewController: ProfileViewInput {
+}
+
+
+extension ProfileViewController: NavigationBarWithLogoAndActionsDelegate {
+    
 }

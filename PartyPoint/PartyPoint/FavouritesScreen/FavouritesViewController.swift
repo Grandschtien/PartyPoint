@@ -7,32 +7,16 @@
 //
 
 import UIKit
-//TODO: Сделать какую нибудь вьюху и че ниубдь подобное чтоб не повторять код
-final class FavouritesViewController: UIViewController {
-	private let output: FavouritesViewOutput
-    
-    private lazy var navigationBar: NavigationBarWithLogo = {
-        let nav = NavigationBarWithLogo(frame: .zero)
-        return nav
-    }()
-    private lazy var eventsCollection: UICollectionView = {
-        let collection = UICollectionView(
-            frame: .zero,
-            collectionViewLayout: UICollectionViewFlowLayout()
-        )
-        collection.registerWithNib(
-            EventCell.self
-        )
-        collection.backgroundColor = .mainColor
-        return collection
-    }()
-    
+
+final class FavouritesViewController: AbstractEventsViewController {
     private lazy var favouritesCollectionAdapter: FavouritesCollectionAdapter = {
         let adapter = FavouritesCollectionAdapter(eventsCollection)
         adapter.delegate = self
         adapter.scrollDelegate = self
         return adapter
     }()
+    private let output: FavouritesViewOutput
+
     init(output: FavouritesViewOutput) {
         self.output = output
         
@@ -49,36 +33,8 @@ final class FavouritesViewController: UIViewController {
         favouritesCollectionAdapter.configure(Section.allSections)
     }
     
-    private func setupUI() {
-        view.backgroundColor = .mainColor
-        let label = UILabel(frame: .zero)
-        label.font = UIFont(name: UIFont.SFProDisplaySemibold, size: 17)
-        label.textColor = .miniColor
-        label.text = LabelTexts.favourites.rawValue
-        navigationItem.titleView = label
-        
-        //setup collection
-        eventsCollection.showsVerticalScrollIndicator = false
-        eventsCollection.showsHorizontalScrollIndicator = false
-        view.addConstrained(subview: eventsCollection, top: nil, left: 0, bottom: 0, right: 0)
-        eventsCollection.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        
-        //This needs to set background for status bar
-        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-        guard let statusBarFrame = window?.windowScene?.statusBarManager?.statusBarFrame else {
-            return
-        }
-        let statusBarView = UIView(frame: statusBarFrame)
-        self.view.addSubview(statusBarView)
-        statusBarView.backgroundColor = .mainColor
-        
-        //setup navigation bar
-        view.addConstrained(subview: navigationBar, top: nil, left: 0, bottom: nil, right: 0)
-        navigationBar.topAnchor.constraint(
-            equalTo: view.safeAreaLayoutGuide.topAnchor
-        ).isActive = true
-        navigationBar.backgroundColor = .mainColor
-        eventsCollection.contentInset.top = navigationBar.frame.height
+    internal override func setupUI() {
+        super.setupUI()
     }
 }
 
@@ -92,16 +48,5 @@ extension FavouritesViewController: EventsDelegate {
     
     func didTapOnEvent(_ event: Event) {
         
-    }
-}
-
-extension FavouritesViewController: EventsScrollDelegate {
-    func collectionViewDidScroll(_ scrollView: UIScrollView) {
-        let contentOffset = navigationBar.frame.height
-        let offset = scrollView.contentOffset.y + contentOffset
-        let alpha: CGFloat = 1 - (scrollView.contentOffset.y + contentOffset) / contentOffset
-        navigationBar.alpha = alpha
-        navigationItem.titleView?.alpha = -alpha
-        navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
     }
 }
