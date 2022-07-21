@@ -21,8 +21,25 @@ extension ReuseIdentifiable {
     }
 }
 
+extension UITableViewCell: ReuseIdentifiable {}
 
 extension UICollectionReusableView: ReuseIdentifiable {}
+
+extension UITableView {
+    func dequeue<T: UITableViewCell>(cellType: T.Type, for indexPath: IndexPath) -> T {
+        guard let cell = self.dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
+            fatalError("Can't deque")
+        }
+        return cell
+    }
+    func registerNib<T: UITableViewCell>(cellType: T.Type) {
+        self.register(UINib(nibName: T.nibName, bundle: nil), forCellReuseIdentifier: T.reuseIdentifier)
+    }
+    
+    func registerCell<T: UITableViewCell> (cellType: T.Type) {
+        self.register(T.self, forCellReuseIdentifier: T.reuseIdentifier)
+    }
+}
 
 extension UICollectionView {
     func dequeueCell<T: UICollectionViewCell>(cellType: T.Type,

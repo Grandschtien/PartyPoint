@@ -21,7 +21,6 @@
 		60918EEB2888639D00D9E032 /* UserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60918EE92888639D00D9E032 /* UserInfoCell.swift */; };
 		60918EEC2888639D00D9E032 /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60918EEA2888639D00D9E032 /* UserInfoCell.xib */; };
 		60918EF0288863BA00D9E032 /* AboutMeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60918EEE288863BA00D9E032 /* AboutMeCell.swift */; };
-		60918EF1288863BA00D9E032 /* AboutMeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60918EEF288863BA00D9E032 /* AboutMeCell.xib */; };
 		60918EF428895D3D00D9E032 /* AbstractEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60918EF328895D3D00D9E032 /* AbstractEventsViewController.swift */; };
 		609716DB287D75230084A63C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609716DA287D75230084A63C /* AppDelegate.swift */; };
 		609716DD287D75230084A63C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609716DC287D75230084A63C /* SceneDelegate.swift */; };
@@ -110,7 +109,6 @@
 		60918EE92888639D00D9E032 /* UserInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCell.swift; sourceTree = "<group>"; };
 		60918EEA2888639D00D9E032 /* UserInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoCell.xib; sourceTree = "<group>"; };
 		60918EEE288863BA00D9E032 /* AboutMeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeCell.swift; sourceTree = "<group>"; };
-		60918EEF288863BA00D9E032 /* AboutMeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutMeCell.xib; sourceTree = "<group>"; };
 		60918EF328895D3D00D9E032 /* AbstractEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractEventsViewController.swift; sourceTree = "<group>"; };
 		609716D7287D75230084A63C /* PartyPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartyPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		609716DA287D75230084A63C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -262,7 +260,6 @@
 			isa = PBXGroup;
 			children = (
 				60918EEE288863BA00D9E032 /* AboutMeCell.swift */,
-				60918EEF288863BA00D9E032 /* AboutMeCell.xib */,
 			);
 			path = AboutMeCell;
 			sourceTree = "<group>";
@@ -543,7 +540,6 @@
 				6097174E287D8F200084A63C /* SFProDisplay-Semibold.ttf in Resources */,
 				60918EEC2888639D00D9E032 /* UserInfoCell.xib in Resources */,
 				6097175C287D8F200084A63C /* SFProDisplay-Heavy.ttf in Resources */,
-				60918EF1288863BA00D9E032 /* AboutMeCell.xib in Resources */,
 				6097175B287D8F200084A63C /* SFProDisplay-Light.ttf in Resources */,
 				6097174D287D8F200084A63C /* SFProDisplay-Regular.ttf in Resources */,
 			);

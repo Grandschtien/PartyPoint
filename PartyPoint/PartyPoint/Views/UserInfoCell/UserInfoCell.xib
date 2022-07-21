@@ -18,29 +18,29 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XUw-fd-hJy">
-                        <rect key="frame" x="5" y="5" width="80" height="80"/>
+                        <rect key="frame" x="30" y="5" width="80" height="80"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="7NK-jQ-eZw"/>
                             <constraint firstAttribute="height" constant="80" id="m3v-8d-zBl"/>
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="366-r6-rmd">
-                        <rect key="frame" x="107" y="10" width="258" height="70"/>
+                        <rect key="frame" x="132" y="10" width="213" height="70"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Шкарин Егор" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAy-wy-dKn">
-                                <rect key="frame" x="0.0" y="0.0" width="258" height="27"/>
+                                <rect key="frame" x="0.0" y="0.0" width="213" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Возраст: 20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKj-xb-fpd">
-                                <rect key="frame" x="0.0" y="31" width="258" height="18"/>
+                                <rect key="frame" x="0.0" y="31" width="213" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="День рождения: 16 ноября 2001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jsh-ME-uMh">
-                                <rect key="frame" x="0.0" y="53" width="258" height="17"/>
+                                <rect key="frame" x="0.0" y="53" width="213" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -59,11 +59,17 @@
                     <constraint firstAttribute="bottom" secondItem="XUw-fd-hJy" secondAttribute="bottom" constant="5" id="YRc-ze-atI"/>
                     <constraint firstItem="XUw-fd-hJy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="agW-iY-Ikq"/>
                     <constraint firstItem="366-r6-rmd" firstAttribute="leading" secondItem="XUw-fd-hJy" secondAttribute="trailing" constant="22" id="prY-Nm-Usp"/>
-                    <constraint firstAttribute="trailing" secondItem="366-r6-rmd" secondAttribute="trailing" constant="10" id="pwP-9F-1On"/>
-                    <constraint firstItem="XUw-fd-hJy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="ukG-PW-iWG"/>
+                    <constraint firstAttribute="trailing" secondItem="366-r6-rmd" secondAttribute="trailing" constant="30" id="pwP-9F-1On"/>
+                    <constraint firstItem="XUw-fd-hJy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="ukG-PW-iWG"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="ageLabel" destination="qKj-xb-fpd" id="oYm-ka-yUh"/>
+                <outlet property="dobLabel" destination="Jsh-ME-uMh" id="Txo-j1-3sq"/>
+                <outlet property="nameLabel" destination="YAy-wy-dKn" id="YpI-rh-ecw"/>
+                <outlet property="userImage" destination="XUw-fd-hJy" id="eW3-XL-e2s"/>
+            </connections>
             <point key="canvasLocation" x="136.23188405797103" y="72.321428571428569"/>
         </tableViewCell>
     </objects>

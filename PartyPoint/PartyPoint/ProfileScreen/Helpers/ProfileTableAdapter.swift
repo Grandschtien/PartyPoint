@@ -13,9 +13,11 @@ final class ProfileTableAdapter: NSObject {
     
     private var userInfo: UserInfo?
     
-    init(tableView: UITableView) {
+    init(_ tableView: UITableView) {
         self.tableView = tableView
         super.init()
+        self.tableView?.dataSource = self
+        self.tableView?.delegate = self
     }
     
     func configurate(withUserInfo userInfo: UserInfo) {
@@ -31,9 +33,11 @@ extension ProfileTableAdapter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            return UITableViewCell()
+            let cell = tableView.dequeue(cellType: UserInfoCell.self, for: indexPath)
+            return cell
         case 1:
-            return UITableViewCell()
+            let cell = tableView.dequeue(cellType: AboutMeCell.self, for: indexPath)
+            return cell
         default:
             return UITableViewCell()
         }
@@ -41,5 +45,7 @@ extension ProfileTableAdapter: UITableViewDataSource {
     
 }
 extension ProfileTableAdapter: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.estimatedRowHeight
+    }
 }

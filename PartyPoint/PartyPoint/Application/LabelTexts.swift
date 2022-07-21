@@ -29,6 +29,9 @@ enum LabelTexts: String {
     case sendButton = "Выслать пароль"
     case events = "Мероприятия"
     case favourites = "Избранное"
+    case aboutMeLabel = "О себе"
+    case abuotMeTextView = "Нажми на меня"
+    case saveChanges = "Редактировать профиль 🖋"
 }
 
 
