@@ -18,6 +18,7 @@ final class UserInfoCell: UITableViewCell {
         setupUI()
     }
     private func setupUI() {
+        self.selectionStyle = .none
         self.backgroundColor = .mainColor
         userImage.layer.cornerRadius = userImage.frame.height / 2
         userImage.clipsToBounds = true

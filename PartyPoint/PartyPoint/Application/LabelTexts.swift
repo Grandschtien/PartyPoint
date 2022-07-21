@@ -31,7 +31,7 @@ enum LabelTexts: String {
     case favourites = "Избранное"
     case aboutMeLabel = "О себе"
     case abuotMeTextView = "Нажми на меня"
-    case saveChanges = "Редактировать профиль 🖋"
+    case saveChanges = "Сохранить изменения 🖋"
 }
 
 

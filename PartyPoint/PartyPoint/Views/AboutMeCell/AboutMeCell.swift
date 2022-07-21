@@ -43,6 +43,7 @@ final class AboutMeCell: UITableViewCell {
     }
     
     private func setupUI() {
+        self.selectionStyle = .none
         self.contentView.backgroundColor = .mainColor
         contentView.addConstrained(subview: aboutMeLabel, top: 10, left: 30, bottom: nil, right: nil)
         
@@ -80,5 +81,12 @@ extension AboutMeCell: UITextViewDelegate {
             textView.text = LabelTexts.abuotMeTextView.rawValue
             textView.textColor = .black.withAlphaComponent(0.5)
         }
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
 }
