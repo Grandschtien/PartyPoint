@@ -14,6 +14,16 @@ final class CollectionHeader: UICollectionReusableView {
         label.font = UIFont(name: UIFont.SFProDisplayBold, size: 24)
         return label
     }()
+    
+    private lazy var moreButton: UIButton = {
+        let btn = UIButton()
+        btn.titleLabel?.font = UIFont(name: UIFont.SFProDisplayBold, size: 24)
+        btn.setTitle(LabelTexts.moreButton.rawValue, for: .normal)
+        btn.addTarget(self, action: #selector(moreAction), for: .touchUpInside)
+        return btn
+    }()
+    
+    var btnAction: (() -> Void)?
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLabel()
@@ -26,6 +36,13 @@ final class CollectionHeader: UICollectionReusableView {
         self.header.text = header
     }
     private func setupLabel() {
-        self.addConstrained(subview: header, top: 0, left: 20, bottom: 0, right: 0)
+        self.addConstrained(subview: moreButton, top: 0, left: nil, bottom: 0, right: -10)
+        self.moreButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        self.addConstrained(subview: header, top: 0, left: 10, bottom: 0, right: nil)
+        self.header.widthAnchor.constraint(equalToConstant: 300).isActive = true
+    }
+    @objc
+    private func moreAction() {
+        btnAction?()
     }
 }
