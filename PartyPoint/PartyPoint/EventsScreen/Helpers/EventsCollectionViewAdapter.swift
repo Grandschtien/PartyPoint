@@ -9,11 +9,11 @@ import UIKit
 
 final class EventsCollectionViewAdapter: NSObject {
     
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, Event>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Event>
+    typealias DataSource = UICollectionViewDiffableDataSource<Section<Event>, Event>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section<Event>, Event>
     typealias Layout = UICollectionViewCompositionalLayout
     
-    private var sections: [Section]
+    private var sections: [Section<Event>]
     //Weak refereces
     private weak var collectionView: UICollectionView?
     
@@ -33,7 +33,7 @@ final class EventsCollectionViewAdapter: NSObject {
     
     /// This function must be envoked after initialize, because it configurates adapter
     /// - Parameter sections: Array of sections you want to have
-    func configure(_ sections: [Section]) {
+    func configure(_ sections: [Section<Event>]) {
         self.sections.append(contentsOf: sections)
         applySnapshot()
     }
@@ -63,9 +63,9 @@ final class EventsCollectionViewAdapter: NSObject {
             let section = self.dataSource.snapshot()
               .sectionIdentifiers[indexPath.section]
             let header = collectionView.dequeueSupplementary(
-                ofType: CollectionHeader.self,
+                ofType: EventsTypeHeaderHeader.self,
                 ofKind: UICollectionView.elementKindSectionHeader,
-                withReuseIdentifier: CollectionHeader.reuseIdentifier,
+                withReuseIdentifier: EventsTypeHeaderHeader.reuseIdentifier,
                 for: indexPath)
             if let unwrappedHeader = section.header {
                 header.configure(withHeader: unwrappedHeader)

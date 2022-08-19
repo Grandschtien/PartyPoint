@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CollectionHeader: UICollectionReusableView {
+final class EventsTypeHeaderHeader: UICollectionReusableView {
     private lazy var header: UILabel = {
         let label = UILabel()
         label.textColor = .miniColor

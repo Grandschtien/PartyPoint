@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Section: Hashable {
+struct Section<T: Hashable>: Hashable {
     var id = UUID()
     let header: String?
-    let items: [Event]
+    let items: [T]
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
@@ -21,7 +21,7 @@ struct Section: Hashable {
 }
 //TODO: For tests
 extension Section {
-    static var allSections: [Section] {
+    static var allSections: [Section<Event>] {
         
         let events1 = [
             Event(distance: 1, image: "moc", name: "Концерт басты", date: "22.07.2022"),
@@ -52,9 +52,9 @@ extension Section {
         ]
         
         return [
-            Section(header: "Сегодня", items: events1),
-            Section(header: "Ближайшие к вам", items: events2),
-            Section(header: "Главное", items: events3)
+            Section<Event>(header: "Сегодня", items: events1),
+            Section<Event>(header: "Ближайшие к вам", items: events2),
+            Section<Event>(header: "Главное", items: events3)
         ]
     }
 }

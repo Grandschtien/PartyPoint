@@ -6,11 +6,14 @@
 //
 
 import UIKit
+
 @objc
 protocol NavigationBarWithLogoAndActionsDelegate: AnyObject {
     @objc optional func backAction()
     @objc optional func exitAction()
+    @objc optional func shareAction()
 }
+
 final class NavigationBarWithLogoAndActions: NavigationBarWithLogo {
     
     private let buttonsImges: Set<Buttons>
@@ -28,12 +31,15 @@ final class NavigationBarWithLogoAndActions: NavigationBarWithLogo {
         super.init(background: background, image: image, frame: frame)
         configureActions()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     enum Buttons {
         case exit
         case back
+        case share
     }
     
     func configureActions() {
@@ -65,6 +71,15 @@ final class NavigationBarWithLogoAndActions: NavigationBarWithLogo {
                     equalTo: self.centerYAnchor
                 ).isActive = true
                 button.addTarget(self, action: #selector(backActionTapped), for: .touchUpInside)
+            case .share:
+                button.setImage(.shareOutline, for: .normal)
+                button.rightAnchor.constraint(
+                    equalTo: self.rightAnchor,
+                    constant: -20).isActive = true
+                button.centerYAnchor.constraint(
+                    equalTo: self.centerYAnchor
+                ).isActive = true
+                button.addTarget(self, action: #selector(shareAction), for: .touchUpInside)
             }
         }
     }
@@ -88,7 +103,14 @@ final class NavigationBarWithLogoAndActions: NavigationBarWithLogo {
         } completion: { [weak self] _ in
             self?.delegate?.exitAction?()
         }
+    }
+    @objc func shareAction(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.alpha = 0.75
+            sender.alpha = 1.0
+        } completion: { [weak self] _ in
+            self?.delegate?.shareAction?()
+        }
 
     }
-    
 }

@@ -23,6 +23,8 @@ extension ReuseIdentifiable {
 
 extension UITableViewCell: ReuseIdentifiable {}
 
+extension UITableViewHeaderFooterView: ReuseIdentifiable {}
+
 extension UICollectionReusableView: ReuseIdentifiable {}
 
 extension UITableView {
@@ -38,6 +40,13 @@ extension UITableView {
     
     func registerCell<T: UITableViewCell> (cellType: T.Type) {
         self.register(T.self, forCellReuseIdentifier: T.reuseIdentifier)
+    }
+    
+    func dequeueSupplementaryView<T: UITableViewHeaderFooterView>(ofType type: T.Type) -> T {
+        guard let headerOrFooter = self.dequeueReusableHeaderFooterView(withIdentifier: T.reuseIdentifier) as? T else {
+            fatalError("cannot dequeue header")
+        }
+        return headerOrFooter
     }
 }
 

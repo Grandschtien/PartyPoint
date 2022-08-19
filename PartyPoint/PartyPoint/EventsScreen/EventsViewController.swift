@@ -31,15 +31,15 @@ final class EventsViewController: AbstractEventsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        eventsCollectionAdapter.configure(Section.allSections)
+        eventsCollectionAdapter.configure(Section<Event>.allSections)
     }
     
     internal override func setupUI() {
         super.setupUI()
         eventsCollection.register(
-            CollectionHeader.self,
+            EventsTypeHeaderHeader.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: CollectionHeader.reuseIdentifier
+            withReuseIdentifier: EventsTypeHeaderHeader.reuseIdentifier
         )
     }
 }
@@ -53,6 +53,8 @@ extension EventsViewController: EventsDelegate {
     }
     
     func didTapOnEvent(_ event: Event) {
-        
+        let context = EventContext(moduleOutput: nil)
+        let container = EventContainer.assemble(with: context)
+        navigationController?.pushViewController(container.viewController, animated: true)
     }
 }

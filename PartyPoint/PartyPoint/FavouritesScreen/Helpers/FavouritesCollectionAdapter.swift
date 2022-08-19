@@ -9,11 +9,11 @@ import UIKit
 
 
 final class FavouritesCollectionAdapter: NSObject {
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, Event>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Event>
+    typealias DataSource = UICollectionViewDiffableDataSource<Section<Event>, Event>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section<Event>, Event>
     typealias Layout = UICollectionViewCompositionalLayout
     
-    private var sections: [Section]
+    private var sections: [Section<Event>]
     //Weak refereces
     private weak var collectionView: UICollectionView?
     
@@ -33,7 +33,7 @@ final class FavouritesCollectionAdapter: NSObject {
     
     /// This function must be envoked after initialize, because it configurates adapter
     /// - Parameter sections: Array of sections you want to have
-    func configure(_ sections: [Section]) {
+    func configure(_ sections: [Section<Event>]) {
         self.sections.append(contentsOf: sections)
         applySnapshot()
     }
