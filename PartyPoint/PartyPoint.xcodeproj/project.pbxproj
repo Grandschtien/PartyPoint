@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3233E86075F39992F50F926C /* libPods-PartyPoint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9AFC6FDA648A3B4E855628 /* libPods-PartyPoint.a */; };
+		6042172328BBE67F0063BF68 /* AnyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6042172228BBE67F0063BF68 /* AnyView.swift */; };
 		6070D43228ABDE1F0054F61B /* EventPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42C28ABDE1F0054F61B /* EventPresenter.swift */; };
 		6070D43328ABDE1F0054F61B /* EventRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42D28ABDE1F0054F61B /* EventRouter.swift */; };
 		6070D43428ABDE1F0054F61B /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42E28ABDE1F0054F61B /* EventViewController.swift */; };
@@ -101,17 +102,14 @@
 		6097179C287F172C0084A63C /* NotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097179B287F172C0084A63C /* NotificationCenterManager.swift */; };
 		60A1E60A28AFACD400E80D0D /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1E60928AFACD300E80D0D /* EventView.swift */; };
 		60A1E60C28AFAFE500E80D0D /* EventInfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1E60B28AFAFE500E80D0D /* EventInfoList.swift */; };
-		60A1E60E28AFB07000E80D0D /* EventInfoListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1E60D28AFB07000E80D0D /* EventInfoListAdapter.swift */; };
 		60DA33B428802FF6004E52A3 /* UIStackView+convenieceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA33B328802FF6004E52A3 /* UIStackView+convenieceInit.swift */; };
-		60EAE92D28AFC68B00030055 /* EventWithButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAE92B28AFC68B00030055 /* EventWithButtonCell.swift */; };
-		60EAE92E28AFC68B00030055 /* EventWithButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60EAE92C28AFC68B00030055 /* EventWithButtonCell.xib */; };
-		60EAE93128AFC69D00030055 /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAE92F28AFC69D00030055 /* DescriptionCell.swift */; };
-		60EAE93228AFC69D00030055 /* DescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60EAE93028AFC69D00030055 /* DescriptionCell.xib */; };
-		60EAE93528AFC6B300030055 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAE93328AFC6B300030055 /* MapCell.swift */; };
-		60EAE93628AFC6B300030055 /* MapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60EAE93428AFC6B300030055 /* MapCell.xib */; };
-		60EAE93928AFC6C000030055 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAE93728AFC6C000030055 /* LocationCell.swift */; };
-		60EAE93A28AFC6C000030055 /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60EAE93828AFC6C000030055 /* LocationCell.xib */; };
-		60EAE93C28AFC6F500030055 /* EventHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAE93B28AFC6F500030055 /* EventHeader.swift */; };
+		60DB792028B4062E0058A3D7 /* CommonCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB791F28B4062E0058A3D7 /* CommonCollectionViewAdapter.swift */; };
+		60DB792228B419940058A3D7 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB792128B419940058A3D7 /* LocationView.swift */; };
+		60DB792428B41AEA0058A3D7 /* UILabel+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB792328B41AEA0058A3D7 /* UILabel+Icon.swift */; };
+		60DB792628B4C55A0058A3D7 /* DescriptionEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB792528B4C55A0058A3D7 /* DescriptionEventView.swift */; };
+		60DB792828B4CED50058A3D7 /* EventViewWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB792728B4CED50058A3D7 /* EventViewWithButton.swift */; };
+		60DB792A28B4CFD80058A3D7 /* EventMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB792928B4CFD80058A3D7 /* EventMapView.swift */; };
+		60EAE93C28AFC6F500030055 /* EventHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAE93B28AFC6F500030055 /* EventHeaderLabel.swift */; };
 		60EAE93E28AFCD0700030055 /* LayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAE93D28AFCD0700030055 /* LayoutHelper.swift */; };
 		60EAE94028AFCD9D00030055 /* UIView+Scales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAE93F28AFCD9D00030055 /* UIView+Scales.swift */; };
 /* End PBXBuildFile section */
@@ -120,6 +118,7 @@
 		13FE3655220E715413942E29 /* Pods-PartyPoint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyPoint.debug.xcconfig"; path = "Target Support Files/Pods-PartyPoint/Pods-PartyPoint.debug.xcconfig"; sourceTree = "<group>"; };
 		4A9AFC6FDA648A3B4E855628 /* libPods-PartyPoint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PartyPoint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8C843A9687CC642B83F694 /* Pods-PartyPoint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyPoint.release.xcconfig"; path = "Target Support Files/Pods-PartyPoint/Pods-PartyPoint.release.xcconfig"; sourceTree = "<group>"; };
+		6042172228BBE67F0063BF68 /* AnyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyView.swift; sourceTree = "<group>"; };
 		6070D42C28ABDE1F0054F61B /* EventPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPresenter.swift; sourceTree = "<group>"; };
 		6070D42D28ABDE1F0054F61B /* EventRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRouter.swift; sourceTree = "<group>"; };
 		6070D42E28ABDE1F0054F61B /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
@@ -215,17 +214,14 @@
 		6097179B287F172C0084A63C /* NotificationCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterManager.swift; sourceTree = "<group>"; };
 		60A1E60928AFACD300E80D0D /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		60A1E60B28AFAFE500E80D0D /* EventInfoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoList.swift; sourceTree = "<group>"; };
-		60A1E60D28AFB07000E80D0D /* EventInfoListAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoListAdapter.swift; sourceTree = "<group>"; };
 		60DA33B328802FF6004E52A3 /* UIStackView+convenieceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+convenieceInit.swift"; sourceTree = "<group>"; };
-		60EAE92B28AFC68B00030055 /* EventWithButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventWithButtonCell.swift; sourceTree = "<group>"; };
-		60EAE92C28AFC68B00030055 /* EventWithButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventWithButtonCell.xib; sourceTree = "<group>"; };
-		60EAE92F28AFC69D00030055 /* DescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCell.swift; sourceTree = "<group>"; };
-		60EAE93028AFC69D00030055 /* DescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionCell.xib; sourceTree = "<group>"; };
-		60EAE93328AFC6B300030055 /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
-		60EAE93428AFC6B300030055 /* MapCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapCell.xib; sourceTree = "<group>"; };
-		60EAE93728AFC6C000030055 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
-		60EAE93828AFC6C000030055 /* LocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
-		60EAE93B28AFC6F500030055 /* EventHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeader.swift; sourceTree = "<group>"; };
+		60DB791F28B4062E0058A3D7 /* CommonCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCollectionViewAdapter.swift; sourceTree = "<group>"; };
+		60DB792128B419940058A3D7 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		60DB792328B41AEA0058A3D7 /* UILabel+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Icon.swift"; sourceTree = "<group>"; };
+		60DB792528B4C55A0058A3D7 /* DescriptionEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionEventView.swift; sourceTree = "<group>"; };
+		60DB792728B4CED50058A3D7 /* EventViewWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewWithButton.swift; sourceTree = "<group>"; };
+		60DB792928B4CFD80058A3D7 /* EventMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMapView.swift; sourceTree = "<group>"; };
+		60EAE93B28AFC6F500030055 /* EventHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeaderLabel.swift; sourceTree = "<group>"; };
 		60EAE93D28AFCD0700030055 /* LayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutHelper.swift; sourceTree = "<group>"; };
 		60EAE93F28AFCD9D00030055 /* UIView+Scales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Scales.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,7 +241,7 @@
 		6070D42B28ABDDFB0054F61B /* EventScreen */ = {
 			isa = PBXGroup;
 			children = (
-				60A1E60328AF8A4F00E80D0D /* Adapters */,
+				60A1E60328AF8A4F00E80D0D /* Helpers */,
 				6070D42C28ABDE1F0054F61B /* EventPresenter.swift */,
 				6070D42D28ABDE1F0054F61B /* EventRouter.swift */,
 				6070D42E28ABDE1F0054F61B /* EventViewController.swift */,
@@ -366,6 +362,7 @@
 		609716EE287D75940084A63C /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				60DB791E28B406120058A3D7 /* CommonClasses */,
 				60918EDB288835D500D9E032 /* Protocols */,
 				60971773287DB7790084A63C /* LabelTexts.swift */,
 				6097173A287D8EE20084A63C /* Fonts */,
@@ -411,6 +408,8 @@
 				60DA33B328802FF6004E52A3 /* UIStackView+convenieceInit.swift */,
 				60EAE93D28AFCD0700030055 /* LayoutHelper.swift */,
 				60EAE93F28AFCD9D00030055 /* UIView+Scales.swift */,
+				60DB792328B41AEA0058A3D7 /* UILabel+Icon.swift */,
+				6042172228BBE67F0063BF68 /* AnyView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -540,38 +539,41 @@
 			path = RegisterScreen;
 			sourceTree = "<group>";
 		};
-		60A1E60328AF8A4F00E80D0D /* Adapters */ = {
+		60A1E60328AF8A4F00E80D0D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				60A1E60D28AFB07000E80D0D /* EventInfoListAdapter.swift */,
 			);
-			path = Adapters;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		60A1E60828AFAB9E00E80D0D /* EventViews */ = {
 			isa = PBXGroup;
 			children = (
-				60EAE92A28AFC66500030055 /* Cells */,
 				60A1E60928AFACD300E80D0D /* EventView.swift */,
 				60A1E60B28AFAFE500E80D0D /* EventInfoList.swift */,
-				60EAE93B28AFC6F500030055 /* EventHeader.swift */,
+				60EAE93B28AFC6F500030055 /* EventHeaderLabel.swift */,
+				60DB792C28B4CFE80058A3D7 /* EventSubviews */,
 			);
 			path = EventViews;
 			sourceTree = "<group>";
 		};
-		60EAE92A28AFC66500030055 /* Cells */ = {
+		60DB791E28B406120058A3D7 /* CommonClasses */ = {
 			isa = PBXGroup;
 			children = (
-				60EAE92B28AFC68B00030055 /* EventWithButtonCell.swift */,
-				60EAE92C28AFC68B00030055 /* EventWithButtonCell.xib */,
-				60EAE92F28AFC69D00030055 /* DescriptionCell.swift */,
-				60EAE93028AFC69D00030055 /* DescriptionCell.xib */,
-				60EAE93328AFC6B300030055 /* MapCell.swift */,
-				60EAE93428AFC6B300030055 /* MapCell.xib */,
-				60EAE93728AFC6C000030055 /* LocationCell.swift */,
-				60EAE93828AFC6C000030055 /* LocationCell.xib */,
+				60DB791F28B4062E0058A3D7 /* CommonCollectionViewAdapter.swift */,
 			);
-			path = Cells;
+			path = CommonClasses;
+			sourceTree = "<group>";
+		};
+		60DB792C28B4CFE80058A3D7 /* EventSubviews */ = {
+			isa = PBXGroup;
+			children = (
+				60DB792128B419940058A3D7 /* LocationView.swift */,
+				60DB792528B4C55A0058A3D7 /* DescriptionEventView.swift */,
+				60DB792728B4CED50058A3D7 /* EventViewWithButton.swift */,
+				60DB792928B4CFD80058A3D7 /* EventMapView.swift */,
+			);
+			path = EventSubviews;
 			sourceTree = "<group>";
 		};
 		BBA7C58FF0A59B00F0C5E428 /* Pods */ = {
@@ -660,12 +662,8 @@
 				6097174E287D8F200084A63C /* SFProDisplay-Semibold.ttf in Resources */,
 				60918EEC2888639D00D9E032 /* UserInfoCell.xib in Resources */,
 				6097175C287D8F200084A63C /* SFProDisplay-Heavy.ttf in Resources */,
-				60EAE93A28AFC6C000030055 /* LocationCell.xib in Resources */,
-				60EAE92E28AFC68B00030055 /* EventWithButtonCell.xib in Resources */,
 				6097175B287D8F200084A63C /* SFProDisplay-Light.ttf in Resources */,
-				60EAE93228AFC69D00030055 /* DescriptionCell.xib in Resources */,
 				6097174D287D8F200084A63C /* SFProDisplay-Regular.ttf in Resources */,
-				60EAE93628AFC6B300030055 /* MapCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,21 +706,22 @@
 				6070D43728ABDE1F0054F61B /* EventContainer.swift in Sources */,
 				60971708287D821A0084A63C /* EventsViewController.swift in Sources */,
 				6097176E287DA60D0084A63C /* EnterRouter.swift in Sources */,
+				60DB792628B4C55A0058A3D7 /* DescriptionEventView.swift in Sources */,
 				6097178C287EDE4A0084A63C /* RegisterContainer.swift in Sources */,
 				6073B87B2881A01800AF07FA /* EventCell.swift in Sources */,
 				60971731287D840A0084A63C /* InitialRouter.swift in Sources */,
-				60EAE92D28AFC68B00030055 /* EventWithButtonCell.swift in Sources */,
 				609716F8287D7D880084A63C /* AppCoordinator.swift in Sources */,
 				609716F3287D7C1D0084A63C /* AuthCoordinator.swift in Sources */,
 				6097179C287F172C0084A63C /* NotificationCenterManager.swift in Sources */,
+				60DB792428B41AEA0058A3D7 /* UILabel+Icon.swift in Sources */,
 				6097172A287D83360084A63C /* FavouritesPresenter.swift in Sources */,
 				60971761287D94710084A63C /* AppButton.swift in Sources */,
+				60DB792028B4062E0058A3D7 /* CommonCollectionViewAdapter.swift in Sources */,
 				6097179A287EF5B80084A63C /* AuthRouterProtocol.swift in Sources */,
+				60DB792228B419940058A3D7 /* LocationView.swift in Sources */,
 				60971796287EDE5D0084A63C /* FogotPasswordProtocols.swift in Sources */,
 				6097170A287D821A0084A63C /* EventsInteractor.swift in Sources */,
-				60EAE93128AFC69D00030055 /* DescriptionCell.swift in Sources */,
 				60918EF428895D3D00D9E032 /* AbstractEventsViewController.swift in Sources */,
-				60EAE93928AFC6C000030055 /* LocationCell.swift in Sources */,
 				6073B8752881962700AF07FA /* EventsTypeHeaderHeader.swift in Sources */,
 				60EAE93E28AFCD0700030055 /* LayoutHelper.swift in Sources */,
 				60A1E60A28AFACD400E80D0D /* EventView.swift in Sources */,
@@ -732,6 +731,7 @@
 				60971706287D821A0084A63C /* EventsPresenter.swift in Sources */,
 				6070D43428ABDE1F0054F61B /* EventViewController.swift in Sources */,
 				609716FC287D7FD20084A63C /* UIColor+Assets.swift in Sources */,
+				60DB792A28B4CFD80058A3D7 /* EventMapView.swift in Sources */,
 				60971774287DB7790084A63C /* LabelTexts.swift in Sources */,
 				60918EE128883F7800D9E032 /* EventsScrollDelegate.swift in Sources */,
 				6097171F287D824A0084A63C /* ProfileRouter.swift in Sources */,
@@ -777,20 +777,20 @@
 				609716F5287D7C720084A63C /* MainFlowCoordinator.swift in Sources */,
 				6070D43528ABDE1F0054F61B /* EventProtocols.swift in Sources */,
 				6097176D287DA60D0084A63C /* EnterPresenter.swift in Sources */,
-				60A1E60E28AFB07000E80D0D /* EventInfoListAdapter.swift in Sources */,
 				60971722287D824A0084A63C /* ProfileInteractor.swift in Sources */,
 				6073B8722881942A00AF07FA /* Event.swift in Sources */,
 				609716FA287D7EBF0084A63C /* UIImage+Assets.swift in Sources */,
 				60DA33B428802FF6004E52A3 /* UIStackView+convenieceInit.swift in Sources */,
 				60971737287D87C90084A63C /* UIView+Constraints.swift in Sources */,
+				6042172328BBE67F0063BF68 /* AnyView.swift in Sources */,
 				6073B8702881936A00AF07FA /* EventsCollectionViewAdapter.swift in Sources */,
 				6073B87728819A2F00AF07FA /* Section.swift in Sources */,
-				60EAE93528AFC6B300030055 /* MapCell.swift in Sources */,
 				60918EE62888626900D9E032 /* ProfileTableAdapter.swift in Sources */,
 				60971733287D84CA0084A63C /* InitialAssembly.swift in Sources */,
 				609716DD287D75230084A63C /* SceneDelegate.swift in Sources */,
-				60EAE93C28AFC6F500030055 /* EventHeader.swift in Sources */,
+				60EAE93C28AFC6F500030055 /* EventHeaderLabel.swift in Sources */,
 				60EAE94028AFCD9D00030055 /* UIView+Scales.swift in Sources */,
+				60DB792828B4CED50058A3D7 /* EventViewWithButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

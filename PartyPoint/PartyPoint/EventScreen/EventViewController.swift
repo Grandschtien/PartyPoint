@@ -9,13 +9,15 @@
 import UIKit
 
 final class EventViewController: UIViewController {
+    
 	private let output: EventViewOutput
     
-    private lazy var navigationBar: NavigationBarWithLogoAndActions = {
-        let navBar = NavigationBarWithLogoAndActions(frame: .zero, buttons: [.back, .share])
-        navBar.translatesAutoresizingMaskIntoConstraints = false
-        return navBar
-    }()
+    private lazy var navigationBar = NavigationBarWithLogoAndActions(
+        image: nil,
+        frame: .zero,
+        buttons: [.back, .share]
+    )
+    private let eventView = EventView()
     
     init(output: EventViewOutput) {
         self.output = output
@@ -29,13 +31,23 @@ final class EventViewController: UIViewController {
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        setupUI()
 	}
+    override func loadView() {
+        view = eventView
+    }
 }
+
 private extension EventViewController {
     func setupUI() {
-        navigationBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        navigationController?.isNavigationBarHidden = true
+        view.backgroundColor = .mainColor
+        view.addSubview(navigationBar)
+
+        navigationBar.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.equalToSuperview()
+        }
     }
 }
 

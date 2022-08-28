@@ -33,6 +33,10 @@ final class EventsViewController: AbstractEventsViewController {
         setupUI()
         eventsCollectionAdapter.configure(Section<Event>.allSections)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
     
     internal override func setupUI() {
         super.setupUI()
@@ -55,6 +59,7 @@ extension EventsViewController: EventsDelegate {
     func didTapOnEvent(_ event: Event) {
         let context = EventContext(moduleOutput: nil)
         let container = EventContainer.assemble(with: context)
+        container.viewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(container.viewController, animated: true)
     }
 }

@@ -153,7 +153,10 @@ extension EventsCollectionViewAdapter: UICollectionViewDelegate {
     func collectionView(
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
-    ) {}
+    ) {
+        //TODO: - Make it more correctly
+        delegate?.didTapOnEvent(sections[indexPath.section].items[indexPath.item])
+    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollDelegate?.collectionViewDidScroll(scrollView)
     }

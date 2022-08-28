@@ -8,95 +8,116 @@
 import UIKit
 import SnapKit
 
+//Constants
+
+private let CORNER_RADIUS = 20.scale()
+private let COLOR_BACKGROUND_OFFSET = -20.scale()
+private let SCROLL_VIEW_INSETS = 46.scale()
+
 final class EventView: UIView {
-    private let scrollView: UIScrollView = UIScrollView()
-    private let backgroundImageView: UIImageView = UIImageView()
-    private let imageContainerView: UIView = UIView()
-    private let contentTable = EventInfoList(frame: .zero)
+    private let scrollView = UIScrollView()
+    private let backgroundImageView = UIImageView()
+    private let eventInfoView = EventInfoView(frame: .zero)
+    private lazy var backgroundOfContentListView = UIView()
     
-    private lazy var backgroundOfContentListView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .mainColor
-        return view
-    }()
+    var onChangeOffsetOfHeaderBottomPoint: ((CGFloat) -> Void)?
+    private var backgroundImageContainerBottomConstraint: Constraint?
+    private var backgroundImageTopConstaint: Constraint?
     
-    
-    private var backgroundImageBottomConstraint: Constraint?
-    private var backgroundImageHeightConstraint: Constraint?
-    
+    private var previousStatusBarHidden = false
+
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupLayers()
         setupUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        makeScrollViewSize()
+    }
 }
 
 extension EventView: UIScrollViewDelegate {
+    //TODO: Hight priority: make navigation bar animation.
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        updateArtistHeaderImageLayout(basedOn: scrollView)
     }
 }
 
 private extension EventView {
-    func setupUI() {
-        addSubview(scrollView)
-        scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
+    func setupLayers() {
         
-        scrollView.addSubview(imageContainerView)
-        imageContainerView.snp.makeConstraints { make in
-                make.top.equalToSuperview()
-                make.left.right.equalTo(self)
-                make.height.equalTo(476.scale())
-        }
+        backgroundImageView.contentMode = .scaleAspectFill
+        backgroundImageView.clipsToBounds = true
         
-        scrollView.addSubview(backgroundImageView)
-        backgroundImageView.snp.makeConstraints { make in
-            make.left.right.equalTo(imageContainerView)
-            make.top.equalTo(self)
-            backgroundImageHeightConstraint = make.height.equalTo(501.scale()).constraint
-            backgroundImageBottomConstraint = make.bottom.equalTo(imageContainerView.snp.bottom).inset(-25.scale()).constraint
-        }
-        backgroundImageHeightConstraint?.deactivate()
-
-        scrollView.addSubview(backgroundOfContentListView)
-        
-        backgroundOfContentListView.snp.makeConstraints { make in
-            make.top.equalTo(contentTable.snp.top).inset(25.scale())
-            make.width.equalTo(self.snp.width)
-            make.bottom.equalTo(self.snp.bottom)
-        }
-
-        scrollView.addSubview(contentTable)
-        contentTable.snp.makeConstraints { make in
-            make.top.equalTo(backgroundImageView.snp.bottom).offset(20.scale())
-            make.width.equalTo(self.snp.width)
-            make.bottom.equalToSuperview()
-        }
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.backgroundColor = .clear
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.delegate = self
     }
+    
+    func setupUI() {
+        backgroundImageView.image = .moc
+        backgroundOfContentListView.backgroundColor = .mainColor
+        
+        
+        let imageContainer = UIView()
+        imageContainer.backgroundColor = .darkGray
+        
+        let backColorView = UIView()
+        backColorView.backgroundColor = .mainColor
+        backColorView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        backColorView.layer.cornerRadius = CORNER_RADIUS
+        
+        addSubview(scrollView)
+        scrollView.addSubview(imageContainer)
+        scrollView.addSubview(backColorView)
+        scrollView.addSubview(backgroundImageView)
+        scrollView.addSubview(backgroundOfContentListView)
+        backgroundOfContentListView.addSubview(eventInfoView)
 
-    func updateArtistHeaderImageLayout(basedOn scrollView: UIScrollView) {
-        let yOffsetOfImageContainer = scrollView.convert(CGPoint(x: imageContainerView.frame.minX, y: imageContainerView.frame.minY), to: self).y
-
-//        let topYCoordinateOfHeaderPrimaryButton = scrollView.convert(contentTable.frame, to: self).maxY - 44.scale()
-//        onChangeOffsetOfHeaderBottomPoint?(topYCoordinateOfHeaderPrimaryButton)
-
-        if yOffsetOfImageContainer > 0 {
-            backgroundImageBottomConstraint?.activate()
-            backgroundImageHeightConstraint?.deactivate()
-            backgroundImageView.isHidden = false
+        scrollView.snp.makeConstraints {
+            $0.top.left.bottom.right.equalToSuperview()
         }
-        else if abs(yOffsetOfImageContainer) >= imageContainerView.frame.height {
-            backgroundImageView.isHidden = true
+        
+        imageContainer.snp.makeConstraints {
+            $0.top.equalTo(scrollView)
+            $0.left.right.equalTo(self)
+            $0.height.equalTo(imageContainer.snp.width).multipliedBy(0.9)
         }
-        else {
-            backgroundImageBottomConstraint?.deactivate()
-            backgroundImageHeightConstraint?.activate()
-            backgroundImageView.isHidden = false
+        
+        backgroundImageView.snp.makeConstraints {
+            $0.left.right.equalTo(imageContainer)
+            $0.top.equalTo(self).priority(.high)
+            $0.height.greaterThanOrEqualTo(imageContainer.snp.height).priority(.required)
+            $0.bottom.equalTo(imageContainer.snp.bottom)
         }
+        
+        backgroundOfContentListView.snp.makeConstraints {
+            $0.top.equalTo(imageContainer.snp.bottom)
+            $0.left.right.equalTo(self)
+            $0.bottom.equalTo(self)
+        }
+        
+        backColorView.snp.makeConstraints {
+            $0.left.right.equalTo(self)
+            $0.top.equalTo(backgroundOfContentListView).offset(COLOR_BACKGROUND_OFFSET)
+            $0.bottom.equalTo(self)
+        }
+        
+        eventInfoView.snp.makeConstraints {
+            $0.edges.equalTo(backgroundOfContentListView)
+        }
+        scrollView.bringSubviewToFront(backColorView)
+        scrollView.bringSubviewToFront(backgroundOfContentListView)
+        scrollView.contentInset.bottom = SCROLL_VIEW_INSETS
+    }
+    
+    func makeScrollViewSize() {
+        let height = backgroundImageView.frame.size.height + eventInfoView.height
+        scrollView.contentSize = CGSize(width: self.frame.width, height: height)
     }
 }
