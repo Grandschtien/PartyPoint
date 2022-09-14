@@ -15,6 +15,13 @@ class NavigationBarWithLogo: UIView {
         return view
     }()
     
+    internal lazy var title: UILabel = {
+       let label = UILabel()
+        label.font = UIFont(name: UIFont.SFProDisplayBold, size: 20)
+        label.textColor = .miniColor
+        return label
+    }()
+    
     
     init(background: UIColor = .clear,
          image: UIImage? = .logo,
@@ -29,12 +36,20 @@ class NavigationBarWithLogo: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     func configure() {
-        self.addConstrained(subview: imageView,
-                            top: 6,
-                            left: 130,
-                            bottom: -6,
-                            right: -130)
-        self.heightAnchor.constraint(equalToConstant: 78).isActive = true
+        self.addSubview(title)
+        title.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+        }
+        self.addSubview(imageView)
+        imageView.snp.makeConstraints {
+            $0.centerY.centerX.equalToSuperview()
+            $0.height.equalTo(66.scale())
+            $0.width.equalTo(132.scale())
+        }
+        self.snp.makeConstraints {
+            $0.height.equalTo(78)
+        }
     }
 }

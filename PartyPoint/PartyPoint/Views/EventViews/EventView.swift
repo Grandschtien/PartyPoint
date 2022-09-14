@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol EventViewDelegate: AnyObject {
+    func setNavTitleVisibleIfNeeded(offset: CGFloat)
+}
+
 //Constants
 
 private let CORNER_RADIUS = 20.scale()
@@ -26,6 +30,8 @@ final class EventView: UIView {
     
     private var previousStatusBarHidden = false
 
+    weak var delegate: EventViewDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayers()
@@ -44,6 +50,8 @@ final class EventView: UIView {
 extension EventView: UIScrollViewDelegate {
     //TODO: Hight priority: make navigation bar animation.
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let backGroundPosition = scrollView.convert(CGPoint(x: backgroundOfContentListView.frame.minX, y: backgroundOfContentListView.frame.minY), to: self).y
+        delegate?.setNavTitleVisibleIfNeeded(offset: backGroundPosition)
     }
 }
 

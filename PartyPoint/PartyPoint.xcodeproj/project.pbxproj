@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3233E86075F39992F50F926C /* libPods-PartyPoint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9AFC6FDA648A3B4E855628 /* libPods-PartyPoint.a */; };
+		601BB71728D1D43200048359 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601BB71628D1D43200048359 /* UIViewController+Extension.swift */; };
+		601BB71928D1D69600048359 /* UIApplication+StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601BB71828D1D69600048359 /* UIApplication+StatusBar.swift */; };
 		6042172328BBE67F0063BF68 /* AnyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6042172228BBE67F0063BF68 /* AnyView.swift */; };
 		6070D43228ABDE1F0054F61B /* EventPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42C28ABDE1F0054F61B /* EventPresenter.swift */; };
 		6070D43328ABDE1F0054F61B /* EventRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42D28ABDE1F0054F61B /* EventRouter.swift */; };
@@ -103,6 +105,8 @@
 		60A1E60A28AFACD400E80D0D /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1E60928AFACD300E80D0D /* EventView.swift */; };
 		60A1E60C28AFAFE500E80D0D /* EventInfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1E60B28AFAFE500E80D0D /* EventInfoList.swift */; };
 		60DA33B428802FF6004E52A3 /* UIStackView+convenieceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA33B328802FF6004E52A3 /* UIStackView+convenieceInit.swift */; };
+		60DA4CEB28BE131C00B7E428 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA4CEA28BE131C00B7E428 /* BaseRouter.swift */; };
+		60DA4CED28BE185E00B7E428 /* NAvBar+ConfigurateDefaultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA4CEC28BE185E00B7E428 /* NAvBar+ConfigurateDefaultStyle.swift */; };
 		60DB792028B4062E0058A3D7 /* CommonCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB791F28B4062E0058A3D7 /* CommonCollectionViewAdapter.swift */; };
 		60DB792228B419940058A3D7 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB792128B419940058A3D7 /* LocationView.swift */; };
 		60DB792428B41AEA0058A3D7 /* UILabel+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB792328B41AEA0058A3D7 /* UILabel+Icon.swift */; };
@@ -118,6 +122,8 @@
 		13FE3655220E715413942E29 /* Pods-PartyPoint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyPoint.debug.xcconfig"; path = "Target Support Files/Pods-PartyPoint/Pods-PartyPoint.debug.xcconfig"; sourceTree = "<group>"; };
 		4A9AFC6FDA648A3B4E855628 /* libPods-PartyPoint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PartyPoint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8C843A9687CC642B83F694 /* Pods-PartyPoint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyPoint.release.xcconfig"; path = "Target Support Files/Pods-PartyPoint/Pods-PartyPoint.release.xcconfig"; sourceTree = "<group>"; };
+		601BB71628D1D43200048359 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		601BB71828D1D69600048359 /* UIApplication+StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+StatusBar.swift"; sourceTree = "<group>"; };
 		6042172228BBE67F0063BF68 /* AnyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyView.swift; sourceTree = "<group>"; };
 		6070D42C28ABDE1F0054F61B /* EventPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPresenter.swift; sourceTree = "<group>"; };
 		6070D42D28ABDE1F0054F61B /* EventRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRouter.swift; sourceTree = "<group>"; };
@@ -215,6 +221,8 @@
 		60A1E60928AFACD300E80D0D /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		60A1E60B28AFAFE500E80D0D /* EventInfoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoList.swift; sourceTree = "<group>"; };
 		60DA33B328802FF6004E52A3 /* UIStackView+convenieceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+convenieceInit.swift"; sourceTree = "<group>"; };
+		60DA4CEA28BE131C00B7E428 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
+		60DA4CEC28BE185E00B7E428 /* NAvBar+ConfigurateDefaultStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NAvBar+ConfigurateDefaultStyle.swift"; sourceTree = "<group>"; };
 		60DB791F28B4062E0058A3D7 /* CommonCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCollectionViewAdapter.swift; sourceTree = "<group>"; };
 		60DB792128B419940058A3D7 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		60DB792328B41AEA0058A3D7 /* UILabel+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Icon.swift"; sourceTree = "<group>"; };
@@ -362,6 +370,7 @@
 		609716EE287D75940084A63C /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				60DA4CE928BE130B00B7E428 /* BaseComponents */,
 				60DB791E28B406120058A3D7 /* CommonClasses */,
 				60918EDB288835D500D9E032 /* Protocols */,
 				60971773287DB7790084A63C /* LabelTexts.swift */,
@@ -410,6 +419,9 @@
 				60EAE93F28AFCD9D00030055 /* UIView+Scales.swift */,
 				60DB792328B41AEA0058A3D7 /* UILabel+Icon.swift */,
 				6042172228BBE67F0063BF68 /* AnyView.swift */,
+				60DA4CEC28BE185E00B7E428 /* NAvBar+ConfigurateDefaultStyle.swift */,
+				601BB71628D1D43200048359 /* UIViewController+Extension.swift */,
+				601BB71828D1D69600048359 /* UIApplication+StatusBar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -555,6 +567,14 @@
 				60DB792C28B4CFE80058A3D7 /* EventSubviews */,
 			);
 			path = EventViews;
+			sourceTree = "<group>";
+		};
+		60DA4CE928BE130B00B7E428 /* BaseComponents */ = {
+			isa = PBXGroup;
+			children = (
+				60DA4CEA28BE131C00B7E428 /* BaseRouter.swift */,
+			);
+			path = BaseComponents;
 			sourceTree = "<group>";
 		};
 		60DB791E28B406120058A3D7 /* CommonClasses */ = {
@@ -707,6 +727,7 @@
 				60971708287D821A0084A63C /* EventsViewController.swift in Sources */,
 				6097176E287DA60D0084A63C /* EnterRouter.swift in Sources */,
 				60DB792628B4C55A0058A3D7 /* DescriptionEventView.swift in Sources */,
+				601BB71728D1D43200048359 /* UIViewController+Extension.swift in Sources */,
 				6097178C287EDE4A0084A63C /* RegisterContainer.swift in Sources */,
 				6073B87B2881A01800AF07FA /* EventCell.swift in Sources */,
 				60971731287D840A0084A63C /* InitialRouter.swift in Sources */,
@@ -772,9 +793,11 @@
 				609716DB287D75230084A63C /* AppDelegate.swift in Sources */,
 				6070D43228ABDE1F0054F61B /* EventPresenter.swift in Sources */,
 				60918EF0288863BA00D9E032 /* AboutMeCell.swift in Sources */,
+				60DA4CED28BE185E00B7E428 /* NAvBar+ConfigurateDefaultStyle.swift in Sources */,
 				6097177E287ED0DD0084A63C /* UIView+Recognizers.swift in Sources */,
 				6097171E287D824A0084A63C /* ProfilePresenter.swift in Sources */,
 				609716F5287D7C720084A63C /* MainFlowCoordinator.swift in Sources */,
+				601BB71928D1D69600048359 /* UIApplication+StatusBar.swift in Sources */,
 				6070D43528ABDE1F0054F61B /* EventProtocols.swift in Sources */,
 				6097176D287DA60D0084A63C /* EnterPresenter.swift in Sources */,
 				60971722287D824A0084A63C /* ProfileInteractor.swift in Sources */,
@@ -787,6 +810,7 @@
 				6073B87728819A2F00AF07FA /* Section.swift in Sources */,
 				60918EE62888626900D9E032 /* ProfileTableAdapter.swift in Sources */,
 				60971733287D84CA0084A63C /* InitialAssembly.swift in Sources */,
+				60DA4CEB28BE131C00B7E428 /* BaseRouter.swift in Sources */,
 				609716DD287D75230084A63C /* SceneDelegate.swift in Sources */,
 				60EAE93C28AFC6F500030055 /* EventHeaderLabel.swift in Sources */,
 				60EAE94028AFCD9D00030055 /* UIView+Scales.swift in Sources */,
@@ -948,7 +972,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -980,7 +1004,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

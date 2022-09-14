@@ -25,6 +25,9 @@ extension EventPresenter: EventModuleInput {
 }
 
 extension EventPresenter: EventViewOutput {
+    func backAction() {
+        router.backToPrevController()
+    }
 }
 
 extension EventPresenter: EventInteractorOutput {

@@ -12,20 +12,22 @@ protocol EventModuleInput {
 	var moduleOutput: EventModuleOutput? { get }
 }
 
-protocol EventModuleOutput: class {
+protocol EventModuleOutput: AnyObject {
 }
 
-protocol EventViewInput: class {
+protocol EventViewInput: AnyObject {
 }
 
-protocol EventViewOutput: class {
+protocol EventViewOutput: AnyObject {
+    func backAction()
 }
 
-protocol EventInteractorInput: class {
+protocol EventInteractorInput: AnyObject {
 }
 
-protocol EventInteractorOutput: class {
+protocol EventInteractorOutput: AnyObject {
 }
 
-protocol EventRouterInput: class {
+protocol EventRouterInput: AnyObject {
+    func backToPrevController()
 }

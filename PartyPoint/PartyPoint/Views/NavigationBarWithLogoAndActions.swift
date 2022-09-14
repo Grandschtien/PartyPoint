@@ -19,15 +19,19 @@ final class NavigationBarWithLogoAndActions: NavigationBarWithLogo {
     private let buttonsImges: Set<Buttons>
     private var buttons: [UIButton]
     private let isImageNeed: Bool
+    private let isTitleNeeded: Bool
     weak var delegate: NavigationBarWithLogoAndActionsDelegate?
     init(background: UIColor = .clear,
          image: UIImage? = .logo,
          frame: CGRect,
          buttons: Set<Buttons>,
-         isImageNeed: Bool = true) {
+         isImageNeed: Bool = true,
+         isTitleNeeded: Bool = false
+    ) {
         self.buttonsImges = buttons
         self.isImageNeed = isImageNeed
         self.buttons = []
+        self.isTitleNeeded = isTitleNeeded
         super.init(background: background, image: image, frame: frame)
         configureActions()
     }
@@ -42,8 +46,17 @@ final class NavigationBarWithLogoAndActions: NavigationBarWithLogo {
         case share
     }
     
+    func setTitle(_ text: String, isHidden: Bool) {
+        title.text = text
+        title.isHidden = isHidden
+    }
+}
+
+private extension NavigationBarWithLogoAndActions {
     func configureActions() {
         imageView.isHidden = !isImageNeed
+        title.isHidden = !isTitleNeeded
+        
         for buttonsImge in buttonsImges {
             let button = UIButton()
             buttons.append(button)

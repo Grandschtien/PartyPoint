@@ -8,8 +8,12 @@
 
 import UIKit
 
-final class EventRouter {
+final class EventRouter: BaseRouter {
+    var viewController: UIViewController?
 }
 
 extension EventRouter: EventRouterInput {
+    func backToPrevController() {
+        pop(animated: true)
+    }
 }

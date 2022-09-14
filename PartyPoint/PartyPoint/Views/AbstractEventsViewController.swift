@@ -48,13 +48,7 @@ class AbstractEventsViewController: UIViewController {
         )
         
         //This needs to set background for status bar
-        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
-        guard let statusBarFrame = window.windowScene?.statusBarManager?.statusBarFrame else {
-            return
-        }
-        let statusBarView = UIView(frame: statusBarFrame)
-        self.view.addSubview(statusBarView)
-        statusBarView.backgroundColor = .mainColor
+        changeStatusBarColor(.mainColor)
         
         //setup navigation bar
         navigationController?.navigationBar.addConstrained(
