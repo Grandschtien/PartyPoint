@@ -6,6 +6,16 @@
 //
 
 import UIKit
+import SnapKit
+
+private let NAVIGATION_BAR_HEIGHT: CGFloat = 78
+private let INIT_LABEL_TOP_OFFSET: CGFloat = 19
+private let HORIZONTAL_OFFSETS_INIT_LABEL: CGFloat = 15
+private let GO_BUTTON_BOTTOM_OFFSET: CGFloat = 25
+private let GO_BUTTON_HORIZONTAL_OFFSETS: CGFloat = 15
+private let GO_BUTTON_HEIGHT: CGFloat = 56
+private let USER_OFFER_TOP_OFFSET: CGFloat = 25
+private let USER_OFFER_HORIZONTAL_OFFSETS: CGFloat = 15
 
 final class InitialViewController: UIViewController {
     
@@ -35,12 +45,12 @@ final class InitialViewController: UIViewController {
     
     private lazy var goButton: AppButton = {
         let button = AppButton(withTitle: LabelTexts.goButton.rawValue)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.action =  { [weak self] in
             self?.buttonTapped()
         }
         return button
     }()
+    
     private lazy var userOfferLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = UIFont(name: UIFont.SFProDisplaySemibold, size: 12)
@@ -48,7 +58,6 @@ final class InitialViewController: UIViewController {
         label.textAlignment = .center
         label.numberOfLines = 2
         label.alpha = 0.5
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -68,40 +77,43 @@ final class InitialViewController: UIViewController {
     
     func setupUI() {
         self.navigationController?.isNavigationBarHidden = true
+        
         view.layer.contents = UIImage.concert?.cgImage
-        view.addConstrained(subview: navigationBar,
-                            top: nil,
-                            left: 0,
-                            bottom: nil,
-                            right: 0)
-        navigationBar.heightAnchor.constraint(equalToConstant: 78).isActive = true
-        NSLayoutConstraint.activate([
-            navigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0)
-        ])
-        view.addConstrained(subview: bottomView,
-                            top: nil,
-                            left: 0,
-                            bottom: 0,
-                            right: 0)
-        bottomView.heightAnchor.constraint(equalToConstant: view.frame.height / 3).isActive = true
-        bottomView.addConstrained(subview: initLabel,
-                                  top: 19,
-                                  left: 15,
-                                  bottom: nil,
-                                  right: -15)
+        view.addSubview(navigationBar)
+        view.addSubview(bottomView)
+        bottomView.addSubview(initLabel)
         bottomView.addSubview(goButton)
-        NSLayoutConstraint.activate([
-            goButton.topAnchor.constraint(equalTo: initLabel.bottomAnchor, constant: 25),
-            goButton.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor, constant: 15),
-            goButton.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor, constant: -15),
-            goButton.heightAnchor.constraint(equalToConstant: 56)
-        ])
         bottomView.addSubview(userOfferLabel)
-        NSLayoutConstraint.activate([
-            userOfferLabel.topAnchor.constraint(equalTo: goButton.bottomAnchor, constant: 25),
-            userOfferLabel.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor, constant: 15),
-            userOfferLabel.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor, constant: -15),
-        ])
+        
+        navigationBar.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.height.equalTo(NAVIGATION_BAR_HEIGHT.scale())
+        }
+        
+        bottomView.snp.makeConstraints {
+            $0.left.right.bottom.equalToSuperview()
+            $0.height.equalTo(view.frame.height / 3)
+        }
+        
+        initLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(HORIZONTAL_OFFSETS_INIT_LABEL.scale())
+            $0.top.equalToSuperview().offset(INIT_LABEL_TOP_OFFSET.scale())
+            $0.right.equalToSuperview().inset(HORIZONTAL_OFFSETS_INIT_LABEL.scale())
+        }
+        
+        goButton.snp.makeConstraints {
+            $0.top.equalTo(initLabel.snp.bottom).offset(GO_BUTTON_BOTTOM_OFFSET.scale())
+            $0.left.equalToSuperview().offset(GO_BUTTON_HORIZONTAL_OFFSETS.scale())
+            $0.right.equalToSuperview().inset(GO_BUTTON_HORIZONTAL_OFFSETS.scale())
+            $0.height.equalTo(GO_BUTTON_HEIGHT.scale())
+            
+        }
+        userOfferLabel.snp.makeConstraints {
+            $0.top.equalTo(goButton.snp.bottom).offset(USER_OFFER_TOP_OFFSET.scale())
+            $0.right.equalToSuperview().inset(USER_OFFER_HORIZONTAL_OFFSETS.scale())
+            $0.left.equalToSuperview().offset(USER_OFFER_TOP_OFFSET.scale())
+        }
     }
 }
 

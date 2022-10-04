@@ -7,6 +7,12 @@
 //
 
 import UIKit
+import SnapKit
+
+private let STACK_VIEW_SPACING: CGFloat = 22
+private let STACK_VIEW_HORIZONTAL_OFFSETS: CGFloat = 35
+private let EMAIL_TF_HEIGHT: CGFloat = 38
+private let SEND_BUTTON_HEIGHT: CGFloat = 56
 
 final class FogotPasswordViewController: UIViewController {
     
@@ -41,7 +47,7 @@ final class FogotPasswordViewController: UIViewController {
     }()
     
     private var stackView: UIStackView?
-    private var bottomStackConstraint: NSLayoutConstraint?
+    private var bottomStackConstraint: Constraint?
     private var defaultBottomConstant: CGFloat = 0
 	private let output: FogotPasswordViewOutput
 
@@ -78,40 +84,42 @@ final class FogotPasswordViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .mainColor
         view.addTapRecognizer(target: self, action: #selector(endEnditing))
-        view.addConstrained(subview: navigationBar,
-                             top: nil,
-                             left: 0,
-                             bottom: nil,
-                             right: 0)
-         NSLayoutConstraint.activate([
-             navigationBar.topAnchor.constraint(
-                 equalTo: view.safeAreaLayoutGuide.topAnchor,
-                 constant: 0
-             )
-         ])
+        view.addSubview(navigationBar)
+        
+        navigationBar.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
+       
         
         stackView = UIStackView(
             alignment: .center,
             arrangedSubviews: [restorePasswdLabel, emailTF, sendButton],
             axis: .vertical,
-            spacing: 22)
+            spacing: STACK_VIEW_SPACING.scale())
+        
         if let stackView = stackView {
-            view.addConstrained(subview: stackView, top: nil, left: 35, bottom: nil, right: -35)
-            bottomStackConstraint = stackView.bottomAnchor.constraint(
-                equalTo: view.bottomAnchor,
-                constant: -view.frame.height / 3
-            )
-            bottomStackConstraint?.isActive = true
-            defaultBottomConstant = bottomStackConstraint?.constant ?? 0
-            restorePasswdLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
-            restorePasswdLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
-            restorePasswdLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
-            emailTF.heightAnchor.constraint(equalToConstant: 38).isActive = true
-            emailTF.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
-            emailTF.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
-            sendButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
-            sendButton.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
-            sendButton.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+            view.addSubview(stackView)
+            stackView.snp.makeConstraints {
+                $0.left.equalToSuperview().offset(STACK_VIEW_HORIZONTAL_OFFSETS.scale())
+                $0.right.equalToSuperview().inset(STACK_VIEW_HORIZONTAL_OFFSETS.scale())
+                bottomStackConstraint = $0.bottom.equalToSuperview().inset(view.frame.height / 3).constraint
+                defaultBottomConstant = bottomStackConstraint?.layoutConstraints[0].constant ?? 0
+            }
+            
+            restorePasswdLabel.snp.makeConstraints {
+                $0.width.left.right.equalToSuperview()
+            }
+            
+            emailTF.snp.makeConstraints {
+                $0.height.equalTo(EMAIL_TF_HEIGHT.scale())
+                $0.left.right.equalToSuperview()
+            }
+            
+            sendButton.snp.makeConstraints {
+                $0.height.equalTo(SEND_BUTTON_HEIGHT.scale())
+                $0.right.left.equalToSuperview()
+            }
         }
     }
 }
@@ -132,27 +140,30 @@ extension FogotPasswordViewController {
 }
 
 //MARK: - KeyBoardLogic
-extension FogotPasswordViewController {@objc
+extension FogotPasswordViewController {
+    @objc
     func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo else {return}
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         let keyboardFrame = keyboardSize.cgRectValue
         let neededHeight = abs(defaultBottomConstant + keyboardFrame.height)
-        if self.bottomStackConstraint?.constant == defaultBottomConstant {
+        if self.bottomStackConstraint?.layoutConstraints[0].constant == defaultBottomConstant {
             UIView.animate(withDuration: 0.4) { [weak self] in
-                self?.bottomStackConstraint?.constant -= (neededHeight + 5)
+                self?.bottomStackConstraint?.layoutConstraints[0].constant -= (neededHeight + 5)
                 self?.view.layoutIfNeeded()
             }
         }
     }
+    
     @objc
     func keyboardWillHide(_ notification: Notification) {
         UIView.animate(withDuration: 0.4) { [weak self] in
             guard let `self` = self else { return }
-            self.bottomStackConstraint?.constant = self.defaultBottomConstant
+            self.bottomStackConstraint?.layoutConstraints[0].constant = self.defaultBottomConstant
             self.view.layoutIfNeeded()
         }
     }
+    
     @objc
     func endEnditing() {
         view.endEditing(false)

@@ -7,6 +7,19 @@
 //
 
 import UIKit
+import SnapKit
+
+private let REGISTRATION_LABEL_HEIGHT: CGFloat = 40
+private let USER_IMAGE_TOP_OFFSET: CGFloat = 15
+private let USER_IMAGE_SIDE_SIZE: CGFloat = 150
+private let PHOTO_LABEL_HEIGHT: CGFloat = 60
+private let PHOTO_LABEL_BOTTTOM_OFFSET: CGFloat = 10
+private let PHOTO_LABEL_WIDTH: CGFloat = 218
+private let DYNAMIC_REGISTER_STACK_HORIZONTAL_OFFSETS: CGFloat = 30
+private let DYNAMIC_REGISTER_STACK_BOTTOM_OFFSET: CGFloat = 10
+private let REGISTER_BUTTON_HORIZONTAL_OFFSET: CGFloat = 30
+private let REGISTER_BUTTON_TOP_OFFFSET: CGFloat = 22
+private let REGISTER_BUTTON_HEIGHT: CGFloat = 56
 
 final class RegisterViewController: UIViewController {
     
@@ -23,12 +36,10 @@ final class RegisterViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont(name: UIFont.SFProDisplayBold, size: 36)
         label.text = LabelTexts.registrationScreenLabel.rawValue
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     private lazy var userImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
         imageView.contentMode = .center
         imageView.backgroundColor = .miniColor
@@ -38,7 +49,6 @@ final class RegisterViewController: UIViewController {
     
     private lazy var photoLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: UIFont.SFProDisplayBold, size: 14)
         label.text = LabelTexts.photoLabel.rawValue
         label.textColor = .miniColor
@@ -48,7 +58,6 @@ final class RegisterViewController: UIViewController {
     }()
     private lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView()
-        scroll.translatesAutoresizingMaskIntoConstraints = false
         return scroll
     }()
     
@@ -61,18 +70,15 @@ final class RegisterViewController: UIViewController {
             LabelTexts.checkPassword.rawValue
         ]
         let stack = DynamicStackWithTF(placeholders: placeholders)
-        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
     private lazy var registerButton: AppButton = {
         let button = AppButton(withTitle: LabelTexts.registerButton.rawValue)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
         return button
     }()
     
-    private var bottomScrollConstraint: NSLayoutConstraint?
+    private var bottomScrollConstraint: Constraint?
     private let output: RegisterViewOutput
     
     init(output: RegisterViewOutput) {
@@ -101,6 +107,7 @@ final class RegisterViewController: UIViewController {
                                               name: UIWindow.keyboardWillHideNotification,
                                               object: nil)
     }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillShowNotification, object: nil)
@@ -113,65 +120,60 @@ final class RegisterViewController: UIViewController {
         let height = userImage.frame.height + photoLabel.frame.height + dynnamicRegisterStack.frame.height + registerButton.frame.height * 2 + 20
         scrollView.contentSize = CGSize(width: view.frame.width, height: height)
     }
+    
     func setupUI() {
         view.backgroundColor = .mainColor
         view.addTapRecognizer(target: self, action: #selector(endEnditing))
-        view.addConstrained(subview: navigationBar,
-                            top: nil,
-                            left: 0,
-                            bottom: nil,
-                            right: 0)
-        NSLayoutConstraint.activate([
-            navigationBar.topAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.topAnchor,
-                constant: 0
-            )
-        ])
+        
+        view.addSubview(navigationBar)
         navigationBar.addSubview(registrationLabel)
-        NSLayoutConstraint.activate([
-            registrationLabel.centerXAnchor.constraint(equalTo: navigationBar.centerXAnchor),
-            registrationLabel.centerYAnchor.constraint(equalTo: navigationBar.centerYAnchor),
-            registrationLabel.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        view.addConstrained(subview: scrollView,
-                            top: nil,
-                            left: 0,
-                            bottom: nil,
-                            right: 0)
-        scrollView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor).isActive = true
-        bottomScrollConstraint = scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        bottomScrollConstraint?.isActive = true
+        view.addSubview(scrollView)
         scrollView.addSubview(userImage)
-        NSLayoutConstraint.activate([
-            userImage.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 15),
-            userImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            userImage.heightAnchor.constraint(equalToConstant: 150),
-            userImage.widthAnchor.constraint(equalToConstant: 150)
-        ])
         scrollView.addSubview(photoLabel)
-        
-        NSLayoutConstraint.activate([
-            photoLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            photoLabel.heightAnchor.constraint(equalToConstant: 60),
-            photoLabel.topAnchor.constraint(equalTo: userImage.bottomAnchor, constant: 10),
-            photoLabel.widthAnchor.constraint(equalToConstant: 218)
-        ])
         scrollView.addSubview(dynnamicRegisterStack)
-        
-        NSLayoutConstraint.activate([
-            dynnamicRegisterStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 30),
-            dynnamicRegisterStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -30),
-            dynnamicRegisterStack.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            dynnamicRegisterStack.topAnchor.constraint(equalTo: photoLabel.bottomAnchor, constant: 10)
-        ])
         scrollView.addSubview(registerButton)
+
+        navigationBar.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
         
-        NSLayoutConstraint.activate([
-            registerButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 30),
-            registerButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -30),
-            registerButton.topAnchor.constraint(equalTo: dynnamicRegisterStack.bottomAnchor, constant: 22),
-            registerButton.heightAnchor.constraint(equalToConstant: 56)
-        ])
+        registrationLabel.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+            $0.height.equalTo(REGISTRATION_LABEL_HEIGHT.scale())
+        }
+        
+        scrollView.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.top.equalTo(navigationBar.snp.bottom)
+            bottomScrollConstraint = $0.bottom.equalToSuperview().constraint
+        }
+        
+        userImage.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(USER_IMAGE_TOP_OFFSET.scale())
+            $0.centerX.equalTo(view.snp.centerX)
+            $0.height.width.equalTo(USER_IMAGE_SIDE_SIZE.scale())
+        }
+        
+        photoLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(PHOTO_LABEL_HEIGHT.scale())
+            $0.top.equalTo(userImage.snp.bottom).offset(PHOTO_LABEL_BOTTTOM_OFFSET.scale())
+            $0.width.equalTo(PHOTO_LABEL_WIDTH.scale())
+        }
+        dynnamicRegisterStack.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(DYNAMIC_REGISTER_STACK_HORIZONTAL_OFFSETS.scale())
+            $0.right.equalToSuperview().inset(DYNAMIC_REGISTER_STACK_HORIZONTAL_OFFSETS.scale())
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(photoLabel.snp.bottom).offset(DYNAMIC_REGISTER_STACK_BOTTOM_OFFSET.scale())
+        }
+        registerButton.snp.makeConstraints {
+            $0.right.equalToSuperview().inset(REGISTER_BUTTON_HORIZONTAL_OFFSET.scale())
+            $0.left.equalToSuperview().offset(REGISTER_BUTTON_HORIZONTAL_OFFSET.scale())
+            $0.top.equalTo(dynnamicRegisterStack.snp.bottom).offset(REGISTER_BUTTON_TOP_OFFFSET.scale())
+            $0.height.equalTo(REGISTER_BUTTON_HEIGHT.scale())
+        }
+        
         let countOfTf = dynnamicRegisterStack.textFields?.count
         
         if let countOfTf = countOfTf {
@@ -196,9 +198,9 @@ extension RegisterViewController {
         guard let userInfo = notification.userInfo else {return}
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         let keyboardFrame = keyboardSize.cgRectValue
-        if self.bottomScrollConstraint?.constant == 0 {
+        if self.bottomScrollConstraint?.layoutConstraints[0].constant == 0 {
             UIView.animate(withDuration: 0.4) { [weak self] in
-                self?.bottomScrollConstraint?.constant -= keyboardFrame.height
+                self?.bottomScrollConstraint?.layoutConstraints[0].constant -= keyboardFrame.height
                 self?.view.layoutIfNeeded()
             }
         }
@@ -206,7 +208,7 @@ extension RegisterViewController {
     @objc
     func keyboardWillHide(_ notification: Notification) {
         UIView.animate(withDuration: 0.4) { [weak self] in
-            self?.bottomScrollConstraint?.constant = 0
+            self?.bottomScrollConstraint?.layoutConstraints[0].constant = 0
             self?.view.layoutIfNeeded()
         }
     }

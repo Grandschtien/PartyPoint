@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import SnapKit
+
+private let TABLE_VIEW_CONTENT_OFFSET: CGFloat = 23
 
 final class ProfileViewController: UIViewController {
     
     private lazy var navigationBar: NavigationBarWithLogoAndActions = {
         let nav = NavigationBarWithLogoAndActions(frame: .zero, buttons: [.exit])
         nav.delegate = self
+        nav.backgroundColor = .mainColor
         return nav
     }()
     private lazy var userInfoTableView: UITableView = {
@@ -66,17 +70,25 @@ final class ProfileViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .mainColor
-        view.addConstrained(subview: userInfoTableView, top: nil, left: 0, bottom: nil, right: 0)
-        NSLayoutConstraint.activate([
-            userInfoTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            userInfoTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
         navigationController?.isNavigationBarHidden = true
-        view.addConstrained(subview: navigationBar, top: nil, left: 0, bottom: nil, right: 0)
-        navigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        navigationBar.backgroundColor = .mainColor
-        userInfoTableView.contentInset.top = navigationBar.frame.height + 23
-        insetsToTop = navigationBar.frame.height + 23
+        
+        view.addSubview(userInfoTableView)
+        view.addSubview(navigationBar)
+        
+        userInfoTableView.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        navigationBar.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
+        
+ 
+        userInfoTableView.contentInset.top = navigationBar.frame.height + TABLE_VIEW_CONTENT_OFFSET.scale()
+        insetsToTop = navigationBar.frame.height + TABLE_VIEW_CONTENT_OFFSET.scale()
+        
         let tapRec = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         userInfoTableView.addGestureRecognizer(tapRec)
     }

@@ -9,6 +9,7 @@ import Foundation
 
 
 protocol EndPointType {
+    var enviromentslBaseUrl: String { get }
     var baseUrl: URL { get }
     var path: String { get }
     var httpMethod: HTTPMethod { get }
