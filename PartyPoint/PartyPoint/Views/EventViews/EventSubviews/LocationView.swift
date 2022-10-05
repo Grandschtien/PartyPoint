@@ -9,7 +9,7 @@ import UIKit
 
 final class LocationView: UIView {
     
-    private let labelsFont = UIFont(name: UIFont.SFProDisplayBold, size: 15)
+    private let labelsFont = Fonts.sfProDisplayBold(size: 15)
     
     private let locationLabel = UILabel()
     private let dateLabel = UILabel()
@@ -28,9 +28,9 @@ final class LocationView: UIView {
     }
     
     func updateWithLocationDateAndTime(_ location: String, _ date: String, _ time: String) {
-        locationLabel.set(text: location, leftIcon: .location, rightIcon: nil)
-        dateLabel.set(text: date, leftIcon: .calendar, rightIcon: nil)
-        timeLabel.set(text: time, leftIcon: .time, rightIcon: nil)
+        locationLabel.set(text: location, leftIcon: Images.location(), rightIcon: nil)
+        dateLabel.set(text: date, leftIcon: Images.calendar(), rightIcon: nil)
+        timeLabel.set(text: time, leftIcon: Images.time(), rightIcon: nil)
     }
 }
 
@@ -42,9 +42,9 @@ private extension LocationView {
         timeLabel.font = labelsFont
         dateLabel.setContentHuggingPriority(.required, for: .horizontal)
         
-        dateLabel.textColor = .miniColor
-        locationLabel.textColor = .miniColor
-        timeLabel.textColor = .miniColor
+        dateLabel.textColor = Colors.miniColor()
+        locationLabel.textColor = Colors.miniColor()
+        timeLabel.textColor = Colors.miniColor()
         
         horizontalStack.addArrangedSubview(dateLabel)
         horizontalStack.addArrangedSubview(timeLabel)

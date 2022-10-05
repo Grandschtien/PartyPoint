@@ -19,17 +19,17 @@ final class UserInfoCell: UITableViewCell {
     }
     private func setupUI() {
         self.selectionStyle = .none
-        self.backgroundColor = .mainColor
+        self.backgroundColor = Colors.mainColor()
         userImage.layer.cornerRadius = userImage.frame.height / 2
         userImage.clipsToBounds = true
         userImage.contentMode = .scaleAspectFill
-        userImage.image = .personPhoto
-        userImage.backgroundColor = .miniColor
-        nameLabel.font = UIFont(name: UIFont.SFProDisplayRegular, size: 20)
-        nameLabel.textColor = .miniColor
-        ageLabel.font = UIFont(name: UIFont.SFProDisplayRegular, size: 14)
-        ageLabel.textColor = .miniColor
-        dobLabel.font = UIFont(name: UIFont.SFProDisplayRegular, size: 14)
-        dobLabel.textColor = .miniColor
+        userImage.image = Images.personPhoto()
+        userImage.backgroundColor = Colors.miniColor()
+        nameLabel.font = Fonts.sfProDisplayRegular(size: 20)
+        nameLabel.textColor = Colors.miniColor()
+        ageLabel.font = Fonts.sfProDisplayRegular(size: 14)
+        ageLabel.textColor = Colors.miniColor()
+        dobLabel.font = Fonts.sfProDisplayRegular(size: 14)
+        dobLabel.textColor = Colors.miniColor()
     }
 }

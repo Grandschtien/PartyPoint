@@ -34,24 +34,24 @@ final class RegisterViewController: UIViewController {
     }()
     private lazy var registrationLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: UIFont.SFProDisplayBold, size: 36)
-        label.text = LabelTexts.registrationScreenLabel.rawValue
+        label.font = Fonts.sfProDisplayBold(size: 36)
+        label.text = Localizable.registration_screen_title()
         return label
     }()
     private lazy var userImage: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .center
-        imageView.backgroundColor = .miniColor
-        imageView.image = .personPhoto
+        imageView.backgroundColor = Colors.miniColor()
+        imageView.image = Images.personPhoto()
         return imageView
     }()
     
     private lazy var photoLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: UIFont.SFProDisplayBold, size: 14)
-        label.text = LabelTexts.photoLabel.rawValue
-        label.textColor = .miniColor
+        label.font = Fonts.sfProDisplayBold(size: 14)
+        label.text = Localizable.photo_label_title()
+        label.textColor = Colors.miniColor()
         label.numberOfLines = 3
         label.textAlignment = .center
         return label
@@ -63,18 +63,18 @@ final class RegisterViewController: UIViewController {
     
     private lazy var dynnamicRegisterStack: DynamicStackWithTF = {
         let placeholders = [
-            LabelTexts.name.rawValue,
-            LabelTexts.surname.rawValue,
-            LabelTexts.email.rawValue,
-            LabelTexts.password.rawValue,
-            LabelTexts.checkPassword.rawValue
+            Localizable.name_title_registration(),
+            Localizable.surname_title_registration(),
+            Localizable.email_title_registration(),
+            Localizable.password_title_registration(),
+            Localizable.check_password_title_registration()
         ]
         let stack = DynamicStackWithTF(placeholders: placeholders)
         return stack
     }()
     
     private lazy var registerButton: AppButton = {
-        let button = AppButton(withTitle: LabelTexts.registerButton.rawValue)
+        let button = AppButton(withTitle: Localizable.register_button_title())
         return button
     }()
     
@@ -122,7 +122,7 @@ final class RegisterViewController: UIViewController {
     }
     
     func setupUI() {
-        view.backgroundColor = .mainColor
+        view.backgroundColor = Colors.mainColor()
         view.addTapRecognizer(target: self, action: #selector(endEnditing))
         
         view.addSubview(navigationBar)

@@ -7,35 +7,50 @@
 //
 
 import UIKit
+import SnapKit
+
+private let ENTRY_LABEL_HORIZONTAL_OFFSETS: CGFloat = 42
+private let ENTRY_LABEL_HEIGHT: CGFloat = 108
+private let ENTRY_LABEL_WIDTH: CGFloat = 180
+private let ENTRY_LABEL_TOP_OFFSET: CGFloat = 50
+private let TF_STACK_HORIZONTAL_OFFSETS: CGFloat = 15
+private let TF_STACK_TOP_OFFSET: CGFloat = 35
+private let FORGOT_PASSWORD_BUTTON_WIDTH: CGFloat = 120
+private let FORGOT_PASSWORD_BUTTON_TOP_OFFSET: CGFloat = 25
+private let FORGOT_PASSWORD_BUTTON_HEIGHT: CGFloat = 17
+private let FORGOT_PASSWORD_BUTTON_HORIZONTAL_OFFSETS: CGFloat = 30
+private let HOW_TO_ENTER_STACK_HORIZONTAL_OFFSETS: CGFloat = 30
+private let HOW_TO_ENTER_STACK_TOP_OFFSET: CGFloat = 110
+
 
 final class EnterViewController: UIViewController {
     
     private lazy var entryLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.font = UIFont(name: UIFont.SFProDisplaySemibold, size: 30)
+        label.font = Fonts.sfProDisplayBold(size: 30.scale())
         label.numberOfLines = 3
-        label.text = LabelTexts.entryLabel.rawValue
+        label.text = Localizable.entry_label()
         return label
     }()
     
     private lazy var tfStack: DynamicStackWithTF = {
         //TODO: Make localize list
         let placeholders: [String] = [
-            LabelTexts.email.rawValue,
-            LabelTexts.password.rawValue
+            Localizable.email_title_registration(),
+            Localizable.password_title_registration()
         ]
         let stack = DynamicStackWithTF(frame: .zero, placeholders: placeholders)
         return stack
     }()
-    private var topTobottomConstraintOfEntryLabel: NSLayoutConstraint?
-    private var topTobottomConstraintOfButton: NSLayoutConstraint?
+    private var topTobottomConstraintOfEntryLabel: Constraint?
+    private var topTobottomConstraintOfButton: Constraint?
     
     private lazy var forgotPaaswdButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setTitle(LabelTexts.forgotPaaswdButton.rawValue, for: .normal)
-        btn.titleLabel?.font = UIFont(name: UIFont.SFProDisplayBold, size: 14)
-        btn.titleLabel?.textColor = .miniColor?.withAlphaComponent(0.75)
+        btn.setTitle(Localizable.forgot_password_button_title(), for: .normal)
+        btn.titleLabel?.font = Fonts.sfProDisplayBold(size: 14.scale())
+        btn.titleLabel?.textColor = Colors.mainColor()?.withAlphaComponent(0.75)
         btn.backgroundColor = .clear
         btn.addTarget(self, action: #selector(fogotButtonPressed(_:)), for: .touchUpInside)
         return btn
@@ -47,6 +62,7 @@ final class EnterViewController: UIViewController {
         stack.delegate = self
         return stack
     }()
+    
     private let output: EnterViewOutput
     
     init(output: EnterViewOutput) {
@@ -81,51 +97,41 @@ final class EnterViewController: UIViewController {
         NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillHideNotification, object: nil)
     }
     func setupUI() {
-        view.backgroundColor = .mainColor
+        view.backgroundColor = Colors.mainColor()
         view.addTapRecognizer(target: self, action: #selector(endEnditing))
         navigationController?.isNavigationBarHidden = true
-        view.addConstrained(subview: entryLabel,
-                            top: nil,
-                            left: 42,
-                            bottom: nil,
-                            right: nil)
-        NSLayoutConstraint.activate([
-            entryLabel.heightAnchor.constraint(equalToConstant: 108),
-            entryLabel.widthAnchor.constraint(equalToConstant: 180)
-        ])
-        topTobottomConstraintOfEntryLabel = entryLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50)
-        topTobottomConstraintOfEntryLabel?.isActive = true
-
         
-        view.addConstrained(subview: tfStack,
-                            top: nil,
-                            left: 15,
-                            bottom: nil,
-                            right: -15)
-        tfStack.topAnchor.constraint(
-            equalTo: entryLabel.bottomAnchor,
-            constant: 35
-        ).isActive = true
+        view.addSubview(entryLabel)
+        view.addSubview(tfStack)
         view.addSubview(forgotPaaswdButton)
-        NSLayoutConstraint.activate([
-            forgotPaaswdButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            forgotPaaswdButton.widthAnchor.constraint(equalToConstant: 120),
-            forgotPaaswdButton.topAnchor.constraint(equalTo: tfStack.bottomAnchor,
-                                                    constant: 25),
-            forgotPaaswdButton.heightAnchor.constraint(equalToConstant: 17)
-        ])
+        view.addSubview(howToEnterStack)
         
-        view.addConstrained(subview: howToEnterStack,
-                            top: nil,
-                            left: 30,
-                            bottom: nil,
-                            right: -30)
-        topTobottomConstraintOfButton = howToEnterStack.topAnchor.constraint (
-            equalTo: forgotPaaswdButton.bottomAnchor,
-            constant: 110
-        )
-        topTobottomConstraintOfButton?.isActive = true
+        entryLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(ENTRY_LABEL_HORIZONTAL_OFFSETS.scale())
+            $0.width.equalTo(ENTRY_LABEL_WIDTH.scale())
+            $0.height.equalTo(ENTRY_LABEL_HEIGHT.scale())
+            topTobottomConstraintOfEntryLabel = $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(ENTRY_LABEL_TOP_OFFSET.scale()).constraint
+        }
         
+        tfStack.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(TF_STACK_HORIZONTAL_OFFSETS.scale())
+            $0.right.equalToSuperview().inset(TF_STACK_HORIZONTAL_OFFSETS.scale())
+            $0.top.equalTo(entryLabel.snp.bottom).offset(TF_STACK_TOP_OFFSET.scale())
+        }
+        
+        forgotPaaswdButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.left.equalToSuperview().offset(FORGOT_PASSWORD_BUTTON_HORIZONTAL_OFFSETS.scale())
+            $0.right.equalToSuperview().inset(FORGOT_PASSWORD_BUTTON_HORIZONTAL_OFFSETS.scale())
+            $0.top.equalTo(tfStack.snp.bottom).offset(FORGOT_PASSWORD_BUTTON_TOP_OFFSET.scale())
+            $0.height.equalTo(FORGOT_PASSWORD_BUTTON_HEIGHT.scale())
+        }
+        
+        howToEnterStack.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(HOW_TO_ENTER_STACK_HORIZONTAL_OFFSETS.scale())
+            $0.right.equalToSuperview().inset(HOW_TO_ENTER_STACK_HORIZONTAL_OFFSETS.scale())
+            topTobottomConstraintOfButton = $0.top.equalTo(forgotPaaswdButton.snp.bottom).offset(HOW_TO_ENTER_STACK_TOP_OFFSET.scale()).constraint
+        }
     }
 }
 
@@ -155,20 +161,20 @@ extension EnterViewController: HowToEnterStackViewDelegate {
 extension EnterViewController {
     @objc
     func keyboardWillShow(_ notification: Notification) {
-        if topTobottomConstraintOfEntryLabel?.constant == 50 {
+        if topTobottomConstraintOfEntryLabel?.layoutConstraints[0].constant == ENTRY_LABEL_TOP_OFFSET.scale() {
             UIView.animate(withDuration: 0.3) { [weak self] in
-                self?.topTobottomConstraintOfEntryLabel?.constant -= 120
-                self?.topTobottomConstraintOfButton?.constant -= 50
+                self?.topTobottomConstraintOfEntryLabel?.layoutConstraints[0].constant -= FORGOT_PASSWORD_BUTTON_WIDTH.scale()
+                self?.topTobottomConstraintOfButton?.layoutConstraints[0].constant -= ENTRY_LABEL_TOP_OFFSET.scale()
                 self?.view.layoutIfNeeded()
             }
         }
     }
     @objc
     func keyboardWillHide(_ notification: Notification) {
-        if topTobottomConstraintOfEntryLabel?.constant == -70 {
+        if topTobottomConstraintOfEntryLabel?.layoutConstraints[0].constant ?? 0 <= -70.scale() {
             UIView.animate(withDuration: 0.3) { [weak self] in
-                self?.topTobottomConstraintOfEntryLabel?.constant += 120
-                self?.topTobottomConstraintOfButton?.constant += 50
+                self?.topTobottomConstraintOfEntryLabel?.layoutConstraints[0].constant += FORGOT_PASSWORD_BUTTON_WIDTH.scale()
+                self?.topTobottomConstraintOfButton?.layoutConstraints[0].constant += ENTRY_LABEL_TOP_OFFSET.scale()
                 self?.view.layoutIfNeeded()
             }
         }

@@ -19,10 +19,10 @@ final class EventHeaderLabel: UILabel {
         
         switch labelType {
         case .main:
-            self.font = UIFont(name: UIFont.SFProDisplayBold, size: 36.scale())
+            self.font = Fonts.sfProDisplayBold(size: 36.scale())
             self.textColor = .white
         case .secondary:
-            self.font = UIFont(name: UIFont.SFProDisplayBold, size: 24.scale())
+            self.font = Fonts.sfProDisplayBold(size: 24.scale())
             self.textColor = .white
         }
     }

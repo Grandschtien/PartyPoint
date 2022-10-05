@@ -17,16 +17,16 @@ final class AppTextField: UITextField {
         self.attributedPlaceholder = NSAttributedString(
             string: placeholder,
             attributes: [
-                .foregroundColor: UIColor.mainColor?.withAlphaComponent(0.5) ?? .blue.withAlphaComponent(0.5),
-                .font: UIFont(name: UIFont.SFProDisplayBold, size: 16) ?? UIFont.systemFont(ofSize: 14),
+                .foregroundColor: Colors.mainColor()?.withAlphaComponent(0.5) ?? .blue.withAlphaComponent(0.5),
+                .font: Fonts.sfProDisplayBold(size: 16) ?? UIFont.systemFont(ofSize: 14),
             ]
         )
-        self.textColor = .mainColor
-        self.font = UIFont(name: UIFont.SFProDisplaySemibold, size: 16)
+        self.textColor = Colors.mainColor()
+        self.font = Fonts.sfProDisplayBold(size: 14)
         switch placeholder {
-        case LabelTexts.password.rawValue:
+        case Localizable.password_title_registration():
             self.isSecureTextEntry = true
-        case LabelTexts.checkPassword.rawValue:
+        case Localizable.check_password_title_registration():
             self.isSecureTextEntry = true
         default:
             break
@@ -39,7 +39,7 @@ final class AppTextField: UITextField {
     
     private func setupUI() {
         self.borderStyle = .none
-        self.backgroundColor = .miniColor
+        self.backgroundColor = Colors.miniColor()
         self.layer.cornerRadius = 8
     }
     

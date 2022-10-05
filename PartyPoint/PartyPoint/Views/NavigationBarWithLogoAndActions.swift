@@ -22,7 +22,7 @@ final class NavigationBarWithLogoAndActions: NavigationBarWithLogo {
     private let isTitleNeeded: Bool
     weak var delegate: NavigationBarWithLogoAndActionsDelegate?
     init(background: UIColor = .clear,
-         image: UIImage? = .logo,
+         image: UIImage? = Images.logo(),
          frame: CGRect,
          buttons: Set<Buttons>,
          isImageNeed: Bool = true,
@@ -67,7 +67,7 @@ private extension NavigationBarWithLogoAndActions {
             button.widthAnchor.constraint(equalToConstant: 35).isActive = true
             switch buttonsImge {
             case . exit:
-                button.setImage(.exit, for: .normal)
+                button.setImage(Images.exit(), for: .normal)
                 button.rightAnchor.constraint(
                     equalTo: self.rightAnchor,
                     constant: -20).isActive = true
@@ -76,7 +76,7 @@ private extension NavigationBarWithLogoAndActions {
                 ).isActive = true
                 button.addTarget(self, action: #selector(exitActionTapped), for: .touchUpInside)
             case .back:
-                button.setImage(.chevronBack, for: .normal)
+                button.setImage(Images.chevronBack(), for: .normal)
                 button.leftAnchor.constraint(
                     equalTo: self.leftAnchor,
                     constant: 20).isActive = true
@@ -85,7 +85,7 @@ private extension NavigationBarWithLogoAndActions {
                 ).isActive = true
                 button.addTarget(self, action: #selector(backActionTapped), for: .touchUpInside)
             case .share:
-                button.setImage(.shareOutline, for: .normal)
+                button.setImage(Images.shareOutline(), for: .normal)
                 button.rightAnchor.constraint(
                     equalTo: self.rightAnchor,
                     constant: -20).isActive = true

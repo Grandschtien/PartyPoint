@@ -27,19 +27,19 @@ final class FogotPasswordViewController: UIViewController {
     }()
     private lazy var restorePasswdLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: UIFont.SFProDisplaySemibold, size: 30)
-        label.text = LabelTexts.restorePasswdLabel.rawValue
+        label.font = Fonts.sfProDisplaySemibold(size: 30)
+        label.text = Localizable.restore_password_title()
         label.numberOfLines = 2
         label.textAlignment = .left
         return label
     }()
     private lazy var emailTF: AppTextField = {
-        let tf = AppTextField(frame: .zero, placeholder: LabelTexts.email.rawValue)
+        let tf = AppTextField(frame: .zero, placeholder: Localizable.email_title_registration())
         return tf
     }()
     
     private lazy var sendButton: AppButton = {
-        let btn = AppButton(withTitle: LabelTexts.sendButton.rawValue)
+        let btn = AppButton(withTitle: Localizable.send_password_button_title())
         btn.action = { [weak self] in
             self?.sendAction()
         }
@@ -82,7 +82,7 @@ final class FogotPasswordViewController: UIViewController {
         NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillHideNotification, object: nil)
     }
     private func setupUI() {
-        view.backgroundColor = .mainColor
+        view.backgroundColor = Colors.mainColor()
         view.addTapRecognizer(target: self, action: #selector(endEnditing))
         view.addSubview(navigationBar)
         

@@ -17,10 +17,10 @@ class HowToEnterStackView: UIStackView {
     
     weak var delegate: HowToEnterStackViewDelegate?
     
-    private let labelsFont = UIFont(name: UIFont.SFProDisplayBold, size: 15)
+    private let labelsFont = Fonts.sfProDisplayBold(size: 15)
     
     private lazy var enterButton: AppButton = {
-        let btn = AppButton(withTitle: LabelTexts.enterButton.rawValue)
+        let btn = AppButton(withTitle: Localizable.enter_button_title())
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.action = { [weak self] in
             self?.enterButtonPressed()
@@ -32,10 +32,10 @@ class HowToEnterStackView: UIStackView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = labelsFont
         label.textAlignment = .center
-        let text = NSMutableAttributedString(string: LabelTexts.registerLabel.rawValue)
-        let currLocAndLen = getCurrLocationAndLenth(str:LabelTexts.registerLabel.rawValue)
+        let text = NSMutableAttributedString(string: Localizable.register_label())
+        let currLocAndLen = getCurrLocationAndLenth(str: Localizable.register_label())
         text.addAttributes(
-            [.foregroundColor: UIColor.buttonColor!],
+            [.foregroundColor: Colors.buttonColor() ?? UIColor.red],
             range: NSRange(location: currLocAndLen.location, length: currLocAndLen.length)
         )
         label.attributedText = text
@@ -47,8 +47,8 @@ class HowToEnterStackView: UIStackView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = labelsFont
-        label.textColor = .miniColor
-        label.text = LabelTexts.orLabel.rawValue
+        label.textColor = Colors.miniColor()
+        label.text = Localizable.or_label()
         label.textAlignment = .center
         return label
     }()
@@ -56,8 +56,8 @@ class HowToEnterStackView: UIStackView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = labelsFont
-        label.textColor = .buttonColor
-        label.text = LabelTexts.withoutAccLabel.rawValue
+        label.textColor = Colors.buttonColor()
+        label.text = Localizable.without_account_label_title()
         label.textAlignment = .center
         label.addTapRecognizer(target: self, action: #selector(enterWithOutAccount(_:)))
         label.isUserInteractionEnabled = true

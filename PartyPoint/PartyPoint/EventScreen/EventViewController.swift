@@ -45,7 +45,7 @@ final class EventViewController: UIViewController {
 private extension EventViewController {
     func setupUI() {
         navigationController?.isNavigationBarHidden = true
-        view.backgroundColor = .mainColor
+        view.backgroundColor = Colors.mainColor()
         navigationBar.delegate = self
         navigationBar.setTitle("Концерт басты", isHidden: true)
         eventView.delegate = self
@@ -62,8 +62,8 @@ extension EventViewController: EventViewDelegate {
     func setNavTitleVisibleIfNeeded(offset: CGFloat) {
         if offset <= 76 {
             navigationBar.setTitle("Концерт басты", isHidden: false)
-            navigationBar.backgroundColor = .mainColor
-            changeStatusBarColor(.mainColor)
+            navigationBar.backgroundColor = Colors.mainColor()
+            changeStatusBarColor(Colors.mainColor())
         } else {
             navigationBar.setTitle("Концерт басты", isHidden: true)
             navigationBar.backgroundColor = .clear

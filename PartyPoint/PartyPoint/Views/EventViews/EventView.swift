@@ -68,15 +68,15 @@ private extension EventView {
     }
     
     func setupUI() {
-        backgroundImageView.image = .moc
-        backgroundOfContentListView.backgroundColor = .mainColor
+        backgroundImageView.image = Images.moc()
+        backgroundOfContentListView.backgroundColor = Colors.mainColor()
         
         
         let imageContainer = UIView()
         imageContainer.backgroundColor = .darkGray
         
         let backColorView = UIView()
-        backColorView.backgroundColor = .mainColor
+        backColorView.backgroundColor = Colors.mainColor()
         backColorView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         backColorView.layer.cornerRadius = CORNER_RADIUS
         

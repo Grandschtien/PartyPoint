@@ -10,20 +10,21 @@ import UIKit
 import SnapKit
 
 private let TABLE_VIEW_CONTENT_OFFSET: CGFloat = 23
+private let TABLE_CONTENT_OFFSET_WHEN_KEYBOARD_SHOWS: CGFloat = 120
 
 final class ProfileViewController: UIViewController {
     
     private lazy var navigationBar: NavigationBarWithLogoAndActions = {
         let nav = NavigationBarWithLogoAndActions(frame: .zero, buttons: [.exit])
         nav.delegate = self
-        nav.backgroundColor = .mainColor
+        nav.backgroundColor = Colors.mainColor()
         return nav
     }()
     private lazy var userInfoTableView: UITableView = {
         let table = UITableView()
         table.registerNib(cellType: UserInfoCell.self)
         table.registerCell(cellType: AboutMeCell.self)
-        table.backgroundColor = .mainColor
+        table.backgroundColor = Colors.mainColor()
         table.separatorStyle = .none
         table.isScrollEnabled = false
         return table
@@ -51,6 +52,7 @@ final class ProfileViewController: UIViewController {
         let user = UserInfo(photo: "Concert", name: "Егор", bithdate: "16 ноября 2001", age: "20", aboutMe: "Я такой то такой то, отттуда то оттуда то и вот я тут")
         userInfoTableAdapter.configurate(withUserInfo: user)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenterManager.addObserver(observer: self,
@@ -62,6 +64,7 @@ final class ProfileViewController: UIViewController {
                                               name: UIWindow.keyboardWillHideNotification,
                                               object: nil)
     }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillShowNotification, object: nil)
@@ -69,7 +72,7 @@ final class ProfileViewController: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .mainColor
+        view.backgroundColor = Colors.mainColor()
         navigationController?.isNavigationBarHidden = true
         
         view.addSubview(userInfoTableView)
@@ -113,7 +116,7 @@ extension ProfileViewController {
     func keyboardWillShow(_ notification: Notification) {
         if let insetsToTop = insetsToTop,
            insetsToTop - userInfoTableView.contentInset.top == 0 {
-            userInfoTableView.contentInset.top -= 120
+            userInfoTableView.contentInset.top -= TABLE_CONTENT_OFFSET_WHEN_KEYBOARD_SHOWS.scale()
             userInfoTableView.isScrollEnabled = true
         }
     }
@@ -121,7 +124,7 @@ extension ProfileViewController {
     func keyboardWillHide(_ notification: Notification) {
         if let insetsToTop = insetsToTop,
            insetsToTop - userInfoTableView.contentInset.top != 0 {
-            userInfoTableView.contentInset.top += 120
+            userInfoTableView.contentInset.top += TABLE_CONTENT_OFFSET_WHEN_KEYBOARD_SHOWS.scale()
             userInfoTableView.isScrollEnabled = false
         }
     }

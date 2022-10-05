@@ -11,20 +11,20 @@ class NavigationBarWithLogo: UIView {
     
     internal lazy var imageView: UIView = {
         let view = UIView(frame: .zero)
-        view.layer.contents = UIImage.logo?.cgImage
+        view.layer.contents = Images.logo()?.cgImage
         return view
     }()
     
     internal lazy var title: UILabel = {
        let label = UILabel()
-        label.font = UIFont(name: UIFont.SFProDisplayBold, size: 20)
-        label.textColor = .miniColor
+        label.font = Fonts.sfProDisplayBold(size: 20)
+        label.textColor = Colors.miniColor()
         return label
     }()
     
     
     init(background: UIColor = .clear,
-         image: UIImage? = .logo,
+         image: UIImage? = Images.logo(),
          frame: CGRect) {
         let navFrame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.width, height: 78)
         super.init(frame: navFrame)

@@ -69,24 +69,24 @@ private extension MainFlowCoordinator {
         if #available(iOS 13, *) {
             let navigationBarAppearance = UINavigationBarAppearance()
             navigationBarAppearance.configureWithTransparentBackground()
-            navigationBarAppearance.backgroundColor = UIColor.mainColor
+            navigationBarAppearance.backgroundColor = Colors.mainColor()
             UINavigationBar.appearance().standardAppearance = navigationBarAppearance
             UINavigationBar.appearance().compactAppearance = navigationBarAppearance
             UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         }
         tabBarController.tabBar.isTranslucent = false
-        tabBarController.tabBar.barTintColor = .mainColor
-        tabBarController.tabBar.backgroundColor = .mainColor
+        tabBarController.tabBar.barTintColor = Colors.mainColor()
+        tabBarController.tabBar.backgroundColor = Colors.mainColor()
         tabBarController.tabBar.shadowImage = nil
         UITabBarItem.appearance().setTitleTextAttributes(
             [
-                .font : UIFont(name: UIFont.SFProDisplayRegular, size: 12)!,
-                .foregroundColor: UIColor.tabBarSelected!
+                .font : Fonts.sfProDisplayRegular(size: 12)!,
+                .foregroundColor: Colors.tabBarBarUnselected()!
             ], for: .selected)
         UITabBarItem.appearance().setTitleTextAttributes(
             [
-                .font : UIFont(name: UIFont.SFProDisplayRegular, size: 12)!,
-                .foregroundColor: UIColor.tabBarBarUnselected!
+                .font : Fonts.sfProDisplayRegular(size: 12)!,
+                .foregroundColor: Colors.tabBarBarUnselected()!
             ], for: .normal)
     }
     
@@ -99,8 +99,8 @@ private extension MainFlowCoordinator {
                                           selectedImage: navControllerKey.image)
             
             navigationController.tabBarItem = tabBarItem
-            UINavigationBar.appearance().barTintColor = .mainColor
-            UINavigationBar.appearance().backgroundColor = .mainColor
+            UINavigationBar.appearance().barTintColor = Colors.mainColor()
+            UINavigationBar.appearance().backgroundColor = Colors.mainColor()
             result[navControllerKey] = navigationController
         }
         return result
@@ -124,22 +124,22 @@ fileprivate enum NavControllerType: Int, CaseIterable {
     var image: UIImage? {
         switch self {
         case .events:
-            return .wine?.withRenderingMode(.alwaysOriginal)
+            return Images.wine()?.withRenderingMode(.alwaysOriginal)
         case .favourites:
-            return .heartFill?.withRenderingMode(.alwaysOriginal)
+            return Images.heartFill()?.withRenderingMode(.alwaysOriginal)
         case .profile:
-            return .person?.withRenderingMode(.alwaysOriginal)
+            return Images.person()?.withRenderingMode(.alwaysOriginal)
         }
     }
     
     var unselectedImage: UIImage? {
         switch self {
         case .events:
-            return .unselectedWine?.withRenderingMode(.alwaysOriginal)
+            return Images.unselectedWine()?.withRenderingMode(.alwaysOriginal)
         case .favourites:
-            return .unselectedHeart?.withRenderingMode(.alwaysOriginal)
+            return Images.unselectedHeart()?.withRenderingMode(.alwaysOriginal)
         case .profile:
-            return .unselectedPerson?.withRenderingMode(.alwaysOriginal)
+            return Images.unselectedPerson()?.withRenderingMode(.alwaysOriginal)
         }
     }
 }

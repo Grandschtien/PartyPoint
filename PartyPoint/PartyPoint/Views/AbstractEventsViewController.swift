@@ -24,18 +24,18 @@ class AbstractEventsViewController: UIViewController {
         collection.registerWithNib(
             EventCell.self
         )
-        collection.backgroundColor = .mainColor
+        collection.backgroundColor = Colors.mainColor()
         return collection
     }()
     
     /// Метод можно перегрузить, если надо зарегать хедер или какую ниубдь другую ячейку
     /// В нем уже прописан весь layout необходимый для того, что navigation bar вел себя так как нужно и т.д
     internal func setupUI() {
-        view.backgroundColor = .mainColor
+        view.backgroundColor = Colors.miniColor()
         let label = UILabel(frame: .zero)
-        label.font = UIFont(name: UIFont.SFProDisplaySemibold, size: 17)
-        label.textColor = .miniColor
-        label.text = LabelTexts.events.rawValue
+        label.font = Fonts.sfProDisplaySemibold(size: 17)
+        label.textColor = Colors.miniColor()
+        label.text = Localizable.events_title()
         navigationItem.titleView = label
         
         //setup collection
@@ -48,7 +48,7 @@ class AbstractEventsViewController: UIViewController {
         )
         
         //This needs to set background for status bar
-        changeStatusBarColor(.mainColor)
+        changeStatusBarColor(Colors.mainColor())
         
         //setup navigation bar
         navigationController?.navigationBar.addConstrained(
@@ -62,7 +62,7 @@ class AbstractEventsViewController: UIViewController {
             equalTo:  navigationBar.topAnchor,
             constant: statusBarFrame.height
         ).isActive = true
-        navigationBar.backgroundColor = .mainColor
+        navigationBar.backgroundColor = Colors.mainColor()
         eventsCollection.contentInset.top = navigationBar.frame.height - statusBarFrame.height
         
     }

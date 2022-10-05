@@ -10,25 +10,25 @@ import UIKit
 final class AboutMeCell: UITableViewCell {
     private lazy var aboutMeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: UIFont.SFProDisplayRegular, size: 24)
-        label.text = LabelTexts.aboutMeLabel.rawValue
-        label.textColor = .miniColor
+        label.font = Fonts.sfProDisplayRegular(size: 24)
+        label.text = Localizable.about_me_label_title()
+        label.textColor = Colors.miniColor()
         return label
     }()
     
     private lazy var aboutMeTextView: UITextView = {
         let tv = UITextView()
         tv.textColor = .black.withAlphaComponent(0.5)
-        tv.font = UIFont(name: UIFont.SFProDisplayRegular, size: 14)
+        tv.font = Fonts.sfProDisplayRegular(size: 14)
         tv.layer.cornerRadius = 10
-        tv.backgroundColor = .miniColor
-        tv.text = LabelTexts.abuotMeTextView.rawValue
+        tv.backgroundColor = Colors.miniColor()
+        tv.text = Localizable.about_me_text_view_placeholder()
         tv.delegate = self
         
         return tv
     }()
     private lazy var saveChagesButton: AppButton = {
-        let btn = AppButton(withTitle: LabelTexts.saveChanges.rawValue)
+        let btn = AppButton(withTitle: Localizable.save_changes_button_title())
         
         return btn
     }()
@@ -44,7 +44,7 @@ final class AboutMeCell: UITableViewCell {
     
     private func setupUI() {
         self.selectionStyle = .none
-        self.contentView.backgroundColor = .mainColor
+        self.contentView.backgroundColor = Colors.mainColor()
         contentView.addConstrained(subview: aboutMeLabel, top: 10, left: 30, bottom: nil, right: nil)
         
         contentView.addConstrained(subview: aboutMeTextView, top: nil, left: 30, bottom: nil, right: -30)
@@ -73,12 +73,12 @@ extension AboutMeCell: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == .black.withAlphaComponent(0.5) {
             textView.text = nil
-            textView.textColor = .mainColor
+            textView.textColor = Colors.mainColor()
         }
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = LabelTexts.abuotMeTextView.rawValue
+            textView.text = Localizable.about_me_text_view_placeholder()
             textView.textColor = .black.withAlphaComponent(0.5)
         }
     }

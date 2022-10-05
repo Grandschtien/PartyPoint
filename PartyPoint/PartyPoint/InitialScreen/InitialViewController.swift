@@ -30,21 +30,21 @@ final class InitialViewController: UIViewController {
         let view = UIView(frame: .zero)
         view.layer.cornerRadius = 20
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        view.backgroundColor = .mainColor
+        view.backgroundColor = Colors.mainColor()
         return view
     }()
     
     private lazy var initLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .left
-        label.font = UIFont(name: UIFont.SFProDisplaySemibold, size: 25)
-        label.text = LabelTexts.initLabel.rawValue
+        label.font = Fonts.sfProDisplaySemibold(size: 25)
+        label.text = Localizable.init_label()
         label.numberOfLines = 2
         return label
     }()
     
     private lazy var goButton: AppButton = {
-        let button = AppButton(withTitle: LabelTexts.goButton.rawValue)
+        let button = AppButton(withTitle: Localizable.go_button_title())
         button.action =  { [weak self] in
             self?.buttonTapped()
         }
@@ -53,8 +53,8 @@ final class InitialViewController: UIViewController {
     
     private lazy var userOfferLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.font = UIFont(name: UIFont.SFProDisplaySemibold, size: 12)
-        label.text = LabelTexts.userOfferLabel.rawValue
+        label.font = Fonts.sfProDisplaySemibold(size: 12)
+        label.text = Localizable.user_offer()
         label.textAlignment = .center
         label.numberOfLines = 2
         label.alpha = 0.5
@@ -78,7 +78,7 @@ final class InitialViewController: UIViewController {
     func setupUI() {
         self.navigationController?.isNavigationBarHidden = true
         
-        view.layer.contents = UIImage.concert?.cgImage
+        view.layer.contents = Images.concert()?.cgImage
         view.addSubview(navigationBar)
         view.addSubview(bottomView)
         bottomView.addSubview(initLabel)

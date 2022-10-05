@@ -10,15 +10,15 @@ import UIKit
 final class EventsTypeHeaderHeader: UICollectionReusableView {
     private lazy var header: UILabel = {
         let label = UILabel()
-        label.textColor = .miniColor
-        label.font = UIFont(name: UIFont.SFProDisplayBold, size: 24)
+        label.textColor = Colors.mainColor()
+        label.font = Fonts.sfProDisplayBold(size: 24)
         return label
     }()
     
     private lazy var moreButton: UIButton = {
         let btn = UIButton()
-        btn.titleLabel?.font = UIFont(name: UIFont.SFProDisplayBold, size: 24)
-        btn.setTitle(LabelTexts.moreButton.rawValue, for: .normal)
+        btn.titleLabel?.font = Fonts.sfProDisplayBold(size: 24)
+        btn.setTitle(Localizable.more_button_title(), for: .normal)
         btn.addTarget(self, action: #selector(moreAction), for: .touchUpInside)
         return btn
     }()

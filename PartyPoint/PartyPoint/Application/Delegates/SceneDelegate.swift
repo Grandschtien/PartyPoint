@@ -7,6 +7,11 @@
 
 import UIKit
 
+typealias Localizable = R.string.localizable
+typealias Images = R.image
+typealias Colors = R.color
+typealias Fonts = R.font
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?

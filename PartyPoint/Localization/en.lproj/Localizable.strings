@@ -1,0 +1,66 @@
+/* На первой экране лейбл */
+"init_label" = "Hangouts of your city in one application 💃";
+
+/* На первом экране лейбр пользовательского соглашения */
+"user_offer" = "By clicking “Hang out“, you accept the user agreement and privacy policy";
+
+/* На первом экране заголовок кнопки */
+"go_button_title" = "Hang out!";
+
+/* На экране входа заголовок экрана */
+"entry_label" = "Welcome to PartyPoint";
+
+/* Кнопка забыли пароль на экране входа */
+"forgot_password_button_title" = "Forgot your password?";
+
+/* Кнопка "Войти" на экаране входа*/
+"enter_button_title" = "Enter";
+
+/* Кнопка для регистрации на экране входа */
+"register_label" = "Don't have an account? Register";
+
+/* Текст для "или" */
+"or_label" = "or";
+
+/* Кнопка входа без аккаунта на экране входа */
+"without_account_label_title" = "Login without an account";
+
+/* Подпись к фото на эране регистарции */
+"photo_label_title" = "A photo is optional, but with it it will be easier for other people to understand who you are 😉";
+
+/* Кнопка регистрации на экране регистрации */
+"register_button_title" = "Register";
+
+/* Заголовок экрана регитсрации */
+"registration_screen_title" = "Registration";
+
+/* Кнопка восстановления пароля*/
+"restore_password_title" = "Password recovery";
+
+/* Загловки на экране регистрации */
+"name_title_registration" = "Name";
+
+"surname_title_registration" = "Surname";
+
+"email_title_registration" = "Email";
+
+"password_title_registration" = "Password";
+
+"check_password_title_registration" = "Repeat password";
+
+"send_password_button_title" = "Send password";
+
+/* Заголовки на таб баре и нав баре */
+"events_title" = "Events";
+
+"favourites_title" = "Favourites";
+
+"about_me_label_title" = "About me";
+
+/* Заголовки на экране профиля */
+"about_me_text_view_placeholder" = "Press me";
+
+"save_changes_button_title" = "Save changes 🖋";
+
+"more_button_title" = "More";
+

@@ -18,22 +18,22 @@ extension UIViewController {
         if let leftButton = buttons.left {
             switch leftButton {
             case .exit:
-                leftBarButton = UIBarButtonItem(image: .exit, style: .plain, target: self, action: actions.leftAction)
+                leftBarButton = UIBarButtonItem(image:  Images.exit(), style: .plain, target: self, action: actions.leftAction)
             case .share:
-                leftBarButton = UIBarButtonItem(image: .shareOutline, style: .plain, target: self, action: actions.leftAction)
+                leftBarButton = UIBarButtonItem(image: Images.shareOutline(), style: .plain, target: self, action: actions.leftAction)
             case .back:
-                leftBarButton = UIBarButtonItem(image: .chevronBack, style: .plain, target: self, action: actions.leftAction)
+                leftBarButton = UIBarButtonItem(image: Images.chevronBack(), style: .plain, target: self, action: actions.leftAction)
             }
         }
         
         if let rightButton = buttons.right {
             switch rightButton {
             case .exit:
-                rightBarButton = UIBarButtonItem(image: .exit, style: .plain, target: self, action: actions.rightAction)
+                rightBarButton = UIBarButtonItem(image: Images.exit(), style: .plain, target: self, action: actions.rightAction)
             case .share:
-                rightBarButton = UIBarButtonItem(image: .shareOutline, style: .plain, target: self, action: actions.rightAction)
+                rightBarButton = UIBarButtonItem(image: Images.shareOutline(), style: .plain, target: self, action: actions.rightAction)
             case .back:
-                rightBarButton = UIBarButtonItem(image: .chevronBack, style: .plain, target: self, action: actions.rightAction)
+                rightBarButton = UIBarButtonItem(image: Images.chevronBack(), style: .plain, target: self, action: actions.rightAction)
             }
         }
         
