@@ -7,6 +7,10 @@
 
 import UIKit
 
+private let DESTIONATION_FONT: CGFloat = 15 * SCREEN_SCALE_BY_HEIGHT
+private let NAME_FONT: CGFloat = 30 * SCREEN_SCALE_BY_HEIGHT
+private let DATE_FONT: CGFloat = 20 * SCREEN_SCALE_BY_HEIGHT
+
 class EventCell: UICollectionViewCell {
     @IBOutlet weak var destinationLabel: UILabel!
     @IBOutlet weak var destinationView: UIView!
@@ -21,15 +25,15 @@ class EventCell: UICollectionViewCell {
        
         //config destinationLabel
         
-        destinationLabel.font = Fonts.sfProDisplayRegular(size: 15)
+        destinationLabel.font = Fonts.sfProDisplayRegular(size: DESTIONATION_FONT)
         destinationLabel.textColor = Colors.miniColor()
         destinationView.layer.cornerRadius = 5
         
         destinationView.backgroundColor = Colors.mainColor()
         destinationView.clipsToBounds = true
-        nameLabel.font = Fonts.sfProDisplayBold(size: 30)
+        nameLabel.font = Fonts.sfProDisplayBold(size: NAME_FONT)
         nameLabel.textColor = Colors.miniColor()
-        dateLabel.font = Fonts.sfProDisplaySemibold(size: 20)
+        dateLabel.font = Fonts.sfProDisplaySemibold(size: DATE_FONT)
         likeView.layer.cornerRadius = 10
         likeView.backgroundColor = Colors.miniColor()
         likeView.layer.opacity = 0.6

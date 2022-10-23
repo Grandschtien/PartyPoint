@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+private let APP_TF_HEIGHT: CGFloat = 50 * SCREEN_SCALE_BY_HEIGHT
+
 final class DynamicStackWithTF: UIStackView {
     
     private(set) var placeholders: [String]
@@ -33,13 +35,12 @@ final class DynamicStackWithTF: UIStackView {
         self.spacing = 22
         for placeholder in placeholders {
             let appTF = AppTextField(frame: frame, placeholder: placeholder)
-            
-            appTF.translatesAutoresizingMaskIntoConstraints = false
             textFields?.append(appTF)
             self.addArrangedSubview(appTF)
-            appTF.heightAnchor.constraint(equalToConstant: 50).isActive = true
-            appTF.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-            appTF.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+            appTF.snp.makeConstraints {
+                $0.height.equalTo(APP_TF_HEIGHT)
+                $0.left.right.equalToSuperview()
+            }
         }
     }
 }

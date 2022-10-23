@@ -20,6 +20,7 @@ final class ProfileViewController: UIViewController {
         nav.backgroundColor = Colors.mainColor()
         return nav
     }()
+    
     private lazy var userInfoTableView: UITableView = {
         let table = UITableView()
         table.registerNib(cellType: UserInfoCell.self)
@@ -34,8 +35,10 @@ final class ProfileViewController: UIViewController {
         let adapter = ProfileTableAdapter(userInfoTableView)
         return adapter
     }()
+    
     private let output: ProfileViewOutput
     private var insetsToTop: CGFloat?
+    
     init(output: ProfileViewOutput) {
         self.output = output
         
@@ -43,7 +46,7 @@ final class ProfileViewController: UIViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
     override func viewDidLoad() {
@@ -89,7 +92,7 @@ final class ProfileViewController: UIViewController {
         }
         
  
-        userInfoTableView.contentInset.top = navigationBar.frame.height + TABLE_VIEW_CONTENT_OFFSET.scale()
+        userInfoTableView.contentInset.top = navigationBar.height + TABLE_VIEW_CONTENT_OFFSET.scale()
         insetsToTop = navigationBar.frame.height + TABLE_VIEW_CONTENT_OFFSET.scale()
         
         let tapRec = UITapGestureRecognizer(target: self, action: #selector(endEditing))

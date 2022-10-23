@@ -26,6 +26,10 @@ extension BaseRouter {
         viewController?.navigationController?.popViewController(animated: animated)
     }
     
+    func dismiss(animated: Bool) {
+        viewController?.dismiss(animated: animated)
+    }
+    
     func popToRoot(animated: Bool) {
         viewController?.navigationController?.popToRootViewController(animated: animated)
     }
@@ -36,5 +40,5 @@ extension BaseRouter {
     
     func show(vc: UIViewController, sender: Any?) {
         viewController?.show(vc, sender: sender)
-    }
+    }    
 }

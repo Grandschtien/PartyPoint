@@ -7,6 +7,10 @@
 
 import UIKit
 
+private let NAME_LABEL_FONT_SIZE: CGFloat = 20 * SCREEN_SCALE_BY_HEIGHT
+private let AGE_LABEL_FONT_SIZE: CGFloat = 14 * SCREEN_SCALE_BY_HEIGHT
+private let DOB_LABEL_FONT_SIZE: CGFloat = 14 * SCREEN_SCALE_BY_HEIGHT
+
 final class UserInfoCell: UITableViewCell {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -25,11 +29,11 @@ final class UserInfoCell: UITableViewCell {
         userImage.contentMode = .scaleAspectFill
         userImage.image = Images.personPhoto()
         userImage.backgroundColor = Colors.miniColor()
-        nameLabel.font = Fonts.sfProDisplayRegular(size: 20)
+        nameLabel.font = Fonts.sfProDisplayRegular(size: NAME_LABEL_FONT_SIZE)
         nameLabel.textColor = Colors.miniColor()
-        ageLabel.font = Fonts.sfProDisplayRegular(size: 14)
+        ageLabel.font = Fonts.sfProDisplayRegular(size: AGE_LABEL_FONT_SIZE)
         ageLabel.textColor = Colors.miniColor()
-        dobLabel.font = Fonts.sfProDisplayRegular(size: 14)
+        dobLabel.font = Fonts.sfProDisplayRegular(size: DOB_LABEL_FONT_SIZE)
         dobLabel.textColor = Colors.miniColor()
     }
 }

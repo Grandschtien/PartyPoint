@@ -29,7 +29,7 @@ final class EventViewController: UIViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
 	override func viewDidLoad() {
@@ -50,7 +50,7 @@ private extension EventViewController {
         navigationBar.setTitle("Концерт басты", isHidden: true)
         eventView.delegate = self
         view.addSubview(navigationBar)
-
+        
         navigationBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.leading.trailing.equalToSuperview()

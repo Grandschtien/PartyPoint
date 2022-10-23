@@ -7,6 +7,8 @@
 
 import UIKit
 
+private let ENTER_BUTTON_HEIGHT: CGFloat = 56 * SCREEN_SCALE_BY_HEIGHT
+
 protocol HowToEnterStackViewDelegate: AnyObject {
     func enterButtonPressed()
     func registerButtonPressed()
@@ -27,9 +29,9 @@ class HowToEnterStackView: UIStackView {
         }
         return btn
     }()
+    
     private(set) lazy var registerLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = labelsFont
         label.textAlignment = .center
         let text = NSMutableAttributedString(string: Localizable.register_label())
@@ -43,18 +45,18 @@ class HowToEnterStackView: UIStackView {
         label.isUserInteractionEnabled = true
         return label
     }()
+    
     private lazy var orLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = labelsFont
         label.textColor = Colors.miniColor()
         label.text = Localizable.or_label()
         label.textAlignment = .center
         return label
     }()
+    
     private(set) lazy var withoutAccLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = labelsFont
         label.textColor = Colors.buttonColor()
         label.text = Localizable.without_account_label_title()
@@ -79,24 +81,16 @@ class HowToEnterStackView: UIStackView {
         self.addArrangedSubview(orLabel)
         self.addArrangedSubview(withoutAccLabel)
         
-        NSLayoutConstraint.activate([
-            enterButton.heightAnchor.constraint(equalToConstant: 56),
-            enterButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            enterButton.trailingAnchor.constraint(equalTo: self.trailingAnchor)
-        ])
+        enterButton.snp.makeConstraints {
+            $0.height.equalTo(ENTER_BUTTON_HEIGHT)
+            $0.left.right.equalToSuperview()
+        }
         
-        NSLayoutConstraint.activate([
-            registerLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            registerLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
-        ])
-        NSLayoutConstraint.activate([
-            orLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            orLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
-        ])
-        NSLayoutConstraint.activate([
-            withoutAccLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            withoutAccLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
-        ])
+        [registerLabel, orLabel, withoutAccLabel].forEach { label in
+            label.snp.makeConstraints {
+                $0.left.right.equalToSuperview()
+            }
+        }
         
         self.axis = .vertical
         self.spacing = 10

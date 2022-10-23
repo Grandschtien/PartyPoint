@@ -7,6 +7,8 @@
 
 import UIKit
 
+private let TITLE_LABEL_FONT_SIZE: CGFloat = 17 * SCREEN_SCALE_BY_HEIGHT
+
 ///  Этот класс нужен, чтоб не повторять два одинаковых контроллера
 class AbstractEventsViewController: UIViewController {
     
@@ -21,50 +23,60 @@ class AbstractEventsViewController: UIViewController {
             frame: .zero,
             collectionViewLayout: UICollectionViewFlowLayout()
         )
+        
         collection.registerWithNib(
             EventCell.self
         )
+        
+        collection.registerWithNib(
+            EventCell.self
+        )
+        
+        collection.showsVerticalScrollIndicator = false
+        collection.showsHorizontalScrollIndicator = false
+        
         collection.backgroundColor = Colors.mainColor()
         return collection
+    }()
+    
+    internal lazy var titleLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.font = Fonts.sfProDisplaySemibold(size: TITLE_LABEL_FONT_SIZE)
+        label.textColor = Colors.miniColor()
+        label.text = Localizable.events_title()
+        label.backgroundColor = Colors.mainColor()
+        return label
     }()
     
     /// Метод можно перегрузить, если надо зарегать хедер или какую ниубдь другую ячейку
     /// В нем уже прописан весь layout необходимый для того, что navigation bar вел себя так как нужно и т.д
     internal func setupUI() {
         view.backgroundColor = Colors.miniColor()
-        let label = UILabel(frame: .zero)
-        label.font = Fonts.sfProDisplaySemibold(size: 17)
-        label.textColor = Colors.miniColor()
-        label.text = Localizable.events_title()
-        navigationItem.titleView = label
+        navigationItem.titleView = titleLabel
+        navigationController?.navigationBar.backgroundColor = Colors.mainColor()
+        navigationItem.titleView?.backgroundColor = Colors.mainColor()
         
-        //setup collection
-        eventsCollection.showsVerticalScrollIndicator = false
-        eventsCollection.showsHorizontalScrollIndicator = false
-        view.addConstrained(subview: eventsCollection, top: nil, left: 0, bottom: 0, right: 0)
-        eventsCollection.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        eventsCollection.registerWithNib(
-            EventCell.self
-        )
-        
-        //This needs to set background for status bar
         changeStatusBarColor(Colors.mainColor())
-        
-        //setup navigation bar
-        navigationController?.navigationBar.addConstrained(
-            subview: navigationBar,
-            top: nil,
-            left: 0,
-            bottom: nil,
-            right: 0
-        )
-        navigationBar.topAnchor.constraint(
-            equalTo:  navigationBar.topAnchor,
-            constant: statusBarFrame.height
-        ).isActive = true
         navigationBar.backgroundColor = Colors.mainColor()
-        eventsCollection.contentInset.top = navigationBar.frame.height - statusBarFrame.height
+      
+        view.addSubview(eventsCollection)
+        navigationController?.navigationBar.addSubview(navigationBar)
         
+        setupConstraints()
+                
+        eventsCollection.contentInset.top = (navigationBar.height - statusBarFrame.height) * SCREEN_SCALE_BY_HEIGHT
+    }
+    
+    func setupConstraints() {
+        eventsCollection.snp.makeConstraints {
+            $0.left.right.bottom.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
+        
+        navigationBar.snp.makeConstraints {
+            $0.right.left.equalToSuperview()
+            $0.top.equalTo(navigationBar.snp.top).offset(statusBarFrame.height)
+        }
     }
 }
 

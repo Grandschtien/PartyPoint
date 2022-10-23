@@ -121,17 +121,25 @@ final class EventsCollectionViewAdapter: NSObject {
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
         item.contentInsets.top = 5
         item.contentInsets.bottom = 15
+        
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .estimated(250))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        
+        group.contentInsets.leading = 10
+        group.contentInsets.trailing = 10
+        
         let section = NSCollectionLayoutSection(group: group)
+        
         section.boundarySupplementaryItems = [setupHeader()]
-        section.contentInsets.leading = 20
-        section.contentInsets.trailing = 20
+        section.contentInsets.leading = 10
+        section.contentInsets.trailing = 10
         section.contentInsets.top = 10
+        
         return section
     }
     

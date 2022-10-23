@@ -9,7 +9,6 @@
 import UIKit
 
 final class EventsViewController: AbstractEventsViewController {
-    
     private lazy var eventsCollectionAdapter: EventsCollectionViewAdapter = {
         let adapter = EventsCollectionViewAdapter(eventsCollection)
         adapter.delegate = self
@@ -25,7 +24,7 @@ final class EventsViewController: AbstractEventsViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
     override func viewDidLoad() {
@@ -33,9 +32,11 @@ final class EventsViewController: AbstractEventsViewController {
         setupUI()
         eventsCollectionAdapter.configure(Section<Event>.allSections)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
+        navigationBar.isHidden = false
     }
     
     internal override func setupUI() {
