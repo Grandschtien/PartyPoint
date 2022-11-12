@@ -8,35 +8,61 @@
 import Foundation
 
 final class Router<EndPoint: EndPointType>: NetworkRouter {
-    private var task: URLSessionTask?
+    private var tasks: [Task<Data?, Error>] = []
     
-    func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion) {
+    func request(_ route: EndPoint) async throws -> Data? {
         let session = URLSession.shared
-        
         do {
             let request = try self.buildRequest(from: route)
-            task = session.dataTask(with: request, completionHandler: { data, response, error in
-                completion(data, response, error)
-            })
+            let task = Task { () -> Data? in
+                let (data, response) = try await session.data(for: request)
+                guard let error = checkResponse(response: response) else {
+                    return data
+                }
+                throw error
+            }
+            tasks.append(task)
+            return try await task.value
         } catch {
-            completion(nil, nil, error)
+            return nil
         }
-        self.task?.resume()
     }
     
-    func cancel() {
-        self.task?.cancel()
+    func cancelAll() {
+        self.tasks.forEach { $0.cancel() }
     }
     
+    func cancel(index: Int) {
+        self.tasks[index].cancel()
+    }
+}
+
+private extension Router {
+    func checkResponse(response: URLResponse) -> NetworkResponses? {
+        guard let response = response as? HTTPURLResponse else {
+            return NetworkResponses.other
+        }
+        
+        switch response.statusCode {
+        case 200..<300:
+            return nil
+        case 300..<400:
+            return NetworkResponses.serverError(response: response.statusCode)
+        case 400..<500:
+            return NetworkResponses.clientError(response: response.statusCode)
+        default:
+            return NetworkResponses.other
+        }
+    }
     
-    fileprivate func buildRequest(from route: EndPoint) throws -> URLRequest {
+    func buildRequest(from route: EndPoint) throws -> URLRequest {
         var request = URLRequest(url: route.baseUrl.appendingPathComponent(route.path),
                                  cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
                                  timeoutInterval: 10.0)
         request.httpMethod = route.httpMethod.rawValue
         
         do {
-            switch route.tast {
+            switch route.task {
             case .request:
                 request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             case let .requestParameters(bodyParameters,
@@ -59,7 +85,7 @@ final class Router<EndPoint: EndPointType>: NetworkRouter {
         }
     }
     
-    fileprivate func configureParameters(bodyParameters: Parameters?,
+    func configureParameters(bodyParameters: Parameters?,
                                          urlParameters: Parameters?,
                                          request: inout URLRequest) throws {
         do {
@@ -74,7 +100,7 @@ final class Router<EndPoint: EndPointType>: NetworkRouter {
         }
     }
     
-    fileprivate func addAdditionalHeaders(_ additionalHeaders: HTTPHeaders?, request: inout URLRequest) {
+    func addAdditionalHeaders(_ additionalHeaders: HTTPHeaders?, request: inout URLRequest) {
         guard let additionalHeaders = additionalHeaders else {
             return
         }

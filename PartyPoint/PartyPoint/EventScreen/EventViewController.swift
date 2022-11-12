@@ -9,9 +9,12 @@
 import UIKit
 
 final class EventViewController: UIViewController {
+    enum NavigatioBarState {
+        case hidden
+        case noHidden
+    }
     
-	private let output: EventViewOutput
-    
+    private let output: EventViewOutput
     private let navigationBar = NavigationBarWithLogoAndActions(
         image: nil,
         frame: .zero,
@@ -19,8 +22,9 @@ final class EventViewController: UIViewController {
         isImageNeed: false,
         isTitleNeeded: true
     )
-    
     private let eventView = EventView()
+    
+    private var navBarCurrentState: NavigatioBarState = .hidden
     
     init(output: EventViewOutput) {
         self.output = output
@@ -32,10 +36,10 @@ final class EventViewController: UIViewController {
         return nil
     }
     
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setupUI()
-	}
+    }
     
     override func loadView() {
         view = eventView
@@ -52,7 +56,7 @@ private extension EventViewController {
         view.addSubview(navigationBar)
         
         navigationBar.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.top.equalToSuperview().offset(statusBarFrame.height)
             $0.leading.trailing.equalToSuperview()
         }
     }

@@ -7,10 +7,10 @@
 
 import UIKit
 
-private let TITLE_LABLE_FONT_SIZE: CGFloat = 20 * SCREEN_SCALE_BY_HEIGHT
-private let NAVIGATION_BAR_HEIGHT: CGFloat = 78 * SCREEN_SCALE_BY_HEIGHT
-private let TITLE_IMAGE_HEIGHT: CGFloat = 66 * SCREEN_SCALE_BY_HEIGHT
-private let TITLE_IMAGE_WIDTH: CGFloat = 132 * SCREEN_SCALE_BY_HEIGHT
+private let TITLE_LABLE_FONT_SIZE: CGFloat = 20.scale()
+private let NAVIGATION_BAR_HEIGHT: CGFloat = 78.scale()
+private let TITLE_IMAGE_HEIGHT: CGFloat = 66.scale()
+private let TITLE_IMAGE_WIDTH: CGFloat = 132.scale()
 
 class NavigationBarWithLogo: UIView {
     

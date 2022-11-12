@@ -42,12 +42,12 @@ final class EnterViewController: UIViewController {
         let stack = DynamicStackWithTF(frame: .zero, placeholders: placeholders)
         return stack
     }()
+    
     private var topTobottomConstraintOfEntryLabel: Constraint?
     private var topTobottomConstraintOfButton: Constraint?
     
     private lazy var forgotPaaswdButton: UIButton = {
         let btn = UIButton()
-        btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitle(Localizable.forgot_password_button_title(), for: .normal)
         btn.titleLabel?.font = Fonts.sfProDisplayBold(size: 14.scale())
         btn.titleLabel?.textColor = Colors.mainColor()?.withAlphaComponent(0.75)
@@ -58,7 +58,6 @@ final class EnterViewController: UIViewController {
     
     private lazy var howToEnterStack: HowToEnterStackView = {
         let stack = HowToEnterStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
         stack.delegate = self
         return stack
     }()
@@ -72,14 +71,15 @@ final class EnterViewController: UIViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-       
+        navigationController?.navigationBar.isHidden = true
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenterManager.addObserver(observer: self,
@@ -91,16 +91,17 @@ final class EnterViewController: UIViewController {
                                               name: UIWindow.keyboardWillHideNotification,
                                               object: nil)
     }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillShowNotification, object: nil)
         NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillHideNotification, object: nil)
     }
+    
     func setupUI() {
         view.backgroundColor = Colors.mainColor()
         view.addTapRecognizer(target: self, action: #selector(endEnditing))
-        navigationController?.isNavigationBarHidden = true
-        
+
         view.addSubview(entryLabel)
         view.addSubview(tfStack)
         view.addSubview(forgotPaaswdButton)

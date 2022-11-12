@@ -19,29 +19,17 @@ class EventCell: UICollectionViewCell {
     @IBOutlet weak var likeView: UIView!
     @IBOutlet weak var likeImage: UIImageView!
     @IBOutlet weak var image: UIView!
-    
+//    private let nameLabel = UILabel()
+//    private let destinationLabel = UILabel()
+//    private let destinationImage = UIImageView()
+//    private let destinationView = UIView()
+//    private let likeView = UIView()
+//    private let likeImage = UIImageView()
+//    private let dateLabel = UILabel()
+//
     override func awakeFromNib() {
         super.awakeFromNib()
-       
-        //config destinationLabel
-        
-        destinationLabel.font = Fonts.sfProDisplayRegular(size: DESTIONATION_FONT)
-        destinationLabel.textColor = Colors.miniColor()
-        destinationView.layer.cornerRadius = 5
-        
-        destinationView.backgroundColor = Colors.mainColor()
-        destinationView.clipsToBounds = true
-        nameLabel.font = Fonts.sfProDisplayBold(size: NAME_FONT)
-        nameLabel.textColor = Colors.miniColor()
-        dateLabel.font = Fonts.sfProDisplaySemibold(size: DATE_FONT)
-        likeView.layer.cornerRadius = 10
-        likeView.backgroundColor = Colors.miniColor()
-        likeView.layer.opacity = 0.6
-        likeView.clipsToBounds = true
-        likeView.layer.allowsGroupOpacity = false
-        self.clipsToBounds = true
-        self.layer.cornerRadius = 10
-        
+        setupUI()
     }
 
     func configure(withEvent event: Event) {
@@ -49,5 +37,35 @@ class EventCell: UICollectionViewCell {
         self.nameLabel.text = event.name
         self.dateLabel.text = event.date
         self.image.layer.contents = UIImage(named: event.image)?.cgImage
+    }
+}
+
+//MARK: Private methods
+private extension EventCell {
+    func setupUI() {
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 10
+        
+//        self.contentView.addSubview(nameLabel)
+//        self.contentView.addSubview(dateLabel)
+//        self.contentView.addSubview(destinationView)
+//        self.contentView.addSubview(likeView)
+        destinationLabel.font = Fonts.sfProDisplayRegular(size: DESTIONATION_FONT)
+        destinationLabel.textColor = Colors.miniColor()
+        destinationView.layer.cornerRadius = 5
+        destinationView.backgroundColor = Colors.mainColor()
+        destinationView.clipsToBounds = true
+        
+        nameLabel.font = Fonts.sfProDisplayBold(size: NAME_FONT)
+        nameLabel.textColor = Colors.miniColor()
+        
+        dateLabel.font = Fonts.sfProDisplaySemibold(size: DATE_FONT)
+        dateLabel.textColor = Colors.miniColor()
+        
+        likeView.layer.cornerRadius = 10
+        likeView.backgroundColor = Colors.miniColor()
+        likeView.layer.opacity = 0.6
+        likeView.clipsToBounds = true
+        likeView.layer.allowsGroupOpacity = false
     }
 }

@@ -15,6 +15,7 @@ final class EnterRouter {
     init(window: UIWindow) {
         self.window = window
     }
+    
     func setViewController(viewContrller: UIViewController) {
         self.viewController = viewContrller
     }

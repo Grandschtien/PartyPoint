@@ -37,10 +37,12 @@ final class EventsViewController: AbstractEventsViewController {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
         navigationBar.isHidden = false
+        navigationBar.backgroundColor = Colors.mainColor()
     }
     
     internal override func setupUI() {
         super.setupUI()
+        view.backgroundColor = Colors.mainColor()
         eventsCollection.register(
             EventsTypeHeaderHeader.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -61,6 +63,8 @@ extension EventsViewController: EventsDelegate {
         let context = EventContext(moduleOutput: nil)
         let container = EventContainer.assemble(with: context)
         container.viewController.hidesBottomBarWhenPushed = true
+        navigationBar.backgroundColor = .clear
+        navigationBar.isHidden = true
         navigationController?.pushViewController(container.viewController, animated: true)
     }
 }

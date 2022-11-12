@@ -61,7 +61,7 @@ extension AuthEndPoint: EndPointType {
         }
     }
     
-    var tast: HTTPTask {
+    var task: HTTPTask {
         switch self {
         case let .login(email, passwd):
             return .requestParameters(bodyParameters: ["email": email,

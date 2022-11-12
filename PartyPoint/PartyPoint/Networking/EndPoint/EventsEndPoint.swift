@@ -48,7 +48,7 @@ extension EventsEndPoint: EndPointType {
         return .get
     }
     
-    var tast: HTTPTask {
+    var task: HTTPTask {
         switch self {
         default: return .request
         }

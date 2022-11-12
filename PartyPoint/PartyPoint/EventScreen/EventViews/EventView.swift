@@ -12,8 +12,6 @@ protocol EventViewDelegate: AnyObject {
     func setNavTitleVisibleIfNeeded(offset: CGFloat)
 }
 
-//Constants
-
 private let CORNER_RADIUS = 20.scale()
 private let COLOR_BACKGROUND_OFFSET = -20.scale()
 private let SCROLL_VIEW_INSETS = 46.scale()
@@ -39,8 +37,9 @@ final class EventView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         makeScrollViewSize()
@@ -57,7 +56,6 @@ extension EventView: UIScrollViewDelegate {
 
 private extension EventView {
     func setupLayers() {
-        
         backgroundImageView.contentMode = .scaleAspectFill
         backgroundImageView.clipsToBounds = true
         
@@ -65,6 +63,7 @@ private extension EventView {
         scrollView.backgroundColor = .clear
         scrollView.showsVerticalScrollIndicator = false
         scrollView.delegate = self
+        scrollView.resignFirstResponder()
     }
     
     func setupUI() {
@@ -119,6 +118,7 @@ private extension EventView {
         eventInfoView.snp.makeConstraints {
             $0.edges.equalTo(backgroundOfContentListView)
         }
+        
         scrollView.bringSubviewToFront(backColorView)
         scrollView.bringSubviewToFront(backgroundOfContentListView)
         scrollView.contentInset.bottom = SCROLL_VIEW_INSETS

@@ -12,12 +12,7 @@ private let TITLE_LABEL_FONT_SIZE: CGFloat = 17 * SCREEN_SCALE_BY_HEIGHT
 ///  Этот класс нужен, чтоб не повторять два одинаковых контроллера
 class AbstractEventsViewController: UIViewController {
     
-    internal lazy var navigationBar: NavigationBarWithLogo = {
-        let nav = NavigationBarWithLogo(frame: .zero)
-        
-        return nav
-    }()
-    
+    internal let navigationBar =  NavigationBarWithLogo(frame: .zero)
     internal lazy var eventsCollection: UICollectionView = {
         let collection = UICollectionView(
             frame: .zero,
@@ -52,13 +47,11 @@ class AbstractEventsViewController: UIViewController {
     /// В нем уже прописан весь layout необходимый для того, что navigation bar вел себя так как нужно и т.д
     internal func setupUI() {
         view.backgroundColor = Colors.miniColor()
+        navigationController?.navigationBar.backgroundColor = Colors.mainColor()
         navigationItem.titleView = titleLabel
         navigationController?.navigationBar.backgroundColor = Colors.mainColor()
         navigationItem.titleView?.backgroundColor = Colors.mainColor()
-        
-        changeStatusBarColor(Colors.mainColor())
         navigationBar.backgroundColor = Colors.mainColor()
-      
         view.addSubview(eventsCollection)
         navigationController?.navigationBar.addSubview(navigationBar)
         

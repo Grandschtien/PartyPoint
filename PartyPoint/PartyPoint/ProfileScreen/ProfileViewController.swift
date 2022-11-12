@@ -118,15 +118,16 @@ extension ProfileViewController {
     @objc
     func keyboardWillShow(_ notification: Notification) {
         if let insetsToTop = insetsToTop,
-           insetsToTop - userInfoTableView.contentInset.top == 0 {
+           insetsToTop - userInfoTableView.contentInset.top <= 0 {
             userInfoTableView.contentInset.top -= TABLE_CONTENT_OFFSET_WHEN_KEYBOARD_SHOWS.scale()
             userInfoTableView.isScrollEnabled = true
         }
     }
+    
     @objc
     func keyboardWillHide(_ notification: Notification) {
         if let insetsToTop = insetsToTop,
-           insetsToTop - userInfoTableView.contentInset.top != 0 {
+           insetsToTop - userInfoTableView.contentInset.top >= 0 {
             userInfoTableView.contentInset.top += TABLE_CONTENT_OFFSET_WHEN_KEYBOARD_SHOWS.scale()
             userInfoTableView.isScrollEnabled = false
         }
