@@ -20,9 +20,11 @@ protocol RegisterViewInput: AnyObject {
 
 protocol RegisterViewOutput: AnyObject {
     func backButtonPressed()
+    func registeButtonPressed(registerInfo: [String?]) async
 }
 
 protocol RegisterInteractorInput: AnyObject {
+    func registerUser(with info: [String?]) async
 }
 
 protocol RegisterInteractorOutput: AnyObject {

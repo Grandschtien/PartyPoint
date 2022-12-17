@@ -15,7 +15,8 @@ final class EnterPresenter {
 	private let router: EnterRouterInput
 	private let interactor: EnterInteractorInput
     
-    init(router: EnterRouterInput, interactor: EnterInteractorInput) {
+    init(router: EnterRouterInput,
+         interactor: EnterInteractorInput) {
         self.router = router
         self.interactor = interactor
     }
@@ -25,8 +26,13 @@ extension EnterPresenter: EnterModuleInput {
 }
 
 extension EnterPresenter: EnterViewOutput {
-    func enterButtonPressed() {
-        router.startMainWithAccountFlow()
+    func enterButtonPressed(email: String, passwd: String) async {
+        if checkTextFieldsIsEmpty(login: email, password: passwd) {
+            view?.showTFIsEmptyView()
+            return
+        } else {
+            await interactor.enterButtonPressed(email: email, password: passwd)
+        }
     }
     
     func fogotPasswordButtonPressed() {
@@ -41,7 +47,19 @@ extension EnterPresenter: EnterViewOutput {
         router.startMainWithoutAccountFlow()
     }
     
+    func checkTextFieldsIsEmpty(login: String, password: String) -> Bool {
+        return login.isEmpty || password.isEmpty
+    }
 }
 
 extension EnterPresenter: EnterInteractorOutput {
+    func authorized() {
+        DispatchQueue.main.async {
+            self.router.startMainWithAccountFlow()
+        }
+    }
+    
+    func notAuthorized(error: String) {
+        //TODO: Handle error
+    }
 }

@@ -64,3 +64,5 @@
 
 "more_button_title" = "More";
 
+/* Ошибки сети*/
+"authentication_failed" = "Authentication failed. Please, try again.";

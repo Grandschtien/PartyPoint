@@ -16,7 +16,6 @@ final class ProfileViewController: UIViewController {
     
     private lazy var navigationBar: NavigationBarWithLogoAndActions = {
         let nav = NavigationBarWithLogoAndActions(frame: .zero, buttons: [.exit])
-        nav.delegate = self
         nav.backgroundColor = Colors.mainColor()
         return nav
     }()
@@ -98,9 +97,11 @@ final class ProfileViewController: UIViewController {
         let tapRec = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         userInfoTableView.addGestureRecognizer(tapRec)
     }
-    @objc
-    func endEditing() {
-        view.endEditing(false)
+    
+    private func setActions() {
+        navigationBar.setExitAction {
+            //TODO: Exit actions
+        }
     }
 }
 
@@ -108,11 +109,6 @@ extension ProfileViewController: ProfileViewInput {
 }
 
 
-extension ProfileViewController: NavigationBarWithLogoAndActionsDelegate {
-    func exitAction() {
-        print("exit action")
-    }
-}
 //MARK: Keyboard notifications
 extension ProfileViewController {
     @objc
@@ -131,5 +127,10 @@ extension ProfileViewController {
             userInfoTableView.contentInset.top += TABLE_CONTENT_OFFSET_WHEN_KEYBOARD_SHOWS.scale()
             userInfoTableView.isScrollEnabled = false
         }
+    }
+    
+    @objc
+    func endEditing() {
+        view.endEditing(false)
     }
 }

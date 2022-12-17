@@ -20,11 +20,11 @@ extension AuthEndPoint: EndPointType {
     var enviromentslBaseUrl: String {
         switch NetworkManager.enviroment {
         case .qa:
-            return "http://45.141.102.243:8080/api/auth"
+            return "https://diplomatest.site/api/auth"
         case .production:
-            return "http://45.141.102.243:8080/api/auth"
+            return "https://45.141.102.243:8080/api/auth"
         case .debug:
-            return "http://127.0.0.1:8080/api/auth"
+            return "https://diplomatest.site/api/auth"
         }
     }
     

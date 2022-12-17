@@ -15,10 +15,13 @@ final class EnterContainer {
 
 	static func assemble(with context: EnterContext) -> EnterContainer {
         let router = EnterRouter(window: context.window)
-        let interactor = EnterInteractor()
-        let presenter = EnterPresenter(router: router, interactor: interactor)
+        let networkRouter = Router<AuthEndPoint>()
+        let authManager = AuthManagerImpl(router: networkRouter)
+        let interactor = EnterInteractor(authManager: authManager)
+        let presenter = EnterPresenter(router: router,
+                                       interactor: interactor)
 		let viewController = EnterViewController(output: presenter)
-
+        
         router.setViewController(viewContrller: viewController)
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput

@@ -15,7 +15,9 @@ final class RegisterContainer {
 
 	static func assemble(with context: RegisterContext) -> RegisterContainer {
         let router = RegisterRouter(window: context.window)
-        let interactor = RegisterInteractor()
+        let networkRouter = Router<AuthEndPoint>()
+        let authManager = AuthManagerImpl(router: networkRouter)
+        let interactor = RegisterInteractor(authManager: authManager)
         let presenter = RegisterPresenter(router: router, interactor: interactor)
 		let viewController = RegisterViewController(output: presenter)
         router.setViewController(viewController: viewController)

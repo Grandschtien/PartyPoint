@@ -50,7 +50,6 @@ private extension EventViewController {
     func setupUI() {
         navigationController?.isNavigationBarHidden = true
         view.backgroundColor = Colors.mainColor()
-        navigationBar.delegate = self
         navigationBar.setTitle("Концерт басты", isHidden: true)
         eventView.delegate = self
         view.addSubview(navigationBar)
@@ -58,6 +57,18 @@ private extension EventViewController {
         navigationBar.snp.makeConstraints {
             $0.top.equalToSuperview().offset(statusBarFrame.height)
             $0.leading.trailing.equalToSuperview()
+        }
+        
+        setActions()
+    }
+    
+    func setActions() {
+        navigationBar.setBackAction { [weak self] in
+            self?.output.backAction()
+        }
+        
+        navigationBar.setShareAction {
+            //TODO: Share action
         }
     }
 }
@@ -74,14 +85,6 @@ extension EventViewController: EventViewDelegate {
             changeStatusBarColor(.clear)
         }
     }
-}
-
-extension EventViewController: NavigationBarWithLogoAndActionsDelegate {
-    func backAction() {
-        output.backAction()
-    }
-    
-    func shareAction() {}
 }
 
 extension EventViewController: EventViewInput {

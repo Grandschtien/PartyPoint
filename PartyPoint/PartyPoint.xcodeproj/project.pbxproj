@@ -19,7 +19,11 @@
 		604147BC28D4DCBF0052F60D /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604147BB28D4DCBF0052F60D /* URLParameterEncoder.swift */; };
 		604147BE28D4DED60052F60D /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604147BD28D4DED60052F60D /* JSONParameterEncoder.swift */; };
 		6042172328BBE67F0063BF68 /* AnyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6042172228BBE67F0063BF68 /* AnyView.swift */; };
+		6052918C294E084F005B0373 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6052918B294E084F005B0373 /* RegisterView.swift */; };
 		6060C91028ED86D800E6E593 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6060C91228ED86D800E6E593 /* Localizable.strings */; };
+		6060DE6B29210AF50017F7F7 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6060DE6A29210AF50017F7F7 /* AuthManager.swift */; };
+		6060DE6D29210BD30017F7F7 /* ValidationTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6060DE6C29210BD30017F7F7 /* ValidationTokenManager.swift */; };
+		6060DE702921145A0017F7F7 /* EnterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6060DE6F2921145A0017F7F7 /* EnterView.swift */; };
 		6070D43228ABDE1F0054F61B /* EventPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42C28ABDE1F0054F61B /* EventPresenter.swift */; };
 		6070D43328ABDE1F0054F61B /* EventRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42D28ABDE1F0054F61B /* EventRouter.swift */; };
 		6070D43428ABDE1F0054F61B /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42E28ABDE1F0054F61B /* EventViewController.swift */; };
@@ -144,10 +148,14 @@
 		604147BB28D4DCBF0052F60D /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
 		604147BD28D4DED60052F60D /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		6042172228BBE67F0063BF68 /* AnyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyView.swift; sourceTree = "<group>"; };
+		6052918B294E084F005B0373 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		6060C91128ED86D800E6E593 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6060C91328ED870900E6E593 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		6060C91428ED870900E6E593 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		6060C91528ED870900E6E593 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6060DE6A29210AF50017F7F7 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		6060DE6C29210BD30017F7F7 /* ValidationTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTokenManager.swift; sourceTree = "<group>"; };
+		6060DE6F2921145A0017F7F7 /* EnterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterView.swift; sourceTree = "<group>"; };
 		6070D42C28ABDE1F0054F61B /* EventPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPresenter.swift; sourceTree = "<group>"; };
 		6070D42D28ABDE1F0054F61B /* EventRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRouter.swift; sourceTree = "<group>"; };
 		6070D42E28ABDE1F0054F61B /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
@@ -254,6 +262,7 @@
 		60DB792528B4C55A0058A3D7 /* DescriptionEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionEventView.swift; sourceTree = "<group>"; };
 		60DB792728B4CED50058A3D7 /* EventViewWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewWithButton.swift; sourceTree = "<group>"; };
 		60DB792928B4CFD80058A3D7 /* EventMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMapView.swift; sourceTree = "<group>"; };
+		60E627E0292391DF0074151C /* PartyPoint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PartyPoint.entitlements; sourceTree = "<group>"; };
 		60EAE93B28AFC6F500030055 /* EventHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeaderLabel.swift; sourceTree = "<group>"; };
 		60EAE93D28AFCD0700030055 /* LayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutHelper.swift; sourceTree = "<group>"; };
 		60EAE93F28AFCD9D00030055 /* UIView+Scales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Scales.swift"; sourceTree = "<group>"; };
@@ -313,12 +322,47 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		6052918A294E083B005B0373 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6052918B294E084F005B0373 /* RegisterView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6060C90D28ED86BA00E6E593 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
 				6060C91228ED86D800E6E593 /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		6060DE6829210A8E0017F7F7 /* AuthFlow */ = {
+			isa = PBXGroup;
+			children = (
+				6097177F287EDE1E0084A63C /* FogotPasswordScreen */,
+				60971766287DA5FE0084A63C /* EnterScreen */,
+				60971780287EDE280084A63C /* RegisterScreen */,
+			);
+			path = AuthFlow;
+			sourceTree = "<group>";
+		};
+		6060DE6929210AEA0017F7F7 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				6060DE6A29210AF50017F7F7 /* AuthManager.swift */,
+				6060DE6C29210BD30017F7F7 /* ValidationTokenManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		6060DE6E2921144C0017F7F7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6060DE6F2921145A0017F7F7 /* EnterView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		6070D42B28ABDDFB0054F61B /* EventScreen */ = {
@@ -427,15 +471,11 @@
 		609716D9287D75230084A63C /* PartyPoint */ = {
 			isa = PBXGroup;
 			children = (
-				600F450328D4D94000367025 /* Networking */,
-				609716EE287D75940084A63C /* Application */,
-				609716F1287D78F80084A63C /* Extensions */,
-				6073B873288194B100AF07FA /* Entities */,
+				60E627E0292391DF0074151C /* PartyPoint.entitlements */,
 				609716E8287D752B0084A63C /* Info.plist */,
+				609716EE287D75940084A63C /* Core */,
+				6060DE6829210A8E0017F7F7 /* AuthFlow */,
 				6070D42B28ABDDFB0054F61B /* EventScreen */,
-				60971766287DA5FE0084A63C /* EnterScreen */,
-				60971780287EDE280084A63C /* RegisterScreen */,
-				6097177F287EDE1E0084A63C /* FogotPasswordScreen */,
 				609716FF287D820C0084A63C /* ProfileScreen */,
 				609716FE287D82030084A63C /* FavouritesScreen */,
 				609716FD287D81F80084A63C /* EventsScreen */,
@@ -445,9 +485,13 @@
 			path = PartyPoint;
 			sourceTree = "<group>";
 		};
-		609716EE287D75940084A63C /* Application */ = {
+		609716EE287D75940084A63C /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				6060DE6929210AEA0017F7F7 /* Managers */,
+				6073B873288194B100AF07FA /* Entities */,
+				609716F1287D78F80084A63C /* Extensions */,
+				600F450328D4D94000367025 /* Networking */,
 				60DA4CE928BE130B00B7E428 /* BaseComponents */,
 				60DB791E28B406120058A3D7 /* CommonClasses */,
 				60918EDB288835D500D9E032 /* Protocols */,
@@ -460,7 +504,7 @@
 				60971799287EF5B70084A63C /* AuthRouterProtocol.swift */,
 				6097179B287F172C0084A63C /* NotificationCenterManager.swift */,
 			);
-			path = Application;
+			path = Core;
 			sourceTree = "<group>";
 		};
 		609716EF287D75A70084A63C /* Delegates */ = {
@@ -588,6 +632,7 @@
 		60971766287DA5FE0084A63C /* EnterScreen */ = {
 			isa = PBXGroup;
 			children = (
+				6060DE6E2921144C0017F7F7 /* Views */,
 				60971767287DA60D0084A63C /* EnterPresenter.swift */,
 				60971768287DA60D0084A63C /* EnterRouter.swift */,
 				60971769287DA60D0084A63C /* EnterViewController.swift */,
@@ -614,6 +659,7 @@
 		60971780287EDE280084A63C /* RegisterScreen */ = {
 			isa = PBXGroup;
 			children = (
+				6052918A294E083B005B0373 /* View */,
 				60971781287EDE4A0084A63C /* RegisterPresenter.swift */,
 				60971782287EDE4A0084A63C /* RegisterRouter.swift */,
 				60971783287EDE4A0084A63C /* RegisterViewController.swift */,
@@ -837,6 +883,7 @@
 				601BB71728D1D43200048359 /* UIViewController+Extension.swift in Sources */,
 				604147B928D4DC7A0052F60D /* NetworkError.swift in Sources */,
 				6097178C287EDE4A0084A63C /* RegisterContainer.swift in Sources */,
+				6052918C294E084F005B0373 /* RegisterView.swift in Sources */,
 				6073B87B2881A01800AF07FA /* EventCell.swift in Sources */,
 				60971731287D840A0084A63C /* InitialRouter.swift in Sources */,
 				609716F8287D7D880084A63C /* AppCoordinator.swift in Sources */,
@@ -866,6 +913,7 @@
 				60DB792A28B4CFD80058A3D7 /* EventMapView.swift in Sources */,
 				60918EE128883F7800D9E032 /* EventsScrollDelegate.swift in Sources */,
 				6097171F287D824A0084A63C /* ProfileRouter.swift in Sources */,
+				6060DE702921145A0017F7F7 /* EnterView.swift in Sources */,
 				60971787287EDE4A0084A63C /* RegisterPresenter.swift in Sources */,
 				60971771287DA60D0084A63C /* EnterInteractor.swift in Sources */,
 				60971770287DA60D0084A63C /* EnterProtocols.swift in Sources */,
@@ -877,6 +925,7 @@
 				6097172C287D83360084A63C /* FavouritesViewController.swift in Sources */,
 				60971793287EDE5D0084A63C /* FogotPasswordPresenter.swift in Sources */,
 				60971765287D9C630084A63C /* NavigationBarWithLogoAndActions.swift in Sources */,
+				6060DE6D29210BD30017F7F7 /* ValidationTokenManager.swift in Sources */,
 				6097176F287DA60D0084A63C /* EnterViewController.swift in Sources */,
 				60971797287EDE5D0084A63C /* FogotPasswordInteractor.swift in Sources */,
 				60971763287D9BD80084A63C /* NavigationBarWithLogo.swift in Sources */,
@@ -901,6 +950,7 @@
 				6097172E287D83360084A63C /* FavouritesInteractor.swift in Sources */,
 				60918EE82888630D00D9E032 /* UserInfo.swift in Sources */,
 				60B48CCF28E5B837006C6CF5 /* NetworkRouter.swift in Sources */,
+				6060DE6B29210AF50017F7F7 /* AuthManager.swift in Sources */,
 				60971707287D821A0084A63C /* EventsRouter.swift in Sources */,
 				6097172D287D83360084A63C /* FavouritesProtocols.swift in Sources */,
 				60971788287EDE4A0084A63C /* RegisterRouter.swift in Sources */,
@@ -1090,9 +1140,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = PartyPoint/PartyPoint.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8NT3JG578D;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8NT3JG578D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PartyPoint/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Party Point";
@@ -1100,7 +1153,6 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1109,6 +1161,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.egorshkarin.PartyPoint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = development_egor_profile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1121,9 +1175,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = PartyPoint/PartyPoint.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8NT3JG578D;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8NT3JG578D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PartyPoint/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Party Point";
@@ -1131,7 +1188,6 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1140,6 +1196,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.egorshkarin.PartyPoint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = distribution_egor_profile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

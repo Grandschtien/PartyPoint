@@ -9,10 +9,10 @@
 import UIKit
 import SnapKit
 
-private let STACK_VIEW_SPACING: CGFloat = 22
-private let STACK_VIEW_HORIZONTAL_OFFSETS: CGFloat = 35
-private let EMAIL_TF_HEIGHT: CGFloat = 38
-private let SEND_BUTTON_HEIGHT: CGFloat = 56
+private let STACK_VIEW_SPACING: CGFloat = 22.scale()
+private let STACK_VIEW_HORIZONTAL_OFFSETS: CGFloat = 35.scale()
+private let EMAIL_TF_HEIGHT: CGFloat = 55.scale()
+private let SEND_BUTTON_HEIGHT: CGFloat = 56.scale()
 
 final class FogotPasswordViewController: UIViewController {
     
@@ -22,9 +22,9 @@ final class FogotPasswordViewController: UIViewController {
             buttons: [.back],
             isImageNeed: true
         )
-        navigationBar.delegate = self
         return navigationBar
     }()
+    
     private lazy var restorePasswdLabel: UILabel = {
         let label = UILabel()
         label.font = Fonts.sfProDisplaySemibold(size: 30)
@@ -33,10 +33,8 @@ final class FogotPasswordViewController: UIViewController {
         label.textAlignment = .left
         return label
     }()
-    private lazy var emailTF: AppTextField = {
-        let tf = AppTextField(frame: .zero, placeholder: Localizable.email_title_registration())
-        return tf
-    }()
+    
+    private let emailTF = PPTextField(frame: .zero, placeholder: Localizable.email_title_registration())
     
     private lazy var sendButton: AppButton = {
         let btn = AppButton(withTitle: Localizable.send_password_button_title())
@@ -49,8 +47,8 @@ final class FogotPasswordViewController: UIViewController {
     private var stackView: UIStackView?
     private var bottomStackConstraint: Constraint?
     private var defaultBottomConstant: CGFloat = 0
-	private let output: FogotPasswordViewOutput
-
+    private let output: FogotPasswordViewOutput
+    
     init(output: FogotPasswordViewOutput) {
         self.output = output
         
@@ -58,13 +56,14 @@ final class FogotPasswordViewController: UIViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setupUI()
-	}
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenterManager.addObserver(observer: self,
@@ -76,27 +75,33 @@ final class FogotPasswordViewController: UIViewController {
                                               name: UIWindow.keyboardWillHideNotification,
                                               object: nil)
     }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillShowNotification, object: nil)
         NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillHideNotification, object: nil)
     }
-    private func setupUI() {
+}
+
+private extension FogotPasswordViewController {
+    func setupUI() {
         view.backgroundColor = Colors.mainColor()
         view.addTapRecognizer(target: self, action: #selector(endEnditing))
         view.addSubview(navigationBar)
-        
-        navigationBar.snp.makeConstraints {
-            $0.left.right.equalToSuperview()
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-        }
-       
-        
         stackView = UIStackView(
             alignment: .center,
             arrangedSubviews: [restorePasswdLabel, emailTF, sendButton],
             axis: .vertical,
-            spacing: STACK_VIEW_SPACING.scale())
+            spacing: STACK_VIEW_SPACING.scale()
+        )
+        setupConstraints()
+    }
+    
+    func setupConstraints() {
+        navigationBar.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
         
         if let stackView = stackView {
             view.addSubview(stackView)
@@ -112,14 +117,21 @@ final class FogotPasswordViewController: UIViewController {
             }
             
             emailTF.snp.makeConstraints {
-                $0.height.equalTo(EMAIL_TF_HEIGHT.scale())
+                $0.height.equalTo(EMAIL_TF_HEIGHT)
                 $0.left.right.equalToSuperview()
             }
             
             sendButton.snp.makeConstraints {
-                $0.height.equalTo(SEND_BUTTON_HEIGHT.scale())
+                $0.height.equalTo(SEND_BUTTON_HEIGHT)
                 $0.right.left.equalToSuperview()
             }
+        }
+        setActions()
+    }
+    
+    func setActions() {
+        navigationBar.setBackAction { [weak self] in
+            self?.output.backButtonPressed()
         }
     }
 }
@@ -127,11 +139,6 @@ final class FogotPasswordViewController: UIViewController {
 extension FogotPasswordViewController: FogotPasswordViewInput {
 }
 
-extension FogotPasswordViewController: NavigationBarWithLogoAndActionsDelegate {
-    func backAction() {
-        output.backButtonPressed()
-    }
-}
 //MARK: Actions
 extension FogotPasswordViewController {
     private func sendAction() {

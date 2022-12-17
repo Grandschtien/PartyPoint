@@ -8,23 +8,23 @@
 import Foundation
 
 final class Router<EndPoint: EndPointType>: NetworkRouter {
-    private var tasks: [Task<Data?, Error>] = []
+    private var tasks: [Task<(Data?, URLResponse?, Error?), Error>] = []
     
-    func request(_ route: EndPoint) async throws -> Data? {
+    func request(_ route: EndPoint) async -> (data: Data?, response: URLResponse?, error: Error?) {
         let session = URLSession.shared
         do {
             let request = try self.buildRequest(from: route)
-            let task = Task { () -> Data? in
+            let task = Task { () -> (Data?, URLResponse?, Error?) in
                 let (data, response) = try await session.data(for: request)
-                guard let error = checkResponse(response: response) else {
-                    return data
-                }
-                throw error
+                return (data, response, nil)
             }
+            
             tasks.append(task)
             return try await task.value
+        } catch NetworkError.encodingFailed {
+            return (nil, nil, NetworkError.encodingFailed)
         } catch {
-            return nil
+            return (nil, nil, NetworkError.noInternetConnection)
         }
     }
     
@@ -81,7 +81,7 @@ private extension Router {
             }
             return request
         } catch  {
-            throw error
+            throw NetworkError.encodingFailed
         }
     }
     

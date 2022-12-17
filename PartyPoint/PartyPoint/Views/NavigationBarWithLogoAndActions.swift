@@ -7,20 +7,17 @@
 
 import UIKit
 
-@objc
-protocol NavigationBarWithLogoAndActionsDelegate: AnyObject {
-    @objc optional func backAction()
-    @objc optional func exitAction()
-    @objc optional func shareAction()
-}
-
 final class NavigationBarWithLogoAndActions: NavigationBarWithLogo {
+    
+    private var backAction: EmptyClosure?
+    private var exitAction: EmptyClosure?
+    private var shareAction: EmptyClosure?
     
     private let buttonsImges: Set<Buttons>
     private var buttons: [UIButton]
     private let isImageNeed: Bool
     private let isTitleNeeded: Bool
-    weak var delegate: NavigationBarWithLogoAndActionsDelegate?
+    
     init(background: UIColor = .clear,
          image: UIImage? = Images.logo(),
          frame: CGRect,
@@ -49,6 +46,20 @@ final class NavigationBarWithLogoAndActions: NavigationBarWithLogo {
     func setTitle(_ text: String, isHidden: Bool) {
         title.text = text
         title.isHidden = isHidden
+    }
+}
+
+extension NavigationBarWithLogoAndActions {
+    func setBackAction(_ action: @escaping EmptyClosure) {
+        self.backAction = action
+    }
+    
+    func setExitAction(_ action: @escaping EmptyClosure) {
+        self.exitAction = action
+    }
+    
+    func setShareAction(_ action: @escaping EmptyClosure) {
+        self.shareAction = action
     }
 }
 
@@ -92,38 +103,24 @@ private extension NavigationBarWithLogoAndActions {
                 button.centerYAnchor.constraint(
                     equalTo: self.centerYAnchor
                 ).isActive = true
-                button.addTarget(self, action: #selector(shareAction), for: .touchUpInside)
+                button.addTarget(self, action: #selector(shareActionTapped), for: .touchUpInside)
             }
         }
     }
-    
+}
+
+private extension NavigationBarWithLogoAndActions {
     @objc
     func backActionTapped(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.1) {
-            sender.alpha = 0.75
-            sender.alpha = 1.0
-        } completion: { [weak self] _ in
-            self?.delegate?.backAction?()
-        }
-
+        backAction?()
     }
     
     @objc
     func exitActionTapped(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.1) {
-            sender.alpha = 0.75
-            sender.alpha = 1.0
-        } completion: { [weak self] _ in
-            self?.delegate?.exitAction?()
-        }
+        exitAction?()
     }
-    @objc func shareAction(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.1) {
-            sender.alpha = 0.75
-            sender.alpha = 1.0
-        } completion: { [weak self] _ in
-            self?.delegate?.shareAction?()
-        }
-
+    
+    @objc func shareActionTapped(_ sender: UIButton) {
+        shareAction?()
     }
 }

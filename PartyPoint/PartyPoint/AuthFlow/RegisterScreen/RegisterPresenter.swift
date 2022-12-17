@@ -28,6 +28,11 @@ extension RegisterPresenter: RegisterViewOutput {
     func backButtonPressed() {
         router.routeBack()
     }
+    
+    func registeButtonPressed(registerInfo: [String?]) async {
+        await interactor.registerUser(with: registerInfo)
+    }
+
 }
 
 extension RegisterPresenter: RegisterInteractorOutput {

@@ -8,13 +8,11 @@
 import Foundation
 import UIKit
 
-private let APP_TF_HEIGHT: CGFloat = 50 * SCREEN_SCALE_BY_HEIGHT
+private let APP_TF_HEIGHT: CGFloat = 50.scale()
 
 final class DynamicStackWithTF: UIStackView {
-    
     private(set) var placeholders: [String]
-    
-    private(set) var textFields: [AppTextField]?
+    private(set) var textFields: [PPTextField] = []
     
     init(frame: CGRect, placeholders: [String]) {
         self.placeholders = placeholders
@@ -29,13 +27,14 @@ final class DynamicStackWithTF: UIStackView {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     func setupUI() {
         self.alignment = .center
         self.axis = .vertical
         self.spacing = 22
         for placeholder in placeholders {
-            let appTF = AppTextField(frame: frame, placeholder: placeholder)
-            textFields?.append(appTF)
+            let appTF = PPTextField(frame: frame, placeholder: placeholder)
+            textFields.append(appTF)
             self.addArrangedSubview(appTF)
             appTF.snp.makeConstraints {
                 $0.height.equalTo(APP_TF_HEIGHT)

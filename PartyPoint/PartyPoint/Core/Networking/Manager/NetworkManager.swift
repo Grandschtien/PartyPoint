@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class NetworkManager {
+class NetworkManager {
     
     enum NetworkResponse: String {
         case success
@@ -16,7 +16,7 @@ final class NetworkManager {
         case outdated = "The url you requested id outdated"
         case failed = "Netwrok request failed"
         case noData = "Response returned with no data to decode"
-        case unableToDecaode = "We could not to decode the response"
+        case unableToDecode = "We could not to decode the response"
     }
     
     enum ResponseResult {
@@ -24,11 +24,10 @@ final class NetworkManager {
         case failure(String)
     }
     
-    static let enviroment: NetworkEnviroment = .production
-    static let apiKey = "key"
-    //router
+    static let enviroment: NetworkEnviroment = .debug
     
-    fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> ResponseResult {
+    internal func handleNetworkResponse(_ response: HTTPURLResponse?) -> ResponseResult {
+        guard let response = response else { return .failure("Response is nil") }
         switch response.statusCode {
         case 200...299 :
             return .success

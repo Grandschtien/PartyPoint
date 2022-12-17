@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class AppTextField: UITextField {
+final class PPTextField: UITextField {
     let padding = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 5)
     
     init(frame: CGRect,
@@ -33,8 +33,9 @@ final class AppTextField: UITextField {
         }
         setupUI()
     }
+    
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
     private func setupUI() {

@@ -114,6 +114,7 @@ extension HowToEnterStackView {
     func enterButtonPressed() {
         delegate?.enterButtonPressed()
     }
+    
     @objc
     func registerButtonPressed(_ sender: UITapGestureRecognizer) {
         UIView.animate(withDuration: 0.2, delay: 0, options: []) {
@@ -124,6 +125,7 @@ extension HowToEnterStackView {
         }
 
     }
+    
     @objc
     func enterWithOutAccount(_ sender: UITapGestureRecognizer) {
         UIView.animate(withDuration: 0.2, delay: 0, options: []) {

@@ -1,12 +1,10 @@
 //
-//  RegisterViewController.swift
+//  RegisterView.swift
 //  PartyPoint
 //
-//  Created by Егор Шкарин on 13.07.2022.
-//  
+//  Created by Егор Шкарин on 17.12.2022.
 //
 
-import UIKit
 import SnapKit
 
 private let REGISTRATION_LABEL_HEIGHT: CGFloat = 40
@@ -21,7 +19,15 @@ private let REGISTER_BUTTON_HORIZONTAL_OFFSET: CGFloat = 30
 private let REGISTER_BUTTON_TOP_OFFFSET: CGFloat = 22
 private let REGISTER_BUTTON_HEIGHT: CGFloat = 56
 
-final class RegisterViewController: UIViewController {
+final class RegisterView: UIView {
+    
+    typealias RegisterClosure = ([String?]) -> Void
+    
+    //MARK: Actions
+    private var backAction: EmptyClosure?
+    private var registerAction: RegisterClosure?
+    private var photoAction: EmptyClosure?
+    private var backActionClosure: EmptyClosure?
     
     private lazy var navigationBar: NavigationBarWithLogoAndActions = {
         let navigationBar = NavigationBarWithLogoAndActions(
@@ -29,16 +35,22 @@ final class RegisterViewController: UIViewController {
             buttons: [.back],
             isImageNeed: false
         )
-        navigationBar.delegate = self
+        
+        navigationBar.setBackAction { [weak self] in
+            self?.backAction?()
+        }
+        
         return navigationBar
     }()
+    
     private lazy var registrationLabel: UILabel = {
         let label = UILabel()
         label.font = Fonts.sfProDisplayBold(size: 36)
         label.text = Localizable.registration_screen_title()
         return label
     }()
-    private lazy var userImage: UIImageView = {
+    
+    private let userImage: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .center
@@ -47,7 +59,7 @@ final class RegisterViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var photoLabel: UILabel = {
+    private let photoLabel: UILabel = {
         let label = UILabel()
         label.font = Fonts.sfProDisplayBold(size: 14)
         label.text = Localizable.photo_label_title()
@@ -56,12 +68,13 @@ final class RegisterViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
+    
     private lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView()
         return scroll
     }()
     
-    private lazy var dynnamicRegisterStack: DynamicStackWithTF = {
+    private let dynnamicRegisterStack: DynamicStackWithTF = {
         let placeholders = [
             Localizable.name_title_registration(),
             Localizable.surname_title_registration(),
@@ -75,64 +88,60 @@ final class RegisterViewController: UIViewController {
     
     private lazy var registerButton: AppButton = {
         let button = AppButton(withTitle: Localizable.register_button_title())
+        button.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
         return button
     }()
     
     private var bottomScrollConstraint: Constraint?
-    private let output: RegisterViewOutput
     
-    init(output: RegisterViewOutput) {
-        self.output = output
-        
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenterManager.addObserver(observer: self,
-                                              selector: #selector(keyboardWillShow(_:)),
-                                              name: UIWindow.keyboardWillShowNotification,
-                                              object: nil)
-        NotificationCenterManager.addObserver(observer: self,
-                                              selector: #selector(keyboardWillHide(_:)),
-                                              name: UIWindow.keyboardWillHideNotification,
-                                              object: nil)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillShowNotification, object: nil)
-        NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillHideNotification, object: nil)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func layoutSubviews() {
+        super.layoutSubviews()
         userImage.layer.cornerRadius = userImage.frame.height / 2
         let height = userImage.frame.height + photoLabel.frame.height + dynnamicRegisterStack.frame.height + registerButton.frame.height * 2 + 20
         scrollView.contentSize = CGSize(width: view.frame.width, height: height)
     }
     
+    //MARK: Init
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+        setupKeyboardObservers()
+    }
+    
+    required init?(coder: NSCoder) {
+        return nil
+    }
+    
+    deinit {
+        removeKeyboardObservers()
+    }
+}
+
+private extension RegisterView {
     func setupUI() {
-        view.backgroundColor = Colors.mainColor()
-        view.addTapRecognizer(target: self, action: #selector(endEnditing))
+        self.backgroundColor = Colors.mainColor()
+        self.addTapRecognizer(target: self, action: #selector(endEnditing))
         
-        view.addSubview(navigationBar)
+        addSubviews()
+   
+        let countOfTf = dynnamicRegisterStack.textFields.count
+        dynnamicRegisterStack.textFields[countOfTf - 1].isSecureTextEntry = true
+        dynnamicRegisterStack.textFields[countOfTf - 2].isSecureTextEntry = true
+        setupConstraints()
+    }
+    
+    func addSubviews() {
+        self.addSubview(navigationBar)
         navigationBar.addSubview(registrationLabel)
-        view.addSubview(scrollView)
+        self.addSubview(scrollView)
         scrollView.addSubview(userImage)
         scrollView.addSubview(photoLabel)
         scrollView.addSubview(dynnamicRegisterStack)
         scrollView.addSubview(registerButton)
-
+        
+    }
+    
+    func setupConstraints() {
         navigationBar.snp.makeConstraints {
             $0.left.right.equalToSuperview()
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -161,38 +170,60 @@ final class RegisterViewController: UIViewController {
             $0.top.equalTo(userImage.snp.bottom).offset(PHOTO_LABEL_BOTTTOM_OFFSET.scale())
             $0.width.equalTo(PHOTO_LABEL_WIDTH.scale())
         }
+        
         dynnamicRegisterStack.snp.makeConstraints {
             $0.left.equalToSuperview().offset(DYNAMIC_REGISTER_STACK_HORIZONTAL_OFFSETS.scale())
             $0.right.equalToSuperview().inset(DYNAMIC_REGISTER_STACK_HORIZONTAL_OFFSETS.scale())
             $0.centerX.equalToSuperview()
             $0.top.equalTo(photoLabel.snp.bottom).offset(DYNAMIC_REGISTER_STACK_BOTTOM_OFFSET.scale())
         }
+        
         registerButton.snp.makeConstraints {
             $0.right.equalToSuperview().inset(REGISTER_BUTTON_HORIZONTAL_OFFSET.scale())
             $0.left.equalToSuperview().offset(REGISTER_BUTTON_HORIZONTAL_OFFSET.scale())
             $0.top.equalTo(dynnamicRegisterStack.snp.bottom).offset(REGISTER_BUTTON_TOP_OFFFSET.scale())
             $0.height.equalTo(REGISTER_BUTTON_HEIGHT.scale())
         }
-        
-        let countOfTf = dynnamicRegisterStack.textFields?.count
-        
-        if let countOfTf = countOfTf {
-            dynnamicRegisterStack.textFields?[countOfTf - 1].isSecureTextEntry = true
-            dynnamicRegisterStack.textFields?[countOfTf - 2].isSecureTextEntry = true
-            
+    }
+    
+    func setupKeyboardObservers() {
+        NotificationCenterManager.addObserver(observer: self,
+                                              selector: #selector(keyboardWillShow(_:)),
+                                              name: UIWindow.keyboardWillShowNotification,
+                                              object: nil)
+        NotificationCenterManager.addObserver(observer: self,
+                                              selector: #selector(keyboardWillHide(_:)),
+                                              name: UIWindow.keyboardWillHideNotification,
+                                              object: nil)
+    }
+    
+    func removeKeyboardObservers() {
+        NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillHideNotification, object: nil)
+    }
+}
+
+//MARK: Actions
+extension RegisterView {
+    func setBackAction(_ action: @escaping EmptyClosure) {
+        self.backAction = action
+    }
+    
+    func setRegisterAction(_ action: @escaping RegisterClosure) {
+        self.registerAction = action
+    }
+    
+    @objc
+    func registerButtonTapped() {
+        let registerInfo = dynnamicRegisterStack.textFields.map { tf in
+            return tf.text
         }
+        registerAction?(registerInfo)
     }
 }
 
-extension RegisterViewController: RegisterViewInput { }
-
-extension RegisterViewController: NavigationBarWithLogoAndActionsDelegate {
-    func backAction() {
-        output.backButtonPressed()
-    }
-}
-//MARK: - KeyBoardLogic
-extension RegisterViewController {
+//MARK: Keyboard actions
+extension RegisterView {
     @objc
     func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo else {return}
@@ -212,6 +243,7 @@ extension RegisterViewController {
             self?.view.layoutIfNeeded()
         }
     }
+    
     @objc
     func endEnditing() {
         view.endEditing(false)
