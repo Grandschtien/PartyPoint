@@ -125,8 +125,11 @@ private extension RegisterView {
         addSubviews()
    
         let countOfTf = dynnamicRegisterStack.textFields.count
-        dynnamicRegisterStack.textFields[countOfTf - 1].isSecureTextEntry = true
-        dynnamicRegisterStack.textFields[countOfTf - 2].isSecureTextEntry = true
+        dynnamicRegisterStack.textFields[countOfTf - 1].mode = .secureMode
+        dynnamicRegisterStack.textFields[countOfTf - 2].mode = .secureMode
+        dynnamicRegisterStack.textFields.forEach { tf in
+            tf.font = Fonts.sfProDisplayBold(size: 14)
+        }
         setupConstraints()
     }
     

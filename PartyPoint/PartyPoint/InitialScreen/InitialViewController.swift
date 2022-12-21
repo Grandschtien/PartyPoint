@@ -43,11 +43,10 @@ final class InitialViewController: UIViewController {
         return label
     }()
     
-    private lazy var goButton: AppButton = {
-        let button = AppButton(withTitle: Localizable.go_button_title())
-        button.action =  { [weak self] in
-            self?.buttonTapped()
-        }
+    private lazy var goButton: PPButton = {
+        let button = PPButton(style: .primary, size: .l)
+        button.setTitle(Localizable.go_button_title(), for: .normal)
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -118,6 +117,7 @@ final class InitialViewController: UIViewController {
 }
 
 extension InitialViewController {
+    @objc
     func buttonTapped() {
         router?.navigateToEnter()
     }

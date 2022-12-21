@@ -15,18 +15,16 @@ protocol HowToEnterStackViewDelegate: AnyObject {
     func noAccounButtonPressed()
 }
 
-class HowToEnterStackView: UIStackView {
+final class HowToEnterStackView: UIStackView {
     
     weak var delegate: HowToEnterStackViewDelegate?
     
     private let labelsFont = Fonts.sfProDisplayBold(size: 15)
     
-    private lazy var enterButton: AppButton = {
-        let btn = AppButton(withTitle: Localizable.enter_button_title())
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.action = { [weak self] in
-            self?.enterButtonPressed()
-        }
+    private lazy var enterButton: PPButton = {
+        let btn = PPButton(style: .primary, size: .l)
+        btn.setTitle(Localizable.enter_button_title(), for: .normal)
+        btn.addTarget(self, action: #selector(enterButtonPressed), for: .touchUpInside)
         return btn
     }()
     
@@ -111,6 +109,7 @@ class HowToEnterStackView: UIStackView {
 
 //MARK: Actions
 extension HowToEnterStackView {
+    @objc
     func enterButtonPressed() {
         delegate?.enterButtonPressed()
     }
@@ -123,7 +122,7 @@ extension HowToEnterStackView {
         } completion: { [weak self] _ in
             self?.delegate?.registerButtonPressed()
         }
-
+        
     }
     
     @objc

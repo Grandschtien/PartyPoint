@@ -5,10 +5,7 @@
 //  Created by Егор Шкарин on 12.07.2022.
 //
 
-import Foundation
-import UIKit
-
-private let APP_TF_HEIGHT: CGFloat = 50.scale()
+import SnapKit
 
 final class DynamicStackWithTF: UIStackView {
     private(set) var placeholders: [String]
@@ -33,11 +30,11 @@ final class DynamicStackWithTF: UIStackView {
         self.axis = .vertical
         self.spacing = 22
         for placeholder in placeholders {
-            let appTF = PPTextField(frame: frame, placeholder: placeholder)
+            let appTF = PPTextField()
+            appTF.placeholder = placeholder
             textFields.append(appTF)
             self.addArrangedSubview(appTF)
             appTF.snp.makeConstraints {
-                $0.height.equalTo(APP_TF_HEIGHT)
                 $0.left.right.equalToSuperview()
             }
         }

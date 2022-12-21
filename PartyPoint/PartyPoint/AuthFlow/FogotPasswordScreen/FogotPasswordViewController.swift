@@ -34,13 +34,12 @@ final class FogotPasswordViewController: UIViewController {
         return label
     }()
     
-    private let emailTF = PPTextField(frame: .zero, placeholder: Localizable.email_title_registration())
+    private let emailTF = PPTextField()
     
-    private lazy var sendButton: AppButton = {
-        let btn = AppButton(withTitle: Localizable.send_password_button_title())
-        btn.action = { [weak self] in
-            self?.sendAction()
-        }
+    private lazy var sendButton: PPButton = {
+        let btn = PPButton(style: .primary, size: .l)
+        btn.setTitle(Localizable.send_password_button_title(), for: .normal)
+        btn.addTarget(self, action: #selector(sendAction), for: .touchUpInside)
         return btn
     }()
     
@@ -95,6 +94,7 @@ private extension FogotPasswordViewController {
             spacing: STACK_VIEW_SPACING.scale()
         )
         setupConstraints()
+        setupEmailTF()
     }
     
     func setupConstraints() {
@@ -129,6 +129,10 @@ private extension FogotPasswordViewController {
         setActions()
     }
     
+    func setupEmailTF() {
+        emailTF.placeholder = Localizable.email_title_registration()
+    }
+    
     func setActions() {
         navigationBar.setBackAction { [weak self] in
             self?.output.backButtonPressed()
@@ -141,6 +145,7 @@ extension FogotPasswordViewController: FogotPasswordViewInput {
 
 //MARK: Actions
 extension FogotPasswordViewController {
+    @objc
     private func sendAction() {
         
     }

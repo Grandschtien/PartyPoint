@@ -128,6 +128,11 @@ private extension EnterView {
             Localizable.password_title_registration()
         ]
         tfStack = DynamicStackWithTF(frame: .zero, placeholders: placeholders)
+        tfStack?.textFields[0].mode = .clearMode
+        tfStack?.textFields[1].mode = .secureMode
+        tfStack?.textFields.forEach { tf in
+            tf.font = Fonts.sfProDisplayBold(size: 16)
+        }
     }
     
     func setupForgotPaaswdButton() {
