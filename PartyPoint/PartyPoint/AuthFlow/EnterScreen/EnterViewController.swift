@@ -56,9 +56,8 @@ final class EnterViewController: UIViewController {
 private extension EnterViewController {
     func setupActions() {
         enterView.setEnterAction { [weak self] login, passwd in
-            Task {
-                await self?.output.enterButtonPressed(email: login, passwd: passwd)
-            }
+            self?.enterView.setLoadingVisible()
+            self?.output.enterButtonPressed(email: login, passwd: passwd)
         }
         
         enterView.setForgotPasswordAction { [weak self] in
@@ -72,12 +71,24 @@ private extension EnterViewController {
 }
 
 extension EnterViewController: EnterViewInput {
+    func showUnAuthorizereaon(reason: String) {
+        enterView.setLoadingHide()
+        enterView.showUnauthorizeReason(reason: reason)
+    }
+    
     func showTFIsEmptyView() {
+        enterView.setLoadingHide()
         enterView.showTFIsEmptyView()
     }
     
-    func showError(error: String) {
-        
+    func showLoginTFIsEmpty() {
+        enterView.setLoadingHide()
+        enterView.loginTFIsEmpty()
+    }
+    
+    func showPasswordTFIsEmpty() {
+        enterView.setLoadingHide()
+        enterView.passwordTFIsEmpty()
     }
 }
 

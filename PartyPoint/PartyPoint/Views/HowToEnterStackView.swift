@@ -73,6 +73,14 @@ final class HowToEnterStackView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setLoadingVisible() {
+        enterButton.isLoading = true
+    }
+    
+    func setLoadingHide() {
+        enterButton.isLoading = false
+    }
+    
     private func setupUI() {
         self.addArrangedSubview(enterButton)
         self.addArrangedSubview(registerLabel)
@@ -111,6 +119,7 @@ final class HowToEnterStackView: UIStackView {
 extension HowToEnterStackView {
     @objc
     func enterButtonPressed() {
+        enterButton.isLoading = true
         delegate?.enterButtonPressed()
     }
     

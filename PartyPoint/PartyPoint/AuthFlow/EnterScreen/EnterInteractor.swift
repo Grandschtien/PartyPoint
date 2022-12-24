@@ -17,14 +17,31 @@ final class EnterInteractor {
     }
 }
 
+// MARK: - Private methods -
+private extension EnterInteractor {
+}
+
 extension EnterInteractor: EnterInteractorInput {
-    func enterButtonPressed(email: String, password: String) async {
-        let status = await authManager.login(with: email, password: password)
-        switch status {
-        case .authorized:
-            output?.authorized()
-        case let .nonAuthoraized(error):
-            output?.notAuthorized(error: error)
+    func enterButtonPressed(email: String, password: String) {
+        Task {
+            let status = await authManager.login(with: email, password: password)
+            switch status {
+            case .authorized:
+                await runOnMainThread {
+                    output?.authorized()
+                }
+            case let .nonAuthoraized(reason):
+                guard let reason = reason else {
+                    await runOnMainThread {
+                        output?.notAuthorized(withReason: "Somthing goes wrong")
+                    }
+                    return
+                }
+                await runOnMainThread {
+                    output?.notAuthorized(withReason: reason)
+                }
+            }
         }
     }
 }
+

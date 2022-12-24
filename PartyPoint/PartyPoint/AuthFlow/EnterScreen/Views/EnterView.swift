@@ -9,15 +9,14 @@ import SnapKit
 import UIKit
 
 private let ENTRY_LABEL_HORIZONTAL_OFFSETS: CGFloat = 42
-private let ENTRY_LABEL_HEIGHT: CGFloat = 108
-private let ENTRY_LABEL_WIDTH: CGFloat = 180
+private let ENTRY_LABEL_HEIGHT: CGFloat = 108.scale()
+private let ENTRY_LABEL_WIDTH: CGFloat = 180.scale()
 private let ENTRY_LABEL_TOP_OFFSET: CGFloat = 50
 private let TF_STACK_HORIZONTAL_OFFSETS: CGFloat = 15
 private let TF_STACK_TOP_OFFSET: CGFloat = 35
-private let FORGOT_PASSWORD_BUTTON_WIDTH: CGFloat = 120
+private let FORGOT_PASSWORD_BUTTON_WIDTH: CGFloat = 120.scale()
 private let FORGOT_PASSWORD_BUTTON_TOP_OFFSET: CGFloat = 25
 private let FORGOT_PASSWORD_BUTTON_HEIGHT: CGFloat = 17
-private let FORGOT_PASSWORD_BUTTON_HORIZONTAL_OFFSETS: CGFloat = 30
 private let HOW_TO_ENTER_STACK_HORIZONTAL_OFFSETS: CGFloat = 30
 private let HOW_TO_ENTER_STACK_TOP_OFFSET: CGFloat = 110
 
@@ -60,7 +59,28 @@ final class EnterView: UIView {
     }
     
     func showTFIsEmptyView() {
-        //TODO: Make View when textFields is empty
+        loginTFIsEmpty()
+        passwordTFIsEmpty()
+    }
+    
+    func loginTFIsEmpty() {
+        tfStack?.textFields[0].displayState = .error(Localizable.fill_in_this_field())
+    }
+    
+    func passwordTFIsEmpty() {
+        tfStack?.textFields[1].displayState = .error(Localizable.fill_in_this_field())
+    }
+    
+    func showUnauthorizeReason(reason: String) {
+        tfStack?.textFields[1].subtitleText = reason
+    }
+    
+    func setLoadingVisible() {
+        howToEnterStack.setLoadingVisible()
+    }
+    
+    func setLoadingHide() {
+        howToEnterStack.setLoadingHide()
     }
 }
 
@@ -102,8 +122,6 @@ private extension EnterView {
         if let tfStack = tfStack {
             forgotPaaswdButton.snp.makeConstraints {
                 $0.centerX.equalToSuperview()
-                $0.left.equalToSuperview().offset(FORGOT_PASSWORD_BUTTON_HORIZONTAL_OFFSETS.scale())
-                $0.right.equalToSuperview().inset(FORGOT_PASSWORD_BUTTON_HORIZONTAL_OFFSETS.scale())
                 $0.top.equalTo(tfStack.snp.bottom).offset(FORGOT_PASSWORD_BUTTON_TOP_OFFSET.scale())
                 $0.height.equalTo(FORGOT_PASSWORD_BUTTON_HEIGHT.scale())
             }
@@ -130,9 +148,7 @@ private extension EnterView {
         tfStack = DynamicStackWithTF(frame: .zero, placeholders: placeholders)
         tfStack?.textFields[0].mode = .clearMode
         tfStack?.textFields[1].mode = .secureMode
-        tfStack?.textFields.forEach { tf in
-            tf.font = Fonts.sfProDisplayBold(size: 16)
-        }
+        tfStack?.textFields[1].isSecureTextEntry = true
     }
     
     func setupForgotPaaswdButton() {

@@ -86,20 +86,14 @@ final class RegisterView: UIView {
         return stack
     }()
     
-    private lazy var registerButton: AppButton = {
-        let button = AppButton(withTitle: Localizable.register_button_title())
+    private lazy var registerButton: PPButton = {
+        let button = PPButton(style: .primary, size: .l)
+        button.setTitle( Localizable.register_button_title(), for: .normal)
         button.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
         return button
     }()
     
     private var bottomScrollConstraint: Constraint?
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        userImage.layer.cornerRadius = userImage.frame.height / 2
-        let height = userImage.frame.height + photoLabel.frame.height + dynnamicRegisterStack.frame.height + registerButton.frame.height * 2 + 20
-        scrollView.contentSize = CGSize(width: view.frame.width, height: height)
-    }
     
     //MARK: Init
     override init(frame: CGRect) {
@@ -115,22 +109,55 @@ final class RegisterView: UIView {
     deinit {
         removeKeyboardObservers()
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        userImage.layer.cornerRadius = userImage.frame.height / 2
+        let height = userImage.frame.height + photoLabel.frame.height + dynnamicRegisterStack.frame.height + registerButton.frame.height * 2 + 20
+        scrollView.contentSize = CGSize(width: view.frame.width, height: height)
+    }
 }
 
+//MARK: Public methods
+extension RegisterView {
+    func setBackAction(_ action: @escaping EmptyClosure) {
+        self.backAction = action
+    }
+    
+    func setRegisterAction(_ action: @escaping RegisterClosure) {
+        self.registerAction = action
+    }
+    
+    func showEmptyTextFields(indexes: [Int]) {
+        indexes.forEach { dynnamicRegisterStack.textFields[$0].displayState = .error(Localizable.fill_in_this_field()) }
+    }
+    
+    func hideKeyboard() {
+        endEnditing()
+    }
+}
+
+
+// MARK: Private methods
 private extension RegisterView {
     func setupUI() {
         self.backgroundColor = Colors.mainColor()
         self.addTapRecognizer(target: self, action: #selector(endEnditing))
         
         addSubviews()
-   
+        setupTextFields()
+        setupConstraints()
+    }
+    
+    func setupTextFields() {
         let countOfTf = dynnamicRegisterStack.textFields.count
         dynnamicRegisterStack.textFields[countOfTf - 1].mode = .secureMode
         dynnamicRegisterStack.textFields[countOfTf - 2].mode = .secureMode
-        dynnamicRegisterStack.textFields.forEach { tf in
-            tf.font = Fonts.sfProDisplayBold(size: 14)
-        }
-        setupConstraints()
+        dynnamicRegisterStack.textFields[countOfTf - 1].isSecureTextEntry = true
+        dynnamicRegisterStack.textFields[countOfTf - 2].isSecureTextEntry = true
+        
+        dynnamicRegisterStack.textFields[countOfTf - 1].autocorrectionType = .no
+        dynnamicRegisterStack.textFields[countOfTf - 2].autocorrectionType = .no
     }
     
     func addSubviews() {
@@ -207,15 +234,7 @@ private extension RegisterView {
 }
 
 //MARK: Actions
-extension RegisterView {
-    func setBackAction(_ action: @escaping EmptyClosure) {
-        self.backAction = action
-    }
-    
-    func setRegisterAction(_ action: @escaping RegisterClosure) {
-        self.registerAction = action
-    }
-    
+private extension RegisterView {
     @objc
     func registerButtonTapped() {
         let registerInfo = dynnamicRegisterStack.textFields.map { tf in

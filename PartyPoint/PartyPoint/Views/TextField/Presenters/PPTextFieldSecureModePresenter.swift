@@ -22,7 +22,6 @@ extension PPTextFieldMode {
             let eyeButton = PPTextFieldRightViewButton()
             setupButtonImage(button: eyeButton,
                              isSecure: textField.isSecureTextEntry)
-
             eyeButton.touchUpAction = { _ in
                 textField.isSecureTextEntry = !textField.isSecureTextEntry
                 setupButtonImage(button: eyeButton,

@@ -41,12 +41,14 @@ private extension RegisterViewController {
         }
         
         contentView.setRegisterAction { [weak self] info in
-            Task {
-                await self?.output.registeButtonPressed(registerInfo: info)
-            }
+            self?.output.registeButtonPressed(registerInfo: info)
+            self?.contentView.hideKeyboard()
         }
     }
 }
 
-extension RegisterViewController: RegisterViewInput { }
-
+extension RegisterViewController: RegisterViewInput {
+    func showEmptyFields(withIndexes indexes: [Int]) {
+        contentView.showEmptyTextFields(indexes: indexes)
+    }
+}

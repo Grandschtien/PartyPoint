@@ -21,6 +21,23 @@ final class RegisterPresenter {
     }
 }
 
+// MARK: Private extension
+private extension RegisterPresenter {
+    func getIndexesOfEmptyFields(registerInfo: [String?]) -> [Int] {
+        var result = [Int]()
+        for (index, info) in registerInfo.enumerated() {
+            guard let info = info else {
+                result.append(index)
+                continue
+            }
+            if info.isEmpty {
+                result.append(index)
+            }
+        }
+        return result
+    }
+}
+
 extension RegisterPresenter: RegisterModuleInput {
 }
 
@@ -29,8 +46,13 @@ extension RegisterPresenter: RegisterViewOutput {
         router.routeBack()
     }
     
-    func registeButtonPressed(registerInfo: [String?]) async {
-        await interactor.registerUser(with: registerInfo)
+    func registeButtonPressed(registerInfo: [String?]) {
+        let emptyFieldsIndexes = getIndexesOfEmptyFields(registerInfo: registerInfo)
+        if emptyFieldsIndexes.isEmpty {
+            interactor.registerUser(with: registerInfo)
+        } else {
+            view?.showEmptyFields(withIndexes: emptyFieldsIndexes)
+        }
     }
 
 }

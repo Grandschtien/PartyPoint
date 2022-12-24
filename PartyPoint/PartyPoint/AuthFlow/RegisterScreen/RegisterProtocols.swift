@@ -16,15 +16,16 @@ protocol RegisterModuleOutput: AnyObject {
 }
 
 protocol RegisterViewInput: AnyObject {
+    func showEmptyFields(withIndexes indexes: [Int])
 }
 
 protocol RegisterViewOutput: AnyObject {
     func backButtonPressed()
-    func registeButtonPressed(registerInfo: [String?]) async
+    func registeButtonPressed(registerInfo: [String?]) 
 }
 
 protocol RegisterInteractorInput: AnyObject {
-    func registerUser(with info: [String?]) async
+    func registerUser(with info: [String?])
 }
 
 protocol RegisterInteractorOutput: AnyObject {

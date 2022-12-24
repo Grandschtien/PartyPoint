@@ -38,23 +38,6 @@ final class Router<EndPoint: EndPointType>: NetworkRouter {
 }
 
 private extension Router {
-    func checkResponse(response: URLResponse) -> NetworkResponses? {
-        guard let response = response as? HTTPURLResponse else {
-            return NetworkResponses.other
-        }
-        
-        switch response.statusCode {
-        case 200..<300:
-            return nil
-        case 300..<400:
-            return NetworkResponses.serverError(response: response.statusCode)
-        case 400..<500:
-            return NetworkResponses.clientError(response: response.statusCode)
-        default:
-            return NetworkResponses.other
-        }
-    }
-    
     func buildRequest(from route: EndPoint) throws -> URLRequest {
         var request = URLRequest(url: route.baseUrl.appendingPathComponent(route.path),
                                  cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
@@ -86,8 +69,8 @@ private extension Router {
     }
     
     func configureParameters(bodyParameters: Parameters?,
-                                         urlParameters: Parameters?,
-                                         request: inout URLRequest) throws {
+                             urlParameters: Parameters?,
+                             request: inout URLRequest) throws {
         do {
             if let bodyParameters = bodyParameters {
                 try JSONParameterEncoder.encode(urlRequest: &request, with: bodyParameters)

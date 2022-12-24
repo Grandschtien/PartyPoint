@@ -9,7 +9,7 @@ import Foundation
 
 enum AuthStatus {
     case authorized
-    case nonAuthoraized(error: String)
+    case nonAuthoraized(reason: String?)
 }
 
 protocol AuthManager {
@@ -33,8 +33,8 @@ final class AuthManagerImpl: NetworkManager, AuthManager {
         switch status {
         case .success:
             return .authorized
-        case let .failure(error):
-            return .nonAuthoraized(error: error)
+        case let .failure(reason):
+            return .nonAuthoraized(reason: reason)
         }
     }
     

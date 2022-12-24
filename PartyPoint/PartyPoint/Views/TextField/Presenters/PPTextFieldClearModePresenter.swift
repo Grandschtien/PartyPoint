@@ -34,11 +34,11 @@ extension PPTextFieldMode {
             guard !textField.isEmpty else {
                 return
             }
-            
+
             let clearButton = PPTextFieldRightViewButton()
             let clearImage = Images.icInputClear()
             clearButton.setImage(clearImage, for: .normal)
-            
+
             clearButton.touchUpAction = { _ in
                 let shouldClear = textField.delegate?.textFieldShouldClear?(textField) ?? true
                 if shouldClear {
@@ -55,7 +55,6 @@ extension PPTextFieldMode {
             guard textField.isFirstResponder else {
                 return
             }
-            
             if textField.isEmpty {
                 textField.rightView = nil
             } else if textField.rightView == nil {

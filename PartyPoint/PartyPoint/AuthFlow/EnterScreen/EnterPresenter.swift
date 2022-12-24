@@ -26,12 +26,17 @@ extension EnterPresenter: EnterModuleInput {
 }
 
 extension EnterPresenter: EnterViewOutput {
-    func enterButtonPressed(email: String, passwd: String) async {
-        if checkTextFieldsIsEmpty(login: email, password: passwd) {
+    func enterButtonPressed(email: String, passwd: String) {
+        let (isLoginEmpty, isPasswdEmpty) = checkTextFieldsIsEmpty(login: email, password: passwd)
+        
+        if isPasswdEmpty && isLoginEmpty {
             view?.showTFIsEmptyView()
-            return
+        } else if isPasswdEmpty {
+            view?.showPasswordTFIsEmpty()
+        } else if isLoginEmpty {
+            view?.showLoginTFIsEmpty()
         } else {
-            await interactor.enterButtonPressed(email: email, password: passwd)
+            interactor.enterButtonPressed(email: email, password: passwd)
         }
     }
     
@@ -47,19 +52,18 @@ extension EnterPresenter: EnterViewOutput {
         router.startMainWithoutAccountFlow()
     }
     
-    func checkTextFieldsIsEmpty(login: String, password: String) -> Bool {
-        return login.isEmpty || password.isEmpty
+    func checkTextFieldsIsEmpty(login: String,
+                                password: String) -> (loginEmpty: Bool, passwdEmpty: Bool) {
+        return (login.isEmpty, password.isEmpty)
     }
 }
 
 extension EnterPresenter: EnterInteractorOutput {
     func authorized() {
-        DispatchQueue.main.async {
-            self.router.startMainWithAccountFlow()
-        }
+        router.startMainWithAccountFlow()
     }
     
-    func notAuthorized(error: String) {
-        //TODO: Handle error
+    func notAuthorized(withReason reason: String) {
+        view?.showUnAuthorizereaon(reason: reason)
     }
 }

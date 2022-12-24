@@ -16,24 +16,26 @@ protocol EnterModuleOutput: AnyObject {
 }
 
 protocol EnterViewInput: AnyObject {
-    func showError(error: String)
     func showTFIsEmptyView()
+    func showLoginTFIsEmpty()
+    func showPasswordTFIsEmpty()
+    func showUnAuthorizereaon(reason: String)
 }
 
 protocol EnterViewOutput: AnyObject {
-    func enterButtonPressed(email: String, passwd: String) async
+    func enterButtonPressed(email: String, passwd: String)
     func fogotPasswordButtonPressed()
     func registerButtonPressed()
     func noAccountButtonPressed()
 }
 
 protocol EnterInteractorInput: AnyObject {
-    func enterButtonPressed(email: String, password: String) async
+    func enterButtonPressed(email: String, password: String)
 }
 
 protocol EnterInteractorOutput: AnyObject {
     func authorized()
-    func notAuthorized(error: String)
+    func notAuthorized(withReason reason: String)
 }
 
 protocol EnterRouterInput: AnyObject {

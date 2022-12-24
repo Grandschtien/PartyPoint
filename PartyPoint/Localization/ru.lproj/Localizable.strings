@@ -65,4 +65,15 @@
 "more_button_title" = "Еще";
 
 /* Ошибки сети*/
-"authentication_failed" = "Не удалось сделать вход. Попробуйте еще раз.";
+"you_need_to_be_authenticated_first" = "Сначала вам нужно пройти аутентификацию";
+"wrong_password_or_email" = "Неверный пароль или email";
+"bad_request" = "Плохой запрос";
+"server_error" = "Ошибка сервера";
+"the_url_you_requested_id_outdated" = "Запрошенный вами url устарел";
+"network_request_failed" = "Сетевой запрос не прошел";
+"response_returned_with_no_data_to_decode" = "Ответ возвращен без данных для декодирования";
+"we_could_not_to_decode_the_response" = "Мы не смогли декодировать ответ";
+"email_is_already_exists" = "Эта почта уже занята";
+
+/* Ошибки текстовых полей */
+"fill_in_this_field" = "Заполните это поле";

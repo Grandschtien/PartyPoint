@@ -18,9 +18,19 @@ final class RegisterInteractor {
 }
 
 extension RegisterInteractor: RegisterInteractorInput {
-    func registerUser(with info: [String?]) async {
-        let validateInfo = info.compactMap{$0}
-        let response = await authManager.register(with: validateInfo[0], surname: validateInfo[1], mail: validateInfo[2], password: validateInfo[3])
-        print(response)
+    func registerUser(with info: [String?]) {
+        Task {
+            let validateInfo = info.compactMap{$0}
+            let response = await authManager.register(with: validateInfo[0],
+                                                      surname: validateInfo[1],
+                                                      mail: validateInfo[2],
+                                                      password: validateInfo[3])
+            switch response {
+            case .success:
+                break
+            case let .failure(reason):
+                break
+            }
+        }
     }
 }

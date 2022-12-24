@@ -165,6 +165,8 @@ final class PPTextField: UITextField {
         if super.becomeFirstResponder() {
             updateBorder()
             updateRightView()
+            displayState = .default
+            subtitleLabel?.isHidden = true
             return true
         }
         return false
@@ -224,10 +226,6 @@ final class PPTextField: UITextField {
         return rect
     }
     
-    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return textRect(forBounds: self.textBorderRect())
-    }
-    
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return textRect(forBounds: bounds)
     }
@@ -235,21 +233,21 @@ final class PPTextField: UITextField {
     override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
         var rect = super.leftViewRect(forBounds: bounds)
         rect.origin.x = Constants.textInsetLeft
-        rect.origin.y = titleHeight() + textHeight()/2 - rect.height/2
+        rect.origin.y = titleHeight() + textHeight() / 2 - rect.height / 2
         
         return rect
     }
     
     override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
         var rect = super.rightViewRect(forBounds: bounds)
-        rect.origin.y = titleHeight() + textHeight()/2 - rect.height/2
+        rect.origin.y = titleHeight() + textHeight() / 2 - rect.height / 2
         return rect
     }
     
     override func clearButtonRect(forBounds bounds: CGRect) -> CGRect {
         var rect = super.clearButtonRect(forBounds: bounds)
         rect.origin.x = bounds.width - rect.width - Constants.textInsetRight
-        rect.origin.y = titleHeight() + textHeight()/2 - rect.height/2
+        rect.origin.y = titleHeight() + textHeight() / 2 - rect.height / 2
         return rect
     }
     
@@ -267,7 +265,7 @@ final class PPTextField: UITextField {
     // MARK: - Private methods
     
     private func initView() {
-        font = Fonts.sfProDisplayRegular(size: 17)
+        font = Fonts.sfProDisplayBold(size: 16)
         
         borderStyle = .none
         addSubview(borderView)
@@ -315,6 +313,7 @@ final class PPTextField: UITextField {
         createSubtitleIfNeeded()
         subtitleLabel?.text = subtitleVisibleText
         subtitleLabel?.textColor = colorProvider.titleColor(textField: self)
+        subtitleLabel?.isHidden = false
     }
     
     private func createSubtitleIfNeeded() {
@@ -323,7 +322,7 @@ final class PPTextField: UITextField {
             return
         }
         let label = UILabel(frame: .zero)
-        label.font = Fonts.sfProDisplayRegular(size: 12)
+        label.font = Fonts.sfProDisplayRegular(size: 14)
         label.numberOfLines = 0
         self.subtitleLabel = label
         addSubview(label)
@@ -401,8 +400,9 @@ final class PPTextField: UITextField {
     }
     
     // MARK: - Events actions
-    
     @objc private func editingChanged() {
+        displayState = .default
+        subtitleLabel?.isHidden = true
         modePresenter.textFieldDidChange(textField: self)
     }
 }
