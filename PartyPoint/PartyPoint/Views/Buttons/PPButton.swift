@@ -8,7 +8,7 @@
 import SnapKit
 
 /// Прямоугольная основная кнопка
-public class PPButton: PPButtonBase {
+class PPButton: PPButtonBase {
 
     // MARK: - Enum
 

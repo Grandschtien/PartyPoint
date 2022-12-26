@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class PPButtonBase: UIButton {
+class PPButtonBase: UIButton {
 
     // MARK: - Public properties
     public var touchUpAction: ((PPButtonBase) -> ())?
