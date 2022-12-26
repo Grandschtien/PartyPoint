@@ -27,9 +27,13 @@ extension RegisterInteractor: RegisterInteractorInput {
                                                       password: validateInfo[3])
             switch response {
             case .success:
-                break
+                await runOnMainThread {
+                    output?.userRegistered()
+                }
             case let .failure(reason):
-                break
+                await runOnMainThread {
+                    output?.registerFailed(withReason: reason ?? "")
+                }
             }
         }
     }

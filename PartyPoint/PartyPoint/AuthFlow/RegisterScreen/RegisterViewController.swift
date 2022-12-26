@@ -41,6 +41,7 @@ private extension RegisterViewController {
         }
         
         contentView.setRegisterAction { [weak self] info in
+            self?.contentView.setButtonLoading(isLoading: true)
             self?.output.registeButtonPressed(registerInfo: info)
             self?.contentView.hideKeyboard()
         }
@@ -48,7 +49,16 @@ private extension RegisterViewController {
 }
 
 extension RegisterViewController: RegisterViewInput {
+    func showWhyRegisterFailed(reason: String) {
+        contentView.showRegisterFaild(withReason: reason)
+        contentView.setButtonLoading(isLoading: false)
+    }
+    
     func showEmptyFields(withIndexes indexes: [Int]) {
         contentView.showEmptyTextFields(indexes: indexes)
+    }
+    
+    func showToPasswordsIsDifferent() {
+        contentView.showPasswordIsDifferent()
     }
 }

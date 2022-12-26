@@ -8,21 +8,22 @@
 
 import UIKit
 
-final class RegisterRouter {
-    private(set) var viewController: UIViewController?
-    private let window: UIWindow
-    init(window: UIWindow) {
-        self.window = window
-    }
+final class RegisterRouter: BaseRouter {
+    private let mainFlowCoordinator: Coordinator
     
-    func setViewController(viewController: UIViewController) {
-        self.viewController = viewController
+    init(mainFlowCoordinator: Coordinator) {
+        self.mainFlowCoordinator = mainFlowCoordinator
+        super.init()
     }
 }
 
 extension RegisterRouter: RegisterRouterInput {
+    func startMainFlow() {
+        mainFlowCoordinator.start()
+    }
+    
     func routeBack() {
-        viewController?.navigationController?.popViewController(animated: true)
+        pop(animated: true)
     }
 }
 

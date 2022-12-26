@@ -19,7 +19,7 @@ private let USER_OFFER_HORIZONTAL_OFFSETS: CGFloat = 15
 
 final class InitialViewController: UIViewController {
     
-    private var router: InitilaRouterProtocol?
+    private var router: InitialRouter?
     
     private lazy var navigationBar: NavigationBarWithLogo = {
         let navigationBar = NavigationBarWithLogo(frame: .zero)
@@ -60,7 +60,7 @@ final class InitialViewController: UIViewController {
         return label
     }()
     
-    init(router: InitilaRouterProtocol) {
+    init(router: InitialRouter) {
         self.router = router
         super.init(nibName: nil, bundle: nil)
     }

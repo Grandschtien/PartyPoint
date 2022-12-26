@@ -7,23 +7,16 @@
 
 import UIKit
 
-/// Базовая кнопка c анимациями и экшенами
 open class PPButtonBase: UIButton {
 
     // MARK: - Public properties
-
-    /// Срабатывает по событию touchUpInside
     public var touchUpAction: ((PPButtonBase) -> ())?
-
-    /// Срабатывает после завершения анимации нажатия
     public var pressUpAction: ((PPButtonBase) -> ())?
 
     // MARK: - Private properties
-
     private var lastTouch: UITouch?
 
     // MARK: - Init
-
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -35,7 +28,6 @@ open class PPButtonBase: UIButton {
     }
 
     // MARK: - Private methods
-
     func setupView() {
         setupControlAnimation()
 
@@ -49,7 +41,6 @@ open class PPButtonBase: UIButton {
     }
 
     // MARK: - Override methods
-
     override func upAnimationCompleted() {
         guard let touchLocation = lastTouch?.location(in: self) else {
             return
@@ -61,7 +52,6 @@ open class PPButtonBase: UIButton {
     }
 
     // MARK: - UIControl tracking
-
     open override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         lastTouch = nil
         return super.beginTracking(touch, with: event)

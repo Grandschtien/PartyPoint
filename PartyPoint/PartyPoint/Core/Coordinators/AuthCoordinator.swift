@@ -7,21 +7,20 @@
 
 import UIKit
 
-protocol CoordinatorProtocol {
-    func start()
-}
-
-final class AuthCoordinator: CoordinatorProtocol {
+final class AuthCoordinator: Coordinator {
     private let window: UIWindow
-      private var navigationController = UINavigationController()
-      init(window: UIWindow) {
-          self.window = window
-      }
-    
-      func start() {
-          let initialAssembly = InitialAssembly.assembly(window: window)
-          navigationController.setViewControllers([initialAssembly.viewController], animated: false)
-          window.rootViewController = navigationController
-          window.makeKeyAndVisible()
-      }
+    private var navigationController = UINavigationController()
+    private let mainFlowCoordinator: Coordinator
+
+    init(window: UIWindow, mainFlowCoordinator: Coordinator) {
+        self.window = window
+        self.mainFlowCoordinator = mainFlowCoordinator
+    }
+
+    func start() {
+        let initialAssembly = InitialAssembly.assembly(mainFlowCoordinator: mainFlowCoordinator)
+        navigationController.setViewControllers([initialAssembly.viewController], animated: false)
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+    }
 }

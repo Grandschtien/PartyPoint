@@ -48,8 +48,11 @@ extension RegisterPresenter: RegisterViewOutput {
     
     func registeButtonPressed(registerInfo: [String?]) {
         let emptyFieldsIndexes = getIndexesOfEmptyFields(registerInfo: registerInfo)
+        let uwrappedRegisterInfo = registerInfo.compactMap { $0 }
         if emptyFieldsIndexes.isEmpty {
             interactor.registerUser(with: registerInfo)
+        } else if uwrappedRegisterInfo.last != uwrappedRegisterInfo[uwrappedRegisterInfo.count - 2] {
+            view?.showToPasswordsIsDifferent()
         } else {
             view?.showEmptyFields(withIndexes: emptyFieldsIndexes)
         }
@@ -58,4 +61,11 @@ extension RegisterPresenter: RegisterViewOutput {
 }
 
 extension RegisterPresenter: RegisterInteractorOutput {
+    func userRegistered() {
+        router.startMainFlow()
+    }
+    
+    func registerFailed(withReason reason: String) {
+        view?.showWhyRegisterFailed(reason: reason)
+    }
 }

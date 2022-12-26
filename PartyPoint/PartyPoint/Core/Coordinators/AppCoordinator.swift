@@ -7,27 +7,27 @@
 
 import UIKit
 
-protocol AppCoordinatorProtocol {
+protocol AppCoordinator: AnyObject {
     func atartAuth()
     func startMain()
 }
 
-final class AppCoordinator: AppCoordinatorProtocol {
-    
+final class AppCoordinatorImpl: AppCoordinator {
     private let window: UIWindow
-    private var authFlow: CoordinatorProtocol?
-    private var mainFlow: CoordinatorProtocol?
+    private let authFlow: Coordinator
+    private let mainFlow: Coordinator
 
     init(window: UIWindow) {
         self.window = window
+        self.mainFlow = MainFlowCoordinator(window: window)
+        self.authFlow = AuthCoordinator(window: window, mainFlowCoordinator: mainFlow)
     }
+    
     func atartAuth() {
-        authFlow = AuthCoordinator(window: window)
-        authFlow?.start()
+        authFlow.start()
     }
     
     func startMain() {
-        mainFlow = MainFlowCoordinator(window: window)
-        mainFlow?.start()
+        mainFlow.start()
     }
 }

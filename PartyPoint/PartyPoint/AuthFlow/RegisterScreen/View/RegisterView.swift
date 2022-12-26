@@ -132,8 +132,22 @@ extension RegisterView {
         indexes.forEach { dynnamicRegisterStack.textFields[$0].displayState = .error(Localizable.fill_in_this_field()) }
     }
     
+    func showRegisterFaild(withReason reason: String) {
+        dynnamicRegisterStack.textFields[2].displayState = .error(reason)
+    }
+    
+    func showPasswordIsDifferent() {
+        let maxIndex = dynnamicRegisterStack.textFields.count
+        dynnamicRegisterStack.textFields[maxIndex - 1].displayState = .error(Localizable.password_doesnt_match())
+        dynnamicRegisterStack.textFields[maxIndex - 2].displayState = .error(Localizable.password_doesnt_match())
+    }
+    
     func hideKeyboard() {
         endEnditing()
+    }
+    
+    func setButtonLoading(isLoading: Bool) {
+        registerButton.isLoading = isLoading
     }
 }
 

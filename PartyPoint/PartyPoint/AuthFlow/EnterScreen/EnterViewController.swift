@@ -56,7 +56,6 @@ final class EnterViewController: UIViewController {
 private extension EnterViewController {
     func setupActions() {
         enterView.setEnterAction { [weak self] login, passwd in
-            self?.enterView.setLoadingVisible()
             self?.output.enterButtonPressed(email: login, passwd: passwd)
         }
         

@@ -14,7 +14,7 @@ final class EnterContainer {
 	private(set) weak var router: EnterRouterInput!
 
 	static func assemble(with context: EnterContext) -> EnterContainer {
-        let router = EnterRouter(window: context.window)
+        let router = EnterRouter(mainFlowCoordinator: context.mainFlowCoordinator)
         let networkRouter = Router<AuthEndPoint>()
         let authManager = AuthManagerImpl(router: networkRouter)
         let interactor = EnterInteractor(authManager: authManager)
@@ -22,7 +22,7 @@ final class EnterContainer {
                                        interactor: interactor)
 		let viewController = EnterViewController(output: presenter)
         
-        router.setViewController(viewContrller: viewController)
+        router.setViewController(viewController)
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
 
@@ -40,5 +40,5 @@ final class EnterContainer {
 
 struct EnterContext {
 	weak var moduleOutput: EnterModuleOutput?
-    let window: UIWindow
+    let mainFlowCoordinator: Coordinator
 }

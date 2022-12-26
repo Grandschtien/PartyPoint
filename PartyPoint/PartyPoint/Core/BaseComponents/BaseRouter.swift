@@ -7,17 +7,12 @@
 
 import UIKit
 
-protocol BaseRouter {
-    var viewController: UIViewController? { get set }
-    func push(vc: UIViewController, animated: Bool)
-    func pop(animated: Bool)
-    func popToRoot(animated: Bool)
-    func popToViewController(vc: UIViewController, animated: Bool)
-    func show(vc: UIViewController, sender: Any?)
+class BaseRouter {
+    private weak var viewController: UIViewController?
 }
 
+// MARK: Public methods
 extension BaseRouter {
-    
     func push(vc: UIViewController, animated: Bool) {
         viewController?.navigationController?.pushViewController(vc, animated: animated)
     }
@@ -40,5 +35,9 @@ extension BaseRouter {
     
     func show(vc: UIViewController, sender: Any?) {
         viewController?.show(vc, sender: sender)
-    }    
+    }
+    
+    func setViewController(_ viewController: UIViewController) {
+        self.viewController = viewController
+    }
 }

@@ -17,6 +17,8 @@ protocol RegisterModuleOutput: AnyObject {
 
 protocol RegisterViewInput: AnyObject {
     func showEmptyFields(withIndexes indexes: [Int])
+    func showToPasswordsIsDifferent()
+    func showWhyRegisterFailed(reason: String)
 }
 
 protocol RegisterViewOutput: AnyObject {
@@ -29,8 +31,11 @@ protocol RegisterInteractorInput: AnyObject {
 }
 
 protocol RegisterInteractorOutput: AnyObject {
+    func userRegistered()
+    func registerFailed(withReason reason: String)
 }
 
 protocol RegisterRouterInput: AnyObject {
     func routeBack()
+    func startMainFlow()
 }

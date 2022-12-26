@@ -14,13 +14,13 @@ final class RegisterContainer {
 	private(set) weak var router: RegisterRouterInput!
 
 	static func assemble(with context: RegisterContext) -> RegisterContainer {
-        let router = RegisterRouter(window: context.window)
+        let router = RegisterRouter(mainFlowCoordinator: context.mainFlowCoordinator)
         let networkRouter = Router<AuthEndPoint>()
         let authManager = AuthManagerImpl(router: networkRouter)
         let interactor = RegisterInteractor(authManager: authManager)
         let presenter = RegisterPresenter(router: router, interactor: interactor)
 		let viewController = RegisterViewController(output: presenter)
-        router.setViewController(viewController: viewController)
+        router.setViewController(viewController)
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
 
@@ -38,5 +38,5 @@ final class RegisterContainer {
 
 struct RegisterContext {
 	weak var moduleOutput: RegisterModuleOutput?
-    let window: UIWindow
+    let mainFlowCoordinator: Coordinator
 }

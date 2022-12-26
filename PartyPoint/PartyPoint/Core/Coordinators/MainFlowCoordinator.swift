@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MainFlowCoordinator: CoordinatorProtocol {
+final class MainFlowCoordinator: Coordinator {
     private let window: UIWindow
     private lazy var tabBarController = UITabBarController()
     private lazy var navigationControllers = MainFlowCoordinator.makeNavigationControllers()

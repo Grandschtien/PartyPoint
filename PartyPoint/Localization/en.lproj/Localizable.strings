@@ -77,3 +77,4 @@
 
 /* Ошибки текстовых полей */
 "fill_in_this_field" = "Fill in this field";
+"password_doesnt_match" = "Passwords do not match";

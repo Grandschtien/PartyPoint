@@ -5,24 +5,22 @@
 //  Created by Егор Шкарин on 12.07.2022.
 //
 
-import Foundation
 import UIKit
 
-protocol InitilaRouterProtocol: AnyObject {
+protocol InitialRouter {
     func navigateToEnter()
 }
 
-final class InitialRouter: InitilaRouterProtocol {
-    weak var viewController: UIViewController?
-    let window: UIWindow
+final class InitialRouterImpl: BaseRouter, InitialRouter {
+    private let mainFlowCoordinator: Coordinator
     
-    init(window: UIWindow) {
-        self.window = window
+    init(mainFlowCoordinator: Coordinator) {
+        self.mainFlowCoordinator = mainFlowCoordinator
     }
     
     func navigateToEnter() {
-        let context = EnterContext(moduleOutput: nil, window: window)
+        let context = EnterContext(moduleOutput: nil, mainFlowCoordinator: mainFlowCoordinator)
         let assembly = EnterContainer.assemble(with: context)
-        viewController?.navigationController?.pushViewController(assembly.viewController, animated: true)
+        push(vc: assembly.viewController, animated: true)
     }
 }

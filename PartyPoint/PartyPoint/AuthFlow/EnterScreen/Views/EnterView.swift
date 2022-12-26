@@ -188,6 +188,7 @@ extension EnterView: HowToEnterStackViewDelegate {
     func enterButtonPressed() {
         if let login = tfStack?.textFields[0].text,
            let passwd = tfStack?.textFields[1].text {
+            setLoadingVisible()
             enterAction?(login, passwd)
         }
     }

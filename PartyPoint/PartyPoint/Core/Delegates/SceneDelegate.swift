@@ -16,7 +16,7 @@ typealias EmptyClosure = () -> Void
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var coordinator: AppCoordinatorProtocol?
+    var coordinator: AppCoordinator?
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
-        coordinator = AppCoordinator(window: window)
+        coordinator = AppCoordinatorImpl(window: window)
         //TODO: Condition
         
 //        coordinator?.startMain()

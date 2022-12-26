@@ -12,11 +12,17 @@ final class InitialAssembly {
     
     init(viewController: UIViewController) {
         self.viewController = viewController
+        print("init \(self)")
     }
-    static func assembly(window: UIWindow) -> InitialAssembly {
-        let router = InitialRouter(window: window)
+    
+    deinit {
+        print("deinited \(self)")
+    }
+    
+    static func assembly(mainFlowCoordinator: Coordinator) -> InitialAssembly {
+        let router = InitialRouterImpl(mainFlowCoordinator: mainFlowCoordinator)
         let initialVC = InitialViewController(router: router)
-        router.viewController = initialVC
+        router.setViewController(initialVC)
         return InitialAssembly(viewController: initialVC)
     }
 }

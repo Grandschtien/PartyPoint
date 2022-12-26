@@ -8,9 +8,7 @@
 
 import UIKit
 
-final class EventRouter: BaseRouter {
-    var viewController: UIViewController?
-}
+final class EventRouter: BaseRouter {}
 
 extension EventRouter: EventRouterInput {
     func backToPrevController() {
