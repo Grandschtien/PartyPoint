@@ -17,7 +17,7 @@ final class EnterContainer {
         let router = EnterRouter(mainFlowCoordinator: context.mainFlowCoordinator)
         let networkRouter = Router<AuthEndPoint>()
         let authManager = AuthManagerImpl(router: networkRouter)
-        let decoder = PPDecoderImpl<PPUser>()
+        let decoder = PPDecoderImpl()
         let keyChainManager = KeyChainManangerImpl()
         let interactor = EnterInteractor(authManager: authManager,
                                          decoder: decoder,

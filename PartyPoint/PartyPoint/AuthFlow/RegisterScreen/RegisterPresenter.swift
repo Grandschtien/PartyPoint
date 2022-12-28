@@ -65,10 +65,12 @@ extension RegisterPresenter: RegisterViewOutput {
 
 extension RegisterPresenter: RegisterInteractorOutput {
     func userRegistered() {
+        view?.showLoadingIfNeeded(isLoading: false)
         router.startMainFlow()
     }
     
     func registerFailed(withReason reason: String) {
+        view?.showLoadingIfNeeded(isLoading: false)
         view?.showWhyRegisterFailed(reason: reason)
     }
 }

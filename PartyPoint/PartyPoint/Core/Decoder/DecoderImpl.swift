@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class PPDecoderImpl<T: Decodable>: PPDecoder {
+final class PPDecoderImpl: PPDecoder {
     func parseJSON<T: Decodable>(from data: Data, type: T.Type) -> T? {
         return try? JSONDecoder().decode(T.self, from: data)
     }

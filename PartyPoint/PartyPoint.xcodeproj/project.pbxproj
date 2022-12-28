@@ -19,6 +19,7 @@
 		602220D3295C675600D2F7B2 /* PPUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602220D2295C675600D2F7B2 /* PPUserInfo.swift */; };
 		602220D5295CBA9000D2F7B2 /* KeyChainMananger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602220D4295CBA9000D2F7B2 /* KeyChainMananger.swift */; };
 		602220D8295CBC0400D2F7B2 /* KeyChainManangerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602220D7295CBC0400D2F7B2 /* KeyChainManangerImpl.swift */; };
+		602220DB295CD70500D2F7B2 /* AuthManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602220DA295CD70500D2F7B2 /* AuthManagerImpl.swift */; };
 		603B506128EDEA4A00A83214 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603B506028EDEA4A00A83214 /* R.generated.swift */; };
 		604147B128D4D9C90052F60D /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604147B028D4D9C90052F60D /* EndPointType.swift */; };
 		604147B328D4DA480052F60D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604147B228D4DA480052F60D /* HTTPMethod.swift */; };
@@ -175,6 +176,7 @@
 		602220D2295C675600D2F7B2 /* PPUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPUserInfo.swift; sourceTree = "<group>"; };
 		602220D4295CBA9000D2F7B2 /* KeyChainMananger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainMananger.swift; sourceTree = "<group>"; };
 		602220D7295CBC0400D2F7B2 /* KeyChainManangerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManangerImpl.swift; sourceTree = "<group>"; };
+		602220DA295CD70500D2F7B2 /* AuthManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManagerImpl.swift; sourceTree = "<group>"; };
 		603B506028EDEA4A00A83214 /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		604147B028D4D9C90052F60D /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		604147B228D4DA480052F60D /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -374,6 +376,15 @@
 			path = KeyChain;
 			sourceTree = "<group>";
 		};
+		602220D9295CD6EE00D2F7B2 /* AuthManager */ = {
+			isa = PBXGroup;
+			children = (
+				6060DE6A29210AF50017F7F7 /* AuthManager.swift */,
+				602220DA295CD70500D2F7B2 /* AuthManagerImpl.swift */,
+			);
+			path = AuthManager;
+			sourceTree = "<group>";
+		};
 		604147AD28D4D9A00052F60D /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,8 +434,8 @@
 		6060DE6929210AEA0017F7F7 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				602220D9295CD6EE00D2F7B2 /* AuthManager */,
 				602220D6295CBBF100D2F7B2 /* KeyChain */,
-				6060DE6A29210AF50017F7F7 /* AuthManager.swift */,
 				6060DE6C29210BD30017F7F7 /* ValidationTokenManager.swift */,
 			);
 			path = Managers;
@@ -1016,6 +1027,7 @@
 				6097170B287D821A0084A63C /* EventsContainer.swift in Sources */,
 				60971723287D824A0084A63C /* ProfileContainer.swift in Sources */,
 				60FAF6252953517000982457 /* PPToastView.swift in Sources */,
+				602220DB295CD70500D2F7B2 /* AuthManagerImpl.swift in Sources */,
 				6070D43728ABDE1F0054F61B /* EventContainer.swift in Sources */,
 				60971708287D821A0084A63C /* EventsViewController.swift in Sources */,
 				6097176E287DA60D0084A63C /* EnterRouter.swift in Sources */,

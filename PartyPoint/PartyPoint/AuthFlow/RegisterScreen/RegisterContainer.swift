@@ -17,7 +17,11 @@ final class RegisterContainer {
         let router = RegisterRouter(mainFlowCoordinator: context.mainFlowCoordinator)
         let networkRouter = Router<AuthEndPoint>()
         let authManager = AuthManagerImpl(router: networkRouter)
-        let interactor = RegisterInteractor(authManager: authManager)
+        let keyChainManager = KeyChainManangerImpl()
+        let decoder = PPDecoderImpl()
+        let interactor = RegisterInteractor(authManager: authManager,
+                                            keyChainManager: keyChainManager,
+                                            decoder: decoder)
         let presenter = RegisterPresenter(router: router, interactor: interactor)
 		let viewController = RegisterViewController(output: presenter)
         router.setViewController(viewController)
