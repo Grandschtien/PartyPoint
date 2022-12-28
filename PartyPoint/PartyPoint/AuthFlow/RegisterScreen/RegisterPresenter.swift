@@ -50,11 +50,14 @@ extension RegisterPresenter: RegisterViewOutput {
         let emptyFieldsIndexes = getIndexesOfEmptyFields(registerInfo: registerInfo)
         let uwrappedRegisterInfo = registerInfo.compactMap { $0 }
         if emptyFieldsIndexes.isEmpty {
+            view?.showLoadingIfNeeded(isLoading: true)
             interactor.registerUser(with: registerInfo)
         } else if uwrappedRegisterInfo.last != uwrappedRegisterInfo[uwrappedRegisterInfo.count - 2] {
             view?.showToPasswordsIsDifferent()
+            view?.showLoadingIfNeeded(isLoading: false)
         } else {
             view?.showEmptyFields(withIndexes: emptyFieldsIndexes)
+            view?.showLoadingIfNeeded(isLoading: false)
         }
     }
 

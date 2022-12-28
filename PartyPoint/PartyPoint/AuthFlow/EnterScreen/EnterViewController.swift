@@ -36,20 +36,12 @@ final class EnterViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenterManager.addObserver(observer: self,
-                                              selector: #selector(keyboardWillShow(_:)),
-                                              name: UIWindow.keyboardWillShowNotification,
-                                              object: nil)
-        NotificationCenterManager.addObserver(observer: self,
-                                              selector: #selector(keyboardWillHide(_:)),
-                                              name: UIWindow.keyboardWillHideNotification,
-                                              object: nil)
+        addKeyboardObservers()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillShowNotification, object: nil)
-        NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillHideNotification, object: nil)
+        removeKeyboardObservers()
     }
 }
 
@@ -101,5 +93,21 @@ extension EnterViewController {
     @objc
     func keyboardWillHide(_ notification: Notification) {
         enterView.keyboardWillHide()
+    }
+    
+    func addKeyboardObservers() {
+        NotificationCenterManager.addObserver(observer: self,
+                                              selector: #selector(keyboardWillShow(_:)),
+                                              name: UIWindow.keyboardWillShowNotification,
+                                              object: nil)
+        NotificationCenterManager.addObserver(observer: self,
+                                              selector: #selector(keyboardWillHide(_:)),
+                                              name: UIWindow.keyboardWillHideNotification,
+                                              object: nil)
+    }
+    
+    func removeKeyboardObservers() {
+        NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenterManager.removeObserver(observer: self, name: UIWindow.keyboardWillHideNotification, object: nil)
     }
 }

@@ -49,9 +49,12 @@ private extension RegisterViewController {
 }
 
 extension RegisterViewController: RegisterViewInput {
+    func showLoadingIfNeeded(isLoading: Bool) {
+        contentView.setButtonLoading(isLoading: isLoading)
+    }
+    
     func showWhyRegisterFailed(reason: String) {
         contentView.showRegisterFaild(withReason: reason)
-        contentView.setButtonLoading(isLoading: false)
     }
     
     func showEmptyFields(withIndexes indexes: [Int]) {

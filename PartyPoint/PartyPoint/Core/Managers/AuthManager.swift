@@ -8,7 +8,8 @@
 import Foundation
 
 enum AuthStatus {
-    case authorized
+    //String - распаршеный токен
+    case authorized(data: Data?)
     case nonAuthoraized(reason: String?)
 }
 
@@ -32,7 +33,7 @@ final class AuthManagerImpl: NetworkManager, AuthManager {
         
         switch status {
         case .success:
-            return .authorized
+            return .authorized(data: result.data)
         case let .failure(reason):
             return .nonAuthoraized(reason: reason)
         }

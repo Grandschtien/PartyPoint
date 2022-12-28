@@ -19,6 +19,7 @@ protocol RegisterViewInput: AnyObject {
     func showEmptyFields(withIndexes indexes: [Int])
     func showToPasswordsIsDifferent()
     func showWhyRegisterFailed(reason: String)
+    func showLoadingIfNeeded(isLoading: Bool)
 }
 
 protocol RegisterViewOutput: AnyObject {

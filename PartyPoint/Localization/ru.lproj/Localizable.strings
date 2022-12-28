@@ -74,6 +74,7 @@
 "response_returned_with_no_data_to_decode" = "Ответ возвращен без данных для декодирования";
 "we_could_not_to_decode_the_response" = "Мы не смогли декодировать ответ";
 "email_is_already_exists" = "Эта почта уже занята";
+"somthing_goes_wrong" = "Что-то пошло не так";
 
 /* Ошибки текстовых полей */
 "fill_in_this_field" = "Заполните это поле";
