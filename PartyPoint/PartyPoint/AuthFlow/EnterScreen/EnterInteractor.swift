@@ -12,10 +12,14 @@ final class EnterInteractor {
     weak var output: EnterInteractorOutput?
     private let authManager: AuthManager
     private let decoder: PPDecoder
+    private let keyChainManager: KeyChainMananger
     
-    init(authManager: AuthManager, decoder: PPDecoder) {
+    init(authManager: AuthManager,
+         decoder: PPDecoder,
+         keyChainManager: KeyChainMananger) {
         self.authManager = authManager
         self.decoder = decoder
+        self.keyChainManager = keyChainManager
     }
 }
 
@@ -27,8 +31,15 @@ private extension EnterInteractor {
         return userInfo
     }
     
-    func saveTokens(_ token: PPToken) {
-        //TODO: save token
+    func saveTokens(_ token: PPToken) -> Bool {
+        do {
+            try keyChainManager.save(token,
+                                     service: PPToken.kTokensKeyChain,
+                                     account: PPToken.kTokensKeyChain)
+            return true
+        } catch {
+            return false
+        }
     }
     
     func performNonAthorizedFlow(withReason reason: String?) async {
@@ -45,11 +56,11 @@ private extension EnterInteractor {
     
     func performAuthorizedFlow(withData data: Data?) async {
         let userInfo = parseUserInformation(data: data)
-        guard let userInfo = userInfo else {
+        guard let userInfo = userInfo, saveTokens(userInfo.tokens) else {
             output?.notAuthorized(withReason: Localizable.somthing_goes_wrong())
             return
         }
-        saveTokens(userInfo.tokens)
+        
         await runOnMainThread {
             output?.authorized()
         }

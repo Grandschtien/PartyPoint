@@ -7,10 +7,14 @@
 
 import Foundation
 
-struct PPToken: Codable {
+struct PPToken {
     let accessToken: String
     let refreshToken: String
     
+    static let kTokensKeyChain = "user_tokens"
+}
+
+extension PPToken: Codable {
     enum CodingKeys: String, CodingKey {
         case accessToken = "access_token"
         case refreshToken = "refresh_token"
