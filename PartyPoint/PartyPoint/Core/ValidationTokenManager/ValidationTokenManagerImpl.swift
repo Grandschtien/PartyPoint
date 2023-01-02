@@ -49,7 +49,7 @@ private extension ValidationTokenManagerImpl {
             let tokenInfo = TokenInfo(tokens: decodedTokens, expireDate: expiringTime)
             
             do {
-                try keyChainManager.save(tokenInfo, service: PPToken.kTokensKeyChain, account: user.email)
+                try keyChainManager.save(tokenInfo, service: PPToken.kTokensKeyChain, account: "\(user.id)")
             } catch {
                 throw ValidationTokenErrors.savingFaild
             }
@@ -73,7 +73,7 @@ extension ValidationTokenManagerImpl: ValidationTokenManager {
             
             try keyChainManager.save(tokenInfo,
                                      service: PPToken.kTokensKeyChain,
-                                     account: user.email)
+                                     account: "\(user.id)")
         } catch {
             throw error
         }

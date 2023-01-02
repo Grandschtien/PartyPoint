@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -22,38 +22,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mvq-sh-g3R">
                         <rect key="frame" x="0.0" y="0.0" width="250" height="160"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k4d-gy-3bE">
-                                <rect key="frame" x="15" y="15" width="80" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 км" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfY-wV-EoB">
-                                        <rect key="frame" x="34" y="6" width="42" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" name="mainColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navigate" translatesAutoresizingMaskIntoConstraints="NO" id="JW5-fB-cID">
-                                        <rect key="frame" x="4" y="5" width="20" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="ib7-7c-u4D"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" name="miniColor"/>
-                                <constraints>
-                                    <constraint firstItem="JW5-fB-cID" firstAttribute="centerY" secondItem="JfY-wV-EoB" secondAttribute="centerY" id="DgA-qo-t5R"/>
-                                    <constraint firstItem="JfY-wV-EoB" firstAttribute="centerY" secondItem="k4d-gy-3bE" secondAttribute="centerY" id="Gza-hd-bMK"/>
-                                    <constraint firstAttribute="height" constant="30" id="H8g-7E-KOR"/>
-                                    <constraint firstAttribute="trailing" secondItem="JfY-wV-EoB" secondAttribute="trailing" constant="4" id="Rh0-2o-kUq"/>
-                                    <constraint firstAttribute="bottom" secondItem="JfY-wV-EoB" secondAttribute="bottom" constant="6" id="T7t-Ph-3wr"/>
-                                    <constraint firstAttribute="width" constant="80" id="Ujb-U5-y6V"/>
-                                    <constraint firstItem="JfY-wV-EoB" firstAttribute="top" secondItem="k4d-gy-3bE" secondAttribute="top" constant="6" id="eJ2-ac-PBh"/>
-                                    <constraint firstItem="JW5-fB-cID" firstAttribute="leading" secondItem="k4d-gy-3bE" secondAttribute="leading" constant="4" id="htz-SF-cQ2"/>
-                                    <constraint firstItem="JfY-wV-EoB" firstAttribute="leading" secondItem="JW5-fB-cID" secondAttribute="trailing" constant="10" id="kDd-Y2-wvf"/>
-                                    <constraint firstItem="JW5-fB-cID" firstAttribute="top" secondItem="k4d-gy-3bE" secondAttribute="top" constant="5" id="sE0-dI-ePJ"/>
-                                </constraints>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="r32-xU-D4y">
-                                <rect key="frame" x="10" y="101" width="173.5" height="49"/>
+                                <rect key="frame" x="20" y="91" width="173.5" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Концерт басты" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNR-IM-XvD">
                                         <rect key="frame" x="0.0" y="0.0" width="173.5" height="27.5"/>
@@ -86,12 +56,9 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="k4d-gy-3bE" firstAttribute="top" secondItem="Mvq-sh-g3R" secondAttribute="top" constant="15" id="DL0-hV-lEz"/>
                             <constraint firstAttribute="trailing" secondItem="EX9-mC-YdK" secondAttribute="trailing" constant="15" id="OGJ-FM-scl"/>
-                            <constraint firstItem="EX9-mC-YdK" firstAttribute="centerY" secondItem="k4d-gy-3bE" secondAttribute="centerY" id="Sgk-Jb-RwA"/>
-                            <constraint firstItem="k4d-gy-3bE" firstAttribute="leading" secondItem="Mvq-sh-g3R" secondAttribute="leading" constant="15" id="Vu3-4W-g8F"/>
-                            <constraint firstAttribute="bottom" secondItem="r32-xU-D4y" secondAttribute="bottom" constant="10" id="mea-Ql-ChL"/>
-                            <constraint firstItem="r32-xU-D4y" firstAttribute="leading" secondItem="Mvq-sh-g3R" secondAttribute="leading" constant="10" id="xWz-Qv-Jol"/>
+                            <constraint firstAttribute="bottom" secondItem="r32-xU-D4y" secondAttribute="bottom" constant="20" id="mea-Ql-ChL"/>
+                            <constraint firstItem="r32-xU-D4y" firstAttribute="leading" secondItem="Mvq-sh-g3R" secondAttribute="leading" constant="20" id="xWz-Qv-Jol"/>
                             <constraint firstItem="EX9-mC-YdK" firstAttribute="top" secondItem="Mvq-sh-g3R" secondAttribute="top" constant="10" id="xnn-CM-gU6"/>
                         </constraints>
                     </view>
@@ -106,8 +73,6 @@
             </constraints>
             <connections>
                 <outlet property="dateLabel" destination="o2R-PS-W07" id="ouv-xh-H0g"/>
-                <outlet property="destinationLabel" destination="JfY-wV-EoB" id="hmT-vG-Stj"/>
-                <outlet property="destinationView" destination="k4d-gy-3bE" id="7cR-Bt-J2S"/>
                 <outlet property="image" destination="Mvq-sh-g3R" id="Z9a-A2-Ih4"/>
                 <outlet property="likeImage" destination="j19-Di-47S" id="34F-14-xTU"/>
                 <outlet property="likeView" destination="EX9-mC-YdK" id="Uay-yh-6bz"/>
@@ -118,10 +83,6 @@
     </objects>
     <resources>
         <image name="heartOutline" width="31" height="30"/>
-        <image name="navigate" width="16" height="15"/>
-        <namedColor name="mainColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="miniColor">
             <color red="0.039000000804662704" green="0.046999998390674591" blue="0.24300000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

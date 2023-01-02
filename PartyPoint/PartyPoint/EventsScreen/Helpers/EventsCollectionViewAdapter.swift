@@ -83,12 +83,14 @@ final class EventsCollectionViewAdapter: NSObject {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     private func setupLayout() -> UICollectionViewCompositionalLayout {
-        let layout = UICollectionViewCompositionalLayout {[weak self] section, env in
+        let layout = UICollectionViewCompositionalLayout { [weak self] section, env in
             switch section {
-            case 2:
-                return self?.configureVerticalLayoutSection()
-            default:
+            case 0:
                 return self?.configureHorizontalLayoutSection()
+            case 1:
+                return self?.configureHorizontalLayoutSection()
+            default:
+                return self?.configureVerticalLayoutSection()
             }
         }
         return layout

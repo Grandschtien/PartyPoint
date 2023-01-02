@@ -40,7 +40,7 @@ final class EventsViewController: AbstractEventsViewController {
         navigationBar.backgroundColor = Colors.mainColor()
     }
     
-    internal override func setupUI() {
+    override func setupUI() {
         super.setupUI()
         view.backgroundColor = Colors.mainColor()
         eventsCollection.register(

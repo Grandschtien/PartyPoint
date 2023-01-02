@@ -134,6 +134,7 @@
 		60B48CD528E5C16C006C6CF5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B48CD428E5C16C006C6CF5 /* NetworkManager.swift */; };
 		60B48CD728EC519D006C6CF5 /* EventsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B48CD628EC519D006C6CF5 /* EventsEndPoint.swift */; };
 		60B48CD928EC5BC3006C6CF5 /* AuthEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B48CD828EC5BC2006C6CF5 /* AuthEndPoint.swift */; };
+		60C5BECA296304CA004A0E1D /* EventsCompilationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C5BEC9296304CA004A0E1D /* EventsCompilationsView.swift */; };
 		60DA33B428802FF6004E52A3 /* UIStackView+convenieceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA33B328802FF6004E52A3 /* UIStackView+convenieceInit.swift */; };
 		60DA4CEB28BE131C00B7E428 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA4CEA28BE131C00B7E428 /* BaseRouter.swift */; };
 		60DA4CED28BE185E00B7E428 /* NAvBar+ConfigurateDefaultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA4CEC28BE185E00B7E428 /* NAvBar+ConfigurateDefaultStyle.swift */; };
@@ -301,6 +302,7 @@
 		60B48CD428E5C16C006C6CF5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		60B48CD628EC519D006C6CF5 /* EventsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsEndPoint.swift; sourceTree = "<group>"; };
 		60B48CD828EC5BC2006C6CF5 /* AuthEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndPoint.swift; sourceTree = "<group>"; };
+		60C5BEC9296304CA004A0E1D /* EventsCompilationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCompilationsView.swift; sourceTree = "<group>"; };
 		60DA33B328802FF6004E52A3 /* UIStackView+convenieceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+convenieceInit.swift"; sourceTree = "<group>"; };
 		60DA4CEA28BE131C00B7E428 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		60DA4CEC28BE185E00B7E428 /* NAvBar+ConfigurateDefaultStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NAvBar+ConfigurateDefaultStyle.swift"; sourceTree = "<group>"; };
@@ -680,6 +682,7 @@
 		609716FD287D81F80084A63C /* EventsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				60C5BECB296304D3004A0E1D /* Views */,
 				6073B87828819FFD00AF07FA /* EventCell */,
 				6073B86E2881933300AF07FA /* Helpers */,
 				60971700287D821A0084A63C /* EventsPresenter.swift */,
@@ -823,6 +826,14 @@
 				60B48CD428E5C16C006C6CF5 /* NetworkManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		60C5BECB296304D3004A0E1D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				60C5BEC9296304CA004A0E1D /* EventsCompilationsView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		60DA4CE928BE130B00B7E428 /* BaseComponents */ = {
@@ -1124,6 +1135,7 @@
 				6097176F287DA60D0084A63C /* EnterViewController.swift in Sources */,
 				60971797287EDE5D0084A63C /* FogotPasswordInteractor.swift in Sources */,
 				60971763287D9BD80084A63C /* NavigationBarWithLogo.swift in Sources */,
+				60C5BECA296304CA004A0E1D /* EventsCompilationsView.swift in Sources */,
 				60918EEB2888639D00D9E032 /* UserInfoCell.swift in Sources */,
 				60FAF60F295343DD00982457 /* PPTextFieldDefaultPresenter.swift in Sources */,
 				60FAF60B295342FA00982457 /* PPTextFieldModePresenterProtocol.swift in Sources */,
