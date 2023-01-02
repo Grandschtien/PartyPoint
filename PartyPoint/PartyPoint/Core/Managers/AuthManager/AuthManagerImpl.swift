@@ -15,10 +15,29 @@ final class AuthManagerImpl: NetworkManager, AuthManager {
         case nonAuthoraized(reason: String?)
     }
     
+    enum RefreshTokenStatus {
+        case success(data: Data?)
+        case failure(reason: String?)
+    }
+    
     private let router: Router<AuthEndPoint>
     
     init(router: Router<AuthEndPoint>) {
         self.router = router
+    }
+    
+    func updateAccessToken(refreshToken: String) async -> RefreshTokenStatus {
+        let result = await router.request(.refresh(refreshToken: refreshToken))
+        
+        let httpResponse = result.response as? HTTPURLResponse
+        let status = handleNetworkResponse(httpResponse)
+        
+        switch status {
+        case .success:
+            return .success(data: result.data)
+        case let .failure(reason):
+            return .failure(reason: reason)
+        }
     }
     
     func login(with login: String, password: String) async -> AuthStatus {

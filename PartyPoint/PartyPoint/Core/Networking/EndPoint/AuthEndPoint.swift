@@ -11,7 +11,7 @@ import Foundation
 enum AuthEndPoint {
     case login(email: String, passwd: String)
     case logout
-    case refresh(refreshKey: String)
+    case refresh(refreshToken: String)
     case signUp(email: String, name: String, passwd: String, surname: String)
 }
 

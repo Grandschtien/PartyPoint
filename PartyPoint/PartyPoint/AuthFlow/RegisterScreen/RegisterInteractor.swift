@@ -10,34 +10,41 @@ import Foundation
 
 final class RegisterInteractor {
     private let authManager: AuthManager
-    private let keyChainManager: KeyChainMananger
-    private let decoder: PPDecoder
+    private let validationTokenMananger: ValidationTokenManager
+    private let accountMananger: PPAccountManager
     
 	weak var output: RegisterInteractorOutput?
     
     init(authManager: AuthManager,
-         keyChainManager: KeyChainMananger,
-         decoder: PPDecoder) {
+         validationTokenMananger: ValidationTokenManager,
+         accountManager: PPAccountManager) {
         self.authManager = authManager
-        self.keyChainManager = keyChainManager
-        self.decoder = decoder
+        self.validationTokenMananger = validationTokenMananger
+        self.accountMananger = accountManager
     }
 }
 
 //MARK: Private methods
 private extension RegisterInteractor {
-    func parseUserInformation(data: Data?) -> PPUser? {
-        guard let data = data else { return nil }
-        let userInfo = decoder.parseJSON(from: data, type: PPUser.self)
-        return userInfo
+    func saveTokens(tokens: PPToken) async {
+        do {
+            try validationTokenMananger.saveTokens(tokens)
+        } catch {
+            await runOnMainThread {
+                output?.registerFailed(withReason: Localizable.somthing_goes_wrong())
+            }
+        }
     }
     
     func performRegisterFlow(withData data: Data?) async {
-        let userInfo = parseUserInformation(data: data)
-        guard let userInfo = userInfo, saveTokens(userInfo.tokens) else {
+        let userInfo = accountMananger.parseUserInformation(data: data)
+        guard let userInfo = userInfo else {
             output?.registerFailed(withReason: Localizable.somthing_goes_wrong())
             return
         }
+        
+        accountMananger.setUser(user: userInfo.user)
+        await saveTokens(tokens: userInfo.tokens)
         
         await runOnMainThread {
             output?.userRegistered()
@@ -54,17 +61,6 @@ private extension RegisterInteractor {
         
         await runOnMainThread {
             output?.registerFailed(withReason: reason)
-        }
-    }
-    
-    func saveTokens(_ token: PPToken) -> Bool {
-        do {
-            try keyChainManager.save(token,
-                                     service: PPToken.kTokensKeyChain,
-                                     account: PPToken.kTokensKeyChain)
-            return true
-        } catch {
-            return false
         }
     }
 }

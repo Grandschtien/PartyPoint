@@ -11,34 +11,27 @@ import Foundation
 final class EnterInteractor {
     weak var output: EnterInteractorOutput?
     private let authManager: AuthManager
-    private let decoder: PPDecoder
-    private let keyChainManager: KeyChainMananger
+    private let validationTokenMananger: ValidationTokenManager
+    private let accountManager: PPAccountManager
     
     init(authManager: AuthManager,
-         decoder: PPDecoder,
-         keyChainManager: KeyChainMananger) {
+         validationTokenMananger: ValidationTokenManager,
+         accountManager: PPAccountManager) {
         self.authManager = authManager
-        self.decoder = decoder
-        self.keyChainManager = keyChainManager
+        self.validationTokenMananger = validationTokenMananger
+        self.accountManager = accountManager
     }
 }
 
 // MARK: - Private methods -
 private extension EnterInteractor {
-    func parseUserInformation(data: Data?) -> PPUser? {
-        guard let data = data else { return nil }
-        let userInfo = decoder.parseJSON(from: data, type: PPUser.self)
-        return userInfo
-    }
-    
-    func saveTokens(_ token: PPToken) -> Bool {
+    func saveTokens(_ tokens: PPToken) async {
         do {
-            try keyChainManager.save(token,
-                                     service: PPToken.kTokensKeyChain,
-                                     account: PPToken.kTokensKeyChain)
-            return true
+            try validationTokenMananger.saveTokens(tokens)
         } catch {
-            return false
+            await runOnMainThread {
+                output?.notAuthorized(withReason: Localizable.somthing_goes_wrong())
+            }
         }
     }
     
@@ -55,12 +48,16 @@ private extension EnterInteractor {
     }
     
     func performAuthorizedFlow(withData data: Data?) async {
-        let userInfo = parseUserInformation(data: data)
-        guard let userInfo = userInfo, saveTokens(userInfo.tokens) else {
-            output?.notAuthorized(withReason: Localizable.somthing_goes_wrong())
+        let userInfo = accountManager.parseUserInformation(data: data)
+        guard let userInfo = userInfo  else {
+            await runOnMainThread {
+                output?.notAuthorized(withReason: Localizable.somthing_goes_wrong())
+            }
             return
         }
         
+        accountManager.setUser(user: userInfo.user)
+        await saveTokens(userInfo.tokens)
         await runOnMainThread {
             output?.authorized()
         }

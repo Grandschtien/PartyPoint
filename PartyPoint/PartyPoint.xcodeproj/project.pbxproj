@@ -20,6 +20,7 @@
 		602220D5295CBA9000D2F7B2 /* KeyChainMananger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602220D4295CBA9000D2F7B2 /* KeyChainMananger.swift */; };
 		602220D8295CBC0400D2F7B2 /* KeyChainManangerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602220D7295CBC0400D2F7B2 /* KeyChainManangerImpl.swift */; };
 		602220DB295CD70500D2F7B2 /* AuthManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602220DA295CD70500D2F7B2 /* AuthManagerImpl.swift */; };
+		602220DE295CDDE100D2F7B2 /* ValidationTokenManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602220DD295CDDE100D2F7B2 /* ValidationTokenManagerImpl.swift */; };
 		603B506128EDEA4A00A83214 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603B506028EDEA4A00A83214 /* R.generated.swift */; };
 		604147B128D4D9C90052F60D /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604147B028D4D9C90052F60D /* EndPointType.swift */; };
 		604147B328D4DA480052F60D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604147B228D4DA480052F60D /* HTTPMethod.swift */; };
@@ -46,6 +47,10 @@
 		6073B87728819A2F00AF07FA /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073B87628819A2F00AF07FA /* Section.swift */; };
 		6073B87B2881A01800AF07FA /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073B8792881A01800AF07FA /* EventCell.swift */; };
 		6073B87C2881A01800AF07FA /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6073B87A2881A01800AF07FA /* EventCell.xib */; };
+		608160432962CF86006B0919 /* PPAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608160422962CF86006B0919 /* PPAccountManager.swift */; };
+		608160462962CFA0006B0919 /* PPAccountManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608160452962CFA0006B0919 /* PPAccountManagerImpl.swift */; };
+		608160482962D108006B0919 /* UserDefaults+KeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608160472962D108006B0919 /* UserDefaults+KeyValueStorage.swift */; };
+		6081604A2962F67F006B0919 /* TokenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608160492962F67F006B0919 /* TokenInfo.swift */; };
 		60918EDA2888334B00D9E032 /* FavouritesCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60918ED92888334B00D9E032 /* FavouritesCollectionAdapter.swift */; };
 		60918EDD288835E400D9E032 /* EventsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60918EDC288835E400D9E032 /* EventsDelegate.swift */; };
 		60918EE128883F7800D9E032 /* EventsScrollDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60918EE028883F7800D9E032 /* EventsScrollDelegate.swift */; };
@@ -177,6 +182,7 @@
 		602220D4295CBA9000D2F7B2 /* KeyChainMananger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainMananger.swift; sourceTree = "<group>"; };
 		602220D7295CBC0400D2F7B2 /* KeyChainManangerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManangerImpl.swift; sourceTree = "<group>"; };
 		602220DA295CD70500D2F7B2 /* AuthManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManagerImpl.swift; sourceTree = "<group>"; };
+		602220DD295CDDE100D2F7B2 /* ValidationTokenManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTokenManagerImpl.swift; sourceTree = "<group>"; };
 		603B506028EDEA4A00A83214 /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		604147B028D4D9C90052F60D /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		604147B228D4DA480052F60D /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -206,6 +212,10 @@
 		6073B87628819A2F00AF07FA /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		6073B8792881A01800AF07FA /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		6073B87A2881A01800AF07FA /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		608160422962CF86006B0919 /* PPAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPAccountManager.swift; sourceTree = "<group>"; };
+		608160452962CFA0006B0919 /* PPAccountManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPAccountManagerImpl.swift; sourceTree = "<group>"; };
+		608160472962D108006B0919 /* UserDefaults+KeyValueStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+KeyValueStorage.swift"; sourceTree = "<group>"; };
+		608160492962F67F006B0919 /* TokenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInfo.swift; sourceTree = "<group>"; };
 		60918ED92888334B00D9E032 /* FavouritesCollectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesCollectionAdapter.swift; sourceTree = "<group>"; };
 		60918EDC288835E400D9E032 /* EventsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDelegate.swift; sourceTree = "<group>"; };
 		60918EE028883F7800D9E032 /* EventsScrollDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsScrollDelegate.swift; sourceTree = "<group>"; };
@@ -385,6 +395,16 @@
 			path = AuthManager;
 			sourceTree = "<group>";
 		};
+		602220DC295CDDCE00D2F7B2 /* ValidationTokenManager */ = {
+			isa = PBXGroup;
+			children = (
+				6060DE6C29210BD30017F7F7 /* ValidationTokenManager.swift */,
+				602220DD295CDDE100D2F7B2 /* ValidationTokenManagerImpl.swift */,
+				608160492962F67F006B0919 /* TokenInfo.swift */,
+			);
+			path = ValidationTokenManager;
+			sourceTree = "<group>";
+		};
 		604147AD28D4D9A00052F60D /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,7 +456,6 @@
 			children = (
 				602220D9295CD6EE00D2F7B2 /* AuthManager */,
 				602220D6295CBBF100D2F7B2 /* KeyChain */,
-				6060DE6C29210BD30017F7F7 /* ValidationTokenManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -491,6 +510,15 @@
 				6073B87A2881A01800AF07FA /* EventCell.xib */,
 			);
 			path = EventCell;
+			sourceTree = "<group>";
+		};
+		608160442962CF8B006B0919 /* AccountManager */ = {
+			isa = PBXGroup;
+			children = (
+				608160422962CF86006B0919 /* PPAccountManager.swift */,
+				608160452962CFA0006B0919 /* PPAccountManagerImpl.swift */,
+			);
+			path = AccountManager;
 			sourceTree = "<group>";
 		};
 		60918ED8288830EF00D9E032 /* Helpers */ = {
@@ -575,6 +603,8 @@
 		609716EE287D75940084A63C /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				608160442962CF8B006B0919 /* AccountManager */,
+				602220DC295CDDCE00D2F7B2 /* ValidationTokenManager */,
 				602220C9295A08E200D2F7B2 /* Decoder */,
 				6060DE6929210AEA0017F7F7 /* Managers */,
 				6073B873288194B100AF07FA /* Entities */,
@@ -631,6 +661,7 @@
 				60FAF619295349F000982457 /* UIControl+extensions.swift */,
 				60FAF622295350AA00982457 /* UILabel+lockerImages.swift */,
 				600B8CE3295604910002B53E /* GlobalFunctions.swift */,
+				608160472962D108006B0919 /* UserDefaults+KeyValueStorage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1023,6 +1054,7 @@
 				6097177C287EC2C90084A63C /* HowToEnterStackView.swift in Sources */,
 				60971798287EDE5D0084A63C /* FogotPasswordContainer.swift in Sources */,
 				602220C82959E56100D2F7B2 /* Coordinator.swift in Sources */,
+				6081604A2962F67F006B0919 /* TokenInfo.swift in Sources */,
 				600B8CE4295604910002B53E /* GlobalFunctions.swift in Sources */,
 				6097170B287D821A0084A63C /* EventsContainer.swift in Sources */,
 				60971723287D824A0084A63C /* ProfileContainer.swift in Sources */,
@@ -1041,6 +1073,7 @@
 				6073B87B2881A01800AF07FA /* EventCell.swift in Sources */,
 				60971731287D840A0084A63C /* InitialRouter.swift in Sources */,
 				609716F8287D7D880084A63C /* AppCoordinator.swift in Sources */,
+				608160432962CF86006B0919 /* PPAccountManager.swift in Sources */,
 				609716F3287D7C1D0084A63C /* AuthCoordinator.swift in Sources */,
 				602220CB295A08F000D2F7B2 /* Decoder.swift in Sources */,
 				6097179C287F172C0084A63C /* NotificationCenterManager.swift in Sources */,
@@ -1058,6 +1091,7 @@
 				604147B128D4D9C90052F60D /* EndPointType.swift in Sources */,
 				6073B8752881962700AF07FA /* EventsTypeHeaderHeader.swift in Sources */,
 				60EAE93E28AFCD0700030055 /* LayoutHelper.swift in Sources */,
+				608160462962CFA0006B0919 /* PPAccountManagerImpl.swift in Sources */,
 				60A1E60A28AFACD400E80D0D /* EventView.swift in Sources */,
 				602220D5295CBA9000D2F7B2 /* KeyChainMananger.swift in Sources */,
 				6070D43328ABDE1F0054F61B /* EventRouter.swift in Sources */,
@@ -1134,6 +1168,7 @@
 				609716F5287D7C720084A63C /* MainFlowCoordinator.swift in Sources */,
 				601BB71928D1D69600048359 /* UIApplication+Extensions.swift in Sources */,
 				6070D43528ABDE1F0054F61B /* EventProtocols.swift in Sources */,
+				602220DE295CDDE100D2F7B2 /* ValidationTokenManagerImpl.swift in Sources */,
 				6097176D287DA60D0084A63C /* EnterPresenter.swift in Sources */,
 				60971722287D824A0084A63C /* ProfileInteractor.swift in Sources */,
 				60FAF6112953442B00982457 /* PPTextFieldClearModePresenter.swift in Sources */,
@@ -1147,6 +1182,7 @@
 				60971737287D87C90084A63C /* UIView+Constraints.swift in Sources */,
 				60FAF61E29534D7B00982457 /* PPTextFieldColorProvider.swift in Sources */,
 				6042172328BBE67F0063BF68 /* AnyView.swift in Sources */,
+				608160482962D108006B0919 /* UserDefaults+KeyValueStorage.swift in Sources */,
 				6073B8702881936A00AF07FA /* EventsCollectionViewAdapter.swift in Sources */,
 				6073B87728819A2F00AF07FA /* Section.swift in Sources */,
 				60918EE62888626900D9E032 /* ProfileTableAdapter.swift in Sources */,
