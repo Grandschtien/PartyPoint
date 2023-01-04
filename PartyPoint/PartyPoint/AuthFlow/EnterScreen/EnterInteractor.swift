@@ -13,13 +13,16 @@ final class EnterInteractor {
     private let authManager: AuthManager
     private let validationTokenMananger: ValidationTokenManager
     private let accountManager: PPAccountManager
+    private let locationManager: LocationManager
     
     init(authManager: AuthManager,
          validationTokenMananger: ValidationTokenManager,
-         accountManager: PPAccountManager) {
+         accountManager: PPAccountManager,
+         locationManager: LocationManager) {
         self.authManager = authManager
         self.validationTokenMananger = validationTokenMananger
         self.accountManager = accountManager
+        self.locationManager = locationManager
     }
 }
 
@@ -65,6 +68,10 @@ private extension EnterInteractor {
 }
 
 extension EnterInteractor: EnterInteractorInput {
+    func requestLocationPermission() {
+        locationManager.requestPermission()
+    }
+    
     func enterButtonPressed(email: String, password: String) {
         Task {
             let status = await authManager.login(with: email, password: password)

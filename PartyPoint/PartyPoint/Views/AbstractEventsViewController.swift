@@ -19,13 +19,7 @@ class AbstractEventsViewController: UIViewController {
             collectionViewLayout: UICollectionViewFlowLayout()
         )
         
-        collection.registerWithNib(
-            EventCell.self
-        )
-        
-        collection.registerWithNib(
-            EventCell.self
-        )
+        collection.register(EventCell.self)
         
         collection.showsVerticalScrollIndicator = false
         collection.showsHorizontalScrollIndicator = false

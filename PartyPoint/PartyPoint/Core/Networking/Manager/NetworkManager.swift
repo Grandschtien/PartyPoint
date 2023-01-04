@@ -75,4 +75,13 @@ class NetworkManager {
             return .failure(NetworkResponse.failed.reasonString)
         }
     }
+    
+    internal func getStatus(response: URLResponse?) -> ResponseResult {
+        guard let response = response else {
+            return .failure(Localizable.network_request_failed())
+        }
+        let httpResponse = response as? HTTPURLResponse
+        let status = handleNetworkResponse(httpResponse)
+        return status
+    }
 }

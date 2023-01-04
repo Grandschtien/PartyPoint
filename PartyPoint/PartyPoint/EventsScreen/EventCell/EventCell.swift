@@ -5,36 +5,93 @@
 //  Created by Егор Шкарин on 15.07.2022.
 //
 
-import UIKit
+import SnapKit
 
-private let DESTIONATION_FONT: CGFloat = 15 * SCREEN_SCALE_BY_HEIGHT
-private let NAME_FONT: CGFloat = 30 * SCREEN_SCALE_BY_HEIGHT
-private let DATE_FONT: CGFloat = 20 * SCREEN_SCALE_BY_HEIGHT
+private let DESTIONATION_FONT: CGFloat = 15.scale()
+private let NAME_FONT: CGFloat = 30.scale()
+private let DATE_FONT: CGFloat = 20.scale()
+private let VERTICAL_STACK_VIEW_SPACING: CGFloat = 2.scale()
+private let VERTICAL_STACK_VIEW_LEFT_OFFSET: CGFloat = 20
+private let VERTICAL_STACK_VIEW_BOTTOM_OFFSET: CGFloat = 20
+private let LIKE_VIEW_SIZE: CGFloat = 40.scale()
+private let LIKE_VIEW_TOP_OFFSET: CGFloat = 10
+private let LIKE_VIEW_RIGHT_OFFSET: CGFloat = 10
 
-class EventCell: UICollectionViewCell {
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var likeView: UIView!
-    @IBOutlet weak var likeImage: UIImageView!
-    @IBOutlet weak var image: UIView!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
+final class EventCell: UICollectionViewCell {
+    private let imageView = UIImageView()
+    private let nameLabel = PPScrollableLabel()
+    private let dateLabel = UILabel()
+    private let likeView = PPLikeView()
+    private let verticalStackView = UIStackView()
+    
+    //MARK: Init
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupUI()
     }
-
-    func configure(withEvent event: Event) {
-        self.nameLabel.text = event.name
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        return nil
+    }
+    
+    //MARK: Override
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+    }
+    
+    //MARK: Public
+    func configure(withEvent event: EventInfo) {
+        self.nameLabel.text = event.title
         self.dateLabel.text = event.date
-        self.image.layer.contents = UIImage(named: event.image)?.cgImage
+        self.imageView.setImage(url: event.image)
+        self.likeView.changeLikeState(isLiked: event.isLiked)
     }
 }
 
 //MARK: Private methods
 private extension EventCell {
+    func addSubviews() {
+        self.contentView.addSubview(imageView)
+        self.imageView.addSubview(likeView)
+        self.imageView.addSubview(verticalStackView)
+        self.verticalStackView.addArrangedSubview(nameLabel)
+        self.verticalStackView.addArrangedSubview(dateLabel)
+    }
+    
+    func setupConstraints() {
+        imageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        verticalStackView.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(VERTICAL_STACK_VIEW_LEFT_OFFSET)
+            $0.right.equalToSuperview().inset(VERTICAL_STACK_VIEW_LEFT_OFFSET)
+            $0.bottom.equalToSuperview().inset(VERTICAL_STACK_VIEW_BOTTOM_OFFSET)
+        }
+        
+        [nameLabel, dateLabel].forEach{ label in
+            label.snp.makeConstraints {
+                $0.left.right.equalToSuperview()
+            }
+        }
+        
+        likeView.snp.makeConstraints {
+            $0.right.equalToSuperview().inset(LIKE_VIEW_TOP_OFFSET)
+            $0.top.equalToSuperview().offset(LIKE_VIEW_TOP_OFFSET)
+            $0.size.equalTo(LIKE_VIEW_SIZE)
+        }
+    }
+    
     func setupUI() {
-        self.clipsToBounds = true
+        addSubviews()
         self.layer.cornerRadius = 10
+        self.clipsToBounds = true
+        
+        verticalStackView.axis = .vertical
+        verticalStackView.alignment = .leading
+        verticalStackView.spacing = VERTICAL_STACK_VIEW_SPACING
         
         nameLabel.font = Fonts.sfProDisplayBold(size: NAME_FONT)
         nameLabel.textColor = Colors.miniColor()
@@ -42,10 +99,6 @@ private extension EventCell {
         dateLabel.font = Fonts.sfProDisplaySemibold(size: DATE_FONT)
         dateLabel.textColor = Colors.miniColor()
         
-        likeView.layer.cornerRadius = 10
-        likeView.backgroundColor = Colors.miniColor()
-        likeView.layer.opacity = 0.6
-        likeView.clipsToBounds = true
-        likeView.layer.allowsGroupOpacity = false
+        setupConstraints()
     }
 }

@@ -30,7 +30,7 @@ final class FavouritesViewController: AbstractEventsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        favouritesCollectionAdapter.configure(Section<Event>.allSections)
+//        favouritesCollectionAdapter.configure(Section<Event>.allSections)
     }
     
     internal override func setupUI() {
@@ -46,7 +46,7 @@ extension FavouritesViewController: EventsDelegate {
         
     }
     
-    func didTapOnEvent(_ event: Event) {
+    func didTapOnEvent(_ event: EventInfo) {
         
     }
 }

@@ -27,10 +27,12 @@ protocol EnterViewOutput: AnyObject {
     func fogotPasswordButtonPressed()
     func registerButtonPressed()
     func noAccountButtonPressed()
+    func onViewDidLoad()
 }
 
 protocol EnterInteractorInput: AnyObject {
     func enterButtonPressed(email: String, password: String)
+    func requestLocationPermission()
 }
 
 protocol EnterInteractorOutput: AnyObject {

@@ -29,10 +29,7 @@ final class AuthManagerImpl: NetworkManager, AuthManager {
     func updateAccessToken(refreshToken: String) async -> RefreshTokenStatus {
         let result = await router.request(.refresh(refreshToken: refreshToken))
         
-        let httpResponse = result.response as? HTTPURLResponse
-        let status = handleNetworkResponse(httpResponse)
-        
-        switch status {
+        switch getStatus(response: result.response) {
         case .success:
             return .success(data: result.data)
         case let .failure(reason):
@@ -43,10 +40,7 @@ final class AuthManagerImpl: NetworkManager, AuthManager {
     func login(with login: String, password: String) async -> AuthStatus {
         let result = await router.request(.login(email: login, passwd: password))
         
-        let httpResponse = result.response as? HTTPURLResponse
-        let status = handleNetworkResponse(httpResponse)
-        
-        switch status {
+        switch getStatus(response: result.response) {
         case .success:
             return .authorized(data: result.data)
         case let .failure(reason):
@@ -56,11 +50,8 @@ final class AuthManagerImpl: NetworkManager, AuthManager {
     
     func register(with name: String, surname: String, mail: String, password: String) async -> AuthStatus {
         let result = await router.request(.signUp(email: mail, name: name, passwd: password, surname: surname))
-         
-        let httpResponse = result.response as? HTTPURLResponse
-        let status = handleNetworkResponse(httpResponse)
 
-        switch status {
+        switch getStatus(response: result.response) {
         case .success:
             return .authorized(data: result.data)
         case let .failure(reason):

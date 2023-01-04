@@ -8,9 +8,10 @@
 import Foundation
 
 enum EventsEndPoint {
-    case event(id: String)
-    case events(page: Int)
-    case events(placeId: Int)
+    case mainEvents(page: Int)
+    case closeEvents(page: Int, lat: Double, lon: Double)
+    case todayEvents(page: Int)
+    case event
 }
 
 extension EventsEndPoint: EndPointType {
@@ -18,11 +19,11 @@ extension EventsEndPoint: EndPointType {
     var enviromentslBaseUrl: String {
         switch NetworkManager.enviroment {
         case .qa:
-            return "http://45.141.102.243:8080/api"
+            return "https://diplomatest.site/api/events"
         case .production:
-            return "http://45.141.102.243:8080/api"
+            return "https://diplomatest.site/api/events"
         case .debug:
-            return "http://127.0.0.1:8080/api/"
+            return "https://diplomatest.site/api/events"
         }
     }
     
@@ -35,22 +36,42 @@ extension EventsEndPoint: EndPointType {
     
     var path: String {
         switch self {
-        case let .event(id):
-            return "/events/\(id)"
-        case let .events(page):
-            return "No hand"
-        case let .events(placeId):
-            return "/places/\(placeId)/events"
+        case .mainEvents:
+            return "/external"
+        case .closeEvents:
+            return "external/close"
+        case .todayEvents:
+            return "external/today"
+        case .event:
+            return "event"
         }
     }
     
     var httpMethod: HTTPMethod {
-        return .get
+        switch self {
+        case .mainEvents:
+            return .get
+        case .closeEvents:
+            return .get
+        case .todayEvents:
+            return .get
+        case .event:
+            return .get
+        }
     }
     
     var task: HTTPTask {
         switch self {
-        default: return .request
+        case let .mainEvents(page):
+            return .requestParameters(bodyParameters: nil, urlParameters: ["page": page])
+        case let .closeEvents(page, lat, lon):
+            return .requestParameters(bodyParameters: nil, urlParameters: ["page": page,
+                                                                           "lat": lat,
+                                                                           "lon": lon])
+        case let .todayEvents(page):
+            return .requestParameters(bodyParameters: nil, urlParameters: ["page": page])
+        case .event:
+            return .request
         }
     }
     

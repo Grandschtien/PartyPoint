@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class EnterContainer {
     let input: EnterModuleInput
@@ -24,9 +25,12 @@ final class EnterContainer {
                                                                 authManager: authManager,
                                                                 accountManager: accountManager,
                                                                 decoder: decoder)
+        let systemLocationManager = CLLocationManager()
+        let locationManager = LocationManagerImpl(locationManager: systemLocationManager)
         let interactor = EnterInteractor(authManager: authManager,
                                          validationTokenMananger: validationTokenManager,
-                                         accountManager: accountManager)
+                                         accountManager: accountManager,
+                                         locationManager: locationManager)
         let presenter = EnterPresenter(router: router,
                                        interactor: interactor)
 		let viewController = EnterViewController(output: presenter)

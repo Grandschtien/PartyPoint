@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class EventsContainer {
     let input: EventsModuleInput
@@ -15,7 +16,14 @@ final class EventsContainer {
 
 	static func assemble(with context: EventsContext) -> EventsContainer {
         let router = EventsRouter()
-        let interactor = EventsInteractor()
+        let systemLocationMananger = CLLocationManager()
+        let locationMananger = LocationManagerImpl(locationManager: systemLocationMananger)
+        let networkRouter = Router<EventsEndPoint>()
+        let networkMananger = EventsManagerImpl(router: networkRouter)
+        let decoder = PPDecoderImpl()
+        let interactor = EventsInteractor(eventsManager: networkMananger,
+                                          locationManager: locationMananger,
+                                          decoder: decoder)
         let presenter = EventsPresenter(router: router, interactor: interactor)
 		let viewController = EventsViewController(output: presenter)
 

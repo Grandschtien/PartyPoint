@@ -79,3 +79,11 @@
 /* Ошибки текстовых полей */
 "fill_in_this_field" = "Fill in this field";
 "password_doesnt_match" = "Passwords do not match";
+
+/* Заголовки на главном экране */
+"today" = "Today";
+"closest" = "The closest to you";
+"main" = "Main";
+
+/* Ошибки на главном экране */
+"could_not_decode_the_response" = "Could not decode the response";

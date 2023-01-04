@@ -1,0 +1,17 @@
+//
+//  EventInfo.swift
+//  PartyPoint
+//
+//  Created by Егор Шкарин on 04.01.2023.
+//
+
+import Foundation
+
+struct EventInfo: Hashable {
+    let uid = UUID()
+    let id: Int
+    let title: String
+    let date: String
+    let image: URL?
+    var isLiked = false
+}

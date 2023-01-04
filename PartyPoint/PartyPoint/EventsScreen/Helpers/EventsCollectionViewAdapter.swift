@@ -8,16 +8,19 @@
 import UIKit
 
 final class EventsCollectionViewAdapter: NSObject {
-    
-    typealias DataSource = UICollectionViewDiffableDataSource<Section<Event>, Event>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Section<Event>, Event>
+    typealias DataSource = UICollectionViewDiffableDataSource<Section<EventInfo>, EventInfo>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section<EventInfo>, EventInfo>
     typealias Layout = UICollectionViewCompositionalLayout
+    typealias LoadNextPageAction = (Int) -> Void
+    typealias TapOnEventsAction = (Int, Int) -> Void
     
-    private var sections: [Section<Event>]
+    private var loadNextPageAction: LoadNextPageAction?
+    private var didTapOnEventsAction: TapOnEventsAction?
+    
+    private var sections: [Section<EventInfo>]
     //Weak refereces
     private weak var collectionView: UICollectionView?
     
-    weak var delegate: EventsDelegate?
     weak var scrollDelegate: EventsScrollDelegate?
     
     private lazy var dataSource: DataSource = setupDataSource()
@@ -33,20 +36,38 @@ final class EventsCollectionViewAdapter: NSObject {
     
     /// This function must be envoked after initialize, because it configurates adapter
     /// - Parameter sections: Array of sections you want to have
-    func configure(_ sections: [Section<Event>]) {
+    func configure(_ sections: [Section<EventInfo>]) {
         self.sections.append(contentsOf: sections)
         applySnapshot()
     }
-    //MARK: - DataSource
+    
+    func addSection(_ section: Section<EventInfo>) {
+        self.sections.append(section)
+        applySnapshot()
+    }
+    
+    func setTapAction(_ action: @escaping TapOnEventsAction) {
+        self.didTapOnEventsAction = action
+    }
+    
+    func setLoadNextPageAction(_ action: @escaping LoadNextPageAction) {
+        self.loadNextPageAction = action
+    }
+}
+
+//MARK: Private methods
+private extension EventsCollectionViewAdapter {
     private func setupDataSource() -> DataSource {
         guard let collectionView = collectionView else {
             fatalError("No collection in adapter")
         }
-        let dataSource = DataSource(collectionView: collectionView) { (collectionView, indexPath, event) -> UICollectionViewCell in
+        let
+        dataSource = DataSource(collectionView: collectionView) { (collectionView, indexPath, event) -> UICollectionViewCell in
             let cell = collectionView.dequeueCell(cellType: EventCell.self, for: indexPath)
             cell.configure(withEvent: event)
             return cell
         }
+        
         dataSource.supplementaryViewProvider = { [weak self]
             (
              collectionView: UICollectionView,
@@ -164,8 +185,7 @@ extension EventsCollectionViewAdapter: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        //TODO: - Make it more correctly
-        delegate?.didTapOnEvent(sections[indexPath.section].items[indexPath.item])
+        didTapOnEventsAction?(indexPath.section, indexPath.item)
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollDelegate?.collectionViewDidScroll(scrollView)

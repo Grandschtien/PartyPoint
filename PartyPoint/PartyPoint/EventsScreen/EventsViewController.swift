@@ -11,7 +11,6 @@ import UIKit
 final class EventsViewController: AbstractEventsViewController {
     private lazy var eventsCollectionAdapter: EventsCollectionViewAdapter = {
         let adapter = EventsCollectionViewAdapter(eventsCollection)
-        adapter.delegate = self
         adapter.scrollDelegate = self
         return adapter
     }()
@@ -21,6 +20,7 @@ final class EventsViewController: AbstractEventsViewController {
     init(output: EventsViewOutput) {
         self.output = output
         super.init(nibName: nil, bundle: nil)
+        setupActions()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,7 +30,7 @@ final class EventsViewController: AbstractEventsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        eventsCollectionAdapter.configure(Section<Event>.allSections)
+        output.onViewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +51,46 @@ final class EventsViewController: AbstractEventsViewController {
     }
 }
 
+private extension EventsViewController {
+    func setupActions() {
+        eventsCollectionAdapter.setTapAction { section, item in
+            
+        }
+        
+        eventsCollectionAdapter.setLoadNextPageAction { page in
+            
+        }
+    }
+}
+
 extension EventsViewController: EventsViewInput {
+    func updateTodaySection(with section: Section<EventInfo>) {
+        eventsCollectionAdapter.addSection(section)
+    }
+    
+    func updateClosestSection(with section: Section<EventInfo>) {
+        eventsCollectionAdapter.addSection(section)
+    }
+    
+    func updateMainSection(with section: Section<EventInfo>) {
+        eventsCollectionAdapter.addSection(section)
+    }
+    
+    func updateView(withError reason: String) {
+        debugPrint(reason)
+    }
+    
+    func changeCollectionViewVisibility(isHidden: Bool) {
+        eventsCollection.isHidden = isHidden
+    }
+    
+    func showLoaderView() {
+        self.showLoader()
+    }
+    
+    func hideLoaderView() {
+        self.hideLoader()
+    }
 }
 
 extension EventsViewController: EventsDelegate {
@@ -59,7 +98,7 @@ extension EventsViewController: EventsDelegate {
         
     }
     
-    func didTapOnEvent(_ event: Event) {
+    func didTapOnEvent(_ event: EventInfo) {
         let context = EventContext(moduleOutput: nil)
         let container = EventContainer.assemble(with: context)
         container.viewController.hidesBottomBarWhenPushed = true

@@ -26,6 +26,10 @@ extension EnterPresenter: EnterModuleInput {
 }
 
 extension EnterPresenter: EnterViewOutput {
+    func onViewDidLoad() {
+        interactor.requestLocationPermission()
+    }
+    
     func enterButtonPressed(email: String, passwd: String) {
         let (isLoginEmpty, isPasswdEmpty) = checkTextFieldsIsEmpty(login: email, password: passwd)
         

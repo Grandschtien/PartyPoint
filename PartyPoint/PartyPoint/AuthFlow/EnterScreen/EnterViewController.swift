@@ -32,6 +32,7 @@ final class EnterViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         setupActions()
+        output.onViewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {

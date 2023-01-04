@@ -8,8 +8,6 @@
 import UIKit
 
 public class PPSpinnerView: UIImageView {
-    
-    // MARK: - Enum
     public enum Color {
         case black
         case white
@@ -22,7 +20,7 @@ public class PPSpinnerView: UIImageView {
             case .white:
                 return Colors.miniColor()
             case .main:
-                return Colors.mainColor()
+                return Colors.buttonColor()
             }
         }
     }
@@ -37,7 +35,7 @@ public class PPSpinnerView: UIImageView {
             case .m:
                 return CGSize(width: 24, height: 24)
             case .l:
-                return CGSize(width: 44, height: 44)
+                return CGSize(width: 60, height: 60)
             }
         }
 
@@ -67,7 +65,6 @@ public class PPSpinnerView: UIImageView {
     }
     
     // MARK: - Init
-
     public init(type: SpinnerType, color: Color = .black) {
         self.type = type
         self.color = color
@@ -77,8 +74,9 @@ public class PPSpinnerView: UIImageView {
 
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
 
     // MARK: - Layout
@@ -88,9 +86,7 @@ public class PPSpinnerView: UIImageView {
     }
 
     // MARK: - Public methods
-
     public func startAnimation() {
-        // анимация вращения
         isRotating = true
         let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotation.toValue = NSNumber(value: Double.pi * 2)
