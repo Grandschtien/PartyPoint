@@ -36,4 +36,5 @@ final class EventContainer {
 
 struct EventContext {
 	weak var moduleOutput: EventModuleOutput?
+    let eventId: Int
 }

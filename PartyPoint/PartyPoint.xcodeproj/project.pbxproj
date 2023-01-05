@@ -35,6 +35,7 @@
 		6060DE6B29210AF50017F7F7 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6060DE6A29210AF50017F7F7 /* AuthManager.swift */; };
 		6060DE6D29210BD30017F7F7 /* ValidationTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6060DE6C29210BD30017F7F7 /* ValidationTokenManager.swift */; };
 		6060DE702921145A0017F7F7 /* EnterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6060DE6F2921145A0017F7F7 /* EnterView.swift */; };
+		606A9A8D2966FAB300A17F13 /* PPCollectionsLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A9A8C2966FAB300A17F13 /* PPCollectionsLoaderView.swift */; };
 		6070D43228ABDE1F0054F61B /* EventPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42C28ABDE1F0054F61B /* EventPresenter.swift */; };
 		6070D43328ABDE1F0054F61B /* EventRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42D28ABDE1F0054F61B /* EventRouter.swift */; };
 		6070D43428ABDE1F0054F61B /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42E28ABDE1F0054F61B /* EventViewController.swift */; };
@@ -211,6 +212,7 @@
 		6060DE6A29210AF50017F7F7 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		6060DE6C29210BD30017F7F7 /* ValidationTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTokenManager.swift; sourceTree = "<group>"; };
 		6060DE6F2921145A0017F7F7 /* EnterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterView.swift; sourceTree = "<group>"; };
+		606A9A8C2966FAB300A17F13 /* PPCollectionsLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPCollectionsLoaderView.swift; sourceTree = "<group>"; };
 		6070D42C28ABDE1F0054F61B /* EventPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPresenter.swift; sourceTree = "<group>"; };
 		6070D42D28ABDE1F0054F61B /* EventRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRouter.swift; sourceTree = "<group>"; };
 		6070D42E28ABDE1F0054F61B /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
@@ -956,6 +958,7 @@
 			isa = PBXGroup;
 			children = (
 				60FAF6342953589C00982457 /* PPSpinnerView.swift */,
+				606A9A8C2966FAB300A17F13 /* PPCollectionsLoaderView.swift */,
 			);
 			path = PPSpinner;
 			sourceTree = "<group>";
@@ -1140,6 +1143,7 @@
 				604147B928D4DC7A0052F60D /* NetworkError.swift in Sources */,
 				602220D3295C675600D2F7B2 /* PPUserInformation.swift in Sources */,
 				6097178C287EDE4A0084A63C /* RegisterContainer.swift in Sources */,
+				606A9A8D2966FAB300A17F13 /* PPCollectionsLoaderView.swift in Sources */,
 				60FAF6132953446A00982457 /* PPTextFieldDisabledModePresenter.swift in Sources */,
 				6052918C294E084F005B0373 /* RegisterView.swift in Sources */,
 				6073B87B2881A01800AF07FA /* EventCell.swift in Sources */,

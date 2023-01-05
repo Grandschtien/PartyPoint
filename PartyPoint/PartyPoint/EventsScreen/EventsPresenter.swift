@@ -9,7 +9,7 @@
 import Foundation
 
 final class EventsPresenter {
-    enum SectionType {
+    enum SectionType: Int {
         case today
         case closest
         case main
@@ -29,13 +29,9 @@ final class EventsPresenter {
 
 private extension EventsPresenter {
     func getDateOfEvent(start: Int, end: Int) -> String {
-        if start == end {
-            return Date(timeIntervalSince1970: TimeInterval(start)).toString()
-        } else {
-            let startDate = Date(timeIntervalSince1970: TimeInterval(start)).toString()
-            let endDate = Date(timeIntervalSince1970: TimeInterval(end)).toString()
-            return "\(startDate) - \(endDate)"
-        }
+        let startDate = Date(timeIntervalSince1970: TimeInterval(start)).toString()
+        let endDate = Date(timeIntervalSince1970: TimeInterval(end)).toString()
+        return startDate == endDate ? startDate : "\(startDate) - \(endDate)"
     }
     
     func getEventsInfo(events: [PPEvent]) -> [EventInfo] {
@@ -63,6 +59,28 @@ extension EventsPresenter: EventsModuleInput {
 }
 
 extension EventsPresenter: EventsViewOutput {
+    func tappedOnEvents(section: Int, index: Int) {
+        let id: Int
+        switch section {
+        case SectionType.main.rawValue:
+            id = interactor.getMainEventId(withIndex: index)
+            router.openEventScreen(withId: id)
+        case SectionType.today.rawValue:
+            id = interactor.getTodayEventId(withIndex: index)
+            router.openEventScreen(withId: id)
+        case SectionType.closest.rawValue:
+            id = interactor.getClosestEventId(withIndex: index)
+            router.openEventScreen(withId: id)
+        default:
+            debugPrint("[DEBUG: Unknown index of event]")
+            break
+        }
+    }
+    
+    func loadNextPage(_ page: Int) {
+        interactor.loadNextPageOfMain(page: page)
+    }
+    
     func onViewDidLoad() {
         view?.showLoaderView()
         interactor.loadFirstPages()
@@ -70,6 +88,11 @@ extension EventsPresenter: EventsViewOutput {
 }
 
 extension EventsPresenter: EventsInteractorOutput {
+    func addNewEventsIntoMainSection(_ events: [PPEvent]) {
+        let info = getEventsInfo(events: events)
+        view?.showNewPageInMainSection(with: info)
+    }
+    
     func updateTodaySection(with events: [PPEvent]) {
         let info = getEventsInfo(events: events)
         let section = makeSection(withInfo: info, ofType: .today)

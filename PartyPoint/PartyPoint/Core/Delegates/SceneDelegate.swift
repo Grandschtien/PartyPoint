@@ -32,8 +32,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         coordinator = AppCoordinatorImpl(window: window)
         //TODO: Condition
         
-//        coordinator?.startMain()
-        coordinator?.atartAuth()
+        coordinator?.startMain()
+//        coordinator?.atartAuth()
     }
 }
 

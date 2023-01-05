@@ -53,17 +53,23 @@ final class EventsViewController: AbstractEventsViewController {
 
 private extension EventsViewController {
     func setupActions() {
-        eventsCollectionAdapter.setTapAction { section, item in
-            
+        eventsCollectionAdapter.setTapAction { [weak self] section, item in
+            self?.navigationBar.backgroundColor = .clear
+            self?.navigationBar.isHidden = true
+            self?.output.tappedOnEvents(section: section, index: item)
         }
         
-        eventsCollectionAdapter.setLoadNextPageAction { page in
-            
+        eventsCollectionAdapter.setLoadNextPageAction { [weak self] page in
+            self?.output.loadNextPage(page)
         }
     }
 }
 
 extension EventsViewController: EventsViewInput {
+    func showNewPageInMainSection(with info: [EventInfo]) {
+        eventsCollectionAdapter.appendItemsIntoMainSection(info: info)
+    }
+    
     func updateTodaySection(with section: Section<EventInfo>) {
         eventsCollectionAdapter.addSection(section)
     }
@@ -77,6 +83,7 @@ extension EventsViewController: EventsViewInput {
     }
     
     func updateView(withError reason: String) {
+        //TODO: implement error
         debugPrint(reason)
     }
     
@@ -90,20 +97,5 @@ extension EventsViewController: EventsViewInput {
     
     func hideLoaderView() {
         self.hideLoader()
-    }
-}
-
-extension EventsViewController: EventsDelegate {
-    func loadNetxtPage(page: Int) {
-        
-    }
-    
-    func didTapOnEvent(_ event: EventInfo) {
-        let context = EventContext(moduleOutput: nil)
-        let container = EventContainer.assemble(with: context)
-        container.viewController.hidesBottomBarWhenPushed = true
-        navigationBar.backgroundColor = .clear
-        navigationBar.isHidden = true
-        navigationController?.pushViewController(container.viewController, animated: true)
     }
 }

@@ -18,6 +18,8 @@ final class EventsCollectionViewAdapter: NSObject {
     private var didTapOnEventsAction: TapOnEventsAction?
     
     private var sections: [Section<EventInfo>]
+    private var currentPage = 1
+    
     //Weak refereces
     private weak var collectionView: UICollectionView?
     
@@ -46,6 +48,11 @@ final class EventsCollectionViewAdapter: NSObject {
         applySnapshot()
     }
     
+    func appendItemsIntoMainSection(info: [EventInfo]) {
+        self.sections[2].items.append(contentsOf: info)
+        applySnapshot()
+    }
+    
     func setTapAction(_ action: @escaping TapOnEventsAction) {
         self.didTapOnEventsAction = action
     }
@@ -61,8 +68,8 @@ private extension EventsCollectionViewAdapter {
         guard let collectionView = collectionView else {
             fatalError("No collection in adapter")
         }
-        let
-        dataSource = DataSource(collectionView: collectionView) { (collectionView, indexPath, event) -> UICollectionViewCell in
+        
+        let dataSource = DataSource(collectionView: collectionView) { (collectionView, indexPath, event) -> UICollectionViewCell in
             let cell = collectionView.dequeueCell(cellType: EventCell.self, for: indexPath)
             cell.configure(withEvent: event)
             return cell
@@ -95,6 +102,7 @@ private extension EventsCollectionViewAdapter {
         }
         return dataSource
     }
+    
     private func applySnapshot() {
         var snapshot = Snapshot()
         snapshot.appendSections(sections)
@@ -103,6 +111,7 @@ private extension EventsCollectionViewAdapter {
         }
         dataSource.apply(snapshot, animatingDifferences: true)
     }
+    
     private func setupLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { [weak self] section, env in
             switch section {
@@ -187,6 +196,19 @@ extension EventsCollectionViewAdapter: UICollectionViewDelegate {
     ) {
         didTapOnEventsAction?(indexPath.section, indexPath.item)
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        if dataSource.snapshot().numberOfSections - 1 == indexPath.section {
+            let currentSection = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            if dataSource.snapshot().numberOfItems(inSection: currentSection) - 1 == indexPath.row {
+                currentPage += 1
+                loadNextPageAction?(currentPage)
+            }
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollDelegate?.collectionViewDidScroll(scrollView)
     }

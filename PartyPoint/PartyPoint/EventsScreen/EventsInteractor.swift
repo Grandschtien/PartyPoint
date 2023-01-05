@@ -37,7 +37,7 @@ private extension EventsInteractor {
                 return (nil, Localizable.could_not_decode_the_response())
             }
             
-            self.mainEvents = events
+            self.mainEvents.append(contentsOf: events)
             return (events, nil)
         case let .error(reason):
             return (nil, reason)
@@ -88,7 +88,15 @@ private extension EventsInteractor {
         return decoded?.events
     }
     
-    func updateCompiliations(withEvents events: [PPEvent]?) async {
+    func updateClosestCompiliations(withEvents events: [PPEvent]?) async {
+        if let events = events {
+            await runOnMainThread {
+                output?.updateClosestSection(with: events)
+            }
+        }
+    }
+    
+    func updateTodayCompiliations(withEvents events: [PPEvent]?) async {
         if let events = events {
             await runOnMainThread {
                 output?.updateTodaySection(with: events)
@@ -112,16 +120,39 @@ private extension EventsInteractor {
 }
 
 extension EventsInteractor: EventsInteractorInput {
+    func getMainEventId(withIndex index: Int) -> Int {
+        return mainEvents[index].kudagoID
+    }
+    
+    func getClosestEventId(withIndex index: Int) -> Int {
+        return closestEvents[index].kudagoID
+    }
+    
+    func getTodayEventId(withIndex index: Int) -> Int {
+        return todayEvents[index].kudagoID
+    }
+    
     func loadFirstPages() {
         Task {
             let today = await getToday()
-            await updateCompiliations(withEvents: today)
+            await updateTodayCompiliations(withEvents: today)
 
             let closest = await getClosest()
-            await updateCompiliations(withEvents: closest)
+            await updateClosestCompiliations(withEvents: closest)
 
             let main = await getMain(withPage: 1)
             await updateMainSection(withEvents: main.events, reason: main.reason)
+        }
+    }
+    
+    func loadNextPageOfMain(page: Int) {
+        Task {
+            let main = await getMain(withPage: page)
+            if let evetns = main.events {
+                await runOnMainThread {
+                    output?.addNewEventsIntoMainSection(evetns)
+                }
+            }
         }
     }
 }

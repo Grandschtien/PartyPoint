@@ -26,7 +26,7 @@ final class EventsContainer {
                                           decoder: decoder)
         let presenter = EventsPresenter(router: router, interactor: interactor)
 		let viewController = EventsViewController(output: presenter)
-
+        router.setViewController(viewController)
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
 

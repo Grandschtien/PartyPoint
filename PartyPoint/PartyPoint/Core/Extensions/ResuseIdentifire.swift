@@ -34,6 +34,7 @@ extension UITableView {
         }
         return cell
     }
+    
     func registerNib<T: UITableViewCell>(cellType: T.Type) {
         self.register(UINib(nibName: T.nibName, bundle: nil), forCellReuseIdentifier: T.reuseIdentifier)
     }
@@ -60,6 +61,7 @@ extension UICollectionView {
         }
         return cell
     }
+    
     func dequeueSupplementary<T: UICollectionReusableView>(
         ofType type: T.Type,
         ofKind kind: String,
@@ -68,7 +70,7 @@ extension UICollectionView {
     ) -> T {
         guard let view = self.dequeueReusableSupplementaryView(
             ofKind: kind,
-            withReuseIdentifier: identifier,
+            withReuseIdentifier: type.reuseIdentifier,
             for: indexPath) as? T else {
             fatalError("Can't deque")
         }
@@ -78,6 +80,13 @@ extension UICollectionView {
     func register<T: UICollectionViewCell>(_ cellType: T.Type) {
         self.register(cellType, forCellWithReuseIdentifier: cellType.reuseIdentifier)
     }
+    
+    func registerFooter<T: UICollectionReusableView>(_ view: T.Type) {
+        self.register(view,
+                      forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                      withReuseIdentifier: view.reuseIdentifier)
+    }
+    
     func registerWithNib<T: UICollectionViewCell>(_ cellType: T.Type) {
         self.register(
             UINib(nibName: cellType.nibName, bundle: nil),
