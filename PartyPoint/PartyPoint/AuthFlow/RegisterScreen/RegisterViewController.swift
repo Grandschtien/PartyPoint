@@ -40,10 +40,19 @@ private extension RegisterViewController {
             self?.output.backButtonPressed()
         }
         
-        contentView.setRegisterAction { [weak self] info in
-            self?.contentView.setButtonLoading(isLoading: true)
-            self?.output.registeButtonPressed(registerInfo: info)
+        contentView.setRegisterAction { [weak self] name, surname, email, dob, city, passwd, checkPasswd in
+            self?.output.registeButtonPressed(registerInfo: (name: name,
+                                                             surname: surname,
+                                                             email: email,
+                                                             dob: dob,
+                                                             city: city,
+                                                             passwd: passwd,
+                                                             checkPasswd: checkPasswd))
             self?.contentView.hideKeyboard()
+        }
+        
+        contentView.setSelectDateAction { [weak self] in
+            self?.output.showCalendarPicker()
         }
     }
 }
@@ -57,8 +66,28 @@ extension RegisterViewController: RegisterViewInput {
         contentView.showRegisterFaild(withReason: reason)
     }
     
-    func showEmptyFields(withIndexes indexes: [Int]) {
-        contentView.showEmptyTextFields(indexes: indexes)
+    func showNameIsEmpty() {
+        contentView.showNameIsEmpty()
+    }
+    
+    func showSurnameIsEmpty() {
+        contentView.showSurnameIsEmpty()
+    }
+    
+    func showEmailIsEmpty() {
+        contentView.showEmailIsEmpty()
+    }
+    
+    func showDobIsEmpty() {
+        contentView.showDobIsEmpty()
+    }
+    
+    func showPasswdIsEmpty() {
+        contentView.showPasswdIsEmpty()
+    }
+    
+    func showCheckPasswdIsEmpty() {
+        contentView.showCheckPasswdIsEmpty()
     }
     
     func showToPasswordsIsDifferent() {

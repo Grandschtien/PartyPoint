@@ -44,6 +44,10 @@
 
 "email_title_registration" = "Почта";
 
+"date_of_birth" = "Дата рождения";
+
+"city" = "Город";
+
 "password_title_registration" = "Пароль";
 
 "check_password_title_registration" = "Повторите пароль";
@@ -75,6 +79,7 @@
 "we_could_not_to_decode_the_response" = "Мы не смогли декодировать ответ";
 "email_is_already_exists" = "Эта почта уже занята";
 "somthing_goes_wrong" = "Что-то пошло не так";
+"not_found" = "Код 404, не найдено";
 
 /* Ошибки текстовых полей */
 "fill_in_this_field" = "Заполните это поле";
@@ -87,3 +92,27 @@
 
 /* Ошибки на главном экране */
 "could_not_decode_the_response" = "Невозможно декодировать ответ";
+
+/* Days of week first letters */
+"sunday_letter" = "Вc";
+"monday_letter" = "Пн";
+"tuesday_letter" = "Вт";
+"wednesday_letter" = "Ср";
+"thoursday_letter" = "Чт";
+"friday_letter" = "Пт";
+"saturday_letter" = "Сб";
+
+/* Options next and back on calendar view */
+"next" = "Вперед";
+"back" = "Назад";
+
+/* Тайтлы на экране евента */
+"on_map" = "На карте";
+"cost" = "Цена";
+"people_amount" = "Люди";
+"description" = "Описание";
+
+/* Тайтлы на кнопках */
+"pay_on_foreign_site" = "Оплатить на сайте\nорганизатора";
+"will_go" = "Я пойду!";
+"dont_go" = "Я передумал :(";

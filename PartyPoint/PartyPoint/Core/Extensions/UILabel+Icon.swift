@@ -23,7 +23,7 @@ extension UILabel {
 
         let rightAttachment = NSTextAttachment()
         rightAttachment.image = rightIcon
-        rightAttachment.bounds = CGRect(x: 0, y: -5, width: 20, height: 20)
+        rightAttachment.bounds = CGRect(x: 0, y: self.bounds.origin.y, width: 20, height: 20)
         let rightAttachmentStr = NSAttributedString(attachment: rightAttachment)
 
 

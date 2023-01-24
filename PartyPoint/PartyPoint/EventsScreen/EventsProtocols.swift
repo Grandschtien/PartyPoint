@@ -36,9 +36,9 @@ protocol EventsViewOutput: AnyObject {
 
 protocol EventsInteractorInput: AnyObject {
     func loadFirstPages()
-    func getMainEventId(withIndex index: Int) -> Int
-    func getClosestEventId(withIndex index: Int) -> Int
-    func getTodayEventId(withIndex index: Int) -> Int
+    func getMainEventId(withIndex index: Int) -> PPEvent
+    func getClosestEventId(withIndex index: Int) -> PPEvent
+    func getTodayEventId(withIndex index: Int) -> PPEvent
     func loadNextPageOfMain(page: Int)
 }
 
@@ -51,5 +51,5 @@ protocol EventsInteractorOutput: AnyObject {
 }
 
 protocol EventsRouterInput: AnyObject {
-    func openEventScreen(withId id: Int)
+    func openEventScreen(withId id: Int, and placeId: Int)
 }

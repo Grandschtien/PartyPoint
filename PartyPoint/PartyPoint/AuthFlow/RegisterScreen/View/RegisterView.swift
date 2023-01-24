@@ -13,19 +13,20 @@ private let USER_IMAGE_SIDE_SIZE: CGFloat = 150
 private let PHOTO_LABEL_HEIGHT: CGFloat = 60
 private let PHOTO_LABEL_BOTTTOM_OFFSET: CGFloat = 10
 private let PHOTO_LABEL_WIDTH: CGFloat = 218
-private let DYNAMIC_REGISTER_STACK_HORIZONTAL_OFFSETS: CGFloat = 30
-private let DYNAMIC_REGISTER_STACK_BOTTOM_OFFSET: CGFloat = 10
+private let HORIZONTAL_OFFSETS: CGFloat = 30
+private let NAME_TF_TOP_OFFSET: CGFloat = 10
+private let TF_TOP_OFFSET: CGFloat = 22
 private let REGISTER_BUTTON_HORIZONTAL_OFFSET: CGFloat = 30
 private let REGISTER_BUTTON_TOP_OFFFSET: CGFloat = 22
 private let REGISTER_BUTTON_HEIGHT: CGFloat = 56
 
 final class RegisterView: UIView {
-    
-    typealias RegisterClosure = ([String?]) -> Void
+    typealias RegisterClosure = (String?, String?, String?, String?, String?, String?, String?) -> Void
     
     //MARK: Actions
     private var backAction: EmptyClosure?
     private var registerAction: RegisterClosure?
+    private var selectDateOfBirthAction: EmptyClosure?
     private var photoAction: EmptyClosure?
     private var backActionClosure: EmptyClosure?
     
@@ -69,26 +70,22 @@ final class RegisterView: UIView {
         return label
     }()
     
+    private let nameTextField = PPTextField()
+    private let surnameTextField = PPTextField()
+    private let emailTextField = PPTextField()
+    private let dobTextField = PPTextField()
+    private let cityTextField = PPTextField()
+    private let passwordTextField = PPTextField()
+    private let checkPasswordTextField = PPTextField()
+
     private lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView()
         return scroll
     }()
     
-    private let dynnamicRegisterStack: DynamicStackWithTF = {
-        let placeholders = [
-            Localizable.name_title_registration(),
-            Localizable.surname_title_registration(),
-            Localizable.email_title_registration(),
-            Localizable.password_title_registration(),
-            Localizable.check_password_title_registration()
-        ]
-        let stack = DynamicStackWithTF(placeholders: placeholders)
-        return stack
-    }()
-    
     private lazy var registerButton: PPButton = {
         let button = PPButton(style: .primary, size: .l)
-        button.setTitle( Localizable.register_button_title(), for: .normal)
+        button.setTitle(Localizable.register_button_title(), for: .normal)
         button.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -113,7 +110,10 @@ final class RegisterView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         userImage.layer.cornerRadius = userImage.frame.height / 2
-        let height = userImage.frame.height + photoLabel.frame.height + dynnamicRegisterStack.frame.height + registerButton.frame.height * 2 + 20
+        let textFieldsHeights = [nameTextField, surnameTextField, emailTextField, dobTextField, cityTextField, passwordTextField, checkPasswordTextField].reduce(into: 0) { partialResult, tf in
+            partialResult += tf.frame.height + 22
+        }
+        let height = userImage.frame.height + photoLabel.frame.height + textFieldsHeights - 22 + registerButton.frame.height * 2 + 20
         scrollView.contentSize = CGSize(width: view.frame.width, height: height)
     }
 }
@@ -128,18 +128,41 @@ extension RegisterView {
         self.registerAction = action
     }
     
-    func showEmptyTextFields(indexes: [Int]) {
-        indexes.forEach { dynnamicRegisterStack.textFields[$0].displayState = .error(Localizable.fill_in_this_field()) }
+    func setSelectDateAction(_ action: @escaping EmptyClosure) {
+        self.selectDateOfBirthAction = action
+    }
+    
+    func showNameIsEmpty() {
+        nameTextField.displayState = .error(Localizable.fill_in_this_field())
+    }
+    
+    func showSurnameIsEmpty() {
+        surnameTextField.displayState = .error(Localizable.fill_in_this_field())
+    }
+    
+    func showEmailIsEmpty() {
+        emailTextField.displayState = .error(Localizable.fill_in_this_field())
+    }
+    
+    func showDobIsEmpty() {
+        dobTextField.displayState = .error(Localizable.fill_in_this_field())
+    }
+    
+    func showPasswdIsEmpty() {
+        passwordTextField.displayState = .error(Localizable.fill_in_this_field())
+    }
+    
+    func showCheckPasswdIsEmpty() {
+        checkPasswordTextField.displayState = .error(Localizable.fill_in_this_field())
     }
     
     func showRegisterFaild(withReason reason: String) {
-        dynnamicRegisterStack.textFields[2].displayState = .error(reason)
+        emailTextField.displayState = .error(reason)
     }
     
     func showPasswordIsDifferent() {
-        let maxIndex = dynnamicRegisterStack.textFields.count
-        dynnamicRegisterStack.textFields[maxIndex - 1].displayState = .error(Localizable.password_doesnt_match())
-        dynnamicRegisterStack.textFields[maxIndex - 2].displayState = .error(Localizable.password_doesnt_match())
+        passwordTextField.displayState = .error(Localizable.password_doesnt_match())
+        checkPasswordTextField.displayState = .error(Localizable.password_doesnt_match())
     }
     
     func hideKeyboard() {
@@ -164,14 +187,30 @@ private extension RegisterView {
     }
     
     func setupTextFields() {
-        let countOfTf = dynnamicRegisterStack.textFields.count
-        dynnamicRegisterStack.textFields[countOfTf - 1].mode = .secureMode
-        dynnamicRegisterStack.textFields[countOfTf - 2].mode = .secureMode
-        dynnamicRegisterStack.textFields[countOfTf - 1].isSecureTextEntry = true
-        dynnamicRegisterStack.textFields[countOfTf - 2].isSecureTextEntry = true
+        nameTextField.placeholder = Localizable.name_title_registration()
+        surnameTextField.placeholder = Localizable.surname_title_registration()
+        emailTextField.placeholder = Localizable.email_title_registration()
+        dobTextField.placeholder = Localizable.date_of_birth()
+        cityTextField.placeholder = Localizable.city()
+        passwordTextField.placeholder = Localizable.password_title_registration()
+        checkPasswordTextField.placeholder = Localizable.check_password_title_registration()
         
-        dynnamicRegisterStack.textFields[countOfTf - 1].autocorrectionType = .no
-        dynnamicRegisterStack.textFields[countOfTf - 2].autocorrectionType = .no
+        passwordTextField.mode = .secureMode
+        checkPasswordTextField.mode = .secureMode
+        
+        passwordTextField.isSecureTextEntry = true
+        checkPasswordTextField.isSecureTextEntry = true
+        
+        nameTextField.autocorrectionType = .no
+        surnameTextField.autocorrectionType = .no
+        emailTextField.autocorrectionType = .no
+        dobTextField.autocorrectionType = .no
+        cityTextField.autocorrectionType = .no
+        passwordTextField.autocorrectionType = .no
+        checkPasswordTextField.autocorrectionType = .no
+        
+        let tapRec = UITapGestureRecognizer(target: self, action: #selector(selectDate))
+        dobTextField.addGestureRecognizer(tapRec)
     }
     
     func addSubviews() {
@@ -180,7 +219,13 @@ private extension RegisterView {
         self.addSubview(scrollView)
         scrollView.addSubview(userImage)
         scrollView.addSubview(photoLabel)
-        scrollView.addSubview(dynnamicRegisterStack)
+        scrollView.addSubview(nameTextField)
+        scrollView.addSubview(surnameTextField)
+        scrollView.addSubview(emailTextField)
+        scrollView.addSubview(dobTextField)
+        scrollView.addSubview(cityTextField)
+        scrollView.addSubview(passwordTextField)
+        scrollView.addSubview(checkPasswordTextField)
         scrollView.addSubview(registerButton)
         
     }
@@ -215,17 +260,46 @@ private extension RegisterView {
             $0.width.equalTo(PHOTO_LABEL_WIDTH.scale())
         }
         
-        dynnamicRegisterStack.snp.makeConstraints {
-            $0.left.equalToSuperview().offset(DYNAMIC_REGISTER_STACK_HORIZONTAL_OFFSETS.scale())
-            $0.right.equalToSuperview().inset(DYNAMIC_REGISTER_STACK_HORIZONTAL_OFFSETS.scale())
+        nameTextField.snp.makeConstraints {
+            $0.top.equalTo(photoLabel.snp.bottom).offset(NAME_TF_TOP_OFFSET)
+            $0.left.right.equalToSuperview().inset(HORIZONTAL_OFFSETS)
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(photoLabel.snp.bottom).offset(DYNAMIC_REGISTER_STACK_BOTTOM_OFFSET.scale())
         }
         
+        surnameTextField.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(HORIZONTAL_OFFSETS)
+            $0.top.equalTo(nameTextField.snp.bottom).offset(TF_TOP_OFFSET)
+        }
+        
+        emailTextField.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(HORIZONTAL_OFFSETS)
+            $0.top.equalTo(surnameTextField.snp.bottom).offset(TF_TOP_OFFSET)
+        }
+        
+        dobTextField.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(HORIZONTAL_OFFSETS)
+            $0.top.equalTo(emailTextField.snp.bottom).offset(TF_TOP_OFFSET)
+        }
+        
+        cityTextField.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(HORIZONTAL_OFFSETS)
+            $0.top.equalTo(dobTextField.snp.bottom).offset(TF_TOP_OFFSET)
+        }
+        
+        passwordTextField.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(HORIZONTAL_OFFSETS)
+            $0.top.equalTo(cityTextField.snp.bottom).offset(TF_TOP_OFFSET)
+        }
+        
+        checkPasswordTextField.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(HORIZONTAL_OFFSETS)
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(TF_TOP_OFFSET)
+        }
+
         registerButton.snp.makeConstraints {
             $0.right.equalToSuperview().inset(REGISTER_BUTTON_HORIZONTAL_OFFSET.scale())
             $0.left.equalToSuperview().offset(REGISTER_BUTTON_HORIZONTAL_OFFSET.scale())
-            $0.top.equalTo(dynnamicRegisterStack.snp.bottom).offset(REGISTER_BUTTON_TOP_OFFFSET.scale())
+            $0.top.equalTo(checkPasswordTextField.snp.bottom).offset(REGISTER_BUTTON_TOP_OFFFSET.scale())
             $0.height.equalTo(REGISTER_BUTTON_HEIGHT.scale())
         }
     }
@@ -251,10 +325,18 @@ private extension RegisterView {
 private extension RegisterView {
     @objc
     func registerButtonTapped() {
-        let registerInfo = dynnamicRegisterStack.textFields.map { tf in
-            return tf.text
-        }
-        registerAction?(registerInfo)
+        registerAction?(nameTextField.text,
+                        surnameTextField.text,
+                        emailTextField.text,
+                        dobTextField.text,
+                        cityTextField.text,
+                        passwordTextField.text,
+                        checkPasswordTextField.text)
+    }
+    
+    @objc
+    func selectDate() {
+        selectDateOfBirthAction?()
     }
 }
 

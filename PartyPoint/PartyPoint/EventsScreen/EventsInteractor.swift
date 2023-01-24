@@ -120,16 +120,16 @@ private extension EventsInteractor {
 }
 
 extension EventsInteractor: EventsInteractorInput {
-    func getMainEventId(withIndex index: Int) -> Int {
-        return mainEvents[index].kudagoID
+    func getMainEventId(withIndex index: Int) -> PPEvent {
+        return mainEvents[index]
     }
     
-    func getClosestEventId(withIndex index: Int) -> Int {
-        return closestEvents[index].kudagoID
+    func getClosestEventId(withIndex index: Int) -> PPEvent {
+        return closestEvents[index]
     }
     
-    func getTodayEventId(withIndex index: Int) -> Int {
-        return todayEvents[index].kudagoID
+    func getTodayEventId(withIndex index: Int) -> PPEvent {
+        return todayEvents[index]
     }
     
     func loadFirstPages() {

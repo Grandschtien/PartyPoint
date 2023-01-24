@@ -25,5 +25,12 @@ extension RegisterRouter: RegisterRouterInput {
     func routeBack() {
         pop(animated: true)
     }
+    func showCalendarPicker() {
+        let pickerController = CalendarPickerViewController(baseDate: Date()) { date in
+            print(date)
+        }
+        
+        present(vc: pickerController, animated: true)
+    }
 }
 

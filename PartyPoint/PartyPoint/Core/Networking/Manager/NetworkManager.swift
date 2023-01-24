@@ -15,6 +15,7 @@ class NetworkManager {
         case thisEmailAlreadyExists
         case badRequest
         case serverError
+        case notFound
         case outdated
         case failed
         case noData
@@ -42,6 +43,8 @@ class NetworkManager {
                 return Localizable.we_could_not_to_decode_the_response()
             case .thisEmailAlreadyExists:
                 return Localizable.email_is_already_exists()
+            case .notFound:
+                return Localizable.not_found()
             }
             return nil
         }
@@ -65,6 +68,8 @@ class NetworkManager {
             return .failure(NetworkResponse.wrongPassword.reasonString)
         case 422:
             return .failure(NetworkResponse.badRequest.reasonString)
+        case 404:
+            return .failure(NetworkResponse.notFound.reasonString)
         case 409:
             return .failure(NetworkResponse.thisEmailAlreadyExists.reasonString)
         case 500...599:

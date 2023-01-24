@@ -19,8 +19,9 @@ final class EventHeaderLabel: UILabel {
         
         switch labelType {
         case .main:
-            self.font = Fonts.sfProDisplayBold(size: 36.scale())
+            self.font = Fonts.sfProDisplayBold(size: 28.scale())
             self.textColor = .white
+            self.numberOfLines = 0
         case .secondary:
             self.font = Fonts.sfProDisplayBold(size: 24.scale())
             self.textColor = .white
@@ -28,6 +29,6 @@ final class EventHeaderLabel: UILabel {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
 }

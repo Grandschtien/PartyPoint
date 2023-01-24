@@ -48,8 +48,14 @@ final class AuthManagerImpl: NetworkManager, AuthManager {
         }
     }
     
-    func register(with name: String, surname: String, mail: String, password: String) async -> AuthStatus {
-        let result = await router.request(.signUp(email: mail, name: name, passwd: password, surname: surname))
+    func register(with info: PPRegisterUserInformation) async -> AuthStatus {
+        let result = await router.request(.signUp(name: info.name,
+                                                  surname: info.surname,
+                                                  email: info.email,
+                                                  passwd: info.passwd,
+                                                  dateOfBirth: info.dateOfBirth,
+                                                  city: info.city,
+                                                  image: info.imageData))
 
         switch getStatus(response: result.response) {
         case .success:

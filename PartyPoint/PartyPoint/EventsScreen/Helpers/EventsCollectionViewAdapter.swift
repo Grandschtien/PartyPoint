@@ -125,6 +125,7 @@ private extension EventsCollectionViewAdapter {
         }
         return layout
     }
+    
     /// This function setups horizontal layout for collection view
     /// - Returns: Layout for horizontal section
     private func configureHorizontalLayoutSection() -> NSCollectionLayoutSection {

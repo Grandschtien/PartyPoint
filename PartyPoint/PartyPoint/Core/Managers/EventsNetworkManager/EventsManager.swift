@@ -11,5 +11,5 @@ protocol EventsManager {
     func getTodayEvents(page: Int) async -> EventsManagerImpl.EventsStatus
     func getCloseEvents(page: Int, lat: Double, lon: Double) async -> EventsManagerImpl.EventsStatus
     func getMainEvents(page: Int) async -> EventsManagerImpl.EventsStatus
-    func getEvent() async -> EventsManagerImpl.EventsStatus
+    func getEvent(withId id: Int, and placeId: Int) async -> EventsManagerImpl.EventsStatus 
 }

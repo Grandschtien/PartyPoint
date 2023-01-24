@@ -18,7 +18,7 @@ private let SCROLL_VIEW_INSETS = 46.scale()
 
 final class EventView: UIView {
     private let scrollView = UIScrollView()
-    private let backgroundImageView = UIImageView()
+    private let backgroundImageView = AcyncImageView()
     private let eventInfoView = EventInfoView(frame: .zero)
     private lazy var backgroundOfContentListView = UIView()
     
@@ -43,6 +43,17 @@ final class EventView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         makeScrollViewSize()
+    }
+}
+
+extension EventView {
+    func configureView(withEvent event: EventFullInfo) {
+        backgroundImageView.setImage(url: event.imageURL)
+        eventInfoView.configure(withInfo: event)
+    }
+    
+    func setVisibility(isHidden: Bool) {
+        scrollView.isHidden = isHidden
     }
 }
 

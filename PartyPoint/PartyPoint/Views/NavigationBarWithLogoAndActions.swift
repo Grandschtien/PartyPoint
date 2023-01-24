@@ -7,6 +7,9 @@
 
 import UIKit
 
+private let HORIZONTAL_OFFSET_OF_BUTTONS: CGFloat = 20
+private let BUTTON_SIZE = 35.scale()
+
 final class NavigationBarWithLogoAndActions: NavigationBarWithLogo {
     
     private var backAction: EmptyClosure?
@@ -47,6 +50,13 @@ final class NavigationBarWithLogoAndActions: NavigationBarWithLogo {
         title.text = text
         title.isHidden = isHidden
     }
+    
+    override func setupConstraintsForTitle() {
+        title.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(HORIZONTAL_OFFSET_OF_BUTTONS + BUTTON_SIZE)
+            $0.centerY.equalToSuperview()
+        }
+    }
 }
 
 extension NavigationBarWithLogoAndActions {
@@ -71,38 +81,34 @@ private extension NavigationBarWithLogoAndActions {
         for buttonsImge in buttonsImges {
             let button = UIButton()
             buttons.append(button)
+            
             button.backgroundColor = .clear
-            button.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview(button)
-            button.heightAnchor.constraint(equalToConstant: 35).isActive = true
-            button.widthAnchor.constraint(equalToConstant: 35).isActive = true
+            
+            button.snp.makeConstraints { $0.size.equalTo(BUTTON_SIZE) }
+            
             switch buttonsImge {
             case . exit:
                 button.setImage(Images.exit(), for: .normal)
-                button.rightAnchor.constraint(
-                    equalTo: self.rightAnchor,
-                    constant: -20).isActive = true
-                button.centerYAnchor.constraint(
-                    equalTo: self.centerYAnchor
-                ).isActive = true
+                button.snp.makeConstraints {
+                    $0.right.equalToSuperview().inset(HORIZONTAL_OFFSET_OF_BUTTONS)
+                    $0.centerY.equalToSuperview()
+                }
+                
                 button.addTarget(self, action: #selector(exitActionTapped), for: .touchUpInside)
             case .back:
                 button.setImage(Images.chevronBack(), for: .normal)
-                button.leftAnchor.constraint(
-                    equalTo: self.leftAnchor,
-                    constant: 20).isActive = true
-                button.centerYAnchor.constraint(
-                    equalTo: self.centerYAnchor
-                ).isActive = true
+                button.snp.makeConstraints {
+                    $0.left.equalToSuperview().offset(HORIZONTAL_OFFSET_OF_BUTTONS)
+                    $0.centerY.equalToSuperview()
+                }
                 button.addTarget(self, action: #selector(backActionTapped), for: .touchUpInside)
             case .share:
                 button.setImage(Images.shareOutline(), for: .normal)
-                button.rightAnchor.constraint(
-                    equalTo: self.rightAnchor,
-                    constant: -20).isActive = true
-                button.centerYAnchor.constraint(
-                    equalTo: self.centerYAnchor
-                ).isActive = true
+                button.snp.makeConstraints {
+                    $0.right.equalToSuperview().inset(HORIZONTAL_OFFSET_OF_BUTTONS)
+                    $0.centerY.equalToSuperview()
+                }
                 button.addTarget(self, action: #selector(shareActionTapped), for: .touchUpInside)
             }
         }

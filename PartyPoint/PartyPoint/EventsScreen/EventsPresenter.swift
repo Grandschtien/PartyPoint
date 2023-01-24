@@ -38,7 +38,7 @@ private extension EventsPresenter {
         return events.map { event in
             let url = URL(string: event.image)
             let dateOfEvent = getDateOfEvent(start: event.start, end: event.end)
-            let capitlizedTitle = event.title.capitalized
+            let capitlizedTitle = event.title.capitalizedFirst
             return EventInfo(id: event.kudagoID, title: capitlizedTitle, date: dateOfEvent, image: url)
         }
     }
@@ -60,17 +60,17 @@ extension EventsPresenter: EventsModuleInput {
 
 extension EventsPresenter: EventsViewOutput {
     func tappedOnEvents(section: Int, index: Int) {
-        let id: Int
+        let event: PPEvent
         switch section {
         case SectionType.main.rawValue:
-            id = interactor.getMainEventId(withIndex: index)
-            router.openEventScreen(withId: id)
+            event = interactor.getMainEventId(withIndex: index)
+            router.openEventScreen(withId: event.kudagoID, and: event.place)
         case SectionType.today.rawValue:
-            id = interactor.getTodayEventId(withIndex: index)
-            router.openEventScreen(withId: id)
+            event = interactor.getTodayEventId(withIndex: index)
+            router.openEventScreen(withId: event.kudagoID, and: event.place)
         case SectionType.closest.rawValue:
-            id = interactor.getClosestEventId(withIndex: index)
-            router.openEventScreen(withId: id)
+            event = interactor.getClosestEventId(withIndex: index)
+            router.openEventScreen(withId: event.kudagoID, and: event.place)
         default:
             debugPrint("[DEBUG: Unknown index of event]")
             break

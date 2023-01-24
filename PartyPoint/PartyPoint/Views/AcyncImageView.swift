@@ -1,5 +1,5 @@
 //
-//  UIImageView+SetImage.swift
+//  AcyncImageView.swift
 //  PartyPoint
 //
 //  Created by Егор Шкарин on 04.01.2023.

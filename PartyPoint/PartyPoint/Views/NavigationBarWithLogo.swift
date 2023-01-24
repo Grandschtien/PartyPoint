@@ -44,6 +44,12 @@ class NavigationBarWithLogo: UIView {
     required init?(coder: NSCoder) {
         return nil
     }
+    
+    internal func setupConstraintsForTitle() {
+        title.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+        }
+    }
 }
 
 private extension NavigationBarWithLogo {
@@ -55,9 +61,7 @@ private extension NavigationBarWithLogo {
     }
     
     func setupConstraints() {
-        title.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-        }
+        setupConstraintsForTitle()
         
         imageView.snp.makeConstraints {
             $0.centerY.centerX.equalToSuperview()

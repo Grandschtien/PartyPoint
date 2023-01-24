@@ -12,7 +12,13 @@ enum AuthEndPoint {
     case login(email: String, passwd: String)
     case logout
     case refresh(refreshToken: String)
-    case signUp(email: String, name: String, passwd: String, surname: String)
+    case signUp(name: String,
+                surname: String,
+                email: String,
+                passwd: String,
+                dateOfBirth: Date,
+                city: String?,
+                image: Data?)
 }
 
 
@@ -72,12 +78,16 @@ extension AuthEndPoint: EndPointType {
         case let .refresh(refreshTocken):
             return .requestParameters(bodyParameters: ["refresh_token": refreshTocken],
                                       urlParameters: nil)
-        case let .signUp(email, name, passwd, surname):
-            return .requestParameters(bodyParameters: ["email": email,
-                                                       "name": name,
-                                                       "password": passwd,
-                                                       "surname": surname],
-                                      urlParameters: nil)
+        case let .signUp(name, surname, email, passwd, dateOfBirth, city, image):
+            return .requestParametersWithHeaders(bodyParameters: ["name": name,
+                                                                  "surname": surname,
+                                                                  "email": email,
+                                                                  "password": passwd,
+                                                                  "dateOfBirth": dateOfBirth,
+                                                                  "city": city ?? "",
+                                                                  "image": image ?? Data()],
+                                                 urlParameters: nil,
+                                                 additionalParameters: ["Content-Type": "multipart/form-data"])
         }
     }
     

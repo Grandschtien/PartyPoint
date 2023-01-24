@@ -66,13 +66,9 @@ private extension RegisterInteractor {
 }
 
 extension RegisterInteractor: RegisterInteractorInput {
-    func registerUser(with info: [String?]) {
+    func registerUser(with info: PPRegisterUserInformation) {
         Task {
-            let validateInfo = info.compactMap{$0}
-            let authStatus = await authManager.register(with: validateInfo[0],
-                                                      surname: validateInfo[1],
-                                                      mail: validateInfo[2],
-                                                      password: validateInfo[3])
+            let authStatus = await authManager.register(with: info)
             
             switch authStatus {
             case let .authorized(data):

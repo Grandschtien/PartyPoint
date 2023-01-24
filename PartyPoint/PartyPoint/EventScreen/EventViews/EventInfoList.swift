@@ -5,21 +5,19 @@
 //  Created by Егор Шкарин on 19.08.2022.
 //
 
-import UIKit
 import SnapKit
 
-//Constants
-
-private let VERTICAL_OFFSET = 17.scale()
+private let VERTICAL_OFFSET = 12.scale()
 private let HORISONTAL_OFFSET = 15.scale()
 private let HEADER_OFFSET = 10.scale()
+private let MAP_HEIGHT: CGFloat = 200.scale()
 
 final class EventInfoView: UIView {
     
     private let header = EventHeaderLabel(frame: .zero, labelType: .main)
     private let locationView = LocationView()
     private let descriptionView = DescriptionEventView()
-    private let costView =  EventViewWithButton()
+    private let costView = EventViewWithButton()
     private let goView = EventViewWithButton()
     private let mapView = EventMapView()
     
@@ -34,12 +32,23 @@ final class EventInfoView: UIView {
         setupUI()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         fullHeight = countHeight()
+    }
+    
+    func configure(withInfo info: EventFullInfo) {
+        header.text = info.title
+        locationView.configure(with: info.location)
+        mapView.configure(with: info.placeAnnotation)
+        descriptionView.configure(withDescription: info.description)
+        costView.configure(forCost: info.cost)
+        goView.configure(forPeople: info.peopleAmount)
     }
 }
 
@@ -52,14 +61,12 @@ private extension EventInfoView {
             $0.leading.equalToSuperview().offset(HORISONTAL_OFFSET)
             $0.trailing.equalToSuperview().inset(HORISONTAL_OFFSET)
         }
-        header.text = "Концерт Басты"
         
         addSubview(locationView)
         locationView.snp.makeConstraints {
             $0.top.equalTo(header.snp.bottom).offset(VERTICAL_OFFSET)
             $0.leading.equalToSuperview().offset(HORISONTAL_OFFSET)
             $0.trailing.equalToSuperview().inset(HORISONTAL_OFFSET)
-            $0.height.equalTo(34.scale())
         }
         
         addSubview(descriptionView)
@@ -67,7 +74,6 @@ private extension EventInfoView {
             $0.top.equalTo(locationView.snp.bottom).offset(VERTICAL_OFFSET)
             $0.leading.equalToSuperview().offset(HORISONTAL_OFFSET)
             $0.trailing.equalToSuperview().inset(HORISONTAL_OFFSET)
-            $0.height.equalTo(247.scale())
         }
 
         addSubview(costView)
@@ -75,7 +81,7 @@ private extension EventInfoView {
             $0.top.equalTo(descriptionView.snp.bottom).offset(VERTICAL_OFFSET)
             $0.leading.equalToSuperview().offset(HORISONTAL_OFFSET)
             $0.trailing.equalToSuperview().inset(HORISONTAL_OFFSET)
-            $0.height.equalTo(122.scale())
+//            $0.height.equalTo(122.scale())
         }
 
         addSubview(goView)
@@ -83,7 +89,7 @@ private extension EventInfoView {
             $0.top.equalTo(costView.snp.bottom).offset(VERTICAL_OFFSET)
             $0.leading.equalToSuperview().offset(HORISONTAL_OFFSET)
             $0.trailing.equalToSuperview().inset(HORISONTAL_OFFSET)
-            $0.height.equalTo(122.scale())
+//            $0.height.equalTo(122.scale())
         }
 
         self.addSubview(mapView)
@@ -92,16 +98,8 @@ private extension EventInfoView {
             $0.top.equalTo(goView.snp.bottom).offset(VERTICAL_OFFSET)
             $0.leading.equalToSuperview().offset(HORISONTAL_OFFSET)
             $0.trailing.equalToSuperview().inset(HORISONTAL_OFFSET)
-            $0.height.equalTo(180.scale())
+            $0.height.equalTo(MAP_HEIGHT)
         }
-        //mock
-        locationView.updateWithLocationDateAndTime("Ленинградский пр-т., 80, к. 17, Москва", "22.07.2022", "18:00")
-        
-        descriptionView.backgroundColor = .green
-        costView.backgroundColor = .green
-        goView.backgroundColor = .green
-        mapView.backgroundColor = .green
-        
     }
     
     func countHeight() -> CGFloat {

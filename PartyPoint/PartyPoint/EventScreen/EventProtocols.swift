@@ -16,16 +16,26 @@ protocol EventModuleOutput: AnyObject {
 }
 
 protocol EventViewInput: AnyObject {
+    func setLoaderVisibility(isHidden: Bool)
+    func setupView(withInfo info: EventFullInfo)
+    func showNavBar(withTitle title: String)
+    func hideNavBar()
 }
 
 protocol EventViewOutput: AnyObject {
     func backAction()
+    func onViewDidLoad()
+    func changeVisibilityOfNavBar(offset: CGFloat)
 }
 
 protocol EventInteractorInput: AnyObject {
+    func loadEvent()
+    func getTitle() -> String
 }
 
 protocol EventInteractorOutput: AnyObject {
+    func performWithError(reason: String)
+    func performWithEvent(event: PPEventInformation)
 }
 
 protocol EventRouterInput: AnyObject {

@@ -15,7 +15,13 @@ final class EventContainer {
 
 	static func assemble(with context: EventContext) -> EventContainer {
         let router = EventRouter()
-        let interactor = EventInteractor()
+        let networkRouter = Router<EventsEndPoint>()
+        let eventsManager = EventsManagerImpl(router: networkRouter)
+        let decoder = PPDecoderImpl()
+        let interactor = EventInteractor(eventId: context.eventId,
+                                         placeId: context.placeId,
+                                         eventsManager: eventsManager,
+                                         decoder: decoder)
         let presenter = EventPresenter(router: router, interactor: interactor)
 		let viewController = EventViewController(output: presenter)
 
@@ -37,4 +43,5 @@ final class EventContainer {
 struct EventContext {
 	weak var moduleOutput: EventModuleOutput?
     let eventId: Int
+    let placeId: Int
 }

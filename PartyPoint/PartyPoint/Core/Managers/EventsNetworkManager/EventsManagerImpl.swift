@@ -38,23 +38,21 @@ private extension EventsManagerImpl {
 extension EventsManagerImpl: EventsManager {
     func getTodayEvents(page: Int) async -> EventsManagerImpl.EventsStatus {
         let result = await router.request(.todayEvents(page: page))
-        
         return getStatusOfEvents(result: result)
     }
     
     func getCloseEvents(page: Int, lat: Double, lon: Double) async -> EventsManagerImpl.EventsStatus{
         let result = await router.request(.closeEvents(page: page, lat: lat, lon: lon))
-        
         return getStatusOfEvents(result: result)
     }
     
     func getMainEvents(page: Int) async -> EventsManagerImpl.EventsStatus{
         let result = await router.request(.mainEvents(page: page))
-        
         return getStatusOfEvents(result: result)
     }
     
-    func getEvent() async -> EventsManagerImpl.EventsStatus {
-        return .error(reason: "")
+    func getEvent(withId id: Int, and placeId: Int) async -> EventsManagerImpl.EventsStatus {
+        let result =  await router.request(.event(id: id, placeId: placeId))
+        return getStatusOfEvents(result: result)
     }
 }

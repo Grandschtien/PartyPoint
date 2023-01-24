@@ -15,6 +15,7 @@ final class EventViewController: UIViewController {
     }
     
     private let output: EventViewOutput
+    
     private let navigationBar = NavigationBarWithLogoAndActions(
         image: nil,
         frame: .zero,
@@ -23,7 +24,6 @@ final class EventViewController: UIViewController {
         isTitleNeeded: true
     )
     private let eventView = EventView()
-    
     private var navBarCurrentState: NavigatioBarState = .hidden
     
     init(output: EventViewOutput) {
@@ -39,6 +39,7 @@ final class EventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        output.onViewDidLoad()
     }
     
     override func loadView() {
@@ -50,7 +51,6 @@ private extension EventViewController {
     func setupUI() {
         navigationController?.isNavigationBarHidden = true
         view.backgroundColor = Colors.mainColor()
-        navigationBar.setTitle("Концерт басты", isHidden: true)
         eventView.delegate = self
         view.addSubview(navigationBar)
         
@@ -75,20 +75,32 @@ private extension EventViewController {
 
 extension EventViewController: EventViewDelegate {
     func setNavTitleVisibleIfNeeded(offset: CGFloat) {
-        if offset <= 76 {
-            navigationBar.setTitle("Концерт басты", isHidden: false)
-            navigationBar.backgroundColor = Colors.mainColor()
-            changeStatusBarColor(Colors.mainColor())
-        } else {
-            navigationBar.setTitle("Концерт басты", isHidden: true)
-            navigationBar.backgroundColor = .clear
-            changeStatusBarColor(.clear)
-        }
+        output.changeVisibilityOfNavBar(offset: offset)
     }
 }
 
 extension EventViewController: EventViewInput {
+    func setupView(withInfo info: EventFullInfo) {
+        navigationBar.setTitle(info.title, isHidden: true)
+        eventView.configureView(withEvent: info)
+    }
     
+    func setLoaderVisibility(isHidden: Bool) {
+        eventView.setVisibility(isHidden: !isHidden)
+        isHidden ? hideLoader() : showLoader()
+    }
+    
+    func showNavBar(withTitle title: String) {
+        navigationBar.setTitle(title, isHidden: false)
+        navigationBar.backgroundColor = Colors.mainColor()
+        changeStatusBarColor(Colors.mainColor())
+    }
+    
+    func hideNavBar() {
+        navigationBar.setTitle("", isHidden: true)
+        navigationBar.backgroundColor = .clear
+        changeStatusBarColor(.clear)
+    }
 }
 
 

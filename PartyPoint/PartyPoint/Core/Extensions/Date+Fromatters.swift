@@ -79,4 +79,11 @@ extension Date {
         let calendar = Calendar.current.component(.weekday, from: self)
         return weekdays[calendar - 1]
     }
+    
+    init?(string: String) {
+        let dateFormatter = DateFormatter()
+        let date = dateFormatter.date(from: string)
+        guard let date = date else { return nil }
+        self.init(timeIntervalSince1970: date.timeIntervalSince1970)
+    }
 }

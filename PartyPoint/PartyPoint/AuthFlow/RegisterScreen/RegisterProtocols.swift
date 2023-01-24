@@ -16,7 +16,12 @@ protocol RegisterModuleOutput: AnyObject {
 }
 
 protocol RegisterViewInput: AnyObject {
-    func showEmptyFields(withIndexes indexes: [Int])
+    func showNameIsEmpty()
+    func showSurnameIsEmpty()
+    func showEmailIsEmpty()
+    func showDobIsEmpty()
+    func showPasswdIsEmpty()
+    func showCheckPasswdIsEmpty()
     func showToPasswordsIsDifferent()
     func showWhyRegisterFailed(reason: String)
     func showLoadingIfNeeded(isLoading: Bool)
@@ -24,11 +29,18 @@ protocol RegisterViewInput: AnyObject {
 
 protocol RegisterViewOutput: AnyObject {
     func backButtonPressed()
-    func registeButtonPressed(registerInfo: [String?]) 
+    func registeButtonPressed(registerInfo: (name: String?,
+                                             surname: String?,
+                                             email: String?,
+                                             dob: String?,
+                                             city: String?,
+                                             passwd: String?,
+                                             checkPasswd: String?))
+    func showCalendarPicker()
 }
 
 protocol RegisterInteractorInput: AnyObject {
-    func registerUser(with info: [String?])
+    func registerUser(with info: PPRegisterUserInformation)
 }
 
 protocol RegisterInteractorOutput: AnyObject {
@@ -39,4 +51,5 @@ protocol RegisterInteractorOutput: AnyObject {
 protocol RegisterRouterInput: AnyObject {
     func routeBack()
     func startMainFlow()
+    func showCalendarPicker()
 }

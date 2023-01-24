@@ -7,9 +7,10 @@
 
 import UIKit
 
+private let LABEL_FONTS_SIZE: CGFloat = 15.scale()
+
 final class LocationView: UIView {
-    
-    private let labelsFont = Fonts.sfProDisplayBold(size: 15)
+    private let labelsFont = Fonts.sfProDisplayBold(size: LABEL_FONTS_SIZE)
     
     private let locationLabel = UILabel()
     private let dateLabel = UILabel()
@@ -24,13 +25,13 @@ final class LocationView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
-    func updateWithLocationDateAndTime(_ location: String, _ date: String, _ time: String) {
-        locationLabel.set(text: location, leftIcon: Images.location(), rightIcon: nil)
-        dateLabel.set(text: date, leftIcon: Images.calendar(), rightIcon: nil)
-        timeLabel.set(text: time, leftIcon: Images.time(), rightIcon: nil)
+    func configure(with info: LocationInfo) {
+        locationLabel.set(text: info.address, leftIcon: Images.location(), rightIcon: nil)
+        dateLabel.set(text: info.date, leftIcon: Images.calendar(), rightIcon: nil)
+        timeLabel.set(text: info.time, leftIcon: Images.time(), rightIcon: nil)
     }
 }
 
@@ -41,6 +42,8 @@ private extension LocationView {
         locationLabel.font = labelsFont
         timeLabel.font = labelsFont
         dateLabel.setContentHuggingPriority(.required, for: .horizontal)
+        
+        locationLabel.numberOfLines = 0
         
         dateLabel.textColor = Colors.miniColor()
         locationLabel.textColor = Colors.miniColor()
@@ -56,7 +59,7 @@ private extension LocationView {
         verticalStack.addArrangedSubview(horizontalStack)
         
         verticalStack.axis = .vertical
-        verticalStack.spacing = 4.scale()
+        verticalStack.spacing = 6.scale()
         addSubview(verticalStack)
         
         verticalStack.snp.makeConstraints {

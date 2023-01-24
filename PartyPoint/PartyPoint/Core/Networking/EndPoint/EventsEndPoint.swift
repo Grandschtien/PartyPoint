@@ -11,7 +11,7 @@ enum EventsEndPoint {
     case mainEvents(page: Int)
     case closeEvents(page: Int, lat: Double, lon: Double)
     case todayEvents(page: Int)
-    case event
+    case event(id: Int, placeId: Int)
 }
 
 extension EventsEndPoint: EndPointType {
@@ -42,8 +42,8 @@ extension EventsEndPoint: EndPointType {
             return "external/close"
         case .todayEvents:
             return "external/today"
-        case .event:
-            return "event"
+        case let .event(id, placeId):
+            return "/external/\(placeId)/\(id)"
         }
     }
     

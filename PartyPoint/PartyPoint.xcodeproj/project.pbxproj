@@ -21,6 +21,12 @@
 		602220D8295CBC0400D2F7B2 /* KeyChainManangerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602220D7295CBC0400D2F7B2 /* KeyChainManangerImpl.swift */; };
 		602220DB295CD70500D2F7B2 /* AuthManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602220DA295CD70500D2F7B2 /* AuthManagerImpl.swift */; };
 		602220DE295CDDE100D2F7B2 /* ValidationTokenManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602220DD295CDDE100D2F7B2 /* ValidationTokenManagerImpl.swift */; };
+		602AE6BC2972DA69004427A6 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602AE6BB2972DA69004427A6 /* LocationInfo.swift */; };
+		602AE6BF2972E623004427A6 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602AE6BE2972E623004427A6 /* String+Extension.swift */; };
+		6037CA4C296D957600E4BC03 /* PPEventInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6037CA4B296D957600E4BC03 /* PPEventInformation.swift */; };
+		6037CA4E296D969F00E4BC03 /* PPPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6037CA4D296D969F00E4BC03 /* PPPlace.swift */; };
+		6037CA51296D972200E4BC03 /* PPCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6037CA50296D972200E4BC03 /* PPCoordinates.swift */; };
+		6037CA53296DB66500E4BC03 /* EventFullInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6037CA52296DB66500E4BC03 /* EventFullInfo.swift */; };
 		603B506128EDEA4A00A83214 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603B506028EDEA4A00A83214 /* R.generated.swift */; };
 		604147B128D4D9C90052F60D /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604147B028D4D9C90052F60D /* EndPointType.swift */; };
 		604147B328D4DA480052F60D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604147B228D4DA480052F60D /* HTTPMethod.swift */; };
@@ -30,6 +36,10 @@
 		604147BC28D4DCBF0052F60D /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604147BB28D4DCBF0052F60D /* URLParameterEncoder.swift */; };
 		604147BE28D4DED60052F60D /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604147BD28D4DED60052F60D /* JSONParameterEncoder.swift */; };
 		6042172328BBE67F0063BF68 /* AnyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6042172228BBE67F0063BF68 /* AnyView.swift */; };
+		60498011297D50DF0096EB8E /* MKMapView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60498010297D50DF0096EB8E /* MKMapView+Extensions.swift */; };
+		60498014297D67B50096EB8E /* PlaceAnnotationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60498013297D67B50096EB8E /* PlaceAnnotationInfo.swift */; };
+		60498018297D6FC00096EB8E /* CostEventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60498017297D6FC00096EB8E /* CostEventInfo.swift */; };
+		6049801A297D70540096EB8E /* PeopleEventnfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60498019297D70540096EB8E /* PeopleEventnfoModel.swift */; };
 		6052918C294E084F005B0373 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6052918B294E084F005B0373 /* RegisterView.swift */; };
 		6060C91028ED86D800E6E593 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6060C91228ED86D800E6E593 /* Localizable.strings */; };
 		6060DE6B29210AF50017F7F7 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6060DE6A29210AF50017F7F7 /* AuthManager.swift */; };
@@ -47,6 +57,7 @@
 		6073B8752881962700AF07FA /* EventsTypeHeaderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073B8742881962700AF07FA /* EventsTypeHeaderHeader.swift */; };
 		6073B87728819A2F00AF07FA /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073B87628819A2F00AF07FA /* Section.swift */; };
 		6073B87B2881A01800AF07FA /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073B8792881A01800AF07FA /* EventCell.swift */; };
+		607F850B2980506F0042D77F /* DefaultEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607F850A2980506F0042D77F /* DefaultEventView.swift */; };
 		608160432962CF86006B0919 /* PPAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608160422962CF86006B0919 /* PPAccountManager.swift */; };
 		608160462962CFA0006B0919 /* PPAccountManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608160452962CFA0006B0919 /* PPAccountManagerImpl.swift */; };
 		608160482962D108006B0919 /* UserDefaults+KeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608160472962D108006B0919 /* UserDefaults+KeyValueStorage.swift */; };
@@ -128,6 +139,13 @@
 		6097179C287F172C0084A63C /* NotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097179B287F172C0084A63C /* NotificationCenterManager.swift */; };
 		60A1E60A28AFACD400E80D0D /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1E60928AFACD300E80D0D /* EventView.swift */; };
 		60A1E60C28AFAFE500E80D0D /* EventInfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1E60B28AFAFE500E80D0D /* EventInfoList.swift */; };
+		60A5E3E02969898600FC8A37 /* PPRegisterUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E3DF2969898600FC8A37 /* PPRegisterUserInformation.swift */; };
+		60A5E3E82969A6D500FC8A37 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E3E52969A6D500FC8A37 /* Day.swift */; };
+		60A5E3E92969A6D500FC8A37 /* MonthMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E3E62969A6D500FC8A37 /* MonthMetadata.swift */; };
+		60A5E3EE2969A71000FC8A37 /* CalendarDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E3EA2969A71000FC8A37 /* CalendarDateCollectionViewCell.swift */; };
+		60A5E3EF2969A71000FC8A37 /* CalendarPickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E3EB2969A71000FC8A37 /* CalendarPickerHeaderView.swift */; };
+		60A5E3F02969A71000FC8A37 /* CalendarPickerFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E3EC2969A71000FC8A37 /* CalendarPickerFooterView.swift */; };
+		60A5E3F12969A71000FC8A37 /* CalendarPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E3ED2969A71000FC8A37 /* CalendarPickerViewController.swift */; };
 		60B48CCF28E5B837006C6CF5 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B48CCE28E5B837006C6CF5 /* NetworkRouter.swift */; };
 		60B48CD128E5B97F006C6CF5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B48CD028E5B97F006C6CF5 /* Router.swift */; };
 		60B48CD328E5C0A9006C6CF5 /* NetworkEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B48CD228E5C0A9006C6CF5 /* NetworkEnviroment.swift */; };
@@ -136,7 +154,7 @@
 		60B48CD928EC5BC3006C6CF5 /* AuthEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B48CD828EC5BC2006C6CF5 /* AuthEndPoint.swift */; };
 		60BCB67329658F1F00728ED8 /* EventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB67229658F1F00728ED8 /* EventInfo.swift */; };
 		60BCB6752965913B00728ED8 /* Date+Fromatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB6742965913B00728ED8 /* Date+Fromatters.swift */; };
-		60BCB6772965943B00728ED8 /* UIImageView+SetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB6762965943B00728ED8 /* UIImageView+SetImage.swift */; };
+		60BCB6772965943B00728ED8 /* AcyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB6762965943B00728ED8 /* AcyncImageView.swift */; };
 		60BCB6792965956C00728ED8 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB6782965956C00728ED8 /* PhotoManager.swift */; };
 		60BCB67C296599A500728ED8 /* PPLIkeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB67B296599A500728ED8 /* PPLIkeView.swift */; };
 		60BCB67E2965A47F00728ED8 /* PPScrollableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB67D2965A47F00728ED8 /* PPScrollableLabel.swift */; };
@@ -195,6 +213,12 @@
 		602220D7295CBC0400D2F7B2 /* KeyChainManangerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManangerImpl.swift; sourceTree = "<group>"; };
 		602220DA295CD70500D2F7B2 /* AuthManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManagerImpl.swift; sourceTree = "<group>"; };
 		602220DD295CDDE100D2F7B2 /* ValidationTokenManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTokenManagerImpl.swift; sourceTree = "<group>"; };
+		602AE6BB2972DA69004427A6 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
+		602AE6BE2972E623004427A6 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		6037CA4B296D957600E4BC03 /* PPEventInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPEventInformation.swift; sourceTree = "<group>"; };
+		6037CA4D296D969F00E4BC03 /* PPPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPPlace.swift; sourceTree = "<group>"; };
+		6037CA50296D972200E4BC03 /* PPCoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPCoordinates.swift; sourceTree = "<group>"; };
+		6037CA52296DB66500E4BC03 /* EventFullInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFullInfo.swift; sourceTree = "<group>"; };
 		603B506028EDEA4A00A83214 /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		604147B028D4D9C90052F60D /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		604147B228D4DA480052F60D /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -204,6 +228,10 @@
 		604147BB28D4DCBF0052F60D /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
 		604147BD28D4DED60052F60D /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		6042172228BBE67F0063BF68 /* AnyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyView.swift; sourceTree = "<group>"; };
+		60498010297D50DF0096EB8E /* MKMapView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Extensions.swift"; sourceTree = "<group>"; };
+		60498013297D67B50096EB8E /* PlaceAnnotationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotationInfo.swift; sourceTree = "<group>"; };
+		60498017297D6FC00096EB8E /* CostEventInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostEventInfo.swift; sourceTree = "<group>"; };
+		60498019297D70540096EB8E /* PeopleEventnfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleEventnfoModel.swift; sourceTree = "<group>"; };
 		6052918B294E084F005B0373 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		6060C91128ED86D800E6E593 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6060C91328ED870900E6E593 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -224,6 +252,7 @@
 		6073B8742881962700AF07FA /* EventsTypeHeaderHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTypeHeaderHeader.swift; sourceTree = "<group>"; };
 		6073B87628819A2F00AF07FA /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		6073B8792881A01800AF07FA /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		607F850A2980506F0042D77F /* DefaultEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEventView.swift; sourceTree = "<group>"; };
 		608160422962CF86006B0919 /* PPAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPAccountManager.swift; sourceTree = "<group>"; };
 		608160452962CFA0006B0919 /* PPAccountManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPAccountManagerImpl.swift; sourceTree = "<group>"; };
 		608160472962D108006B0919 /* UserDefaults+KeyValueStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+KeyValueStorage.swift"; sourceTree = "<group>"; };
@@ -307,6 +336,13 @@
 		6097179B287F172C0084A63C /* NotificationCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterManager.swift; sourceTree = "<group>"; };
 		60A1E60928AFACD300E80D0D /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		60A1E60B28AFAFE500E80D0D /* EventInfoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoList.swift; sourceTree = "<group>"; };
+		60A5E3DF2969898600FC8A37 /* PPRegisterUserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPRegisterUserInformation.swift; sourceTree = "<group>"; };
+		60A5E3E52969A6D500FC8A37 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		60A5E3E62969A6D500FC8A37 /* MonthMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthMetadata.swift; sourceTree = "<group>"; };
+		60A5E3EA2969A71000FC8A37 /* CalendarDateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDateCollectionViewCell.swift; sourceTree = "<group>"; };
+		60A5E3EB2969A71000FC8A37 /* CalendarPickerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPickerHeaderView.swift; sourceTree = "<group>"; };
+		60A5E3EC2969A71000FC8A37 /* CalendarPickerFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPickerFooterView.swift; sourceTree = "<group>"; };
+		60A5E3ED2969A71000FC8A37 /* CalendarPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPickerViewController.swift; sourceTree = "<group>"; };
 		60B48CCE28E5B837006C6CF5 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		60B48CD028E5B97F006C6CF5 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		60B48CD228E5C0A9006C6CF5 /* NetworkEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnviroment.swift; sourceTree = "<group>"; };
@@ -315,7 +351,7 @@
 		60B48CD828EC5BC2006C6CF5 /* AuthEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndPoint.swift; sourceTree = "<group>"; };
 		60BCB67229658F1F00728ED8 /* EventInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfo.swift; sourceTree = "<group>"; };
 		60BCB6742965913B00728ED8 /* Date+Fromatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Fromatters.swift"; sourceTree = "<group>"; };
-		60BCB6762965943B00728ED8 /* UIImageView+SetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+SetImage.swift"; sourceTree = "<group>"; };
+		60BCB6762965943B00728ED8 /* AcyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcyncImageView.swift; sourceTree = "<group>"; };
 		60BCB6782965956C00728ED8 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		60BCB67B296599A500728ED8 /* PPLIkeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPLIkeView.swift; sourceTree = "<group>"; };
 		60BCB67D2965A47F00728ED8 /* PPScrollableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPScrollableLabel.swift; sourceTree = "<group>"; };
@@ -429,6 +465,28 @@
 			path = ValidationTokenManager;
 			sourceTree = "<group>";
 		};
+		602AE6BD2972DA6E004427A6 /* EventFullInfo */ = {
+			isa = PBXGroup;
+			children = (
+				60498013297D67B50096EB8E /* PlaceAnnotationInfo.swift */,
+				6037CA52296DB66500E4BC03 /* EventFullInfo.swift */,
+				602AE6BB2972DA69004427A6 /* LocationInfo.swift */,
+				60498019297D70540096EB8E /* PeopleEventnfoModel.swift */,
+				60498017297D6FC00096EB8E /* CostEventInfo.swift */,
+			);
+			path = EventFullInfo;
+			sourceTree = "<group>";
+		};
+		6037CA4F296D96B600E4BC03 /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				602220D2295C675600D2F7B2 /* PPUserInformation.swift */,
+				60A5E3DF2969898600FC8A37 /* PPRegisterUserInformation.swift */,
+				6037CA4B296D957600E4BC03 /* PPEventInformation.swift */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
 		604147AD28D4D9A00052F60D /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,6 +505,13 @@
 				604147B828D4DC7A0052F60D /* NetworkError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		60498012297D67AB0096EB8E /* LocalModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LocalModels;
 			sourceTree = "<group>";
 		};
 		6052918A294E083B005B0373 /* View */ = {
@@ -500,6 +565,7 @@
 		6070D42B28ABDDFB0054F61B /* EventScreen */ = {
 			isa = PBXGroup;
 			children = (
+				60498012297D67AB0096EB8E /* LocalModels */,
 				60A1E60828AFAB9E00E80D0D /* EventViews */,
 				6070D42C28ABDE1F0054F61B /* EventPresenter.swift */,
 				6070D42D28ABDE1F0054F61B /* EventRouter.swift */,
@@ -686,8 +752,9 @@
 				608160472962D108006B0919 /* UserDefaults+KeyValueStorage.swift */,
 				60FFFE1229647ADB004DB8D4 /* Array+MutateEach.swift */,
 				60BCB6742965913B00728ED8 /* Date+Fromatters.swift */,
-				60BCB6762965943B00728ED8 /* UIImageView+SetImage.swift */,
 				60BCB67F2965A79B00728ED8 /* UIViewController+Loader.swift */,
+				602AE6BE2972E623004427A6 /* String+Extension.swift */,
+				60498010297D50DF0096EB8E /* MKMapView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -765,6 +832,8 @@
 		6097175F287D94150084A63C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				60A5E3E12969A66100FC8A37 /* PPCalendarView */,
+				60BCB6762965943B00728ED8 /* AcyncImageView.swift */,
 				60FAF6332953589200982457 /* PPSpinner */,
 				60FAF62129534DD500982457 /* Toasts */,
 				60FAF6162953495300982457 /* Buttons */,
@@ -835,6 +904,35 @@
 			path = EventViews;
 			sourceTree = "<group>";
 		};
+		60A5E3E12969A66100FC8A37 /* PPCalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				60A5E3E32969A68700FC8A37 /* CalendarPicker */,
+				60A5E3E22969A67700FC8A37 /* Models */,
+			);
+			path = PPCalendarView;
+			sourceTree = "<group>";
+		};
+		60A5E3E22969A67700FC8A37 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				60A5E3E52969A6D500FC8A37 /* Day.swift */,
+				60A5E3E62969A6D500FC8A37 /* MonthMetadata.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		60A5E3E32969A68700FC8A37 /* CalendarPicker */ = {
+			isa = PBXGroup;
+			children = (
+				60A5E3EA2969A71000FC8A37 /* CalendarDateCollectionViewCell.swift */,
+				60A5E3EC2969A71000FC8A37 /* CalendarPickerFooterView.swift */,
+				60A5E3EB2969A71000FC8A37 /* CalendarPickerHeaderView.swift */,
+				60A5E3ED2969A71000FC8A37 /* CalendarPickerViewController.swift */,
+			);
+			path = CalendarPicker;
+			sourceTree = "<group>";
+		};
 		60B48CCC28E5B59E006C6CF5 /* EndPoint */ = {
 			isa = PBXGroup;
 			children = (
@@ -856,10 +954,12 @@
 		60BCB67029658F0100728ED8 /* BaseModels */ = {
 			isa = PBXGroup;
 			children = (
+				6037CA4D296D969F00E4BC03 /* PPPlace.swift */,
 				6073B8712881942A00AF07FA /* PPEvent.swift */,
 				602220CE295C4F1B00D2F7B2 /* PPUser.swift */,
 				602220D0295C4F2500D2F7B2 /* PPToken.swift */,
-				602220D2295C675600D2F7B2 /* PPUserInformation.swift */,
+				6037CA50296D972200E4BC03 /* PPCoordinates.swift */,
+				6037CA4F296D96B600E4BC03 /* Information */,
 			);
 			path = BaseModels;
 			sourceTree = "<group>";
@@ -870,6 +970,7 @@
 				6073B87628819A2F00AF07FA /* Section.swift */,
 				60918EE72888630D00D9E032 /* UserInfo.swift */,
 				60BCB67229658F1F00728ED8 /* EventInfo.swift */,
+				602AE6BD2972DA6E004427A6 /* EventFullInfo */,
 			);
 			path = InfoModels;
 			sourceTree = "<group>";
@@ -905,6 +1006,7 @@
 				60DB792528B4C55A0058A3D7 /* DescriptionEventView.swift */,
 				60DB792728B4CED50058A3D7 /* EventViewWithButton.swift */,
 				60DB792928B4CFD80058A3D7 /* EventMapView.swift */,
+				607F850A2980506F0042D77F /* DefaultEventView.swift */,
 			);
 			path = EventSubviews;
 			sourceTree = "<group>";
@@ -1143,13 +1245,19 @@
 				604147B928D4DC7A0052F60D /* NetworkError.swift in Sources */,
 				602220D3295C675600D2F7B2 /* PPUserInformation.swift in Sources */,
 				6097178C287EDE4A0084A63C /* RegisterContainer.swift in Sources */,
+				60A5E3F02969A71000FC8A37 /* CalendarPickerFooterView.swift in Sources */,
 				606A9A8D2966FAB300A17F13 /* PPCollectionsLoaderView.swift in Sources */,
 				60FAF6132953446A00982457 /* PPTextFieldDisabledModePresenter.swift in Sources */,
 				6052918C294E084F005B0373 /* RegisterView.swift in Sources */,
+				60A5E3E92969A6D500FC8A37 /* MonthMetadata.swift in Sources */,
+				6037CA4E296D969F00E4BC03 /* PPPlace.swift in Sources */,
 				6073B87B2881A01800AF07FA /* EventCell.swift in Sources */,
+				6037CA4C296D957600E4BC03 /* PPEventInformation.swift in Sources */,
+				60498011297D50DF0096EB8E /* MKMapView+Extensions.swift in Sources */,
 				60971731287D840A0084A63C /* InitialRouter.swift in Sources */,
 				609716F8287D7D880084A63C /* AppCoordinator.swift in Sources */,
 				608160432962CF86006B0919 /* PPAccountManager.swift in Sources */,
+				6049801A297D70540096EB8E /* PeopleEventnfoModel.swift in Sources */,
 				609716F3287D7C1D0084A63C /* AuthCoordinator.swift in Sources */,
 				602220CB295A08F000D2F7B2 /* Decoder.swift in Sources */,
 				6097179C287F172C0084A63C /* NotificationCenterManager.swift in Sources */,
@@ -1157,6 +1265,7 @@
 				60FFFE1329647ADB004DB8D4 /* Array+MutateEach.swift in Sources */,
 				60B48CD728EC519D006C6CF5 /* EventsEndPoint.swift in Sources */,
 				6097172A287D83360084A63C /* FavouritesPresenter.swift in Sources */,
+				60A5E3E82969A6D500FC8A37 /* Day.swift in Sources */,
 				60971761287D94710084A63C /* AppButton.swift in Sources */,
 				60DB792028B4062E0058A3D7 /* CommonCollectionViewAdapter.swift in Sources */,
 				6097179A287EF5B80084A63C /* AuthRouterProtocol.swift in Sources */,
@@ -1176,8 +1285,10 @@
 				602220D1295C4F2500D2F7B2 /* PPToken.swift in Sources */,
 				604147B328D4DA480052F60D /* HTTPMethod.swift in Sources */,
 				60971776287DB9F60084A63C /* PPTextField.swift in Sources */,
+				6037CA51296D972200E4BC03 /* PPCoordinates.swift in Sources */,
 				60FAF629295352BF00982457 /* PPToastCountDownView.swift in Sources */,
 				60971706287D821A0084A63C /* EventsPresenter.swift in Sources */,
+				60498018297D6FC00096EB8E /* CostEventInfo.swift in Sources */,
 				6070D43428ABDE1F0054F61B /* EventViewController.swift in Sources */,
 				60DB792A28B4CFD80058A3D7 /* EventMapView.swift in Sources */,
 				60918EE128883F7800D9E032 /* EventsScrollDelegate.swift in Sources */,
@@ -1187,7 +1298,7 @@
 				6097171F287D824A0084A63C /* ProfileRouter.swift in Sources */,
 				6060DE702921145A0017F7F7 /* EnterView.swift in Sources */,
 				60971787287EDE4A0084A63C /* RegisterPresenter.swift in Sources */,
-				60BCB6772965943B00728ED8 /* UIImageView+SetImage.swift in Sources */,
+				60BCB6772965943B00728ED8 /* AcyncImageView.swift in Sources */,
 				60FAF623295350AA00982457 /* UILabel+lockerImages.swift in Sources */,
 				60BCB67329658F1F00728ED8 /* EventInfo.swift in Sources */,
 				60971771287DA60D0084A63C /* EnterInteractor.swift in Sources */,
@@ -1197,9 +1308,11 @@
 				6070D43628ABDE1F0054F61B /* EventInteractor.swift in Sources */,
 				6097178B287EDE4A0084A63C /* RegisterInteractor.swift in Sources */,
 				60FFFE1129646180004DB8D4 /* LocationManager.swift in Sources */,
+				60A5E3E02969898600FC8A37 /* PPRegisterUserInformation.swift in Sources */,
 				6097172B287D83360084A63C /* FavouritesRouter.swift in Sources */,
 				6097172C287D83360084A63C /* FavouritesViewController.swift in Sources */,
 				60971793287EDE5D0084A63C /* FogotPasswordPresenter.swift in Sources */,
+				6037CA53296DB66500E4BC03 /* EventFullInfo.swift in Sources */,
 				60971765287D9C630084A63C /* NavigationBarWithLogoAndActions.swift in Sources */,
 				60BCB67C296599A500728ED8 /* PPLIkeView.swift in Sources */,
 				602220CD295A08F700D2F7B2 /* DecoderImpl.swift in Sources */,
@@ -1208,11 +1321,13 @@
 				60FAF627295351C500982457 /* PPToastData.swift in Sources */,
 				6097176F287DA60D0084A63C /* EnterViewController.swift in Sources */,
 				60BCB67E2965A47F00728ED8 /* PPScrollableLabel.swift in Sources */,
+				602AE6BC2972DA69004427A6 /* LocationInfo.swift in Sources */,
 				60971797287EDE5D0084A63C /* FogotPasswordInteractor.swift in Sources */,
 				60971763287D9BD80084A63C /* NavigationBarWithLogo.swift in Sources */,
 				60918EEB2888639D00D9E032 /* UserInfoCell.swift in Sources */,
 				60FAF60F295343DD00982457 /* PPTextFieldDefaultPresenter.swift in Sources */,
 				60FAF60B295342FA00982457 /* PPTextFieldModePresenterProtocol.swift in Sources */,
+				60A5E3EF2969A71000FC8A37 /* CalendarPickerHeaderView.swift in Sources */,
 				60FAF6352953589C00982457 /* PPSpinnerView.swift in Sources */,
 				602220D8295CBC0400D2F7B2 /* KeyChainManangerImpl.swift in Sources */,
 				60A1E60C28AFAFE500E80D0D /* EventInfoList.swift in Sources */,
@@ -1224,6 +1339,8 @@
 				604147BE28D4DED60052F60D /* JSONParameterEncoder.swift in Sources */,
 				60971789287EDE4A0084A63C /* RegisterViewController.swift in Sources */,
 				60971778287DBBD50084A63C /* DynamicStackWithTF.swift in Sources */,
+				607F850B2980506F0042D77F /* DefaultEventView.swift in Sources */,
+				60498014297D67B50096EB8E /* PlaceAnnotationInfo.swift in Sources */,
 				60971735287D875B0084A63C /* ResuseIdentifire.swift in Sources */,
 				60918EDA2888334B00D9E032 /* FavouritesCollectionAdapter.swift in Sources */,
 				60918EF6288AA5F400D9E032 /* ImagePicker.swift in Sources */,
@@ -1239,6 +1356,7 @@
 				60971795287EDE5D0084A63C /* FogotPasswordViewController.swift in Sources */,
 				6097178A287EDE4A0084A63C /* RegisterProtocols.swift in Sources */,
 				6097172E287D83360084A63C /* FavouritesInteractor.swift in Sources */,
+				602AE6BF2972E623004427A6 /* String+Extension.swift in Sources */,
 				60918EE82888630D00D9E032 /* UserInfo.swift in Sources */,
 				602220CF295C4F1B00D2F7B2 /* PPUser.swift in Sources */,
 				60B48CCF28E5B837006C6CF5 /* NetworkRouter.swift in Sources */,
@@ -1249,6 +1367,8 @@
 				609716DB287D75230084A63C /* AppDelegate.swift in Sources */,
 				6070D43228ABDE1F0054F61B /* EventPresenter.swift in Sources */,
 				60918EF0288863BA00D9E032 /* AboutMeCell.swift in Sources */,
+				60A5E3EE2969A71000FC8A37 /* CalendarDateCollectionViewCell.swift in Sources */,
+				60A5E3F12969A71000FC8A37 /* CalendarPickerViewController.swift in Sources */,
 				60DA4CED28BE185E00B7E428 /* NAvBar+ConfigurateDefaultStyle.swift in Sources */,
 				6097177E287ED0DD0084A63C /* UIView+Recognizers.swift in Sources */,
 				6097171E287D824A0084A63C /* ProfilePresenter.swift in Sources */,

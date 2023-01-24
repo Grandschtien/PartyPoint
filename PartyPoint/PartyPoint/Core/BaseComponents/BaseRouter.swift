@@ -40,4 +40,8 @@ extension BaseRouter {
     func setViewController(_ viewController: UIViewController) {
         self.viewController = viewController
     }
+    
+    func present(vc: UIViewController, animated: Bool) {
+        viewController?.present(vc, animated: animated)
+    }
 }
