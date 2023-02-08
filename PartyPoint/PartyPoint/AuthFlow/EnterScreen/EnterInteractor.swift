@@ -14,15 +14,18 @@ final class EnterInteractor {
     private let validationTokenMananger: ValidationTokenManager
     private let accountManager: PPAccountManager
     private let locationManager: LocationManager
+    private let userDefaultsManager: UserDefaultsManager
     
     init(authManager: AuthManager,
          validationTokenMananger: ValidationTokenManager,
          accountManager: PPAccountManager,
-         locationManager: LocationManager) {
+         locationManager: LocationManager,
+         userDefaultsManager: UserDefaultsManager) {
         self.authManager = authManager
         self.validationTokenMananger = validationTokenMananger
         self.accountManager = accountManager
         self.locationManager = locationManager
+        self.userDefaultsManager = userDefaultsManager
     }
 }
 
@@ -60,6 +63,7 @@ private extension EnterInteractor {
         }
         
         accountManager.setUser(user: userInfo.user)
+        userDefaultsManager.setIsLogged(true)
         await saveTokens(userInfo.tokens)
         await runOnMainThread {
             output?.authorized()

@@ -74,7 +74,7 @@
 "bad_request" = "Bad request";
 "server_error" = "Server error";
 "the_url_you_requested_id_outdated" = "The url you requested id outdated";
-"network_request_failed" = "Network request failed";
+"network_request_failed" = "Network request failed, check your connection, please";
 "response_returned_with_no_data_to_decode" = "Response returned with no data to decode";
 "we_could_not_to_decode_the_response" = "We could not to decode the response";
 "email_is_already_exists" = "This email is already taken";
@@ -116,3 +116,9 @@
 "pay_on_foreign_site" = "Pay on the host\nsite";
 "will_go" = "I will go!";
 "dont_go" = "I changed my mind :(";
+"show_date_error" = "Please, write a correct date";
+
+/* Тайтлы для Image picker */
+"take_photo" = "Take photo";
+"photo_library" = "Photo library";
+"cancel" = "Cancel";

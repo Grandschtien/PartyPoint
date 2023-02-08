@@ -5,12 +5,12 @@
 //  Created by Егор Шкарин on 22.07.2022.
 //
 
-import Foundation
 import UIKit
+import PhotosUI
 
 
 public protocol ImagePickerDelegate: AnyObject {
-    func didSelect(image: UIImage?)
+    func didSelect(image: Data?)
 }
 
 open class ImagePicker: NSObject {
@@ -37,7 +37,8 @@ open class ImagePicker: NSObject {
             return nil
         }
 
-        return UIAlertAction(title: title, style: .default) { [unowned self] _ in
+        return UIAlertAction(title: title, style: .default) { [weak self] _ in
+            guard let `self` = self else { return }
             self.pickerController.sourceType = type
             self.presentationController?.present(self.pickerController, animated: true)
         }
@@ -47,17 +48,15 @@ open class ImagePicker: NSObject {
 
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        if let action = self.action(for: .camera, title: "Take photo") {
+        if let action = self.action(for: .camera, title: Localizable.take_photo()) {
             alertController.addAction(action)
         }
-        if let action = self.action(for: .savedPhotosAlbum, title: "Camera roll") {
-            alertController.addAction(action)
-        }
-        if let action = self.action(for: .photoLibrary, title: "Photo library") {
+        
+        if let action = self.action(for: .photoLibrary, title: Localizable.photo_library()) {
             alertController.addAction(action)
         }
 
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: Localizable.cancel(), style: .cancel, handler: nil))
 
         if UIDevice.current.userInterfaceIdiom == .pad {
             alertController.popoverPresentationController?.sourceView = sourceView
@@ -71,7 +70,7 @@ open class ImagePicker: NSObject {
     private func pickerController(_ controller: UIImagePickerController, didSelect image: UIImage?) {
         controller.dismiss(animated: true, completion: nil)
 
-        self.delegate?.didSelect(image: image)
+        self.delegate?.didSelect(image: image?.jpegData(compressionQuality: 0.7))
     }
 }
 

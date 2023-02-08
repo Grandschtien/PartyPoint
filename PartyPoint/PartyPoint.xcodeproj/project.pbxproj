@@ -46,6 +46,7 @@
 		6060DE6D29210BD30017F7F7 /* ValidationTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6060DE6C29210BD30017F7F7 /* ValidationTokenManager.swift */; };
 		6060DE702921145A0017F7F7 /* EnterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6060DE6F2921145A0017F7F7 /* EnterView.swift */; };
 		606A9A8D2966FAB300A17F13 /* PPCollectionsLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A9A8C2966FAB300A17F13 /* PPCollectionsLoaderView.swift */; };
+		606BEE6A298CD6F900C73395 /* MultipartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BEE69298CD6F900C73395 /* MultipartRequest.swift */; };
 		6070D43228ABDE1F0054F61B /* EventPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42C28ABDE1F0054F61B /* EventPresenter.swift */; };
 		6070D43328ABDE1F0054F61B /* EventRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42D28ABDE1F0054F61B /* EventRouter.swift */; };
 		6070D43428ABDE1F0054F61B /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42E28ABDE1F0054F61B /* EventViewController.swift */; };
@@ -146,12 +147,16 @@
 		60A5E3EF2969A71000FC8A37 /* CalendarPickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E3EB2969A71000FC8A37 /* CalendarPickerHeaderView.swift */; };
 		60A5E3F02969A71000FC8A37 /* CalendarPickerFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E3EC2969A71000FC8A37 /* CalendarPickerFooterView.swift */; };
 		60A5E3F12969A71000FC8A37 /* CalendarPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E3ED2969A71000FC8A37 /* CalendarPickerViewController.swift */; };
+		60A9E5E92992B5F600ACF95F /* UIView+SimpleRecognizers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A9E5E82992B5F600ACF95F /* UIView+SimpleRecognizers.swift */; };
 		60B48CCF28E5B837006C6CF5 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B48CCE28E5B837006C6CF5 /* NetworkRouter.swift */; };
 		60B48CD128E5B97F006C6CF5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B48CD028E5B97F006C6CF5 /* Router.swift */; };
 		60B48CD328E5C0A9006C6CF5 /* NetworkEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B48CD228E5C0A9006C6CF5 /* NetworkEnviroment.swift */; };
 		60B48CD528E5C16C006C6CF5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B48CD428E5C16C006C6CF5 /* NetworkManager.swift */; };
 		60B48CD728EC519D006C6CF5 /* EventsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B48CD628EC519D006C6CF5 /* EventsEndPoint.swift */; };
 		60B48CD928EC5BC3006C6CF5 /* AuthEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B48CD828EC5BC2006C6CF5 /* AuthEndPoint.swift */; };
+		60BB681B298ADC8F00D82CD1 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BB681A298ADC8F00D82CD1 /* Media.swift */; };
+		60BB681D298AE49800D82CD1 /* MultipartDataEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BB681C298AE49800D82CD1 /* MultipartDataEncoder.swift */; };
+		60BB681F298AE5AF00D82CD1 /* Data+append.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BB681E298AE5AF00D82CD1 /* Data+append.swift */; };
 		60BCB67329658F1F00728ED8 /* EventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB67229658F1F00728ED8 /* EventInfo.swift */; };
 		60BCB6752965913B00728ED8 /* Date+Fromatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB6742965913B00728ED8 /* Date+Fromatters.swift */; };
 		60BCB6772965943B00728ED8 /* AcyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB6762965943B00728ED8 /* AcyncImageView.swift */; };
@@ -159,6 +164,9 @@
 		60BCB67C296599A500728ED8 /* PPLIkeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB67B296599A500728ED8 /* PPLIkeView.swift */; };
 		60BCB67E2965A47F00728ED8 /* PPScrollableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB67D2965A47F00728ED8 /* PPScrollableLabel.swift */; };
 		60BCB6802965A79B00728ED8 /* UIViewController+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB67F2965A79B00728ED8 /* UIViewController+Loader.swift */; };
+		60C23215298A5E040092949E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C23214298A5E040092949E /* UserDefaultsManager.swift */; };
+		60C23217298A5E0E0092949E /* UserDefaultsManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C23216298A5E0E0092949E /* UserDefaultsManagerImpl.swift */; };
+		60CED3F12993B3E700C59FAB /* Collection+SafeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CED3F02993B3E700C59FAB /* Collection+SafeIndex.swift */; };
 		60DA33B428802FF6004E52A3 /* UIStackView+convenieceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA33B328802FF6004E52A3 /* UIStackView+convenieceInit.swift */; };
 		60DA4CEB28BE131C00B7E428 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA4CEA28BE131C00B7E428 /* BaseRouter.swift */; };
 		60DA4CED28BE185E00B7E428 /* NAvBar+ConfigurateDefaultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA4CEC28BE185E00B7E428 /* NAvBar+ConfigurateDefaultStyle.swift */; };
@@ -241,6 +249,7 @@
 		6060DE6C29210BD30017F7F7 /* ValidationTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTokenManager.swift; sourceTree = "<group>"; };
 		6060DE6F2921145A0017F7F7 /* EnterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterView.swift; sourceTree = "<group>"; };
 		606A9A8C2966FAB300A17F13 /* PPCollectionsLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPCollectionsLoaderView.swift; sourceTree = "<group>"; };
+		606BEE69298CD6F900C73395 /* MultipartRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartRequest.swift; sourceTree = "<group>"; };
 		6070D42C28ABDE1F0054F61B /* EventPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPresenter.swift; sourceTree = "<group>"; };
 		6070D42D28ABDE1F0054F61B /* EventRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRouter.swift; sourceTree = "<group>"; };
 		6070D42E28ABDE1F0054F61B /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
@@ -343,12 +352,16 @@
 		60A5E3EB2969A71000FC8A37 /* CalendarPickerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPickerHeaderView.swift; sourceTree = "<group>"; };
 		60A5E3EC2969A71000FC8A37 /* CalendarPickerFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPickerFooterView.swift; sourceTree = "<group>"; };
 		60A5E3ED2969A71000FC8A37 /* CalendarPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPickerViewController.swift; sourceTree = "<group>"; };
+		60A9E5E82992B5F600ACF95F /* UIView+SimpleRecognizers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SimpleRecognizers.swift"; sourceTree = "<group>"; };
 		60B48CCE28E5B837006C6CF5 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		60B48CD028E5B97F006C6CF5 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		60B48CD228E5C0A9006C6CF5 /* NetworkEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnviroment.swift; sourceTree = "<group>"; };
 		60B48CD428E5C16C006C6CF5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		60B48CD628EC519D006C6CF5 /* EventsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsEndPoint.swift; sourceTree = "<group>"; };
 		60B48CD828EC5BC2006C6CF5 /* AuthEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndPoint.swift; sourceTree = "<group>"; };
+		60BB681A298ADC8F00D82CD1 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		60BB681C298AE49800D82CD1 /* MultipartDataEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartDataEncoder.swift; sourceTree = "<group>"; };
+		60BB681E298AE5AF00D82CD1 /* Data+append.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+append.swift"; sourceTree = "<group>"; };
 		60BCB67229658F1F00728ED8 /* EventInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfo.swift; sourceTree = "<group>"; };
 		60BCB6742965913B00728ED8 /* Date+Fromatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Fromatters.swift"; sourceTree = "<group>"; };
 		60BCB6762965943B00728ED8 /* AcyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcyncImageView.swift; sourceTree = "<group>"; };
@@ -356,6 +369,9 @@
 		60BCB67B296599A500728ED8 /* PPLIkeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPLIkeView.swift; sourceTree = "<group>"; };
 		60BCB67D2965A47F00728ED8 /* PPScrollableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPScrollableLabel.swift; sourceTree = "<group>"; };
 		60BCB67F2965A79B00728ED8 /* UIViewController+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loader.swift"; sourceTree = "<group>"; };
+		60C23214298A5E040092949E /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		60C23216298A5E0E0092949E /* UserDefaultsManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerImpl.swift; sourceTree = "<group>"; };
+		60CED3F02993B3E700C59FAB /* Collection+SafeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeIndex.swift"; sourceTree = "<group>"; };
 		60DA33B328802FF6004E52A3 /* UIStackView+convenieceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+convenieceInit.swift"; sourceTree = "<group>"; };
 		60DA4CEA28BE131C00B7E428 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		60DA4CEC28BE185E00B7E428 /* NAvBar+ConfigurateDefaultStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NAvBar+ConfigurateDefaultStyle.swift"; sourceTree = "<group>"; };
@@ -414,6 +430,7 @@
 				60B48CCD28E5B5AC006C6CF5 /* Manager */,
 				604147AD28D4D9A00052F60D /* Service */,
 				600F450628D4D96F00367025 /* Encoding */,
+				606BEE6B298CD81B00C73395 /* New Group */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -421,9 +438,12 @@
 		600F450628D4D96F00367025 /* Encoding */ = {
 			isa = PBXGroup;
 			children = (
+				60BB681C298AE49800D82CD1 /* MultipartDataEncoder.swift */,
 				604147B628D4DB8D0052F60D /* ParameterEncoding.swift */,
 				604147BB28D4DCBF0052F60D /* URLParameterEncoder.swift */,
 				604147BD28D4DED60052F60D /* JSONParameterEncoder.swift */,
+				60BB681A298ADC8F00D82CD1 /* Media.swift */,
+				606BEE69298CD6F900C73395 /* MultipartRequest.swift */,
 			);
 			path = Encoding;
 			sourceTree = "<group>";
@@ -550,6 +570,7 @@
 				602220DC295CDDCE00D2F7B2 /* ValidationTokenManager */,
 				602220D6295CBBF100D2F7B2 /* KeyChainManager */,
 				60BCB67A2965956F00728ED8 /* PhotoManager */,
+				60C23218298A5E110092949E /* UserDefaultsManager */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -560,6 +581,13 @@
 				6060DE6F2921145A0017F7F7 /* EnterView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		606BEE6B298CD81B00C73395 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		6070D42B28ABDDFB0054F61B /* EventScreen */ = {
@@ -755,6 +783,9 @@
 				60BCB67F2965A79B00728ED8 /* UIViewController+Loader.swift */,
 				602AE6BE2972E623004427A6 /* String+Extension.swift */,
 				60498010297D50DF0096EB8E /* MKMapView+Extensions.swift */,
+				60BB681E298AE5AF00D82CD1 /* Data+append.swift */,
+				60A9E5E82992B5F600ACF95F /* UIView+SimpleRecognizers.swift */,
+				60CED3F02993B3E700C59FAB /* Collection+SafeIndex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -981,6 +1012,15 @@
 				60BCB6782965956C00728ED8 /* PhotoManager.swift */,
 			);
 			path = PhotoManager;
+			sourceTree = "<group>";
+		};
+		60C23218298A5E110092949E /* UserDefaultsManager */ = {
+			isa = PBXGroup;
+			children = (
+				60C23214298A5E040092949E /* UserDefaultsManager.swift */,
+				60C23216298A5E0E0092949E /* UserDefaultsManagerImpl.swift */,
+			);
+			path = UserDefaultsManager;
 			sourceTree = "<group>";
 		};
 		60DA4CE928BE130B00B7E428 /* BaseComponents */ = {
@@ -1251,6 +1291,7 @@
 				6052918C294E084F005B0373 /* RegisterView.swift in Sources */,
 				60A5E3E92969A6D500FC8A37 /* MonthMetadata.swift in Sources */,
 				6037CA4E296D969F00E4BC03 /* PPPlace.swift in Sources */,
+				60BB681B298ADC8F00D82CD1 /* Media.swift in Sources */,
 				6073B87B2881A01800AF07FA /* EventCell.swift in Sources */,
 				6037CA4C296D957600E4BC03 /* PPEventInformation.swift in Sources */,
 				60498011297D50DF0096EB8E /* MKMapView+Extensions.swift in Sources */,
@@ -1295,6 +1336,7 @@
 				60BCB6802965A79B00728ED8 /* UIViewController+Loader.swift in Sources */,
 				60FFFE0729644E6B004DB8D4 /* EventsManager.swift in Sources */,
 				60FFFE0929644E78004DB8D4 /* EventsManagerImpl.swift in Sources */,
+				606BEE6A298CD6F900C73395 /* MultipartRequest.swift in Sources */,
 				6097171F287D824A0084A63C /* ProfileRouter.swift in Sources */,
 				6060DE702921145A0017F7F7 /* EnterView.swift in Sources */,
 				60971787287EDE4A0084A63C /* RegisterPresenter.swift in Sources */,
@@ -1356,6 +1398,7 @@
 				60971795287EDE5D0084A63C /* FogotPasswordViewController.swift in Sources */,
 				6097178A287EDE4A0084A63C /* RegisterProtocols.swift in Sources */,
 				6097172E287D83360084A63C /* FavouritesInteractor.swift in Sources */,
+				60CED3F12993B3E700C59FAB /* Collection+SafeIndex.swift in Sources */,
 				602AE6BF2972E623004427A6 /* String+Extension.swift in Sources */,
 				60918EE82888630D00D9E032 /* UserInfo.swift in Sources */,
 				602220CF295C4F1B00D2F7B2 /* PPUser.swift in Sources */,
@@ -1364,7 +1407,9 @@
 				60971707287D821A0084A63C /* EventsRouter.swift in Sources */,
 				6097172D287D83360084A63C /* FavouritesProtocols.swift in Sources */,
 				60971788287EDE4A0084A63C /* RegisterRouter.swift in Sources */,
+				60C23215298A5E040092949E /* UserDefaultsManager.swift in Sources */,
 				609716DB287D75230084A63C /* AppDelegate.swift in Sources */,
+				60BB681F298AE5AF00D82CD1 /* Data+append.swift in Sources */,
 				6070D43228ABDE1F0054F61B /* EventPresenter.swift in Sources */,
 				60918EF0288863BA00D9E032 /* AboutMeCell.swift in Sources */,
 				60A5E3EE2969A71000FC8A37 /* CalendarDateCollectionViewCell.swift in Sources */,
@@ -1392,13 +1437,16 @@
 				6042172328BBE67F0063BF68 /* AnyView.swift in Sources */,
 				608160482962D108006B0919 /* UserDefaults+KeyValueStorage.swift in Sources */,
 				6073B8702881936A00AF07FA /* EventsCollectionViewAdapter.swift in Sources */,
+				60A9E5E92992B5F600ACF95F /* UIView+SimpleRecognizers.swift in Sources */,
 				6073B87728819A2F00AF07FA /* Section.swift in Sources */,
+				60BB681D298AE49800D82CD1 /* MultipartDataEncoder.swift in Sources */,
 				60918EE62888626900D9E032 /* ProfileTableAdapter.swift in Sources */,
 				60971733287D84CA0084A63C /* InitialAssembly.swift in Sources */,
 				60DA4CEB28BE131C00B7E428 /* BaseRouter.swift in Sources */,
 				609716DD287D75230084A63C /* SceneDelegate.swift in Sources */,
 				60EAE93C28AFC6F500030055 /* EventHeaderLabel.swift in Sources */,
 				60FAF62D2953560700982457 /* PPButton+Parameters.swift in Sources */,
+				60C23217298A5E0E0092949E /* UserDefaultsManagerImpl.swift in Sources */,
 				60EAE94028AFCD9D00030055 /* UIView+Scales.swift in Sources */,
 				60DB792828B4CED50058A3D7 /* EventViewWithButton.swift in Sources */,
 				60B48CD128E5B97F006C6CF5 /* Router.swift in Sources */,

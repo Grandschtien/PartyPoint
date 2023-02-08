@@ -28,6 +28,28 @@ final class Router<EndPoint: EndPointType>: NetworkRouter {
         }
     }
     
+    func uploadRequest(_ route: EndPoint) async -> (data: Data?, response: URLResponse?, error: Error?) {
+        let session = URLSession.shared
+        do {
+            let request = try self.buildRequest(from: route)
+            let task = Task { () -> (Data?, URLResponse?, Error?) in
+                if let data = request.httpBody {
+                    let (data, response) = try await session.upload(for: request, from: data)
+                    return (data, response, nil)
+                } else {
+                    return (nil, nil, NetworkError.emptyData)
+                }
+            }
+            
+            tasks.append(task)
+            return try await task.value
+        } catch NetworkError.encodingFailed {
+            return (nil, nil, NetworkError.encodingFailed)
+        } catch {
+            return (nil, nil, NetworkError.noInternetConnection)
+        }
+    }
+    
     func cancelAll() {
         self.tasks.forEach { $0.cancel() }
     }
@@ -61,6 +83,12 @@ private extension Router {
                 try self.configureParameters(bodyParameters: bodyParameters,
                                              urlParameters: urlParameters,
                                              request: &request)
+            case let .multiPartRequest(bodyParameters, urlParameters, media):
+                try self.configureParamentersForMultiPartData(bodyParameters: bodyParameters,
+                                                              urlParameters: urlParameters,
+                                                              media: media,
+                                                              request: &request)
+                break
             }
             return request
         } catch  {
@@ -75,6 +103,23 @@ private extension Router {
             if let bodyParameters = bodyParameters {
                 try JSONParameterEncoder.encode(urlRequest: &request, with: bodyParameters)
             }
+            if let urlParameters = urlParameters {
+                try URLParameterEncoder.encode(urlRequest: &request, with: urlParameters)
+            }
+        } catch {
+            throw error
+        }
+    }
+    
+    func configureParamentersForMultiPartData(bodyParameters: Parameters?,
+                                              urlParameters: Parameters?,
+                                              media: Media,
+                                              request: inout URLRequest) throws {
+        do {
+            if let bodyParameters = bodyParameters {
+                try MultipartDataEncoder.encode(urlRequest: &request, with: bodyParameters, andMedia: media)
+            }
+            
             if let urlParameters = urlParameters {
                 try URLParameterEncoder.encode(urlRequest: &request, with: urlParameters)
             }

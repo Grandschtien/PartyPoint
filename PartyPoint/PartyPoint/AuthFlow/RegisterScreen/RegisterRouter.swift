@@ -10,6 +10,7 @@ import UIKit
 
 final class RegisterRouter: BaseRouter {
     private let mainFlowCoordinator: Coordinator
+    private var imagePicker: ImagePicker?
     
     init(mainFlowCoordinator: Coordinator) {
         self.mainFlowCoordinator = mainFlowCoordinator
@@ -25,12 +26,19 @@ extension RegisterRouter: RegisterRouterInput {
     func routeBack() {
         pop(animated: true)
     }
+    
     func showCalendarPicker() {
         let pickerController = CalendarPickerViewController(baseDate: Date()) { date in
             print(date)
         }
         
         present(vc: pickerController, animated: true)
+    }
+    
+    func showImagePicker(delegateForPicker delegate: ImagePickerDelegate) {
+        guard let viewController = currentViewController else { return }
+        imagePicker = ImagePicker(presentationController: viewController, delegate: delegate)
+        imagePicker?.present(from: viewController.view)
     }
 }
 

@@ -29,11 +29,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
-        coordinator = AppCoordinatorImpl(window: window)
-        //TODO: Condition
-        
-        coordinator?.startMain()
-//        coordinator?.atartAuth()
+        let storage = UserDefaults.standard
+        coordinator = makeAppCoordinator(window: window)
+        coordinator?.start()
+    }
+    
+    func makeAppCoordinator(window: UIWindow) -> AppCoordinatorImpl {
+        let storage = UserDefaults.standard
+        let userDefaultsManager = UserDefaultsManagerImpl(storage: storage)
+        return AppCoordinatorImpl(window: window, userDefaultsManager: userDefaultsManager)
     }
 }
 

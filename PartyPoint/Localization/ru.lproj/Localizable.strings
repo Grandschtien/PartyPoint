@@ -74,7 +74,7 @@
 "bad_request" = "Плохой запрос";
 "server_error" = "Ошибка сервера";
 "the_url_you_requested_id_outdated" = "Запрошенный вами url устарел";
-"network_request_failed" = "Сетевой запрос не прошел";
+"network_request_failed" = "Сетевой запрос не прошел, пожалуйста, проверьте подключение к интернету";
 "response_returned_with_no_data_to_decode" = "Ответ возвращен без данных для декодирования";
 "we_could_not_to_decode_the_response" = "Мы не смогли декодировать ответ";
 "email_is_already_exists" = "Эта почта уже занята";
@@ -116,3 +116,10 @@
 "pay_on_foreign_site" = "Оплатить на сайте\nорганизатора";
 "will_go" = "Я пойду!";
 "dont_go" = "Я передумал :(";
+
+"show_date_error" = "Пожалуйста, введите корректную дату";
+
+/* Тайтлы для Image picker */
+"take_photo" = "Снять фото";
+"photo_library" = "Библиотека";
+"cancel" = "Закрыть";

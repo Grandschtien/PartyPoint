@@ -49,8 +49,10 @@ final class EventsCollectionViewAdapter: NSObject {
     }
     
     func appendItemsIntoMainSection(info: [EventInfo]) {
-        self.sections[2].items.append(contentsOf: info)
-        applySnapshot()
+        if self.sections[safe: 2] != nil {
+            self.sections[2].items.append(contentsOf: info)
+            applySnapshot()
+        }
     }
     
     func setTapAction(_ action: @escaping TapOnEventsAction) {

@@ -9,11 +9,11 @@
 import Foundation
 
 final class RegisterPresenter {
-	weak var view: RegisterViewInput?
+    weak var view: RegisterViewInput?
     weak var moduleOutput: RegisterModuleOutput?
     
-	private let router: RegisterRouterInput
-	private let interactor: RegisterInteractorInput
+    private let router: RegisterRouterInput
+    private let interactor: RegisterInteractorInput
     
     init(router: RegisterRouterInput, interactor: RegisterInteractorInput) {
         self.router = router
@@ -24,12 +24,13 @@ final class RegisterPresenter {
 // MARK: Private extension
 private extension RegisterPresenter {
     func hasEmptyRequiredTextFields(registerInfo: (name: String?,
-                                             surname: String?,
-                                             email: String?,
-                                             dob: String?,
-                                             city: String?,
-                                             passwd: String?,
-                                             checkPasswd: String?)) -> Bool {
+                                                   surname: String?,
+                                                   email: String?,
+                                                   dob: String?,
+                                                   city: String?,
+                                                   passwd: String?,
+                                                   checkPasswd: String?,
+                                                   image: Data?)) -> Bool {
         var hasEmptyRequiredTextFields = false
         
         if let name = registerInfo.name, name.isEmpty {
@@ -71,22 +72,43 @@ private extension RegisterPresenter {
                                                  dob: String?,
                                                  city: String?,
                                                  passwd: String?,
-                                                 checkPasswd: String?)) -> PPRegisterUserInformation? {
+                                                 checkPasswd: String?,
+                                                 image: Data?)) -> PPRegisterUserInformation? {
         guard let name = registerInfo.name,
               let surname = registerInfo.surname,
               let email = registerInfo.email,
               let password = registerInfo.passwd,
-              let dob = registerInfo.dob,
-              let date = Date(string: dob),
-              let city = registerInfo.city else
-        { return nil }
-        return PPRegisterUserInformation(name: name,
-                                         surname: surname,
-                                         email: email,
-                                         passwd: password,
-                                         dateOfBirth: date,
-                                         city: city,
-                                         imageData: nil)
+              let dob = registerInfo.dob
+        else
+        {
+            return nil
+        }
+        if let finalDate = dobCheck(dob: dob) {
+            return PPRegisterUserInformation(name: name,
+                                             surname: surname,
+                                             email: email,
+                                             passwd: password,
+                                             dateOfBirth: finalDate,
+                                             // TODO: Uncomment when city will be added
+                                             // city: city,
+                                             imageData: makeImageMedia(data: registerInfo.image))
+        } else { return nil }
+    }
+    
+    func makeImageMedia(data: Data?) -> Media {
+        if let data = data {
+           return Media(withImageData: data, forKey: "image")
+        } else {
+            return Media(withImageData: Data(), forKey: "image")
+        }
+    }
+    
+    func dobCheck(dob: String) -> String? {
+        if let normalDate = Date(string: dob) {
+            return normalDate.toString(format: "yyyy-MM-dd")
+        }
+        view?.showThatDateIsIncorrect(reason: Localizable.show_date_error())
+        return nil
     }
 }
 
@@ -100,7 +122,9 @@ extension RegisterPresenter: RegisterViewOutput {
                                              dob: String?,
                                              city: String?,
                                              passwd: String?,
-                                             checkPasswd: String?)) {
+                                             checkPasswd: String?,
+                                             image: Data?)) {
+        
         let hasEmptyRequiredTextFields = hasEmptyRequiredTextFields(registerInfo: registerInfo)
         let isPsswordsMatch = registerInfo.passwd == registerInfo.checkPasswd
         
@@ -126,8 +150,19 @@ extension RegisterPresenter: RegisterViewOutput {
         router.showCalendarPicker()
     }
     
+    func showImagePicker() {
+        router.showImagePicker(delegateForPicker: self)
+    }
+    
     func backButtonPressed() {
         router.routeBack()
+    }
+}
+
+extension RegisterPresenter: ImagePickerDelegate {
+    func didSelect(image: Data?) {
+        guard let image = image else { return }
+        view?.imageSelected(imageData: image)
     }
 }
 
@@ -142,3 +177,4 @@ extension RegisterPresenter: RegisterInteractorOutput {
         view?.showWhyRegisterFailed(reason: reason)
     }
 }
+

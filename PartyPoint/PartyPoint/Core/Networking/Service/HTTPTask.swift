@@ -18,4 +18,6 @@ public enum HTTPTask {
     case requestParametersWithHeaders(bodyParameters: Parameters?,
                                       urlParameters: Parameters?,
                                       additionalParameters: HTTPHeaders?)
+    
+    case multiPartRequest(bodyParameters: Parameters?, urlParameters: Parameters?, media: Media)
 }

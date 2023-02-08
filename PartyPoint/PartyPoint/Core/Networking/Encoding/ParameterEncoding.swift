@@ -14,3 +14,6 @@ public protocol ParameterEncoder {
     static func encode(urlRequest: inout URLRequest, with parameters: Parameters) throws
 }
 
+public protocol MultiPartParameterEncoder {
+    static func encode(urlRequest: inout URLRequest, with parameters: Parameters, andMedia media: Media) throws
+}

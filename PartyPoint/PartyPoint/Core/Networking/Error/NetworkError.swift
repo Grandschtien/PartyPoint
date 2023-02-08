@@ -13,6 +13,7 @@ public enum NetworkError: String, Error {
     case encodingFailed = "Parameter encoding failed"
     case missingUrl = "URL is nil"
     case noInternetConnection = "Please, check internet connection"
+    case emptyData = "Data for upload is empty"
 }
 
 public enum NetworkResponses: Error {

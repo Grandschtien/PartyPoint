@@ -23,8 +23,10 @@ protocol RegisterViewInput: AnyObject {
     func showPasswdIsEmpty()
     func showCheckPasswdIsEmpty()
     func showToPasswordsIsDifferent()
+    func showThatDateIsIncorrect(reason: String)
     func showWhyRegisterFailed(reason: String)
     func showLoadingIfNeeded(isLoading: Bool)
+    func imageSelected(imageData: Data)
 }
 
 protocol RegisterViewOutput: AnyObject {
@@ -35,8 +37,10 @@ protocol RegisterViewOutput: AnyObject {
                                              dob: String?,
                                              city: String?,
                                              passwd: String?,
-                                             checkPasswd: String?))
+                                             checkPasswd: String?,
+                                             image: Data?))
     func showCalendarPicker()
+    func showImagePicker()
 }
 
 protocol RegisterInteractorInput: AnyObject {
@@ -52,4 +56,5 @@ protocol RegisterRouterInput: AnyObject {
     func routeBack()
     func startMainFlow()
     func showCalendarPicker()
+    func showImagePicker(delegateForPicker delegate: ImagePickerDelegate)
 }

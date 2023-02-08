@@ -27,10 +27,11 @@ final class EnterContainer {
                                                                 decoder: decoder)
         let systemLocationManager = CLLocationManager()
         let locationManager = LocationManagerImpl(locationManager: systemLocationManager)
+        let userDefaultsManager = UserDefaultsManagerImpl(storage: UserDefaults.standard)
         let interactor = EnterInteractor(authManager: authManager,
                                          validationTokenMananger: validationTokenManager,
                                          accountManager: accountManager,
-                                         locationManager: locationManager)
+                                         locationManager: locationManager, userDefaultsManager: userDefaultsManager)
         let presenter = EnterPresenter(router: router,
                                        interactor: interactor)
 		let viewController = EnterViewController(output: presenter)

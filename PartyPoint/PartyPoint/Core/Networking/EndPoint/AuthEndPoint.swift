@@ -16,9 +16,8 @@ enum AuthEndPoint {
                 surname: String,
                 email: String,
                 passwd: String,
-                dateOfBirth: Date,
-                city: String?,
-                image: Data?)
+                dateOfBirth: String,
+                image: Media)
 }
 
 
@@ -78,16 +77,15 @@ extension AuthEndPoint: EndPointType {
         case let .refresh(refreshTocken):
             return .requestParameters(bodyParameters: ["refresh_token": refreshTocken],
                                       urlParameters: nil)
-        case let .signUp(name, surname, email, passwd, dateOfBirth, city, image):
-            return .requestParametersWithHeaders(bodyParameters: ["name": name,
-                                                                  "surname": surname,
-                                                                  "email": email,
-                                                                  "password": passwd,
-                                                                  "dateOfBirth": dateOfBirth,
-                                                                  "city": city ?? "",
-                                                                  "image": image ?? Data()],
-                                                 urlParameters: nil,
-                                                 additionalParameters: ["Content-Type": "multipart/form-data"])
+
+        case let .signUp(name, surname, email, passwd, dateOfBirth, image):
+            return .multiPartRequest(bodyParameters: ["name": name,
+                                                      "surname": surname,
+                                                      "email": email,
+                                                      "password": passwd,
+                                                      "dateOfBirth": dateOfBirth],
+                                     urlParameters: nil,
+                                     media: image)
         }
     }
     

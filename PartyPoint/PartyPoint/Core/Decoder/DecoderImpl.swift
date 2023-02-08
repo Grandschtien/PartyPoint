@@ -9,6 +9,6 @@ import Foundation
 
 final class PPDecoderImpl: PPDecoder {
     func parseJSON<T: Decodable>(from data: Data, type: T.Type) -> T? {
-        return try? JSONDecoder().decode(T.self, from: data)
+        return try! JSONDecoder().decode(T.self, from: data)
     }
 }

@@ -44,4 +44,8 @@ extension BaseRouter {
     func present(vc: UIViewController, animated: Bool) {
         viewController?.present(vc, animated: animated)
     }
+    
+    var currentViewController: UIViewController? {
+        return viewController
+    }
 }

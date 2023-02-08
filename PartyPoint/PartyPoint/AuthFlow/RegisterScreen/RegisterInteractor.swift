@@ -12,15 +12,18 @@ final class RegisterInteractor {
     private let authManager: AuthManager
     private let validationTokenMananger: ValidationTokenManager
     private let accountMananger: PPAccountManager
+    private let userDefaultsManager: UserDefaultsManager
     
 	weak var output: RegisterInteractorOutput?
     
     init(authManager: AuthManager,
          validationTokenMananger: ValidationTokenManager,
-         accountManager: PPAccountManager) {
+         accountManager: PPAccountManager,
+         userDefaultsManager: UserDefaultsManager) {
         self.authManager = authManager
         self.validationTokenMananger = validationTokenMananger
         self.accountMananger = accountManager
+        self.userDefaultsManager = userDefaultsManager
     }
 }
 
@@ -39,11 +42,14 @@ private extension RegisterInteractor {
     func performRegisterFlow(withData data: Data?) async {
         let userInfo = accountMananger.parseUserInformation(data: data)
         guard let userInfo = userInfo else {
-            output?.registerFailed(withReason: Localizable.somthing_goes_wrong())
+            await runOnMainThread {
+                output?.registerFailed(withReason: Localizable.somthing_goes_wrong())
+            }
             return
         }
         
         accountMananger.setUser(user: userInfo.user)
+        userDefaultsManager.setIsLogged(true)
         await saveTokens(tokens: userInfo.tokens)
         
         await runOnMainThread {
@@ -69,7 +75,6 @@ extension RegisterInteractor: RegisterInteractorInput {
     func registerUser(with info: PPRegisterUserInformation) {
         Task {
             let authStatus = await authManager.register(with: info)
-            
             switch authStatus {
             case let .authorized(data):
                 await performRegisterFlow(withData: data)

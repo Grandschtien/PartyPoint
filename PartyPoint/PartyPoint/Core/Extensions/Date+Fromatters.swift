@@ -80,8 +80,9 @@ extension Date {
         return weekdays[calendar - 1]
     }
     
-    init?(string: String) {
+    init?(string: String, dateFormat: String = "dd.MM.yyyy") {
         let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormat
         let date = dateFormatter.date(from: string)
         guard let date = date else { return nil }
         self.init(timeIntervalSince1970: date.timeIntervalSince1970)

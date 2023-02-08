@@ -20,13 +20,15 @@ final class RegisterContainer {
         let keyChainManager = KeyChainManangerImpl()
         let decoder = PPDecoderImpl()
         let accountMananger = PPAccountManagerImpl(decoder: decoder)
+        let userDefaultsManager = UserDefaultsManagerImpl(storage: UserDefaults.standard)
         let validationTokenManager = ValidationTokenManagerImpl(keyChainManager: keyChainManager,
                                                                 authManager: authManager,
                                                                 accountManager: accountMananger,
                                                                 decoder: decoder)
         let interactor = RegisterInteractor(authManager: authManager,
                                             validationTokenMananger: validationTokenManager,
-                                            accountManager: accountMananger)
+                                            accountManager: accountMananger,
+                                            userDefaultsManager: userDefaultsManager)
         let presenter = RegisterPresenter(router: router, interactor: interactor)
 		let viewController = RegisterViewController(output: presenter)
         router.setViewController(viewController)

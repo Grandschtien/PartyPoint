@@ -21,8 +21,7 @@ private let REGISTER_BUTTON_TOP_OFFFSET: CGFloat = 22
 private let REGISTER_BUTTON_HEIGHT: CGFloat = 56
 
 final class RegisterView: UIView {
-    typealias RegisterClosure = (String?, String?, String?, String?, String?, String?, String?) -> Void
-    
+    typealias RegisterClosure = (String?, String?, String?, String?, String?, String?, String?, UIImage?) -> Void
     //MARK: Actions
     private var backAction: EmptyClosure?
     private var registerAction: RegisterClosure?
@@ -51,14 +50,7 @@ final class RegisterView: UIView {
         return label
     }()
     
-    private let userImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.clipsToBounds = true
-        imageView.contentMode = .center
-        imageView.backgroundColor = Colors.miniColor()
-        imageView.image = Images.personPhoto()
-        return imageView
-    }()
+    private let userImage = UIImageView()
     
     private let photoLabel: UILabel = {
         let label = UILabel()
@@ -132,6 +124,10 @@ extension RegisterView {
         self.selectDateOfBirthAction = action
     }
     
+    func setChoosePhotoAction(_ action: @escaping EmptyClosure) {
+        self.photoAction = action
+    }
+    
     func showNameIsEmpty() {
         nameTextField.displayState = .error(Localizable.fill_in_this_field())
     }
@@ -172,6 +168,14 @@ extension RegisterView {
     func setButtonLoading(isLoading: Bool) {
         registerButton.isLoading = isLoading
     }
+    
+    func showThatDateIsIncorrect(reason: String) {
+        dobTextField.displayState = .error(reason)
+    }
+    
+    func setUserPhoto(image: UIImage) {
+        userImage.image = image
+    }
 }
 
 
@@ -183,6 +187,7 @@ private extension RegisterView {
         
         addSubviews()
         setupTextFields()
+        setupUserImage()
         setupConstraints()
     }
     
@@ -209,8 +214,7 @@ private extension RegisterView {
         passwordTextField.autocorrectionType = .no
         checkPasswordTextField.autocorrectionType = .no
         
-        let tapRec = UITapGestureRecognizer(target: self, action: #selector(selectDate))
-        dobTextField.addGestureRecognizer(tapRec)
+        dobTextField.delegate = self
     }
     
     func addSubviews() {
@@ -223,11 +227,21 @@ private extension RegisterView {
         scrollView.addSubview(surnameTextField)
         scrollView.addSubview(emailTextField)
         scrollView.addSubview(dobTextField)
-        scrollView.addSubview(cityTextField)
+        //TODO: Uncomment later
+//        scrollView.addSubview(cityTextField)
         scrollView.addSubview(passwordTextField)
         scrollView.addSubview(checkPasswordTextField)
         scrollView.addSubview(registerButton)
         
+    }
+    
+    func setupUserImage() {
+        userImage.clipsToBounds = true
+        userImage.contentMode = .center
+        userImage.isUserInteractionEnabled = true
+        userImage.backgroundColor = Colors.miniColor()
+        userImage.image = Images.personPhoto()
+        userImage.addTapRecognizer(target: self, #selector(choosePhoto))
     }
     
     func setupConstraints() {
@@ -281,14 +295,16 @@ private extension RegisterView {
             $0.top.equalTo(emailTextField.snp.bottom).offset(TF_TOP_OFFSET)
         }
         
-        cityTextField.snp.makeConstraints {
-            $0.left.right.equalToSuperview().inset(HORIZONTAL_OFFSETS)
-            $0.top.equalTo(dobTextField.snp.bottom).offset(TF_TOP_OFFSET)
-        }
+        // TODO: Uncomment later
+//        cityTextField.snp.makeConstraints {
+//            $0.left.right.equalToSuperview().inset(HORIZONTAL_OFFSETS)
+//            $0.top.equalTo(dobTextField.snp.bottom).offset(TF_TOP_OFFSET)
+//        }
         
         passwordTextField.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(HORIZONTAL_OFFSETS)
-            $0.top.equalTo(cityTextField.snp.bottom).offset(TF_TOP_OFFSET)
+            //TODO: Was cityTextField 
+            $0.top.equalTo(dobTextField.snp.bottom).offset(TF_TOP_OFFSET)
         }
         
         checkPasswordTextField.snp.makeConstraints {
@@ -331,12 +347,8 @@ private extension RegisterView {
                         dobTextField.text,
                         cityTextField.text,
                         passwordTextField.text,
-                        checkPasswordTextField.text)
-    }
-    
-    @objc
-    func selectDate() {
-        selectDateOfBirthAction?()
+                        checkPasswordTextField.text,
+                        userImage.image)
     }
 }
 
@@ -365,5 +377,26 @@ extension RegisterView {
     @objc
     func endEnditing() {
         view.endEditing(false)
+    }
+    
+    @objc
+    func choosePhoto() {
+        photoAction?()
+    }
+}
+
+extension RegisterView: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == dobTextField {
+            if (dobTextField.text?.count == 2) || (dobTextField.text?.count == 5) {
+                if !(string == "") {
+                    dobTextField.text = (dobTextField.text)! + "."
+                }
+            }
+            return !((textField.text?.count ?? 0) > 9 && (string.count ) > range.length)
+        }
+        else {
+            return true
+        }
     }
 }

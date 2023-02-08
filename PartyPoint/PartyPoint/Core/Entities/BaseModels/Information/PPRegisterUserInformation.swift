@@ -12,7 +12,8 @@ struct PPRegisterUserInformation {
     let surname: String
     let email: String
     let passwd: String
-    let dateOfBirth: Date
-    let city: String?
-    let imageData: Data?
+    let dateOfBirth: String
+    // TODO: Uncomment when city will be added
+//    let city: String?
+    let imageData: Media
 }

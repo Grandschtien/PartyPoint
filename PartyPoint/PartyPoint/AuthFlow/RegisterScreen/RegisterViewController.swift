@@ -40,24 +40,35 @@ private extension RegisterViewController {
             self?.output.backButtonPressed()
         }
         
-        contentView.setRegisterAction { [weak self] name, surname, email, dob, city, passwd, checkPasswd in
+        contentView.setRegisterAction { [weak self] name, surname, email, dob, city, passwd, checkPasswd, image  in
             self?.output.registeButtonPressed(registerInfo: (name: name,
                                                              surname: surname,
                                                              email: email,
                                                              dob: dob,
                                                              city: city,
                                                              passwd: passwd,
-                                                             checkPasswd: checkPasswd))
+                                                             checkPasswd: checkPasswd,
+                                                             image: image?.jpegData(compressionQuality: 1)))
             self?.contentView.hideKeyboard()
         }
         
         contentView.setSelectDateAction { [weak self] in
             self?.output.showCalendarPicker()
         }
+        
+        contentView.setChoosePhotoAction { [weak self] in
+            guard let `self` = self else { return }
+            self.output.showImagePicker()
+        }
     }
 }
 
 extension RegisterViewController: RegisterViewInput {
+    func imageSelected(imageData: Data) {
+        guard let image = UIImage(data: imageData) else { return }
+        contentView.setUserPhoto(image: image)
+    }
+    
     func showLoadingIfNeeded(isLoading: Bool) {
         contentView.setButtonLoading(isLoading: isLoading)
     }
@@ -92,5 +103,9 @@ extension RegisterViewController: RegisterViewInput {
     
     func showToPasswordsIsDifferent() {
         contentView.showPasswordIsDifferent()
+    }
+    
+    func showThatDateIsIncorrect(reason: String) {
+        contentView.showThatDateIsIncorrect(reason: reason)
     }
 }
