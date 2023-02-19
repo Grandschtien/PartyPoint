@@ -82,7 +82,7 @@ extension ValidationTokenManagerImpl: ValidationTokenManager {
     func getAccessToken() async throws -> String {
         guard let user = accountManager.getUser(),
               let token = keyChainManager.read(service: PPToken.kTokensKeyChain,
-                                               account: user.email,
+                                               account: "\(user.id)",
                                                type: TokenInfo.self)
         else {
             throw ValidationTokenErrors.noSavedTokens

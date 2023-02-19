@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		3233E86075F39992F50F926C /* libPods-PartyPoint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9AFC6FDA648A3B4E855628 /* libPods-PartyPoint.a */; };
 		600B8CE4295604910002B53E /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B8CE3295604910002B53E /* GlobalFunctions.swift */; };
+		600D25EF299A781300189AC7 /* ChangePasswordPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600D25E8299A781300189AC7 /* ChangePasswordPresenterImpl.swift */; };
+		600D25F0299A781300189AC7 /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600D25E9299A781300189AC7 /* ChangePasswordPresenter.swift */; };
+		600D25F1299A781300189AC7 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600D25EB299A781300189AC7 /* ChangePasswordView.swift */; };
+		600D25F2299A781300189AC7 /* ChangePasswordContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600D25EC299A781300189AC7 /* ChangePasswordContentView.swift */; };
+		600D25F3299A781300189AC7 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600D25ED299A781300189AC7 /* ChangePasswordViewController.swift */; };
+		600D25F4299A781300189AC7 /* ChangePasswordAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600D25EE299A781300189AC7 /* ChangePasswordAssembly.swift */; };
 		601BB71728D1D43200048359 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601BB71628D1D43200048359 /* UIViewController+Extension.swift */; };
 		601BB71928D1D69600048359 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601BB71828D1D69600048359 /* UIApplication+Extensions.swift */; };
 		602220C82959E56100D2F7B2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602220C72959E56100D2F7B2 /* Coordinator.swift */; };
@@ -21,6 +27,7 @@
 		602220D8295CBC0400D2F7B2 /* KeyChainManangerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602220D7295CBC0400D2F7B2 /* KeyChainManangerImpl.swift */; };
 		602220DB295CD70500D2F7B2 /* AuthManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602220DA295CD70500D2F7B2 /* AuthManagerImpl.swift */; };
 		602220DE295CDDE100D2F7B2 /* ValidationTokenManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602220DD295CDDE100D2F7B2 /* ValidationTokenManagerImpl.swift */; };
+		60247AD529940CB800B67915 /* AcceptPasswordAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60247AD429940CB800B67915 /* AcceptPasswordAssembly.swift */; };
 		602AE6BC2972DA69004427A6 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602AE6BB2972DA69004427A6 /* LocationInfo.swift */; };
 		602AE6BF2972E623004427A6 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602AE6BE2972E623004427A6 /* String+Extension.swift */; };
 		6037CA4C296D957600E4BC03 /* PPEventInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6037CA4B296D957600E4BC03 /* PPEventInformation.swift */; };
@@ -167,6 +174,11 @@
 		60C23215298A5E040092949E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C23214298A5E040092949E /* UserDefaultsManager.swift */; };
 		60C23217298A5E0E0092949E /* UserDefaultsManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C23216298A5E0E0092949E /* UserDefaultsManagerImpl.swift */; };
 		60CED3F12993B3E700C59FAB /* Collection+SafeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CED3F02993B3E700C59FAB /* Collection+SafeIndex.swift */; };
+		60CED3F32993D27300C59FAB /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CED3F22993D27300C59FAB /* ForgotPasswordView.swift */; };
+		60CED3F52993DB3600C59FAB /* AcceptPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CED3F42993DB3600C59FAB /* AcceptPasswordViewController.swift */; };
+		60CED3F92993DB6B00C59FAB /* AcceptPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CED3F82993DB6B00C59FAB /* AcceptPasswordPresenter.swift */; };
+		60CED3FB2993DB7300C59FAB /* AcceptPasswordPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CED3FA2993DB7300C59FAB /* AcceptPasswordPresenterImpl.swift */; };
+		60CED3FD2993DB9000C59FAB /* AcceptPassswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CED3FC2993DB9000C59FAB /* AcceptPassswordView.swift */; };
 		60DA33B428802FF6004E52A3 /* UIStackView+convenieceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA33B328802FF6004E52A3 /* UIStackView+convenieceInit.swift */; };
 		60DA4CEB28BE131C00B7E428 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA4CEA28BE131C00B7E428 /* BaseRouter.swift */; };
 		60DA4CED28BE185E00B7E428 /* NAvBar+ConfigurateDefaultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA4CEC28BE185E00B7E428 /* NAvBar+ConfigurateDefaultStyle.swift */; };
@@ -209,6 +221,12 @@
 		4A9AFC6FDA648A3B4E855628 /* libPods-PartyPoint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PartyPoint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8C843A9687CC642B83F694 /* Pods-PartyPoint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyPoint.release.xcconfig"; path = "Target Support Files/Pods-PartyPoint/Pods-PartyPoint.release.xcconfig"; sourceTree = "<group>"; };
 		600B8CE3295604910002B53E /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
+		600D25E8299A781300189AC7 /* ChangePasswordPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenterImpl.swift; sourceTree = "<group>"; };
+		600D25E9299A781300189AC7 /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenter.swift; sourceTree = "<group>"; };
+		600D25EB299A781300189AC7 /* ChangePasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		600D25EC299A781300189AC7 /* ChangePasswordContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordContentView.swift; sourceTree = "<group>"; };
+		600D25ED299A781300189AC7 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		600D25EE299A781300189AC7 /* ChangePasswordAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordAssembly.swift; sourceTree = "<group>"; };
 		601BB71628D1D43200048359 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		601BB71828D1D69600048359 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		602220C72959E56100D2F7B2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -221,6 +239,7 @@
 		602220D7295CBC0400D2F7B2 /* KeyChainManangerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManangerImpl.swift; sourceTree = "<group>"; };
 		602220DA295CD70500D2F7B2 /* AuthManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManagerImpl.swift; sourceTree = "<group>"; };
 		602220DD295CDDE100D2F7B2 /* ValidationTokenManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTokenManagerImpl.swift; sourceTree = "<group>"; };
+		60247AD429940CB800B67915 /* AcceptPasswordAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptPasswordAssembly.swift; sourceTree = "<group>"; };
 		602AE6BB2972DA69004427A6 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
 		602AE6BE2972E623004427A6 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		6037CA4B296D957600E4BC03 /* PPEventInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPEventInformation.swift; sourceTree = "<group>"; };
@@ -372,6 +391,11 @@
 		60C23214298A5E040092949E /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		60C23216298A5E0E0092949E /* UserDefaultsManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerImpl.swift; sourceTree = "<group>"; };
 		60CED3F02993B3E700C59FAB /* Collection+SafeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeIndex.swift"; sourceTree = "<group>"; };
+		60CED3F22993D27300C59FAB /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		60CED3F42993DB3600C59FAB /* AcceptPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptPasswordViewController.swift; sourceTree = "<group>"; };
+		60CED3F82993DB6B00C59FAB /* AcceptPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptPasswordPresenter.swift; sourceTree = "<group>"; };
+		60CED3FA2993DB7300C59FAB /* AcceptPasswordPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptPasswordPresenterImpl.swift; sourceTree = "<group>"; };
+		60CED3FC2993DB9000C59FAB /* AcceptPassswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptPassswordView.swift; sourceTree = "<group>"; };
 		60DA33B328802FF6004E52A3 /* UIStackView+convenieceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+convenieceInit.swift"; sourceTree = "<group>"; };
 		60DA4CEA28BE131C00B7E428 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		60DA4CEC28BE185E00B7E428 /* NAvBar+ConfigurateDefaultStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NAvBar+ConfigurateDefaultStyle.swift"; sourceTree = "<group>"; };
@@ -422,6 +446,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		600D25E6299A781300189AC7 /* ChangePasswordScreen */ = {
+			isa = PBXGroup;
+			children = (
+				600D25E7299A781300189AC7 /* Presenter */,
+				600D25EA299A781300189AC7 /* View */,
+				600D25EE299A781300189AC7 /* ChangePasswordAssembly.swift */,
+			);
+			path = ChangePasswordScreen;
+			sourceTree = "<group>";
+		};
+		600D25E7299A781300189AC7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				600D25E8299A781300189AC7 /* ChangePasswordPresenterImpl.swift */,
+				600D25E9299A781300189AC7 /* ChangePasswordPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		600D25EA299A781300189AC7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				600D25EB299A781300189AC7 /* ChangePasswordView.swift */,
+				600D25EC299A781300189AC7 /* ChangePasswordContentView.swift */,
+				600D25ED299A781300189AC7 /* ChangePasswordViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		600F450328D4D94000367025 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,7 +483,6 @@
 				60B48CCD28E5B5AC006C6CF5 /* Manager */,
 				604147AD28D4D9A00052F60D /* Service */,
 				600F450628D4D96F00367025 /* Encoding */,
-				606BEE6B298CD81B00C73395 /* New Group */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -553,6 +605,8 @@
 		6060DE6829210A8E0017F7F7 /* AuthFlow */ = {
 			isa = PBXGroup;
 			children = (
+				600D25E6299A781300189AC7 /* ChangePasswordScreen */,
+				60CED3F62993DB3B00C59FAB /* AcceptPasswordScreen */,
 				6097177F287EDE1E0084A63C /* FogotPasswordScreen */,
 				60971766287DA5FE0084A63C /* EnterScreen */,
 				60971780287EDE280084A63C /* RegisterScreen */,
@@ -581,13 +635,6 @@
 				6060DE6F2921145A0017F7F7 /* EnterView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		606BEE6B298CD81B00C73395 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		6070D42B28ABDDFB0054F61B /* EventScreen */ = {
@@ -900,6 +947,7 @@
 		6097177F287EDE1E0084A63C /* FogotPasswordScreen */ = {
 			isa = PBXGroup;
 			children = (
+				60CED3F22993D27300C59FAB /* ForgotPasswordView.swift */,
 				6097178D287EDE5D0084A63C /* FogotPasswordPresenter.swift */,
 				6097178E287EDE5D0084A63C /* FogotPasswordRouter.swift */,
 				6097178F287EDE5D0084A63C /* FogotPasswordViewController.swift */,
@@ -1021,6 +1069,26 @@
 				60C23216298A5E0E0092949E /* UserDefaultsManagerImpl.swift */,
 			);
 			path = UserDefaultsManager;
+			sourceTree = "<group>";
+		};
+		60CED3F62993DB3B00C59FAB /* AcceptPasswordScreen */ = {
+			isa = PBXGroup;
+			children = (
+				60CED3F72993DB6400C59FAB /* Presenter */,
+				60CED3F42993DB3600C59FAB /* AcceptPasswordViewController.swift */,
+				60CED3FC2993DB9000C59FAB /* AcceptPassswordView.swift */,
+				60247AD429940CB800B67915 /* AcceptPasswordAssembly.swift */,
+			);
+			path = AcceptPasswordScreen;
+			sourceTree = "<group>";
+		};
+		60CED3F72993DB6400C59FAB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				60CED3F82993DB6B00C59FAB /* AcceptPasswordPresenter.swift */,
+				60CED3FA2993DB7300C59FAB /* AcceptPasswordPresenterImpl.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		60DA4CE928BE130B00B7E428 /* BaseComponents */ = {
@@ -1273,7 +1341,9 @@
 				602220C82959E56100D2F7B2 /* Coordinator.swift in Sources */,
 				6081604A2962F67F006B0919 /* TokenInfo.swift in Sources */,
 				600B8CE4295604910002B53E /* GlobalFunctions.swift in Sources */,
+				60CED3F92993DB6B00C59FAB /* AcceptPasswordPresenter.swift in Sources */,
 				6097170B287D821A0084A63C /* EventsContainer.swift in Sources */,
+				60CED3FD2993DB9000C59FAB /* AcceptPassswordView.swift in Sources */,
 				60971723287D824A0084A63C /* ProfileContainer.swift in Sources */,
 				60FAF6252953517000982457 /* PPToastView.swift in Sources */,
 				602220DB295CD70500D2F7B2 /* AuthManagerImpl.swift in Sources */,
@@ -1313,6 +1383,7 @@
 				60DB792228B419940058A3D7 /* LocationView.swift in Sources */,
 				60B48CD928EC5BC3006C6CF5 /* AuthEndPoint.swift in Sources */,
 				60971796287EDE5D0084A63C /* FogotPasswordProtocols.swift in Sources */,
+				600D25F1299A781300189AC7 /* ChangePasswordView.swift in Sources */,
 				6097170A287D821A0084A63C /* EventsInteractor.swift in Sources */,
 				60918EF428895D3D00D9E032 /* AbstractEventsViewController.swift in Sources */,
 				604147B128D4D9C90052F60D /* EndPointType.swift in Sources */,
@@ -1367,6 +1438,7 @@
 				60971797287EDE5D0084A63C /* FogotPasswordInteractor.swift in Sources */,
 				60971763287D9BD80084A63C /* NavigationBarWithLogo.swift in Sources */,
 				60918EEB2888639D00D9E032 /* UserInfoCell.swift in Sources */,
+				600D25EF299A781300189AC7 /* ChangePasswordPresenterImpl.swift in Sources */,
 				60FAF60F295343DD00982457 /* PPTextFieldDefaultPresenter.swift in Sources */,
 				60FAF60B295342FA00982457 /* PPTextFieldModePresenterProtocol.swift in Sources */,
 				60A5E3EF2969A71000FC8A37 /* CalendarPickerHeaderView.swift in Sources */,
@@ -1376,6 +1448,7 @@
 				60B48CD528E5C16C006C6CF5 /* NetworkManager.swift in Sources */,
 				60FAF615295344E700982457 /* PPTextFieldSecureModePresenter.swift in Sources */,
 				60971709287D821A0084A63C /* EventsProtocols.swift in Sources */,
+				600D25F0299A781300189AC7 /* ChangePasswordPresenter.swift in Sources */,
 				60971794287EDE5D0084A63C /* FogotPasswordRouter.swift in Sources */,
 				604147BC28D4DCBF0052F60D /* URLParameterEncoder.swift in Sources */,
 				604147BE28D4DED60052F60D /* JSONParameterEncoder.swift in Sources */,
@@ -1391,6 +1464,7 @@
 				60918EDD288835E400D9E032 /* EventsDelegate.swift in Sources */,
 				60971772287DA60D0084A63C /* EnterContainer.swift in Sources */,
 				60FFFE0F29645F6B004DB8D4 /* LocationManagerImpl.swift in Sources */,
+				60CED3F52993DB3600C59FAB /* AcceptPasswordViewController.swift in Sources */,
 				60FAF6182953496700982457 /* PPButtonBase.swift in Sources */,
 				6097172F287D83360084A63C /* FavouritesContainer.swift in Sources */,
 				60971720287D824A0084A63C /* ProfileViewController.swift in Sources */,
@@ -1399,6 +1473,7 @@
 				6097178A287EDE4A0084A63C /* RegisterProtocols.swift in Sources */,
 				6097172E287D83360084A63C /* FavouritesInteractor.swift in Sources */,
 				60CED3F12993B3E700C59FAB /* Collection+SafeIndex.swift in Sources */,
+				600D25F2299A781300189AC7 /* ChangePasswordContentView.swift in Sources */,
 				602AE6BF2972E623004427A6 /* String+Extension.swift in Sources */,
 				60918EE82888630D00D9E032 /* UserInfo.swift in Sources */,
 				602220CF295C4F1B00D2F7B2 /* PPUser.swift in Sources */,
@@ -1411,6 +1486,7 @@
 				609716DB287D75230084A63C /* AppDelegate.swift in Sources */,
 				60BB681F298AE5AF00D82CD1 /* Data+append.swift in Sources */,
 				6070D43228ABDE1F0054F61B /* EventPresenter.swift in Sources */,
+				60CED3FB2993DB7300C59FAB /* AcceptPasswordPresenterImpl.swift in Sources */,
 				60918EF0288863BA00D9E032 /* AboutMeCell.swift in Sources */,
 				60A5E3EE2969A71000FC8A37 /* CalendarDateCollectionViewCell.swift in Sources */,
 				60A5E3F12969A71000FC8A37 /* CalendarPickerViewController.swift in Sources */,
@@ -1430,11 +1506,15 @@
 				604147B528D4DAC20052F60D /* HTTPTask.swift in Sources */,
 				6073B8722881942A00AF07FA /* PPEvent.swift in Sources */,
 				60DA33B428802FF6004E52A3 /* UIStackView+convenieceInit.swift in Sources */,
+				600D25F3299A781300189AC7 /* ChangePasswordViewController.swift in Sources */,
 				603B506128EDEA4A00A83214 /* R.generated.swift in Sources */,
+				600D25F4299A781300189AC7 /* ChangePasswordAssembly.swift in Sources */,
+				60CED3F32993D27300C59FAB /* ForgotPasswordView.swift in Sources */,
 				60971737287D87C90084A63C /* UIView+Constraints.swift in Sources */,
 				60BCB6792965956C00728ED8 /* PhotoManager.swift in Sources */,
 				60FAF61E29534D7B00982457 /* PPTextFieldColorProvider.swift in Sources */,
 				6042172328BBE67F0063BF68 /* AnyView.swift in Sources */,
+				60247AD529940CB800B67915 /* AcceptPasswordAssembly.swift in Sources */,
 				608160482962D108006B0919 /* UserDefaults+KeyValueStorage.swift in Sources */,
 				6073B8702881936A00AF07FA /* EventsCollectionViewAdapter.swift in Sources */,
 				60A9E5E92992B5F600ACF95F /* UIView+SimpleRecognizers.swift in Sources */,

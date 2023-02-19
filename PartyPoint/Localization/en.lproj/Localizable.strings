@@ -52,7 +52,7 @@
 
 "check_password_title_registration" = "Repeat password";
 
-"send_password_button_title" = "Send password";
+"send_password_button_title" = "Send confirmation code";
 
 /* Заголовки на таб баре и нав баре */
 "events_title" = "Events";
@@ -122,3 +122,16 @@
 "take_photo" = "Take photo";
 "photo_library" = "Photo library";
 "cancel" = "Cancel";
+
+/* Строки для флоу восстановления пароля */
+"empty_email" = "Please, fill the email field.";
+
+/* Для вьюхи с кодом подтверждения */
+"enter_code" = "Enter the confirmation code";
+"code" = "Code";
+"confirm" = "Comfirm";
+"uncorrect_code" = "Code is uncorrect";
+
+/* Экран восстановления пароля */
+"insert_new_password" = "Enter\nnew password";
+"change_password" = "Change password";

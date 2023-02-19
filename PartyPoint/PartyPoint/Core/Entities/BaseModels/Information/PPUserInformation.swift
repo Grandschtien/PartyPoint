@@ -11,7 +11,6 @@ struct PPUserInformation {
     let id: Int
     let name: String
     let surname: String
-    let email: String
     let dateOfBirth: String
     let city: String?
     let about: String?
@@ -20,7 +19,6 @@ struct PPUserInformation {
 
 extension PPUserInformation: Codable {
     enum CodingKeys: String, CodingKey {
-        case email
         case id
         case name
         case surname

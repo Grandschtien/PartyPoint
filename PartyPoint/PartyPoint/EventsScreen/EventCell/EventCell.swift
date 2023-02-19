@@ -54,7 +54,8 @@ final class EventCell: UICollectionViewCell {
 private extension EventCell {
     func addSubviews() {
         self.contentView.addSubview(imageView)
-        self.imageView.addSubview(likeView)
+        self.contentView.addSubview(likeView)
+        self.bringSubviewToFront(likeView)
         self.imageView.addSubview(verticalStackView)
         self.verticalStackView.addArrangedSubview(nameLabel)
         self.verticalStackView.addArrangedSubview(dateLabel)

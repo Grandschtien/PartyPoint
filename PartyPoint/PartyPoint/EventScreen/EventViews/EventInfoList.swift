@@ -18,7 +18,6 @@ final class EventInfoView: UIView {
     private let locationView = LocationView()
     private let descriptionView = DescriptionEventView()
     private let costView = EventViewWithButton()
-    private let goView = EventViewWithButton()
     private let mapView = EventMapView()
     
     private var fullHeight: CGFloat?
@@ -48,7 +47,6 @@ final class EventInfoView: UIView {
         mapView.configure(with: info.placeAnnotation)
         descriptionView.configure(withDescription: info.description)
         costView.configure(forCost: info.cost)
-        goView.configure(forPeople: info.peopleAmount)
     }
 }
 
@@ -81,21 +79,11 @@ private extension EventInfoView {
             $0.top.equalTo(descriptionView.snp.bottom).offset(VERTICAL_OFFSET)
             $0.leading.equalToSuperview().offset(HORISONTAL_OFFSET)
             $0.trailing.equalToSuperview().inset(HORISONTAL_OFFSET)
-//            $0.height.equalTo(122.scale())
         }
-
-        addSubview(goView)
-        goView.snp.makeConstraints {
-            $0.top.equalTo(costView.snp.bottom).offset(VERTICAL_OFFSET)
-            $0.leading.equalToSuperview().offset(HORISONTAL_OFFSET)
-            $0.trailing.equalToSuperview().inset(HORISONTAL_OFFSET)
-//            $0.height.equalTo(122.scale())
-        }
-
         self.addSubview(mapView)
 
         mapView.snp.makeConstraints {
-            $0.top.equalTo(goView.snp.bottom).offset(VERTICAL_OFFSET)
+            $0.top.equalTo(costView.snp.bottom).offset(VERTICAL_OFFSET)
             $0.leading.equalToSuperview().offset(HORISONTAL_OFFSET)
             $0.trailing.equalToSuperview().inset(HORISONTAL_OFFSET)
             $0.height.equalTo(MAP_HEIGHT)
@@ -103,7 +91,7 @@ private extension EventInfoView {
     }
     
     func countHeight() -> CGFloat {
-        let height = VERTICAL_OFFSET * 5 + HEADER_OFFSET + header.frame.size.height + locationView.frame.size.height + descriptionView.frame.size.height + costView.frame.size.height + goView.frame.size.height + mapView.frame.size.height
+        let height = VERTICAL_OFFSET * 5 + HEADER_OFFSET + header.frame.size.height + locationView.frame.size.height + descriptionView.frame.size.height + costView.frame.size.height + mapView.frame.size.height
         return height
     }
 }

@@ -294,16 +294,9 @@ private extension RegisterView {
             $0.left.right.equalToSuperview().inset(HORIZONTAL_OFFSETS)
             $0.top.equalTo(emailTextField.snp.bottom).offset(TF_TOP_OFFSET)
         }
-        
-        // TODO: Uncomment later
-//        cityTextField.snp.makeConstraints {
-//            $0.left.right.equalToSuperview().inset(HORIZONTAL_OFFSETS)
-//            $0.top.equalTo(dobTextField.snp.bottom).offset(TF_TOP_OFFSET)
-//        }
-        
+
         passwordTextField.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(HORIZONTAL_OFFSETS)
-            //TODO: Was cityTextField 
             $0.top.equalTo(dobTextField.snp.bottom).offset(TF_TOP_OFFSET)
         }
         
@@ -388,6 +381,10 @@ extension RegisterView {
 extension RegisterView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == dobTextField {
+            if string == "." {
+                return true
+            }
+            
             if (dobTextField.text?.count == 2) || (dobTextField.text?.count == 5) {
                 if !(string == "") {
                     dobTextField.text = (dobTextField.text)! + "."

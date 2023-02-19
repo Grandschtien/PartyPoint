@@ -9,6 +9,7 @@ import Foundation
 
 final class PPDecoderImpl: PPDecoder {
     func parseJSON<T: Decodable>(from data: Data, type: T.Type) -> T? {
-        return try! JSONDecoder().decode(T.self, from: data)
+        debugPrint(try? JSONSerialization.jsonObject(with: data))
+        return try? JSONDecoder().decode(T.self, from: data)
     }
 }

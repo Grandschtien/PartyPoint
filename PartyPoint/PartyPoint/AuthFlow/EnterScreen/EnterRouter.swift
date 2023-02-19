@@ -31,6 +31,7 @@ extension EnterRouter: EnterRouterInput {
     }
     
     func startMainWithAccountFlow() {
+        
         mainFlowCoordinator.start()
     }
     

@@ -11,7 +11,10 @@ private let LIKE_VIEW_CORNER_RADIUS: CGFloat = 10.scale()
 private let LIKE_VIEW_OFFSET: CGFloat = 5
 
 final class PPLikeView: UIView {
+    private var likeAction: EmptyClosure?
     private let likeImage = UIImageView()
+    
+    private var isLiked: Bool = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,6 +31,11 @@ final class PPLikeView: UIView {
 extension PPLikeView {
     func changeLikeState(isLiked: Bool) {
         likeImage.image = isLiked ? Images.heartFill() : Images.heartOutline()
+        self.isLiked = isLiked
+    }
+    
+    func setLikeAction(_ action: @escaping EmptyClosure) {
+        self.likeAction = action
     }
 }
 
@@ -42,6 +50,7 @@ extension PPLikeView {
         self.layer.opacity = 0.6
         self.clipsToBounds = true
         self.layer.allowsGroupOpacity = false
+        self.addTapRecognizer(target: self, #selector(likeActionHandler))
         
         setupConstraints()
     }
@@ -50,5 +59,14 @@ extension PPLikeView {
         likeImage.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(LIKE_VIEW_OFFSET)
         }
+    }
+}
+
+// MARK: - Action hadlers -
+extension PPLikeView {
+    @objc
+    func likeActionHandler() {
+        changeLikeState(isLiked: !isLiked)
+        likeAction?()
     }
 }

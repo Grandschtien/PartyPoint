@@ -8,16 +8,15 @@
 
 import UIKit
 
-final class FogotPasswordRouter {
-    private(set) var viewController: UIViewController?
-    
-    func setViewController(viewController: UIViewController) {
-        self.viewController = viewController
-    }
-}
+final class FogotPasswordRouter: BaseRouter {}
 
 extension FogotPasswordRouter: FogotPasswordRouterInput {
     func routeBack() {
-        viewController?.navigationController?.popViewController(animated: true)
+        pop(animated: true)
+    }
+    
+    func openSendCodeScreen(with email: String) {
+        let assembly = AcceptPasswordAssebly.assemble(email: email)
+        push(vc: assembly.viewController, animated: true)
     }
 }

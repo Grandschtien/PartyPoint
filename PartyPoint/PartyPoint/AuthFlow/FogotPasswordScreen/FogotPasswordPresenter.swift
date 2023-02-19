@@ -21,6 +21,16 @@ final class FogotPasswordPresenter {
     }
 }
 
+private extension FogotPasswordPresenter {
+    func checkEmail(_ email: String?) -> String? {
+        guard let email = email, !email.isEmpty else {
+            view?.showEmailEmpty(errorText: Localizable.empty_email())
+            return nil
+        }
+        return email
+    }
+}
+
 extension FogotPasswordPresenter: FogotPasswordModuleInput {
 }
 
@@ -28,8 +38,23 @@ extension FogotPasswordPresenter: FogotPasswordViewOutput {
     func backButtonPressed() {
         router.routeBack()
     }
+    
+    func sendCode(toEmail email: String?) {
+        if let email = checkEmail(email) {
+            view?.setIsLoading(isLoading: true)
+            interactor.sendCode(withEmail: email)
+        }
+    }
 }
 
 extension FogotPasswordPresenter: FogotPasswordInteractorOutput {
+    func performSuccess(email: String) {
+        view?.setIsLoading(isLoading: false)
+        router.openSendCodeScreen(with: email)
+    }
     
+    func performFailure(reason: String) {
+        view?.setIsLoading(isLoading: false)
+        view?.performError(reason: reason)
+    }
 }

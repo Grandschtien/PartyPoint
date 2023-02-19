@@ -3,22 +3,26 @@ PODS:
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
   - SnapKit (5.6.0)
+  - SwiftSoup (2.5.3)
 
 DEPENDENCIES:
   - R.swift
   - SnapKit (~> 5.6.0)
+  - SwiftSoup
 
 SPEC REPOS:
   trunk:
     - R.swift
     - R.swift.Library
     - SnapKit
+    - SwiftSoup
 
 SPEC CHECKSUMS:
   R.swift: ec98ff71c4ab2f6fd01dd077e5afd15e63a4834c
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SwiftSoup: 33e8d374021a6c332788f78fa29a93227d8a7699
 
-PODFILE CHECKSUM: ecf22f03d0e980b477370dd285d6145135cb13b2
+PODFILE CHECKSUM: 6c78fc246d974a1ba8919480fa60a0dc64d27d5a
 
 COCOAPODS: 1.11.3

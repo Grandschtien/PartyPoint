@@ -14,6 +14,7 @@ final class RegisterContainer {
 	private(set) weak var router: RegisterRouterInput!
 
 	static func assemble(with context: RegisterContext) -> RegisterContainer {
+        
         let router = RegisterRouter(mainFlowCoordinator: context.mainFlowCoordinator)
         let networkRouter = Router<AuthEndPoint>()
         let authManager = AuthManagerImpl(router: networkRouter)

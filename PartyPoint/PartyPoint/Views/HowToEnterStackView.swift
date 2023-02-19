@@ -44,26 +44,6 @@ final class HowToEnterStackView: UIStackView {
         return label
     }()
     
-    private lazy var orLabel: UILabel = {
-        let label = UILabel()
-        label.font = labelsFont
-        label.textColor = Colors.miniColor()
-        label.text = Localizable.or_label()
-        label.textAlignment = .center
-        return label
-    }()
-    
-    private(set) lazy var withoutAccLabel: UILabel = {
-        let label = UILabel()
-        label.font = labelsFont
-        label.textColor = Colors.buttonColor()
-        label.text = Localizable.without_account_label_title()
-        label.textAlignment = .center
-        label.addTapRecognizer(target: self, action: #selector(enterWithOutAccount(_:)))
-        label.isUserInteractionEnabled = true
-        return label
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -84,18 +64,14 @@ final class HowToEnterStackView: UIStackView {
     private func setupUI() {
         self.addArrangedSubview(enterButton)
         self.addArrangedSubview(registerLabel)
-        self.addArrangedSubview(orLabel)
-        self.addArrangedSubview(withoutAccLabel)
         
         enterButton.snp.makeConstraints {
             $0.height.equalTo(ENTER_BUTTON_HEIGHT)
             $0.left.right.equalToSuperview()
         }
         
-        [registerLabel, orLabel, withoutAccLabel].forEach { label in
-            label.snp.makeConstraints {
-                $0.left.right.equalToSuperview()
-            }
+        registerLabel.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
         }
         
         self.axis = .vertical

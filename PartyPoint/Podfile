@@ -3,5 +3,6 @@
 
 target 'PartyPoint' do
   pod 'SnapKit', '~> 5.6.0'
+  pod 'SwiftSoup'
   pod 'R.swift'
 end

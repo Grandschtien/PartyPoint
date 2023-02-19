@@ -13,7 +13,5 @@ struct PPRegisterUserInformation {
     let email: String
     let passwd: String
     let dateOfBirth: String
-    // TODO: Uncomment when city will be added
-//    let city: String?
     let imageData: Media
 }

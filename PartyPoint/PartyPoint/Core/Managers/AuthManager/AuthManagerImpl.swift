@@ -10,7 +10,6 @@ import Foundation
 final class AuthManagerImpl: NetworkManager, AuthManager {
     
     enum AuthStatus {
-        //String - распаршеный токен
         case authorized(data: Data?)
         case nonAuthoraized(reason: String?)
     }
@@ -56,6 +55,37 @@ final class AuthManagerImpl: NetworkManager, AuthManager {
                                                         dateOfBirth: info.dateOfBirth,
                                                         image: info.imageData))
 
+        switch getStatus(response: result.response) {
+        case .success:
+            return .authorized(data: result.data)
+        case let .failure(reason):
+            return .nonAuthoraized(reason: reason)
+        }
+    }
+    
+    // MARK: Restore password flow
+    func sendCofirmCode(toEmail email: String) async -> AuthStatus {
+        let result = await router.request(.sendCode(email: email))
+        switch getStatus(response: result.response) {
+        case .success:
+            return .authorized(data: result.data)
+        case let .failure(reason):
+            return .nonAuthoraized(reason: reason)
+        }
+    }
+    
+    func checkConfirmCode(email: String, code: Int) async -> AuthStatus {
+        let result = await router.request(.checkConfirmationCode(code: code, email: email))
+        switch getStatus(response: result.response) {
+        case .success:
+            return .authorized(data: result.data)
+        case let .failure(reason):
+            return .nonAuthoraized(reason: reason)
+        }
+    }
+    
+    func sendNewPassword(email: String, password: String) async -> AuthStatus {
+        let result = await router.request(.credentials(email: email, passwd: password))
         switch getStatus(response: result.response) {
         case .success:
             return .authorized(data: result.data)

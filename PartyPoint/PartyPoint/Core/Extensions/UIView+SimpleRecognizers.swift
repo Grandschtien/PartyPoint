@@ -9,6 +9,7 @@ import UIKit
 
 extension UIView {
     func addTapRecognizer(target: Any?, _ action: Selector?) {
+        self.isUserInteractionEnabled = true
         let tapRec = UITapGestureRecognizer(target: target, action: action)
         self.addGestureRecognizer(tapRec)
     }

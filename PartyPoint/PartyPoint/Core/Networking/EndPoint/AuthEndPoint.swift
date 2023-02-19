@@ -18,6 +18,9 @@ enum AuthEndPoint {
                 passwd: String,
                 dateOfBirth: String,
                 image: Media)
+    case sendCode(email: String)
+    case checkConfirmationCode(code: Int, email: String)
+    case credentials(email: String, passwd: String)
 }
 
 
@@ -50,6 +53,12 @@ extension AuthEndPoint: EndPointType {
             return "/refresh"
         case .signUp:
             return "/signup"
+        case .sendCode:
+            return "/redeem"
+        case .checkConfirmationCode:
+            return "/codecheck"
+        case .credentials:
+            return "/credentials"
         }
     }
     
@@ -62,6 +71,12 @@ extension AuthEndPoint: EndPointType {
         case .refresh:
             return .post
         case .signUp:
+            return .post
+        case .sendCode:
+            return .post
+        case .checkConfirmationCode:
+            return .post
+        case .credentials:
             return .post
         }
     }
@@ -77,7 +92,7 @@ extension AuthEndPoint: EndPointType {
         case let .refresh(refreshTocken):
             return .requestParameters(bodyParameters: ["refresh_token": refreshTocken],
                                       urlParameters: nil)
-
+            
         case let .signUp(name, surname, email, passwd, dateOfBirth, image):
             return .multiPartRequest(bodyParameters: ["name": name,
                                                       "surname": surname,
@@ -86,6 +101,16 @@ extension AuthEndPoint: EndPointType {
                                                       "dateOfBirth": dateOfBirth],
                                      urlParameters: nil,
                                      media: image)
+        case .sendCode(email: let email):
+            return .requestParameters(bodyParameters: ["email": email],
+                                      urlParameters: nil)
+        case let .checkConfirmationCode(code, email):
+            return .requestParameters(bodyParameters: ["email": email,
+                                                       "redeem_code": code],
+                                      urlParameters: nil)
+        case let .credentials(email, passwd):
+            return .requestParameters(bodyParameters: ["email": email,
+                                                       "password": passwd], urlParameters: nil)
         }
     }
     

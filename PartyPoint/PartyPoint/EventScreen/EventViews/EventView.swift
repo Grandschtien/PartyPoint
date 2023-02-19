@@ -36,6 +36,7 @@ final class EventView: UIView {
         setupUI()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         return nil
     }

@@ -31,7 +31,7 @@ private extension EventPresenter {
         return EventFullInfo(imageURL: imageURL,
                              title: event.event.title.capitalizedFirst,
                              location: locationInfo,
-                             description: event.event.description,
+                             description: event.event.description.clearFromHTMLTags(),
                              cost: cost,
                              peopleAmount: peopleAmount,
                              placeAnnotation: placeAnnotation)
