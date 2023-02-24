@@ -13,17 +13,16 @@ final class EventsInteractor {
     private let eventsManager: EventsManager
     private let locationManager: LocationManager
     private let decoder: PPDecoder
-    
-    private var mainEvents: [PPEvent] = []
-    private var todayEvents: [PPEvent] = []
-    private var closestEvents: [PPEvent] = []
+    private let contentProvider: EventsContentProvider
     
     init(eventsManager: EventsManager,
          locationManager: LocationManager,
-         decoder: PPDecoder) {
+         decoder: PPDecoder,
+         contentProvider: EventsContentProvider) {
         self.eventsManager = eventsManager
         self.locationManager = locationManager
         self.decoder = decoder
+        self.contentProvider = contentProvider
     }
 }
 
@@ -37,7 +36,7 @@ private extension EventsInteractor {
                 return (nil, Localizable.could_not_decode_the_response())
             }
             
-            self.mainEvents.append(contentsOf: events)
+            self.contentProvider.setMainEvents(events)
             return (events, nil)
         case let .error(reason):
             return (nil, reason)
@@ -53,7 +52,7 @@ private extension EventsInteractor {
                 return nil
             }
             
-            self.todayEvents = events
+            self.contentProvider.setTodayEvents(events)
             return events
         case .error(_):
             return nil
@@ -72,7 +71,7 @@ private extension EventsInteractor {
                     return nil
                 }
                 
-                self.closestEvents = events
+                self.contentProvider.setClosesEvents(events)
                 return events
             case .error(_):
                 return nil
@@ -120,16 +119,20 @@ private extension EventsInteractor {
 }
 
 extension EventsInteractor: EventsInteractorInput {
+    func eventLiked(eventId: Int, index: Int, section: Int) {
+        
+    }
+    
     func getMainEventId(withIndex index: Int) -> PPEvent {
-        return mainEvents[index]
+        return contentProvider.getMainEventId(withIndex: index)
     }
     
     func getClosestEventId(withIndex index: Int) -> PPEvent {
-        return closestEvents[index]
+        return contentProvider.getClosestEventId(withIndex: index)
     }
     
     func getTodayEventId(withIndex index: Int) -> PPEvent {
-        return todayEvents[index]
+        return contentProvider.getTodayEventId(withIndex: index)
     }
     
     func loadFirstPages() {

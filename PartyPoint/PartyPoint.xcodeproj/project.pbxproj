@@ -35,6 +35,8 @@
 		6037CA51296D972200E4BC03 /* PPCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6037CA50296D972200E4BC03 /* PPCoordinates.swift */; };
 		6037CA53296DB66500E4BC03 /* EventFullInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6037CA52296DB66500E4BC03 /* EventFullInfo.swift */; };
 		603B506128EDEA4A00A83214 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603B506028EDEA4A00A83214 /* R.generated.swift */; };
+		603E94B729A8F7E20098BE6F /* ProfileContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603E94B629A8F7E20098BE6F /* ProfileContentView.swift */; };
+		603E94B929A8FB4F0098BE6F /* ManageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603E94B829A8FB4F0098BE6F /* ManageProfileView.swift */; };
 		604147B128D4D9C90052F60D /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604147B028D4D9C90052F60D /* EndPointType.swift */; };
 		604147B328D4DA480052F60D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604147B228D4DA480052F60D /* HTTPMethod.swift */; };
 		604147B528D4DAC20052F60D /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604147B428D4DAC20052F60D /* HTTPTask.swift */; };
@@ -154,6 +156,8 @@
 		60A5E3EF2969A71000FC8A37 /* CalendarPickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E3EB2969A71000FC8A37 /* CalendarPickerHeaderView.swift */; };
 		60A5E3F02969A71000FC8A37 /* CalendarPickerFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E3EC2969A71000FC8A37 /* CalendarPickerFooterView.swift */; };
 		60A5E3F12969A71000FC8A37 /* CalendarPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E3ED2969A71000FC8A37 /* CalendarPickerViewController.swift */; };
+		60A7259B29A8C4850085ADE2 /* EventsContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A7259A29A8C4850085ADE2 /* EventsContentProvider.swift */; };
+		60A7259D29A8C4940085ADE2 /* EventsContentProviderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A7259C29A8C4940085ADE2 /* EventsContentProviderImpl.swift */; };
 		60A9E5E92992B5F600ACF95F /* UIView+SimpleRecognizers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A9E5E82992B5F600ACF95F /* UIView+SimpleRecognizers.swift */; };
 		60B48CCF28E5B837006C6CF5 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B48CCE28E5B837006C6CF5 /* NetworkRouter.swift */; };
 		60B48CD128E5B97F006C6CF5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B48CD028E5B97F006C6CF5 /* Router.swift */; };
@@ -247,6 +251,8 @@
 		6037CA50296D972200E4BC03 /* PPCoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPCoordinates.swift; sourceTree = "<group>"; };
 		6037CA52296DB66500E4BC03 /* EventFullInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFullInfo.swift; sourceTree = "<group>"; };
 		603B506028EDEA4A00A83214 /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		603E94B629A8F7E20098BE6F /* ProfileContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContentView.swift; sourceTree = "<group>"; };
+		603E94B829A8FB4F0098BE6F /* ManageProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageProfileView.swift; sourceTree = "<group>"; };
 		604147B028D4D9C90052F60D /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		604147B228D4DA480052F60D /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		604147B428D4DAC20052F60D /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
@@ -371,6 +377,8 @@
 		60A5E3EB2969A71000FC8A37 /* CalendarPickerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPickerHeaderView.swift; sourceTree = "<group>"; };
 		60A5E3EC2969A71000FC8A37 /* CalendarPickerFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPickerFooterView.swift; sourceTree = "<group>"; };
 		60A5E3ED2969A71000FC8A37 /* CalendarPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPickerViewController.swift; sourceTree = "<group>"; };
+		60A7259A29A8C4850085ADE2 /* EventsContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsContentProvider.swift; sourceTree = "<group>"; };
+		60A7259C29A8C4940085ADE2 /* EventsContentProviderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsContentProviderImpl.swift; sourceTree = "<group>"; };
 		60A9E5E82992B5F600ACF95F /* UIView+SimpleRecognizers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SimpleRecognizers.swift"; sourceTree = "<group>"; };
 		60B48CCE28E5B837006C6CF5 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		60B48CD028E5B97F006C6CF5 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -655,6 +663,7 @@
 		6073B86E2881933300AF07FA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				60A7259E29A8C4A60085ADE2 /* EventsContentProvider */,
 				6073B86F2881936A00AF07FA /* EventsCollectionViewAdapter.swift */,
 			);
 			path = Helpers;
@@ -889,6 +898,8 @@
 				6097171B287D82490084A63C /* ProfileProtocols.swift */,
 				6097171C287D82490084A63C /* ProfileInteractor.swift */,
 				6097171D287D82490084A63C /* ProfileContainer.swift */,
+				603E94B629A8F7E20098BE6F /* ProfileContentView.swift */,
+				603E94B829A8FB4F0098BE6F /* ManageProfileView.swift */,
 			);
 			path = ProfileScreen;
 			sourceTree = "<group>";
@@ -1010,6 +1021,15 @@
 				60A5E3ED2969A71000FC8A37 /* CalendarPickerViewController.swift */,
 			);
 			path = CalendarPicker;
+			sourceTree = "<group>";
+		};
+		60A7259E29A8C4A60085ADE2 /* EventsContentProvider */ = {
+			isa = PBXGroup;
+			children = (
+				60A7259A29A8C4850085ADE2 /* EventsContentProvider.swift */,
+				60A7259C29A8C4940085ADE2 /* EventsContentProviderImpl.swift */,
+			);
+			path = EventsContentProvider;
 			sourceTree = "<group>";
 		};
 		60B48CCC28E5B59E006C6CF5 /* EndPoint */ = {
@@ -1339,6 +1359,7 @@
 				6097177C287EC2C90084A63C /* HowToEnterStackView.swift in Sources */,
 				60971798287EDE5D0084A63C /* FogotPasswordContainer.swift in Sources */,
 				602220C82959E56100D2F7B2 /* Coordinator.swift in Sources */,
+				60A7259D29A8C4940085ADE2 /* EventsContentProviderImpl.swift in Sources */,
 				6081604A2962F67F006B0919 /* TokenInfo.swift in Sources */,
 				600B8CE4295604910002B53E /* GlobalFunctions.swift in Sources */,
 				60CED3F92993DB6B00C59FAB /* AcceptPasswordPresenter.swift in Sources */,
@@ -1352,6 +1373,7 @@
 				6097176E287DA60D0084A63C /* EnterRouter.swift in Sources */,
 				60DB792628B4C55A0058A3D7 /* DescriptionEventView.swift in Sources */,
 				601BB71728D1D43200048359 /* UIViewController+Extension.swift in Sources */,
+				603E94B929A8FB4F0098BE6F /* ManageProfileView.swift in Sources */,
 				604147B928D4DC7A0052F60D /* NetworkError.swift in Sources */,
 				602220D3295C675600D2F7B2 /* PPUserInformation.swift in Sources */,
 				6097178C287EDE4A0084A63C /* RegisterContainer.swift in Sources */,
@@ -1385,6 +1407,7 @@
 				60971796287EDE5D0084A63C /* FogotPasswordProtocols.swift in Sources */,
 				600D25F1299A781300189AC7 /* ChangePasswordView.swift in Sources */,
 				6097170A287D821A0084A63C /* EventsInteractor.swift in Sources */,
+				60A7259B29A8C4850085ADE2 /* EventsContentProvider.swift in Sources */,
 				60918EF428895D3D00D9E032 /* AbstractEventsViewController.swift in Sources */,
 				604147B128D4D9C90052F60D /* EndPointType.swift in Sources */,
 				6073B8752881962700AF07FA /* EventsTypeHeaderHeader.swift in Sources */,
@@ -1510,6 +1533,7 @@
 				603B506128EDEA4A00A83214 /* R.generated.swift in Sources */,
 				600D25F4299A781300189AC7 /* ChangePasswordAssembly.swift in Sources */,
 				60CED3F32993D27300C59FAB /* ForgotPasswordView.swift in Sources */,
+				603E94B729A8F7E20098BE6F /* ProfileContentView.swift in Sources */,
 				60971737287D87C90084A63C /* UIView+Constraints.swift in Sources */,
 				60BCB6792965956C00728ED8 /* PhotoManager.swift in Sources */,
 				60FAF61E29534D7B00982457 /* PPTextFieldColorProvider.swift in Sources */,

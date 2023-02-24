@@ -59,6 +59,10 @@ extension EventsPresenter: EventsModuleInput {
 }
 
 extension EventsPresenter: EventsViewOutput {
+    func eventLiked(eventId: Int, index: Int, section: Int) {
+        interactor.eventLiked(eventId: eventId, index: index, section: section)
+    }
+    
     func tappedOnEvents(section: Int, index: Int) {
         let event: PPEvent
         switch section {

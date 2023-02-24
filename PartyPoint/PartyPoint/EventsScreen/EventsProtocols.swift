@@ -32,6 +32,7 @@ protocol EventsViewOutput: AnyObject {
     func onViewDidLoad()
     func tappedOnEvents(section: Int, index: Int)
     func loadNextPage(_ page: Int)
+    func eventLiked(eventId: Int, index: Int, section: Int) 
 }
 
 protocol EventsInteractorInput: AnyObject {
@@ -40,6 +41,7 @@ protocol EventsInteractorInput: AnyObject {
     func getClosestEventId(withIndex index: Int) -> PPEvent
     func getTodayEventId(withIndex index: Int) -> PPEvent
     func loadNextPageOfMain(page: Int)
+    func eventLiked(eventId: Int, index: Int, section: Int)
 }
 
 protocol EventsInteractorOutput: AnyObject {

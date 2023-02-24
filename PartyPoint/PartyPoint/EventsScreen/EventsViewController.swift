@@ -12,6 +12,7 @@ final class EventsViewController: AbstractEventsViewController {
     private lazy var eventsCollectionAdapter: EventsCollectionViewAdapter = {
         let adapter = EventsCollectionViewAdapter(eventsCollection)
         adapter.scrollDelegate = self
+        adapter.delegate = self
         return adapter
     }()
     
@@ -97,5 +98,11 @@ extension EventsViewController: EventsViewInput {
     
     func hideLoaderView() {
         self.hideLoader()
+    }
+}
+
+extension EventsViewController: EventsCollectionViewAdapterDelegate {
+    func eventLiked(eventId: Int, index: Int, section: Int) {
+        output.eventLiked(eventId: eventId, index: index, section: section)
     }
 }

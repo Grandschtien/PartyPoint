@@ -48,6 +48,10 @@ final class EventCell: UICollectionViewCell {
         self.imageView.setImage(url: event.image)
         self.likeView.changeLikeState(isLiked: event.isLiked)
     }
+    
+    func setLikeAction(_ action: @escaping EmptyClosure) {
+        likeView.setLikeAction(action)
+    }
 }
 
 //MARK: Private methods

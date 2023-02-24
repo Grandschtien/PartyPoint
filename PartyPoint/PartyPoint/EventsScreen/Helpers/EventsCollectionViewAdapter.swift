@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol EventsCollectionViewAdapterDelegate: AnyObject {
+    func eventLiked(eventId: Int, index: Int, section: Int)
+}
+
 final class EventsCollectionViewAdapter: NSObject {
     typealias DataSource = UICollectionViewDiffableDataSource<Section<EventInfo>, EventInfo>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section<EventInfo>, EventInfo>
@@ -24,6 +28,7 @@ final class EventsCollectionViewAdapter: NSObject {
     private weak var collectionView: UICollectionView?
     
     weak var scrollDelegate: EventsScrollDelegate?
+    weak var delegate: EventsCollectionViewAdapterDelegate?
     
     private lazy var dataSource: DataSource = setupDataSource()
     private lazy var collectionViewLayout: Layout = setupLayout()
@@ -74,6 +79,13 @@ private extension EventsCollectionViewAdapter {
         let dataSource = DataSource(collectionView: collectionView) { (collectionView, indexPath, event) -> UICollectionViewCell in
             let cell = collectionView.dequeueCell(cellType: EventCell.self, for: indexPath)
             cell.configure(withEvent: event)
+            
+            cell.setLikeAction { [weak self] in
+                self?.delegate?.eventLiked(eventId: event.id,
+                                           index: indexPath.item,
+                                           section: indexPath.section)
+            }
+            
             return cell
         }
         

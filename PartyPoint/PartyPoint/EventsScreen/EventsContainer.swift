@@ -21,9 +21,11 @@ final class EventsContainer {
         let networkRouter = Router<EventsEndPoint>()
         let networkMananger = EventsManagerImpl(router: networkRouter)
         let decoder = PPDecoderImpl()
+        let contentProvider = EventsContentProviderImpl()
         let interactor = EventsInteractor(eventsManager: networkMananger,
                                           locationManager: locationMananger,
-                                          decoder: decoder)
+                                          decoder: decoder,
+                                          contentProvider: contentProvider)
         let presenter = EventsPresenter(router: router, interactor: interactor)
 		let viewController = EventsViewController(output: presenter)
         router.setViewController(viewController)
