@@ -26,4 +26,8 @@ extension UserDefaultsManagerImpl: UserDefaultsManager {
         guard let isLogged = storage.getValue(forkey: kIsLogged, ofType: Bool.self) else { return false }
         return isLogged
     }
+    
+    func removeIsLogged() {
+        storage.removeValue(forkey: kIsLogged)
+    }
 }

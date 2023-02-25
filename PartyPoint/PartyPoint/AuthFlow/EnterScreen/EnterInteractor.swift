@@ -53,7 +53,7 @@ private extension EnterInteractor {
         }
     }
     
-    func performAuthorizedFlow(withData data: Data?) async {
+    func performAuthorizedFlow(withData data: Data?, email: String) async {
         let userInfo = accountManager.parseUserInformation(data: data)
         guard let userInfo = userInfo  else {
             await runOnMainThread {
@@ -81,7 +81,7 @@ extension EnterInteractor: EnterInteractorInput {
             let status = await authManager.login(with: email, password: password)
             switch status {
             case let .authorized(data):
-                await performAuthorizedFlow(withData: data)
+                await performAuthorizedFlow(withData: data, email: email)
             case let .nonAuthoraized(reason):
                 await performNonAthorizedFlow(withReason: reason)
             }

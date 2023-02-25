@@ -23,7 +23,8 @@ protocol EventsViewInput: AnyObject {
     
     func updateView(withError reason: String)
     func changeCollectionViewVisibility(isHidden: Bool)
-    
+    func setInitialUserInfo(name: String?, image: String?)
+
     func showLoaderView()
     func hideLoaderView()
 }
@@ -32,7 +33,8 @@ protocol EventsViewOutput: AnyObject {
     func onViewDidLoad()
     func tappedOnEvents(section: Int, index: Int)
     func loadNextPage(_ page: Int)
-    func eventLiked(eventId: Int, index: Int, section: Int) 
+    func eventLiked(eventId: Int, index: Int, section: Int)
+    func openProfile()
 }
 
 protocol EventsInteractorInput: AnyObject {
@@ -42,6 +44,7 @@ protocol EventsInteractorInput: AnyObject {
     func getTodayEventId(withIndex index: Int) -> PPEvent
     func loadNextPageOfMain(page: Int)
     func eventLiked(eventId: Int, index: Int, section: Int)
+    func getUserForProfile()
 }
 
 protocol EventsInteractorOutput: AnyObject {
@@ -50,8 +53,11 @@ protocol EventsInteractorOutput: AnyObject {
     func updateMainSection(with events: [PPEvent])
     func showError(withReason reason: String)
     func addNewEventsIntoMainSection(_ events: [PPEvent])
+    func setInitialUserInfo(name: String?, image: String?)
+    func openProfile(withUser user: PPUserInformation)
 }
 
 protocol EventsRouterInput: AnyObject {
     func openEventScreen(withId id: Int, and placeId: Int)
+    func openProfile(with info: ProfileInfo)
 }

@@ -11,4 +11,5 @@ protocol UserDefaultsManager {
     // MARK: IsLogged
     func setIsLogged(_ flag: Bool)
     func getIsLogged() -> Bool
+    func removeIsLogged()
 }

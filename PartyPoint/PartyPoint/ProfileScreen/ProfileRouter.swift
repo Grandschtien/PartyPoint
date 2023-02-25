@@ -8,8 +8,20 @@
 
 import UIKit
 
-final class ProfileRouter {
+final class ProfileRouter: BaseRouter {
+    private let appCoornator: AppCoordinator
+    
+    init(appCoornator: AppCoordinator) {
+        self.appCoornator = appCoornator
+    }
 }
 
 extension ProfileRouter: ProfileRouterInput {
+    func navigateBack() {
+        pop(animated: true)
+    }
+    
+    func exit() {
+        appCoornator.exit()
+    }
 }

@@ -22,5 +22,6 @@ final class AuthCoordinator: Coordinator {
         navigationController.setViewControllers([initialAssembly.viewController], animated: false)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+        UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: {})
     }
 }

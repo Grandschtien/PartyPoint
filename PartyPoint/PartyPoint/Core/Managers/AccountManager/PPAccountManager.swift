@@ -10,5 +10,6 @@ import Foundation
 protocol PPAccountManager {
     func setUser(user: PPUserInformation)
     func getUser() -> PPUserInformation?
+    func removeUser()
     func parseUserInformation(data: Data?) -> PPUser?
 }

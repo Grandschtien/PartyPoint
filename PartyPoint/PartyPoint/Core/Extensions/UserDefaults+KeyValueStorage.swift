@@ -10,6 +10,7 @@ import Foundation
 protocol KeyValueStorage {
     func setValue<T: Codable>(_ object: T, forKey key: String)
     func getValue<T: Codable>(forkey key: String, ofType type: T.Type) -> T?
+    func removeValue(forkey key: String)
 }
 
 extension UserDefaults: KeyValueStorage {
@@ -22,5 +23,9 @@ extension UserDefaults: KeyValueStorage {
         guard let value = self.value(forKey: key) as? Data else { return nil }
         let decoded = try? JSONDecoder().decode(type.self, from: value)
         return decoded
+    }
+    
+    func removeValue(forkey key: String) {
+        self.removeObject(forKey: key)
     }
 }

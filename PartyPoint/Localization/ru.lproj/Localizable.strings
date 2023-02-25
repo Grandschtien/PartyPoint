@@ -136,3 +136,18 @@
 /* Экран восстановления пароля */
 "insert_new_password" = "Введите\nновый пароль";
 "change_password" = "Сменить пароль";
+
+/* Таб бар */
+"events" = "Мероприятия";
+"favorites" = "Избранное";
+"search" = "Поиск";
+
+/* Локализация для профиля */
+"profile_city" = "Город";
+"profile_password" = "Пароль";
+"profile_manage" = "Управлять";
+"profile_about_app" = "О приложении";
+"prfile_read_about_app" = "Прочитать";
+"profile" = "Профиль";
+"exit" = "Выйти";
+"delete_account" = "Удалить аккаунт";

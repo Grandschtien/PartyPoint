@@ -37,7 +37,6 @@ final class EventsViewController: AbstractEventsViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
-        navigationBar.isHidden = false
         navigationBar.backgroundColor = Colors.mainColor()
     }
     
@@ -55,18 +54,24 @@ final class EventsViewController: AbstractEventsViewController {
 private extension EventsViewController {
     func setupActions() {
         eventsCollectionAdapter.setTapAction { [weak self] section, item in
-            self?.navigationBar.backgroundColor = .clear
-            self?.navigationBar.isHidden = true
             self?.output.tappedOnEvents(section: section, index: item)
         }
         
         eventsCollectionAdapter.setLoadNextPageAction { [weak self] page in
             self?.output.loadNextPage(page)
         }
+        
+        setOpenProfileAction {
+            self.output.openProfile()
+        }
     }
 }
 
 extension EventsViewController: EventsViewInput {
+    func setInitialUserInfo(name: String?, image: String?) {
+        setupNaviagtionBar(name: name, avatar: image)
+    }
+    
     func showNewPageInMainSection(with info: [EventInfo]) {
         eventsCollectionAdapter.appendItemsIntoMainSection(info: info)
     }

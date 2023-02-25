@@ -23,6 +23,10 @@ extension PPAccountManagerImpl: PPAccountManager {
         storage.setValue(user, forKey: kCurrentUser)
     }
     
+    func removeUser() {
+        storage.removeValue(forkey: kCurrentUser)
+    }
+    
     func getUser() -> PPUserInformation? {
         return storage.getValue(forkey: kCurrentUser, ofType: PPUserInformation.self)
     }

@@ -14,14 +14,24 @@ final class ProfileContainer {
 	private(set) weak var router: ProfileRouterInput!
 
 	static func assemble(with context: ProfileContext) -> ProfileContainer {
-        let router = ProfileRouter()
-        let interactor = ProfileInteractor()
+        let router = ProfileRouter(appCoornator: context.appCoordinator)
+        let contentProvider = ProfileContentProviderImpl(user: context.profileInfo)
+        let networkRouter = Router<AuthEndPoint>()
+        let authManager = AuthManagerImpl(router: networkRouter)
+        let decoder = PPDecoderImpl()
+        let accountManager = PPAccountManagerImpl(decoder: decoder)
+        let keychainManager = KeyChainManangerImpl()
+        let tokenManager = ValidationTokenManagerImpl(keyChainManager: keychainManager, authManager: authManager, accountManager: accountManager, decoder: decoder)
+        let interactor = ProfileInteractor(profileContentProvider: contentProvider,
+                                           authManager: authManager,
+                                           accountManager: accountManager,
+                                           tokenManager: tokenManager)
         let presenter = ProfilePresenter(router: router, interactor: interactor)
 		let viewController = ProfileViewController(output: presenter)
 
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
-
+        router.setViewController(viewController)
 		interactor.output = presenter
 
         return ProfileContainer(view: viewController, input: presenter, router: router)
@@ -36,4 +46,6 @@ final class ProfileContainer {
 
 struct ProfileContext {
 	weak var moduleOutput: ProfileModuleOutput?
+    let profileInfo: ProfileInfo
+    let appCoordinator: AppCoordinator
 }

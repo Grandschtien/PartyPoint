@@ -38,10 +38,14 @@ extension PPButton {
         init(style: Style, size: Size) {
             switch style {
             case .primary:
-                backgroundColor = Color(enabled: Colors.buttonColor() ?? .black,
+                backgroundColor = Color(enabled: Colors.buttonColor() ?? .white,
                                         disabled: Colors.buttonColor()?.withAlphaComponent(0.5) ?? .black)
                 titleColor = Color(enabled: Colors.miniColor() ?? .black,
                                    disabled: Colors.miniColor()?.withAlphaComponent(0.5) ?? .black)
+            case let .ghost(titleColor):
+                backgroundColor = Color(enabled: (Colors.miniColor() ?? .white).withAlphaComponent(0.1),
+                                        disabled: (Colors.miniColor() ?? .white).withAlphaComponent(0.1))
+                self.titleColor = Color(enabled: titleColor, disabled: titleColor.withAlphaComponent(0.5))
             }
 
             switch size {

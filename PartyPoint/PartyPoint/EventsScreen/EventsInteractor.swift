@@ -14,15 +14,18 @@ final class EventsInteractor {
     private let locationManager: LocationManager
     private let decoder: PPDecoder
     private let contentProvider: EventsContentProvider
+    private let accountManager: PPAccountManager
     
     init(eventsManager: EventsManager,
          locationManager: LocationManager,
          decoder: PPDecoder,
-         contentProvider: EventsContentProvider) {
+         contentProvider: EventsContentProvider,
+         accountManager: PPAccountManager) {
         self.eventsManager = eventsManager
         self.locationManager = locationManager
         self.decoder = decoder
         self.contentProvider = contentProvider
+        self.accountManager = accountManager
     }
 }
 
@@ -119,6 +122,11 @@ private extension EventsInteractor {
 }
 
 extension EventsInteractor: EventsInteractorInput {
+    func getUserForProfile() {
+        guard let user = accountManager.getUser() else { return }
+        output?.openProfile(withUser: user)
+    }
+    
     func eventLiked(eventId: Int, index: Int, section: Int) {
         
     }
@@ -146,6 +154,8 @@ extension EventsInteractor: EventsInteractorInput {
             let main = await getMain(withPage: 1)
             await updateMainSection(withEvents: main.events, reason: main.reason)
         }
+        let user = accountManager.getUser()
+        output?.setInitialUserInfo(name: user?.name, image: user?.imageUrl)
     }
     
     func loadNextPageOfMain(page: Int) {

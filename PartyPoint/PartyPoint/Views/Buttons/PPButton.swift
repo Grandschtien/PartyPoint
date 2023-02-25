@@ -15,6 +15,7 @@ class PPButton: PPButtonBase {
     public enum Style {
         /// Цвет текста - белый. Цвет фона - красный.
         case primary
+        case ghost(titleColor: UIColor)
     }
 
     public enum Size {

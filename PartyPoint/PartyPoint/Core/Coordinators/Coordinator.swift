@@ -5,7 +5,9 @@
 //  Created by Егор Шкарин on 26.12.2022.
 //
 
+import Foundation
 
-protocol Coordinator: AnyObject {
+@objc protocol Coordinator: AnyObject {
     func start()
+    @objc optional func setAppCoordinator(_ coordinator: AppCoordinator)
 }

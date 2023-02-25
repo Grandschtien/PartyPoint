@@ -8,7 +8,13 @@
 
 import UIKit
 
-final class EventsRouter: BaseRouter {}
+final class EventsRouter: BaseRouter {
+    private let appCoordinator: AppCoordinator
+    
+    init(appCoordinator: AppCoordinator) {
+        self.appCoordinator = appCoordinator
+    }
+}
 
 extension EventsRouter: EventsRouterInput {
     func openEventScreen(withId id: Int, and placeId: Int){
@@ -16,5 +22,11 @@ extension EventsRouter: EventsRouterInput {
         let container = EventContainer.assemble(with: context)
         container.viewController.hidesBottomBarWhenPushed = true
         push(vc: container.viewController, animated: true)
+    }
+    
+    func openProfile(with info: ProfileInfo) {
+        let context = ProfileContext(profileInfo: info, appCoordinator: appCoordinator)
+        let assembly = ProfileContainer.assemble(with: context)
+        push(vc: assembly.viewController, animated: true)
     }
 }

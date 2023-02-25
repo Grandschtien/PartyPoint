@@ -6,7 +6,7 @@
 //  
 //
 
-import UIKit
+import SnapKit
 
 final class ProfileViewController: UIViewController {
     
@@ -16,6 +16,7 @@ final class ProfileViewController: UIViewController {
     init(output: ProfileViewOutput) {
         self.output = output
         super.init(nibName: nil, bundle: nil)
+        setupActions()
     }
     
     @available(*, unavailable)
@@ -23,16 +24,42 @@ final class ProfileViewController: UIViewController {
         return nil
     }
     
-    override func loadView() {
-        view = contentView
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        output.onViewDidLoad()
+    }
+}
+
+private extension ProfileViewController {
+    func setupUI() {
+        view.addSubview(contentView)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        contentView.snp.makeConstraints {
+            $0.left.right.bottom.equalToSuperview()
+            $0.top.equalToSuperview()
+        }
+    }
+    
+    func setupActions() {
+        contentView.setBackAction { [weak self] in
+            self?.output.backActionTapped()
+        }
+        
+        contentView.setExitAction { [weak self] in
+            self?.output.exitActionTapped()
+        }
     }
 }
 
 extension ProfileViewController: ProfileViewInput {
+    func configureView(withInfo info: ProfileInfo) {
+        contentView.configure(withInfo: info)
+    }
+    
+    func setLoaderVisibility(isLoading: Bool) {
+        contentView.setExitButtonLoader(isLoading: isLoading)
+    }
 }
 
 

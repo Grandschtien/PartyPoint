@@ -18,7 +18,7 @@ private let LIKE_VIEW_TOP_OFFSET: CGFloat = 10
 private let LIKE_VIEW_RIGHT_OFFSET: CGFloat = 10
 
 final class EventCell: UICollectionViewCell {
-    private let imageView = AcyncImageView()
+    private let imageView = AcyncImageView(placeHolderType: .event)
     private let nameLabel = PPScrollableLabel()
     private let dateLabel = UILabel()
     private let likeView = PPLikeView()

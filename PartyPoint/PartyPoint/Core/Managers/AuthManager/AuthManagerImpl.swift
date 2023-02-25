@@ -94,5 +94,7 @@ final class AuthManagerImpl: NetworkManager, AuthManager {
         }
     }
     
-    func logout() {}
+    func logout() async -> AuthStatus {
+        return .authorized(data: nil)
+    }
 }

@@ -8,15 +8,16 @@
 import UIKit
 
 extension UIViewController {
-    var statusBarFrame: CGRect {
-        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first,
-              let statusBarFrame = window.windowScene?.statusBarManager?.statusBarFrame else {
-            return CGRect(x: 0, y: 0, width: 0, height: 0)
-        }
-        return statusBarFrame
-    }
-    
     func changeStatusBarColor(_ color: UIColor?) {
         UIApplication.shared.statusBarView?.backgroundColor = color
+    }
+    
+    func setBackgroundOfStatusBar() {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.backgroundColor = Colors.mainColor()
+        self.navigationController?.navigationBar.standardAppearance = navBarAppearance
     }
 }

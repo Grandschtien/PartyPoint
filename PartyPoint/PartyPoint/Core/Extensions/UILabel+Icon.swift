@@ -13,7 +13,7 @@ extension UILabel {
 
         let leftAttachment = NSTextAttachment()
         leftAttachment.image = leftIcon
-        leftAttachment.bounds = CGRect(x: 0, y: -2.5, width: 20, height: 20)
+        leftAttachment.bounds = CGRect(x: 0, y: -2.5, width: self.font.pointSize, height: self.font.pointSize)
         if let leftIcon = leftIcon {
             leftAttachment.bounds = CGRect(x: 0, y: -2.5, width: leftIcon.size.width, height: leftIcon.size.height)
         }
@@ -23,7 +23,7 @@ extension UILabel {
 
         let rightAttachment = NSTextAttachment()
         rightAttachment.image = rightIcon
-        rightAttachment.bounds = CGRect(x: 0, y: self.bounds.origin.y, width: 20, height: 20)
+        rightAttachment.bounds = CGRect(x: 0, y: -2.5, width: self.font.pointSize, height: self.font.pointSize)
         let rightAttachmentStr = NSAttributedString(attachment: rightAttachment)
 
 

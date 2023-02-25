@@ -79,6 +79,13 @@ extension ValidationTokenManagerImpl: ValidationTokenManager {
         }
     }
     
+    func removeTokens() {
+        guard let user = accountManager.getUser() else {
+            return
+        }
+        keyChainManager.delete(service: PPToken.kTokensKeyChain, account: "\(user.id)")
+    }
+    
     func getAccessToken() async throws -> String {
         guard let user = accountManager.getUser(),
               let token = keyChainManager.read(service: PPToken.kTokensKeyChain,

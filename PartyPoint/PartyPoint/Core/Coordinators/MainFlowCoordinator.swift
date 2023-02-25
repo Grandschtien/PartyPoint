@@ -11,6 +11,7 @@ final class MainFlowCoordinator: Coordinator {
     private let window: UIWindow
     private lazy var tabBarController = UITabBarController()
     private lazy var navigationControllers = MainFlowCoordinator.makeNavigationControllers()
+    private weak var appCoordinator: AppCoordinator?
     
     init(window: UIWindow) {
         self.window = window
@@ -20,7 +21,7 @@ final class MainFlowCoordinator: Coordinator {
     func start() {
         setupEvents()
         setupFavourites()
-        setupProfile()
+        setupSearch()
         
         let navigationControllers = NavControllerType.allCases.compactMap {
             self.navigationControllers[$0]
@@ -31,14 +32,18 @@ final class MainFlowCoordinator: Coordinator {
         
         UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: {})
     }
+    
+    func setAppCoordinator(_ coordinator: AppCoordinator) {
+        self.appCoordinator = coordinator
+    }
 }
 
 private extension MainFlowCoordinator {
     func setupEvents(){
-        guard let navController = navigationControllers[.events] else {
+        guard let navController = navigationControllers[.events], let appCoordinator = appCoordinator else {
             fatalError("wtf no Current")
         }
-        let context = EventsContext(moduleOutput: nil)
+        let context = EventsContext(moduleOutput: nil, appCoordinator: appCoordinator)
         let container = EventsContainer.assemble(with: context)
         navController.setViewControllers([container.viewController], animated: false)
         container.viewController.navigationItem.title = NavControllerType.events.title
@@ -55,14 +60,13 @@ private extension MainFlowCoordinator {
         navController.setViewControllers([container.viewController], animated: false)
     }
     
-    func setupProfile() {
-        guard let navController = navigationControllers[.profile] else {
+    func setupSearch() {
+        guard let navController = navigationControllers[.search] else {
             fatalError("wtf no Profile")
         }
-        let context = ProfileContext(moduleOutput: nil)
+        let assembly = SearchScreenAssembly.assemble()
         
-        let container = ProfileContainer.assemble(with: context)
-        navController.setViewControllers([container.viewController], animated: false)
+        navController.setViewControllers([assembly.viewController], animated: false)
     }
     
     func setupAppearance() {
@@ -96,8 +100,7 @@ private extension MainFlowCoordinator {
             let navigationController = UINavigationController()
             let tabBarItem = UITabBarItem(title: navControllerKey.title,
                                           image: navControllerKey.unselectedImage,
-                                          selectedImage: navControllerKey.image)
-            
+                                          selectedImage: navControllerKey.image)            
             navigationController.tabBarItem = tabBarItem
             UINavigationBar.appearance().barTintColor = Colors.mainColor()
             UINavigationBar.appearance().backgroundColor = Colors.mainColor()
@@ -108,16 +111,16 @@ private extension MainFlowCoordinator {
 }
 
 fileprivate enum NavControllerType: Int, CaseIterable {
-    case events, favourites, profile
+    case events, favourites, search
     
     var title: String {
         switch self {
         case .events:
-            return Localization.currentTournaments
+            return Localizable.events()
         case .favourites:
-            return Localization.search
-        case .profile:
-            return Localization.profile
+            return Localizable.favorites()
+        case .search:
+            return Localizable.search()
         }
     }
     
@@ -127,8 +130,8 @@ fileprivate enum NavControllerType: Int, CaseIterable {
             return Images.wine()?.withRenderingMode(.alwaysOriginal)
         case .favourites:
             return Images.heartFill()?.withRenderingMode(.alwaysOriginal)
-        case .profile:
-            return Images.person()?.withRenderingMode(.alwaysOriginal)
+        case .search:
+            return Images.search()?.withRenderingMode(.alwaysOriginal)
         }
     }
     
@@ -138,15 +141,8 @@ fileprivate enum NavControllerType: Int, CaseIterable {
             return Images.unselectedWine()?.withRenderingMode(.alwaysOriginal)
         case .favourites:
             return Images.unselectedHeart()?.withRenderingMode(.alwaysOriginal)
-        case .profile:
-            return Images.unselectedPerson()?.withRenderingMode(.alwaysOriginal)
+        case .search:
+            return Images.uselectedSearch()?.withRenderingMode(.alwaysOriginal)
         }
     }
-}
-
-
-enum Localization {
-    static let currentTournaments = "Мероприятия"
-    static let search = "Избранное"
-    static let profile = "Профиль"
 }

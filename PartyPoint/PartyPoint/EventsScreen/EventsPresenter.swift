@@ -53,12 +53,22 @@ private extension EventsPresenter {
             return Section<EventInfo>(header: Localizable.main(), items: info)
         }
     }
+    
+    func makeProfileInfo(from model: PPUserInformation) -> ProfileInfo {
+        let imageUrl = model.imageUrl ?? ""
+        let imageURl = URL(string: imageUrl)
+        return ProfileInfo(name: model.name, surname: model.surname, email: model.surname, imageUrl: imageURl)
+    }
 }
 
 extension EventsPresenter: EventsModuleInput {
 }
 
 extension EventsPresenter: EventsViewOutput {
+    func openProfile() {
+        interactor.getUserForProfile()
+    }
+    
     func eventLiked(eventId: Int, index: Int, section: Int) {
         interactor.eventLiked(eventId: eventId, index: index, section: section)
     }
@@ -92,6 +102,15 @@ extension EventsPresenter: EventsViewOutput {
 }
 
 extension EventsPresenter: EventsInteractorOutput {
+    func openProfile(withUser user: PPUserInformation) {
+        let profileInfo = makeProfileInfo(from: user)
+        router.openProfile(with: profileInfo)
+    }
+    
+    func setInitialUserInfo(name: String?, image: String?) {
+        view?.setInitialUserInfo(name: name, image: image)
+    }
+    
     func addNewEventsIntoMainSection(_ events: [PPEvent]) {
         let info = getEventsInfo(events: events)
         view?.showNewPageInMainSection(with: info)

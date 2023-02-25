@@ -25,7 +25,38 @@ extension ProfilePresenter: ProfileModuleInput {
 }
 
 extension ProfilePresenter: ProfileViewOutput {
+    func exitActionTapped() {
+        view?.setLoaderVisibility(isLoading: true)
+        interactor.exit()
+    }
+    
+    func onViewDidLoad() {
+        interactor.getUser()
+    }
+    
+    func backActionTapped() {
+        router.navigateBack()
+    }
 }
 
 extension ProfilePresenter: ProfileInteractorOutput {
+    func showErrorWhenExit(reason: String) {
+        // showing error after exit button
+    }
+    
+    func performSuccessExit() {
+        router.exit()
+    }
+    
+    func showErrorWhenAccountDelete(reason: String) {
+        // showing error after account delete button
+    }
+    
+    func preformSuccessAccountRemoving() {
+        
+    }
+    
+    func showUserInfo(info: ProfileInfo) {
+        view?.configureView(withInfo: info)
+    }
 }

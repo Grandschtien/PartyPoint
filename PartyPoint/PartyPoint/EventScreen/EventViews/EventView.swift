@@ -18,7 +18,7 @@ private let SCROLL_VIEW_INSETS = 46.scale()
 
 final class EventView: UIView {
     private let scrollView = UIScrollView()
-    private let backgroundImageView = AcyncImageView()
+    private let backgroundImageView = AcyncImageView(placeHolderType: .event)
     private let eventInfoView = EventInfoView(frame: .zero)
     private lazy var backgroundOfContentListView = UIView()
     

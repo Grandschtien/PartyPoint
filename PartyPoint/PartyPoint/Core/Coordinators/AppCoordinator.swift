@@ -7,8 +7,9 @@
 
 import UIKit
 
-protocol AppCoordinator: AnyObject {
+@objc protocol AppCoordinator: AnyObject {
     func start()
+    func exit()
 }
 
 final class AppCoordinatorImpl: AppCoordinator {
@@ -29,10 +30,16 @@ final class AppCoordinatorImpl: AppCoordinator {
     }
     
     func start() {
+        mainFlow.setAppCoordinator?(self)
         if isLogged {
             mainFlow.start()
         } else {
             authFlow.start()
         }
+    }
+    
+    func exit() {
+        authFlow.start()
+        storage.removeIsLogged()
     }
 }
