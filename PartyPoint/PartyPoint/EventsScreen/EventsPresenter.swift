@@ -23,8 +23,11 @@ final class EventsPresenter {
 }
 
 private extension EventsPresenter {
-    func makeSection(withInfo info: [EventInfo], title: String,  ofType type: SectionType) -> Section<EventInfo> {
-        return Section<EventInfo>(header: title, moreType: .today, sectionType: type, items: info)
+    func makeSection(withInfo info: [EventInfo],
+                     title: String,
+                     moreType: MoreEventsType,
+                     ofType type: SectionType) -> Section<EventInfo> {
+        return Section<EventInfo>(header: title, moreType: moreType, sectionType: type, items: info)
     }
     
     func makeProfileInfo(from model: PPUserInformation) -> ProfileInfo {
@@ -92,21 +95,21 @@ extension EventsPresenter: EventsInteractorOutput {
     
     func updateTodaySection(with events: [PPEvent]) {
         let info = EventsConverter.getEventsInfo(events: events)
-        let section = makeSection(withInfo: info, title: Localizable.today(), ofType: .today)
+        let section = makeSection(withInfo: info, title: Localizable.today(), moreType: .today, ofType: .today)
         view?.hideLoaderView()
         view?.updateTodaySection(with: section)
     }
     
     func updateClosestSection(with events: [PPEvent]) {
         let info = EventsConverter.getEventsInfo(events: events)
-        let section = makeSection(withInfo: info, title: Localizable.closest(), ofType: .closest)
+        let section = makeSection(withInfo: info, title: Localizable.closest(), moreType: .closest, ofType: .closest)
         view?.hideLoaderView()
         view?.updateClosestSection(with: section)
     }
     
     func updateMainSection(with events: [PPEvent]) {
         let info = EventsConverter.getEventsInfo(events: events)
-        let section = makeSection(withInfo: info, title: Localizable.main(), ofType: .main)
+        let section = makeSection(withInfo: info, title: Localizable.main(), moreType: .main, ofType: .main)
         view?.hideLoaderView()
         view?.updateMainSection(with: section)
     }

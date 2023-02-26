@@ -140,25 +140,16 @@ private extension EventsCollectionViewAdapter {
     
     private func setupLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { [weak self] section, env in
-            let numberOfSections = self?.dataSource.snapshot().sectionIdentifiers.count ?? 0
-            if numberOfSections < 3 {
-                switch section {
-                case 0:
-                    return self?.configureHorizontalLayoutSection()
-                case 1:
-                    return self?.configureVerticalLayoutSection()
-                default:
-                    return self?.configureVerticalLayoutSection()
-                }
-            } else {
-                switch section {
-                case 0:
-                    return self?.configureHorizontalLayoutSection()
-                case 1:
-                    return self?.configureHorizontalLayoutSection()
-                default:
-                    return self?.configureVerticalLayoutSection()
-                }
+            let section = self?.dataSource.snapshot().sectionIdentifiers[section]
+            switch section?.sectionType {
+            case .today:
+                return self?.configureHorizontalLayoutSection()
+            case .closest:
+                return self?.configureHorizontalLayoutSection()
+            case .main:
+                return self?.configureVerticalLayoutSection()
+            default:
+                return self?.configureVerticalLayoutSection()
             }
         }
         return layout

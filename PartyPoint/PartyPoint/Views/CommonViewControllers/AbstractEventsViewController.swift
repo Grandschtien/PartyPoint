@@ -24,7 +24,6 @@ class AbstractEventsViewController: UIViewController {
         collection.showsVerticalScrollIndicator = false
         collection.showsHorizontalScrollIndicator = false
         collection.backgroundColor = Colors.mainColor()
-        collection.addPullToRefresh(refreshCompletion: nil)
         return collection
     }()
     
