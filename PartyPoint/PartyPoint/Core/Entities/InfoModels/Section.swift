@@ -10,6 +10,8 @@ import Foundation
 struct Section<T: Hashable> {
     var id = UUID()
     let header: String?
+    let moreType: MoreEventsType
+    let sectionType: SectionType
     var items: [T]
 }
 
@@ -22,3 +24,10 @@ extension Section: Hashable {
       lhs.id == rhs.id
     }
 }
+
+enum SectionType: Int {
+    case today
+    case closest
+    case main
+}
+

@@ -37,7 +37,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func makeAppCoordinator(window: UIWindow) -> AppCoordinatorImpl {
         let storage = UserDefaults.standard
         let userDefaultsManager = UserDefaultsManagerImpl(storage: storage)
-        return AppCoordinatorImpl(window: window, userDefaultsManager: userDefaultsManager)
+        let keyChainManager = KeyChainManangerImpl()
+        let router = Router<AuthEndPoint>()
+        let authManager = AuthManagerImpl(router: router)
+        let decoder = PPDecoderImpl()
+        let accountManager = PPAccountManagerImpl(decoder: decoder)
+        let validateTokenManager = ValidationTokenManagerImpl(keyChainManager: keyChainManager,
+                                                              authManager: authManager,
+                                                              accountManager: accountManager,
+                                                              decoder: decoder)
+        return AppCoordinatorImpl(window: window, userDefaultsManager: userDefaultsManager, validateTokenManager: validateTokenManager)
     }
 }
 

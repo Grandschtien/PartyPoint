@@ -20,6 +20,7 @@ final class ValidationTokenManagerImpl {
     private let accountManager: PPAccountManager
     private let decoder: PPDecoder
     private let exiperingTokenTime: TimeInterval = 900
+    private let expireRefreshTokenTime: TimeInterval = 30 * 24 * 60 * 60
     
     init(keyChainManager: KeyChainMananger,
          authManager: AuthManager,
@@ -39,21 +40,18 @@ private extension ValidationTokenManagerImpl {
         switch refreshedToken {
         case let .success(data):
             guard let data = data,
-                  let decodedTokens = decoder.parseJSON(from: data, type: PPToken.self),
-                  let user = accountManager.getUser()
+                  let decodedTokens = decoder.parseJSON(from: data, type: PPToken.self)
             else {
                 throw ValidationTokenErrors.invalidData
             }
-            
-            let expiringTime = Date().addingTimeInterval(exiperingTokenTime)
-            let tokenInfo = TokenInfo(tokens: decodedTokens, expireDate: expiringTime)
-            
             do {
-                try keyChainManager.save(tokenInfo, service: PPToken.kTokensKeyChain, account: "\(user.id)")
+                try saveTokens(decodedTokens)
             } catch {
                 throw ValidationTokenErrors.savingFaild
             }
-            return tokenInfo
+            return TokenInfo(tokens: decodedTokens,
+                             expireDate: Date().addingTimeInterval(exiperingTokenTime),
+                             expireRefreshDate: Date().addingTimeInterval(expireRefreshTokenTime))
         case let .failure(reason):
             debugPrint(reason ?? "")
             throw ValidationTokenErrors.cannotRefreshToken
@@ -63,13 +61,26 @@ private extension ValidationTokenManagerImpl {
 
 // MARK: ValidationTokenManager
 extension ValidationTokenManagerImpl: ValidationTokenManager {
+    var isValidRefresh: Bool {
+        guard let user = accountManager.getUser(),
+              let token = keyChainManager.read(service: PPToken.kTokensKeyChain,
+                                               account: "\(user.id)",
+                                               type: TokenInfo.self)
+        else {
+            return false
+        }
+        
+        return token.isValidRefresh
+    }
+    
     func saveTokens(_ tokens: PPToken) throws {
         do {
             guard let user = accountManager.getUser() else {
                 throw ValidationTokenErrors.savingFaild
             }
             let expireDate = Date().addingTimeInterval(exiperingTokenTime)
-            let tokenInfo = TokenInfo(tokens: tokens, expireDate: expireDate)
+            let expireRefreshTime = Date().addingTimeInterval(expireRefreshTokenTime)
+            let tokenInfo = TokenInfo(tokens: tokens, expireDate: expireDate, expireRefreshDate: expireRefreshTime)
             
             try keyChainManager.save(tokenInfo,
                                      service: PPToken.kTokensKeyChain,

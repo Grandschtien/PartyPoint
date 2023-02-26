@@ -29,4 +29,9 @@ extension EventsRouter: EventsRouterInput {
         let assembly = ProfileContainer.assemble(with: context)
         push(vc: assembly.viewController, animated: true)
     }
+    
+    func openMore(withType type: MoreEventsType) {
+        let assembly = MoreEventsAssembly.assemble(screenType: type)
+        push(vc: assembly.viewController, animated: true)
+    }
 }

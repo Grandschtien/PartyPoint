@@ -9,6 +9,7 @@ import UIKit
 
 protocol EventsCollectionViewAdapterDelegate: AnyObject {
     func eventLiked(eventId: Int, index: Int, section: Int)
+    func moreTapped(moreType: MoreEventsType)
 }
 
 final class EventsCollectionViewAdapter: NSObject {
@@ -16,10 +17,11 @@ final class EventsCollectionViewAdapter: NSObject {
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section<EventInfo>, EventInfo>
     typealias Layout = UICollectionViewCompositionalLayout
     typealias LoadNextPageAction = (Int) -> Void
-    typealias TapOnEventsAction = (Int, Int) -> Void
+    typealias TapOnEventsAction = (SectionType, Int) -> Void
     
     private var loadNextPageAction: LoadNextPageAction?
     private var didTapOnEventsAction: TapOnEventsAction?
+    private var moreAction: EmptyClosure?
     
     private var sections: [Section<EventInfo>]
     private var currentPage = 1
@@ -54,10 +56,12 @@ final class EventsCollectionViewAdapter: NSObject {
     }
     
     func appendItemsIntoMainSection(info: [EventInfo]) {
-        if self.sections[safe: 2] != nil {
-            self.sections[2].items.append(contentsOf: info)
-            applySnapshot()
+        sections.mutateEach { section in
+            if section.sectionType == .main {
+                section.items.append(contentsOf: info)
+            }
         }
+        applySnapshot()
     }
     
     func setTapAction(_ action: @escaping TapOnEventsAction) {
@@ -109,8 +113,16 @@ private extension EventsCollectionViewAdapter {
                 ofKind: UICollectionView.elementKindSectionHeader,
                 withReuseIdentifier: EventsTypeHeaderHeader.reuseIdentifier,
                 for: indexPath)
+            
             if let unwrappedHeader = section.header {
-                header.configure(withHeader: unwrappedHeader)
+                if section.sectionType == .main {
+                    header.configure(withHeader: unwrappedHeader, isMoreButtonHidden: true)
+                } else {
+                    header.configure(withHeader: unwrappedHeader, isMoreButtonHidden: false)
+                    header.setMoreAction { [weak self] in
+                        self?.delegate?.moreTapped(moreType: section.moreType)
+                    }
+                }
             }
             return header
         }
@@ -128,13 +140,25 @@ private extension EventsCollectionViewAdapter {
     
     private func setupLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { [weak self] section, env in
-            switch section {
-            case 0:
-                return self?.configureHorizontalLayoutSection()
-            case 1:
-                return self?.configureHorizontalLayoutSection()
-            default:
-                return self?.configureVerticalLayoutSection()
+            let numberOfSections = self?.dataSource.snapshot().sectionIdentifiers.count ?? 0
+            if numberOfSections < 3 {
+                switch section {
+                case 0:
+                    return self?.configureHorizontalLayoutSection()
+                case 1:
+                    return self?.configureVerticalLayoutSection()
+                default:
+                    return self?.configureVerticalLayoutSection()
+                }
+            } else {
+                switch section {
+                case 0:
+                    return self?.configureHorizontalLayoutSection()
+                case 1:
+                    return self?.configureHorizontalLayoutSection()
+                default:
+                    return self?.configureVerticalLayoutSection()
+                }
             }
         }
         return layout
@@ -209,13 +233,14 @@ extension EventsCollectionViewAdapter: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        didTapOnEventsAction?(indexPath.section, indexPath.item)
+        let section = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+        didTapOnEventsAction?(section.sectionType, indexPath.item)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        if dataSource.snapshot().numberOfSections - 1 == indexPath.section {
+        if sections[indexPath.section].sectionType == .main {
             let currentSection = dataSource.snapshot().sectionIdentifiers[indexPath.section]
             if dataSource.snapshot().numberOfItems(inSection: currentSection) - 1 == indexPath.row {
                 currentPage += 1

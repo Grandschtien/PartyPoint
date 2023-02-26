@@ -107,6 +107,10 @@ extension EventsViewController: EventsViewInput {
 }
 
 extension EventsViewController: EventsCollectionViewAdapterDelegate {
+    func moreTapped(moreType: MoreEventsType) {
+        output.moreTapped(moreType: moreType)
+    }
+    
     func eventLiked(eventId: Int, index: Int, section: Int) {
         output.eventLiked(eventId: eventId, index: index, section: section)
     }

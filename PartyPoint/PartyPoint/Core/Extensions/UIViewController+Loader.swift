@@ -21,4 +21,12 @@ extension UIViewController {
         let loader = self.view.subviews.first { $0 is PPSpinnerView }
         loader?.removeFromSuperview()
     }
+    
+    func showLoaderIfNeeded(isLoading: Bool) {
+        if isLoading {
+            showLoader()
+        } else {
+            hideLoader()
+        }
+    }
 }

@@ -11,4 +11,5 @@ protocol ValidationTokenManager {
     func saveTokens(_ tokens: PPToken) throws
     func getAccessToken() async throws -> String
     func removeTokens()
+    var isValidRefresh: Bool { get }
 }

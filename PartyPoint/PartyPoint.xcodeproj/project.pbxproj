@@ -76,6 +76,18 @@
 		6070D43528ABDE1F0054F61B /* EventProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42F28ABDE1F0054F61B /* EventProtocols.swift */; };
 		6070D43628ABDE1F0054F61B /* EventInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D43028ABDE1F0054F61B /* EventInteractor.swift */; };
 		6070D43728ABDE1F0054F61B /* EventContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D43128ABDE1F0054F61B /* EventContainer.swift */; };
+		6071863C29AA9A42003979A1 /* MoreEventsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6071863529AA9A42003979A1 /* MoreEventsPresenter.swift */; };
+		6071863D29AA9A42003979A1 /* MoreEventsPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6071863629AA9A42003979A1 /* MoreEventsPresenterImpl.swift */; };
+		6071863E29AA9A42003979A1 /* MoreEventsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6071863829AA9A42003979A1 /* MoreEventsContentView.swift */; };
+		6071863F29AA9A42003979A1 /* MoreEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6071863929AA9A42003979A1 /* MoreEventsViewController.swift */; };
+		6071864029AA9A42003979A1 /* MoreEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6071863A29AA9A42003979A1 /* MoreEventsView.swift */; };
+		6071864129AA9A42003979A1 /* MoreEventsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6071863B29AA9A42003979A1 /* MoreEventsAssembly.swift */; };
+		6071864329AA9AB6003979A1 /* MoreEventsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6071864229AA9AB6003979A1 /* MoreEventsAdapter.swift */; };
+		6071864529AA9EDF003979A1 /* MoreContentLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6071864429AA9EDF003979A1 /* MoreContentLoader.swift */; };
+		6071864829AA9EF2003979A1 /* MoreContentLoaderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6071864729AA9EF2003979A1 /* MoreContentLoaderImpl.swift */; };
+		6071864B29AAA0A1003979A1 /* MoreContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6071864A29AAA0A1003979A1 /* MoreContentProvider.swift */; };
+		6071864D29AAA0AA003979A1 /* MoreContentProviderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6071864C29AAA0AA003979A1 /* MoreContentProviderImpl.swift */; };
+		6071864F29AAA46F003979A1 /* MoreEventsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6071864E29AAA46F003979A1 /* MoreEventsType.swift */; };
 		6073B8702881936A00AF07FA /* EventsCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073B86F2881936A00AF07FA /* EventsCollectionViewAdapter.swift */; };
 		6073B8722881942A00AF07FA /* PPEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073B8712881942A00AF07FA /* PPEvent.swift */; };
 		6073B8752881962700AF07FA /* EventsTypeHeaderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073B8742881962700AF07FA /* EventsTypeHeaderHeader.swift */; };
@@ -187,6 +199,10 @@
 		60BCB6802965A79B00728ED8 /* UIViewController+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB67F2965A79B00728ED8 /* UIViewController+Loader.swift */; };
 		60C23215298A5E040092949E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C23214298A5E040092949E /* UserDefaultsManager.swift */; };
 		60C23217298A5E0E0092949E /* UserDefaultsManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C23216298A5E0E0092949E /* UserDefaultsManagerImpl.swift */; };
+		60C4FB2E29AB65C500E4DDFF /* MoreLoaderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4FB2D29AB65C500E4DDFF /* MoreLoaderError.swift */; };
+		60C4FB3029AB68A900E4DDFF /* EventsConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4FB2F29AB68A900E4DDFF /* EventsConverter.swift */; };
+		60C4FB3329AB814A00E4DDFF /* PPRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4FB3229AB814A00E4DDFF /* PPRefreshControl.swift */; };
+		60C4FB3729AB893D00E4DDFF /* UIScrollView+RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4FB3629AB893D00E4DDFF /* UIScrollView+RefreshControl.swift */; };
 		60CED3F12993B3E700C59FAB /* Collection+SafeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CED3F02993B3E700C59FAB /* Collection+SafeIndex.swift */; };
 		60CED3F32993D27300C59FAB /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CED3F22993D27300C59FAB /* ForgotPasswordView.swift */; };
 		60CED3F52993DB3600C59FAB /* AcceptPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CED3F42993DB3600C59FAB /* AcceptPasswordViewController.swift */; };
@@ -305,6 +321,18 @@
 		6070D42F28ABDE1F0054F61B /* EventProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventProtocols.swift; sourceTree = "<group>"; };
 		6070D43028ABDE1F0054F61B /* EventInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInteractor.swift; sourceTree = "<group>"; };
 		6070D43128ABDE1F0054F61B /* EventContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContainer.swift; sourceTree = "<group>"; };
+		6071863529AA9A42003979A1 /* MoreEventsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreEventsPresenter.swift; sourceTree = "<group>"; };
+		6071863629AA9A42003979A1 /* MoreEventsPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreEventsPresenterImpl.swift; sourceTree = "<group>"; };
+		6071863829AA9A42003979A1 /* MoreEventsContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreEventsContentView.swift; sourceTree = "<group>"; };
+		6071863929AA9A42003979A1 /* MoreEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreEventsViewController.swift; sourceTree = "<group>"; };
+		6071863A29AA9A42003979A1 /* MoreEventsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreEventsView.swift; sourceTree = "<group>"; };
+		6071863B29AA9A42003979A1 /* MoreEventsAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreEventsAssembly.swift; sourceTree = "<group>"; };
+		6071864229AA9AB6003979A1 /* MoreEventsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreEventsAdapter.swift; sourceTree = "<group>"; };
+		6071864429AA9EDF003979A1 /* MoreContentLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreContentLoader.swift; sourceTree = "<group>"; };
+		6071864729AA9EF2003979A1 /* MoreContentLoaderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreContentLoaderImpl.swift; sourceTree = "<group>"; };
+		6071864A29AAA0A1003979A1 /* MoreContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreContentProvider.swift; sourceTree = "<group>"; };
+		6071864C29AAA0AA003979A1 /* MoreContentProviderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreContentProviderImpl.swift; sourceTree = "<group>"; };
+		6071864E29AAA46F003979A1 /* MoreEventsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreEventsType.swift; sourceTree = "<group>"; };
 		6073B86F2881936A00AF07FA /* EventsCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewAdapter.swift; sourceTree = "<group>"; };
 		6073B8712881942A00AF07FA /* PPEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPEvent.swift; sourceTree = "<group>"; };
 		6073B8742881962700AF07FA /* EventsTypeHeaderHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTypeHeaderHeader.swift; sourceTree = "<group>"; };
@@ -418,6 +446,10 @@
 		60BCB67F2965A79B00728ED8 /* UIViewController+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loader.swift"; sourceTree = "<group>"; };
 		60C23214298A5E040092949E /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		60C23216298A5E0E0092949E /* UserDefaultsManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerImpl.swift; sourceTree = "<group>"; };
+		60C4FB2D29AB65C500E4DDFF /* MoreLoaderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreLoaderError.swift; sourceTree = "<group>"; };
+		60C4FB2F29AB68A900E4DDFF /* EventsConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsConverter.swift; sourceTree = "<group>"; };
+		60C4FB3229AB814A00E4DDFF /* PPRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPRefreshControl.swift; sourceTree = "<group>"; };
+		60C4FB3629AB893D00E4DDFF /* UIScrollView+RefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+RefreshControl.swift"; sourceTree = "<group>"; };
 		60CED3F02993B3E700C59FAB /* Collection+SafeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeIndex.swift"; sourceTree = "<group>"; };
 		60CED3F22993D27300C59FAB /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		60CED3F42993DB3600C59FAB /* AcceptPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptPasswordViewController.swift; sourceTree = "<group>"; };
@@ -747,9 +779,62 @@
 			path = EventScreen;
 			sourceTree = "<group>";
 		};
+		6071863329AA9A42003979A1 /* MoreEventsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				6071864629AA9EE3003979A1 /* ContentLoader */,
+				6071864929AAA096003979A1 /* ContentProvider */,
+				6071864229AA9AB6003979A1 /* MoreEventsAdapter.swift */,
+				6071863429AA9A42003979A1 /* Presenter */,
+				6071863729AA9A42003979A1 /* View */,
+				6071863B29AA9A42003979A1 /* MoreEventsAssembly.swift */,
+				6071864E29AAA46F003979A1 /* MoreEventsType.swift */,
+			);
+			path = MoreEventsScreen;
+			sourceTree = "<group>";
+		};
+		6071863429AA9A42003979A1 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				6071863529AA9A42003979A1 /* MoreEventsPresenter.swift */,
+				6071863629AA9A42003979A1 /* MoreEventsPresenterImpl.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6071863729AA9A42003979A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6071863829AA9A42003979A1 /* MoreEventsContentView.swift */,
+				6071863929AA9A42003979A1 /* MoreEventsViewController.swift */,
+				6071863A29AA9A42003979A1 /* MoreEventsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6071864629AA9EE3003979A1 /* ContentLoader */ = {
+			isa = PBXGroup;
+			children = (
+				6071864429AA9EDF003979A1 /* MoreContentLoader.swift */,
+				6071864729AA9EF2003979A1 /* MoreContentLoaderImpl.swift */,
+				60C4FB2D29AB65C500E4DDFF /* MoreLoaderError.swift */,
+			);
+			path = ContentLoader;
+			sourceTree = "<group>";
+		};
+		6071864929AAA096003979A1 /* ContentProvider */ = {
+			isa = PBXGroup;
+			children = (
+				6071864A29AAA0A1003979A1 /* MoreContentProvider.swift */,
+				6071864C29AAA0AA003979A1 /* MoreContentProviderImpl.swift */,
+			);
+			path = ContentProvider;
+			sourceTree = "<group>";
+		};
 		6073B86E2881933300AF07FA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				60C4FB2F29AB68A900E4DDFF /* EventsConverter.swift */,
 				60A7259E29A8C4A60085ADE2 /* EventsContentProvider */,
 				6073B86F2881936A00AF07FA /* EventsCollectionViewAdapter.swift */,
 			);
@@ -914,6 +999,7 @@
 				60A9E5E82992B5F600ACF95F /* UIView+SimpleRecognizers.swift */,
 				60CED3F02993B3E700C59FAB /* Collection+SafeIndex.swift */,
 				603E94DC29AA2FAB0098BE6F /* StatusBarFrame.swift */,
+				60C4FB3629AB893D00E4DDFF /* UIScrollView+RefreshControl.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -932,6 +1018,7 @@
 		609716FD287D81F80084A63C /* EventsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				6071863329AA9A42003979A1 /* MoreEventsScreen */,
 				6073B87828819FFD00AF07FA /* EventCell */,
 				6073B86E2881933300AF07FA /* Helpers */,
 				60971700287D821A0084A63C /* EventsPresenter.swift */,
@@ -991,6 +1078,7 @@
 		6097175F287D94150084A63C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				60C4FB3129AB813A00E4DDFF /* RefreshControl */,
 				603E94D029A90F0E0098BE6F /* CommonViewControllers */,
 				603E94CD29A90E400098BE6F /* NaviagtionBars */,
 				60A5E3E12969A66100FC8A37 /* PPCalendarView */,
@@ -1159,6 +1247,14 @@
 				60C23216298A5E0E0092949E /* UserDefaultsManagerImpl.swift */,
 			);
 			path = UserDefaultsManager;
+			sourceTree = "<group>";
+		};
+		60C4FB3129AB813A00E4DDFF /* RefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				60C4FB3229AB814A00E4DDFF /* PPRefreshControl.swift */,
+			);
+			path = RefreshControl;
 			sourceTree = "<group>";
 		};
 		60CED3F62993DB3B00C59FAB /* AcceptPasswordScreen */ = {
@@ -1427,6 +1523,7 @@
 			files = (
 				6097177C287EC2C90084A63C /* HowToEnterStackView.swift in Sources */,
 				60971798287EDE5D0084A63C /* FogotPasswordContainer.swift in Sources */,
+				60C4FB2E29AB65C500E4DDFF /* MoreLoaderError.swift in Sources */,
 				602220C82959E56100D2F7B2 /* Coordinator.swift in Sources */,
 				60A7259D29A8C4940085ADE2 /* EventsContentProviderImpl.swift in Sources */,
 				603E94C629A90A110098BE6F /* SearchScreenPresenter.swift in Sources */,
@@ -1452,16 +1549,19 @@
 				606A9A8D2966FAB300A17F13 /* PPCollectionsLoaderView.swift in Sources */,
 				60FAF6132953446A00982457 /* PPTextFieldDisabledModePresenter.swift in Sources */,
 				6052918C294E084F005B0373 /* RegisterView.swift in Sources */,
+				6071864329AA9AB6003979A1 /* MoreEventsAdapter.swift in Sources */,
 				60A5E3E92969A6D500FC8A37 /* MonthMetadata.swift in Sources */,
 				6037CA4E296D969F00E4BC03 /* PPPlace.swift in Sources */,
 				60BB681B298ADC8F00D82CD1 /* Media.swift in Sources */,
 				6073B87B2881A01800AF07FA /* EventCell.swift in Sources */,
+				60C4FB3329AB814A00E4DDFF /* PPRefreshControl.swift in Sources */,
 				6037CA4C296D957600E4BC03 /* PPEventInformation.swift in Sources */,
 				60498011297D50DF0096EB8E /* MKMapView+Extensions.swift in Sources */,
 				60971731287D840A0084A63C /* InitialRouter.swift in Sources */,
 				609716F8287D7D880084A63C /* AppCoordinator.swift in Sources */,
 				608160432962CF86006B0919 /* PPAccountManager.swift in Sources */,
 				6049801A297D70540096EB8E /* PeopleEventnfoModel.swift in Sources */,
+				6071863F29AA9A42003979A1 /* MoreEventsViewController.swift in Sources */,
 				609716F3287D7C1D0084A63C /* AuthCoordinator.swift in Sources */,
 				602220CB295A08F000D2F7B2 /* Decoder.swift in Sources */,
 				6097179C287F172C0084A63C /* NotificationCenterManager.swift in Sources */,
@@ -1469,15 +1569,19 @@
 				60FFFE1329647ADB004DB8D4 /* Array+MutateEach.swift in Sources */,
 				60B48CD728EC519D006C6CF5 /* EventsEndPoint.swift in Sources */,
 				6097172A287D83360084A63C /* FavouritesPresenter.swift in Sources */,
+				60C4FB3729AB893D00E4DDFF /* UIScrollView+RefreshControl.swift in Sources */,
 				60A5E3E82969A6D500FC8A37 /* Day.swift in Sources */,
 				60971761287D94710084A63C /* AppButton.swift in Sources */,
 				60DB792028B4062E0058A3D7 /* CommonCollectionViewAdapter.swift in Sources */,
 				603E94C929A90A110098BE6F /* SearchScreenContentView.swift in Sources */,
 				6097179A287EF5B80084A63C /* AuthRouterProtocol.swift in Sources */,
+				6071864529AA9EDF003979A1 /* MoreContentLoader.swift in Sources */,
 				603E94C529A90A110098BE6F /* SearchScreenPresenterImpl.swift in Sources */,
 				60DB792228B419940058A3D7 /* LocationView.swift in Sources */,
 				60B48CD928EC5BC3006C6CF5 /* AuthEndPoint.swift in Sources */,
+				6071863C29AA9A42003979A1 /* MoreEventsPresenter.swift in Sources */,
 				60971796287EDE5D0084A63C /* FogotPasswordProtocols.swift in Sources */,
+				6071864F29AAA46F003979A1 /* MoreEventsType.swift in Sources */,
 				600D25F1299A781300189AC7 /* ChangePasswordView.swift in Sources */,
 				6097170A287D821A0084A63C /* EventsInteractor.swift in Sources */,
 				60A7259B29A8C4850085ADE2 /* EventsContentProvider.swift in Sources */,
@@ -1488,6 +1592,7 @@
 				608160462962CFA0006B0919 /* PPAccountManagerImpl.swift in Sources */,
 				60A1E60A28AFACD400E80D0D /* EventView.swift in Sources */,
 				602220D5295CBA9000D2F7B2 /* KeyChainMananger.swift in Sources */,
+				6071863D29AA9A42003979A1 /* MoreEventsPresenterImpl.swift in Sources */,
 				6070D43328ABDE1F0054F61B /* EventRouter.swift in Sources */,
 				60971721287D824A0084A63C /* ProfileProtocols.swift in Sources */,
 				602220D1295C4F2500D2F7B2 /* PPToken.swift in Sources */,
@@ -1504,6 +1609,7 @@
 				60BCB6802965A79B00728ED8 /* UIViewController+Loader.swift in Sources */,
 				60FFFE0729644E6B004DB8D4 /* EventsManager.swift in Sources */,
 				60FFFE0929644E78004DB8D4 /* EventsManagerImpl.swift in Sources */,
+				6071864029AA9A42003979A1 /* MoreEventsView.swift in Sources */,
 				606BEE6A298CD6F900C73395 /* MultipartRequest.swift in Sources */,
 				6097171F287D824A0084A63C /* ProfileRouter.swift in Sources */,
 				6060DE702921145A0017F7F7 /* EnterView.swift in Sources */,
@@ -1526,6 +1632,7 @@
 				60971765287D9C630084A63C /* NavigationBarWithLogoAndActions.swift in Sources */,
 				60BCB67C296599A500728ED8 /* PPLIkeView.swift in Sources */,
 				602220CD295A08F700D2F7B2 /* DecoderImpl.swift in Sources */,
+				6071864B29AAA0A1003979A1 /* MoreContentProvider.swift in Sources */,
 				60BCB6752965913B00728ED8 /* Date+Fromatters.swift in Sources */,
 				6060DE6D29210BD30017F7F7 /* ValidationTokenManager.swift in Sources */,
 				60FAF627295351C500982457 /* PPToastData.swift in Sources */,
@@ -1546,6 +1653,7 @@
 				60A1E60C28AFAFE500E80D0D /* EventInfoList.swift in Sources */,
 				60B48CD528E5C16C006C6CF5 /* NetworkManager.swift in Sources */,
 				60FAF615295344E700982457 /* PPTextFieldSecureModePresenter.swift in Sources */,
+				60C4FB3029AB68A900E4DDFF /* EventsConverter.swift in Sources */,
 				60971709287D821A0084A63C /* EventsProtocols.swift in Sources */,
 				600D25F0299A781300189AC7 /* ChangePasswordPresenter.swift in Sources */,
 				60971794287EDE5D0084A63C /* FogotPasswordRouter.swift in Sources */,
@@ -1566,6 +1674,7 @@
 				60FAF61A295349F000982457 /* UIControl+extensions.swift in Sources */,
 				603E94E229AA39D00098BE6F /* ProfileContentProviderImpl.swift in Sources */,
 				60918EDD288835E400D9E032 /* EventsDelegate.swift in Sources */,
+				6071864829AA9EF2003979A1 /* MoreContentLoaderImpl.swift in Sources */,
 				60971772287DA60D0084A63C /* EnterContainer.swift in Sources */,
 				60FFFE0F29645F6B004DB8D4 /* LocationManagerImpl.swift in Sources */,
 				60CED3F52993DB3600C59FAB /* AcceptPasswordViewController.swift in Sources */,
@@ -1611,6 +1720,8 @@
 				60DA33B428802FF6004E52A3 /* UIStackView+convenieceInit.swift in Sources */,
 				600D25F3299A781300189AC7 /* ChangePasswordViewController.swift in Sources */,
 				603B506128EDEA4A00A83214 /* R.generated.swift in Sources */,
+				6071863E29AA9A42003979A1 /* MoreEventsContentView.swift in Sources */,
+				6071864D29AAA0AA003979A1 /* MoreContentProviderImpl.swift in Sources */,
 				600D25F4299A781300189AC7 /* ChangePasswordAssembly.swift in Sources */,
 				60CED3F32993D27300C59FAB /* ForgotPasswordView.swift in Sources */,
 				603E94B729A8F7E20098BE6F /* ProfileContentView.swift in Sources */,
@@ -1625,6 +1736,7 @@
 				60A9E5E92992B5F600ACF95F /* UIView+SimpleRecognizers.swift in Sources */,
 				6073B87728819A2F00AF07FA /* Section.swift in Sources */,
 				60BB681D298AE49800D82CD1 /* MultipartDataEncoder.swift in Sources */,
+				6071864129AA9A42003979A1 /* MoreEventsAssembly.swift in Sources */,
 				60971733287D84CA0084A63C /* InitialAssembly.swift in Sources */,
 				60DA4CEB28BE131C00B7E428 /* BaseRouter.swift in Sources */,
 				609716DD287D75230084A63C /* SceneDelegate.swift in Sources */,

@@ -9,11 +9,6 @@
 import Foundation
 
 final class EventsPresenter {
-    enum SectionType: Int {
-        case today
-        case closest
-        case main
-    }
     
 	weak var view: EventsViewInput?
     weak var moduleOutput: EventsModuleOutput?
@@ -28,30 +23,8 @@ final class EventsPresenter {
 }
 
 private extension EventsPresenter {
-    func getDateOfEvent(start: Int, end: Int) -> String {
-        let startDate = Date(timeIntervalSince1970: TimeInterval(start)).toString()
-        let endDate = Date(timeIntervalSince1970: TimeInterval(end)).toString()
-        return startDate == endDate ? startDate : "\(startDate) - \(endDate)"
-    }
-    
-    func getEventsInfo(events: [PPEvent]) -> [EventInfo] {
-        return events.map { event in
-            let url = URL(string: event.image)
-            let dateOfEvent = getDateOfEvent(start: event.start, end: event.end)
-            let capitlizedTitle = event.title.capitalizedFirst
-            return EventInfo(id: event.kudagoID, title: capitlizedTitle, date: dateOfEvent, image: url)
-        }
-    }
-    
-    func makeSection(withInfo info: [EventInfo], ofType type: SectionType) -> Section<EventInfo> {
-        switch type {
-        case .today:
-            return Section<EventInfo>(header: Localizable.today(), items: info)
-        case .closest:
-            return Section<EventInfo>(header: Localizable.closest(), items: info)
-        case .main:
-            return Section<EventInfo>(header: Localizable.main(), items: info)
-        }
+    func makeSection(withInfo info: [EventInfo], title: String,  ofType type: SectionType) -> Section<EventInfo> {
+        return Section<EventInfo>(header: title, moreType: .today, sectionType: type, items: info)
     }
     
     func makeProfileInfo(from model: PPUserInformation) -> ProfileInfo {
@@ -65,6 +38,10 @@ extension EventsPresenter: EventsModuleInput {
 }
 
 extension EventsPresenter: EventsViewOutput {
+    func moreTapped(moreType: MoreEventsType) {
+        router.openMore(withType: moreType)
+    }
+    
     func openProfile() {
         interactor.getUserForProfile()
     }
@@ -73,21 +50,18 @@ extension EventsPresenter: EventsViewOutput {
         interactor.eventLiked(eventId: eventId, index: index, section: section)
     }
     
-    func tappedOnEvents(section: Int, index: Int) {
+    func tappedOnEvents(section: SectionType, index: Int) {
         let event: PPEvent
         switch section {
-        case SectionType.main.rawValue:
+        case .main:
             event = interactor.getMainEventId(withIndex: index)
             router.openEventScreen(withId: event.kudagoID, and: event.place)
-        case SectionType.today.rawValue:
+        case .today:
             event = interactor.getTodayEventId(withIndex: index)
             router.openEventScreen(withId: event.kudagoID, and: event.place)
-        case SectionType.closest.rawValue:
+        case .closest:
             event = interactor.getClosestEventId(withIndex: index)
             router.openEventScreen(withId: event.kudagoID, and: event.place)
-        default:
-            debugPrint("[DEBUG: Unknown index of event]")
-            break
         }
     }
     
@@ -112,27 +86,27 @@ extension EventsPresenter: EventsInteractorOutput {
     }
     
     func addNewEventsIntoMainSection(_ events: [PPEvent]) {
-        let info = getEventsInfo(events: events)
+        let info = EventsConverter.getEventsInfo(events: events)
         view?.showNewPageInMainSection(with: info)
     }
     
     func updateTodaySection(with events: [PPEvent]) {
-        let info = getEventsInfo(events: events)
-        let section = makeSection(withInfo: info, ofType: .today)
+        let info = EventsConverter.getEventsInfo(events: events)
+        let section = makeSection(withInfo: info, title: Localizable.today(), ofType: .today)
         view?.hideLoaderView()
         view?.updateTodaySection(with: section)
     }
     
     func updateClosestSection(with events: [PPEvent]) {
-        let info = getEventsInfo(events: events)
-        let section = makeSection(withInfo: info, ofType: .closest)
+        let info = EventsConverter.getEventsInfo(events: events)
+        let section = makeSection(withInfo: info, title: Localizable.closest(), ofType: .closest)
         view?.hideLoaderView()
         view?.updateClosestSection(with: section)
     }
     
     func updateMainSection(with events: [PPEvent]) {
-        let info = getEventsInfo(events: events)
-        let section = makeSection(withInfo: info, ofType: .main)
+        let info = EventsConverter.getEventsInfo(events: events)
+        let section = makeSection(withInfo: info, title: Localizable.main(), ofType: .main)
         view?.hideLoaderView()
         view?.updateMainSection(with: section)
     }

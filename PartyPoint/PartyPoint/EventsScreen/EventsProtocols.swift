@@ -31,10 +31,11 @@ protocol EventsViewInput: AnyObject {
 
 protocol EventsViewOutput: AnyObject {
     func onViewDidLoad()
-    func tappedOnEvents(section: Int, index: Int)
+    func tappedOnEvents(section: SectionType, index: Int)
     func loadNextPage(_ page: Int)
     func eventLiked(eventId: Int, index: Int, section: Int)
     func openProfile()
+    func moreTapped(moreType: MoreEventsType)
 }
 
 protocol EventsInteractorInput: AnyObject {
@@ -60,4 +61,5 @@ protocol EventsInteractorOutput: AnyObject {
 protocol EventsRouterInput: AnyObject {
     func openEventScreen(withId id: Int, and placeId: Int)
     func openProfile(with info: ProfileInfo)
+    func openMore(withType type: MoreEventsType)
 }

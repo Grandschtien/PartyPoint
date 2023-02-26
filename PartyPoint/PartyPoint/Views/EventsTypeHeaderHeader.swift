@@ -5,7 +5,7 @@
 //  Created by Егор Шкарин on 15.07.2022.
 //
 
-import UIKit
+import SnapKit
 
 private let HEADER_FONT_SIZE: CGFloat = 24 * SCREEN_SCALE_BY_HEIGHT
 private let MORE_BUTTON_RIGHT_INSET: CGFloat = 10
@@ -13,6 +13,10 @@ private let MORE_BUTTON_WIDTH: CGFloat = 50.scale()
 private let HEADER_LEFT_OFFSET: CGFloat = 10
 
 final class EventsTypeHeaderHeader: UICollectionReusableView {
+    typealias MoreAction = (MoreEventsType) -> Void
+    
+    private var moreAction: EmptyClosure?
+    
     private lazy var header: UILabel = {
         let label = UILabel()
         label.textColor = Colors.miniColor()
@@ -24,23 +28,27 @@ final class EventsTypeHeaderHeader: UICollectionReusableView {
         let btn = UIButton()
         btn.titleLabel?.font = Fonts.sfProDisplayBold(size: HEADER_FONT_SIZE)
         btn.setTitle(Localizable.more_button_title(), for: .normal)
-        btn.addTarget(self, action: #selector(moreAction), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(moreActionHandler), for: .touchUpInside)
         return btn
     }()
-    
-    var btnAction: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLabel()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
-    func configure(withHeader header: String) {
+    func configure(withHeader header: String, isMoreButtonHidden: Bool) {
         self.header.text = header
+        self.moreButton.isHidden = isMoreButtonHidden
+    }
+    
+    func setMoreAction(_ action: @escaping EmptyClosure) {
+        self.moreAction = action
     }
 }
 
@@ -71,7 +79,7 @@ extension EventsTypeHeaderHeader {
 //MARK: Actions
 extension EventsTypeHeaderHeader {
     @objc
-    private func moreAction() {
-        btnAction?()
+    private func moreActionHandler() {
+        moreAction?()
     }
 }

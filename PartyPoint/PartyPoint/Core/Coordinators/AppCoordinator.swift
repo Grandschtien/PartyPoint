@@ -17,21 +17,23 @@ final class AppCoordinatorImpl: AppCoordinator {
     private let authFlow: Coordinator
     private let mainFlow: Coordinator
     private let storage: UserDefaultsManager
+    private let validateTokenManager: ValidationTokenManager
     
     private var isLogged: Bool {
         return storage.getIsLogged()
     }
 
-    init(window: UIWindow, userDefaultsManager: UserDefaultsManager) {
+    init(window: UIWindow, userDefaultsManager: UserDefaultsManager, validateTokenManager: ValidationTokenManager) {
         self.window = window
         self.storage = userDefaultsManager
         self.mainFlow = MainFlowCoordinator(window: window)
         self.authFlow = AuthCoordinator(window: window, mainFlowCoordinator: mainFlow)
+        self.validateTokenManager = validateTokenManager
     }
     
     func start() {
         mainFlow.setAppCoordinator?(self)
-        if isLogged {
+        if isLogged && validateTokenManager.isValidRefresh {
             mainFlow.start()
         } else {
             authFlow.start()

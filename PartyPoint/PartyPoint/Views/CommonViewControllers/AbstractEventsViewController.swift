@@ -13,7 +13,6 @@ private let TITLE_LABEL_FONT_SIZE: CGFloat = 16 * SCREEN_SCALE_BY_HEIGHT
 class AbstractEventsViewController: UIViewController {
     
     internal let navigationBar = PPProfileNavigationBar()
-    
     internal lazy var eventsCollection: UICollectionView = {
         let collection = UICollectionView(
             frame: .zero,
@@ -24,8 +23,8 @@ class AbstractEventsViewController: UIViewController {
         
         collection.showsVerticalScrollIndicator = false
         collection.showsHorizontalScrollIndicator = false
-        
         collection.backgroundColor = Colors.mainColor()
+        collection.addPullToRefresh(refreshCompletion: nil)
         return collection
     }()
     
@@ -37,6 +36,7 @@ class AbstractEventsViewController: UIViewController {
                                     height: navigationBar.height)
         navigationItem.titleView = navigationBar
         view.addSubview(eventsCollection)
+        
         setupConstraints()
     }
     

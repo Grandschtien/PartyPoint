@@ -10,6 +10,7 @@ import Foundation
 struct EventInfo: Hashable {
     let uid = UUID()
     let id: Int
+    let placeId: Int
     let title: String
     let date: String
     let image: URL?

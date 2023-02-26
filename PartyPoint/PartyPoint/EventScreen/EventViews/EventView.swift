@@ -79,7 +79,6 @@ private extension EventView {
     }
     
     func setupUI() {
-        backgroundImageView.image = Images.moc()
         backgroundOfContentListView.backgroundColor = Colors.mainColor()
         
         
