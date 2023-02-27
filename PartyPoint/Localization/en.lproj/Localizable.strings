@@ -150,3 +150,5 @@
 "profile" = "Profile";
 "exit" = "Exit";
 "delete_account" = "Delete account";
+
+"no_token" = "No token";

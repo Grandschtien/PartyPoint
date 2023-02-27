@@ -16,8 +16,7 @@ final class EnterContainer {
 
 	static func assemble(with context: EnterContext) -> EnterContainer {
         let router = EnterRouter(mainFlowCoordinator: context.mainFlowCoordinator)
-        let networkRouter = Router<AuthEndPoint>()
-        let authManager = AuthManagerImpl(router: networkRouter)
+        let authManager = AuthManagerFabric.assembly()
         let decoder = PPDecoderImpl()
         let keyChainManager = KeyChainManangerImpl()
         let accountManager = PPAccountManagerImpl(decoder: decoder)

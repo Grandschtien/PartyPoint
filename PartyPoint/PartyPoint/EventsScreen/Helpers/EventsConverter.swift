@@ -19,7 +19,7 @@ final class EventsConverter {
             let url = URL(string: event.image)
             let dateOfEvent = getDateOfEvent(start: event.start, end: event.end)
             let capitlizedTitle = event.title.capitalizedFirst
-            return EventInfo(id: event.kudagoID, placeId: event.place, title: capitlizedTitle, date: dateOfEvent, image: url)
+            return EventInfo(id: event.kudagoID, placeId: event.place, title: capitlizedTitle, date: dateOfEvent, image: url, isLiked: event.isLiked)
         }
     }
 }

@@ -16,12 +16,9 @@ final class ProfileContainer {
 	static func assemble(with context: ProfileContext) -> ProfileContainer {
         let router = ProfileRouter(appCoornator: context.appCoordinator)
         let contentProvider = ProfileContentProviderImpl(user: context.profileInfo)
-        let networkRouter = Router<AuthEndPoint>()
-        let authManager = AuthManagerImpl(router: networkRouter)
-        let decoder = PPDecoderImpl()
-        let accountManager = PPAccountManagerImpl(decoder: decoder)
-        let keychainManager = KeyChainManangerImpl()
-        let tokenManager = ValidationTokenManagerImpl(keyChainManager: keychainManager, authManager: authManager, accountManager: accountManager, decoder: decoder)
+        let authManager =  AuthManagerFabric.assembly()
+        let accountManager = AccountManangerFabric.assembly()
+        let tokenManager = TokenManagerFabric.assembly()
         let interactor = ProfileInteractor(profileContentProvider: contentProvider,
                                            authManager: authManager,
                                            accountManager: accountManager,

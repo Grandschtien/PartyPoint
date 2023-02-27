@@ -53,7 +53,7 @@ private extension ValidationTokenManagerImpl {
                              expireDate: Date().addingTimeInterval(exiperingTokenTime),
                              expireRefreshDate: Date().addingTimeInterval(expireRefreshTokenTime))
         case let .failure(reason):
-            debugPrint(reason ?? "")
+            debugPrint("[DEBUG]: Validation of token has failed, reason: \(reason ?? "No reason")")
             throw ValidationTokenErrors.cannotRefreshToken
         }
     }
@@ -68,6 +68,10 @@ extension ValidationTokenManagerImpl: ValidationTokenManager {
                                                type: TokenInfo.self)
         else {
             return false
+        }
+        
+        if !token.isValidRefresh {
+            removeTokens()
         }
         
         return token.isValidRefresh
@@ -122,5 +126,17 @@ extension ValidationTokenManagerImpl: ValidationTokenManager {
                 throw error
             }
         }
+    }
+    
+    func getCurrentTokens() throws -> (access: String, refresh: String) {
+        guard let user = accountManager.getUser(),
+              let token = keyChainManager.read(service: PPToken.kTokensKeyChain,
+                                               account: "\(user.id)",
+                                               type: TokenInfo.self)
+        else {
+            throw ValidationTokenErrors.noSavedTokens
+        }
+        
+        return (token.accessToken, token.refreshToken)
     }
 }

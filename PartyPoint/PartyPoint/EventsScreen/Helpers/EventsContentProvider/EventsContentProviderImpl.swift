@@ -49,17 +49,4 @@ extension EventsContentProviderImpl: EventsContentProvider {
     func setClosesEvents(_ events: [PPEvent]) {
         closestEvents.append(contentsOf: events)
     }
-    
-    func updateLikeState(eventId: Int, index: Int, section: Int) {
-        switch section {
-        case 0:
-            mainEvents[index]
-        case 1:
-            break
-        case 2:
-            break
-        default:
-            break
-        }
-    }
 }

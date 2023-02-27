@@ -15,8 +15,7 @@ final class FogotPasswordContainer {
 
 	static func assemble(with context: FogotPasswordContext) -> FogotPasswordContainer {
         let router = FogotPasswordRouter()
-        let networkRouter = Router<AuthEndPoint>()
-        let authManager = AuthManagerImpl(router: networkRouter)
+        let authManager = AuthManagerFabric.assembly()
         let interactor = FogotPasswordInteractor(authManager: authManager)
         let presenter = FogotPasswordPresenter(router: router, interactor: interactor)
 		let viewController = FogotPasswordViewController(output: presenter)

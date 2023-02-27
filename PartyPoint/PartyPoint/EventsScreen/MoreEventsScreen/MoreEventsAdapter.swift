@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol MoreEventsAdapterDelegate: AnyObject {
+    func eventLiked(eventId: Int, index: Int)
+}
+
 final class MoreEventsAdapter: NSObject {
     enum Section {
         case main
@@ -27,7 +31,7 @@ final class MoreEventsAdapter: NSObject {
     private weak var collectionView: UICollectionView?
     
     weak var scrollDelegate: EventsScrollDelegate?
-    weak var delegate: EventsCollectionViewAdapterDelegate?
+    weak var delegate: MoreEventsAdapterDelegate?
     
     private lazy var dataSource: DataSource = setupDataSource()
     
@@ -66,8 +70,7 @@ private extension MoreEventsAdapter {
             
             cell.setLikeAction { [weak self] in
                 self?.delegate?.eventLiked(eventId: event.id,
-                                           index: indexPath.item,
-                                           section: indexPath.section)
+                                           index: indexPath.item)
             }
             
             return cell

@@ -54,6 +54,6 @@ extension LocationManagerImpl: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Swift.Error) {
-        debugPrint(error.localizedDescription)
+        debugPrint("[DEBUG]: Error with location, reason: \(error.localizedDescription)")
     }
 }

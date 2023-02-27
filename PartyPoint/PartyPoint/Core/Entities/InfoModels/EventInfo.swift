@@ -14,5 +14,5 @@ struct EventInfo: Hashable {
     let title: String
     let date: String
     let image: URL?
-    var isLiked = false
+    var isLiked: Bool
 }

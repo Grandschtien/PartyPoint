@@ -16,7 +16,8 @@ final class EventContainer {
 	static func assemble(with context: EventContext) -> EventContainer {
         let router = EventRouter()
         let networkRouter = Router<EventsEndPoint>()
-        let eventsManager = EventsManagerImpl(router: networkRouter)
+        let validationTokenManager = TokenManagerFabric.assembly()
+        let eventsManager = EventsManagerImpl(router: networkRouter, validationTokenManager: validationTokenManager)
         let decoder = PPDecoderImpl()
         let interactor = EventInteractor(eventId: context.eventId,
                                          placeId: context.placeId,

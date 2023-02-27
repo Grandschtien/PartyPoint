@@ -68,6 +68,10 @@ private extension EventsViewController {
 }
 
 extension EventsViewController: EventsViewInput {
+    func updateViewWithNewLike(eventId: Int) {
+        eventsCollectionAdapter.updateLikeState(eventId: eventId)
+    }
+    
     func setInitialUserInfo(name: String?, image: String?) {
         setupNaviagtionBar(name: name, avatar: image)
     }
@@ -111,7 +115,7 @@ extension EventsViewController: EventsCollectionViewAdapterDelegate {
         output.moreTapped(moreType: moreType)
     }
     
-    func eventLiked(eventId: Int, index: Int, section: Int) {
+    func eventLiked(eventId: Int, index: Int, section: SectionType) {
         output.eventLiked(eventId: eventId, index: index, section: section)
     }
 }

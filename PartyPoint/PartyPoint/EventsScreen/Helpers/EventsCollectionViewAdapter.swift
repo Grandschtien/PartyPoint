@@ -8,7 +8,7 @@
 import UIKit
 
 protocol EventsCollectionViewAdapterDelegate: AnyObject {
-    func eventLiked(eventId: Int, index: Int, section: Int)
+    func eventLiked(eventId: Int, index: Int, section: SectionType)
     func moreTapped(moreType: MoreEventsType)
 }
 
@@ -64,6 +64,15 @@ final class EventsCollectionViewAdapter: NSObject {
         applySnapshot()
     }
     
+    func updateLikeState(eventId: Int) {
+        sections.mutateEach { section in
+            section.items.mutateEach { event in
+                if event.id == eventId { event.isLiked = !event.isLiked }
+            }
+        }
+        applySnapshot()
+    }
+    
     func setTapAction(_ action: @escaping TapOnEventsAction) {
         self.didTapOnEventsAction = action
     }
@@ -83,11 +92,11 @@ private extension EventsCollectionViewAdapter {
         let dataSource = DataSource(collectionView: collectionView) { (collectionView, indexPath, event) -> UICollectionViewCell in
             let cell = collectionView.dequeueCell(cellType: EventCell.self, for: indexPath)
             cell.configure(withEvent: event)
-            
+            let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
             cell.setLikeAction { [weak self] in
                 self?.delegate?.eventLiked(eventId: event.id,
                                            index: indexPath.item,
-                                           section: indexPath.section)
+                                           section: section.sectionType)
             }
             
             return cell
@@ -129,13 +138,13 @@ private extension EventsCollectionViewAdapter {
         return dataSource
     }
     
-    private func applySnapshot() {
+    private func applySnapshot(animatingDifferences: Bool = true) {
         var snapshot = Snapshot()
         snapshot.appendSections(sections)
         for section in sections {
             snapshot.appendItems(section.items, toSection: section)
         }
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
     
     private func setupLayout() -> UICollectionViewCompositionalLayout {

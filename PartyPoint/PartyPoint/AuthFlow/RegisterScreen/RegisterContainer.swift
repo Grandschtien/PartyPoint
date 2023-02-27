@@ -16,8 +16,7 @@ final class RegisterContainer {
 	static func assemble(with context: RegisterContext) -> RegisterContainer {
         
         let router = RegisterRouter(mainFlowCoordinator: context.mainFlowCoordinator)
-        let networkRouter = Router<AuthEndPoint>()
-        let authManager = AuthManagerImpl(router: networkRouter)
+        let authManager = AuthManagerFabric.assembly()
         let keyChainManager = KeyChainManangerImpl()
         let decoder = PPDecoderImpl()
         let accountMananger = PPAccountManagerImpl(decoder: decoder)

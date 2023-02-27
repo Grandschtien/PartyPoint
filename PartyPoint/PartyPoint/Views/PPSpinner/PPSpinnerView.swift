@@ -33,7 +33,7 @@ public class PPSpinnerView: UIImageView {
             case .s:
                 return CGSize(width: 16, height: 16)
             case .m:
-                return CGSize(width: 40, height: 40)
+                return CGSize(width: 24, height: 24)
             case .l:
                 return CGSize(width: 60, height: 60)
             }

@@ -19,6 +19,4 @@ protocol EventsContentProvider {
     func getMainEventId(withIndex index: Int) -> PPEvent
     func getClosestEventId(withIndex index: Int) -> PPEvent
     func getTodayEventId(withIndex index: Int) -> PPEvent
-    
-    func updateLikeState(eventId: Int, index: Int, section: Int)
 }

@@ -16,7 +16,8 @@ final class MoreEventsAssembly {
     static func assemble(screenType: MoreEventsType) -> MoreEventsAssembly {
         let contentProvider = MoreContentProviderImpl(screenType: screenType)
         let router = Router<EventsEndPoint>()
-        let eventsManager = EventsManagerImpl(router: router)
+        let tokenManager = TokenManagerFabric.assembly()
+        let eventsManager = EventsManagerImpl(router: router, validationTokenManager: tokenManager)
         let decoder = PPDecoderImpl()
         let systemLocationManager = CLLocationManager()
         let locationManager = LocationManagerImpl(locationManager: systemLocationManager)

@@ -24,6 +24,7 @@ protocol EventsViewInput: AnyObject {
     func updateView(withError reason: String)
     func changeCollectionViewVisibility(isHidden: Bool)
     func setInitialUserInfo(name: String?, image: String?)
+    func updateViewWithNewLike(eventId: Int)
 
     func showLoaderView()
     func hideLoaderView()
@@ -33,7 +34,7 @@ protocol EventsViewOutput: AnyObject {
     func onViewDidLoad()
     func tappedOnEvents(section: SectionType, index: Int)
     func loadNextPage(_ page: Int)
-    func eventLiked(eventId: Int, index: Int, section: Int)
+    func eventLiked(eventId: Int, index: Int, section: SectionType)
     func openProfile()
     func moreTapped(moreType: MoreEventsType)
 }
@@ -44,7 +45,7 @@ protocol EventsInteractorInput: AnyObject {
     func getClosestEventId(withIndex index: Int) -> PPEvent
     func getTodayEventId(withIndex index: Int) -> PPEvent
     func loadNextPageOfMain(page: Int)
-    func eventLiked(eventId: Int, index: Int, section: Int)
+    func eventLiked(eventId: Int, index: Int, section: SectionType)
     func getUserForProfile()
 }
 
@@ -56,6 +57,7 @@ protocol EventsInteractorOutput: AnyObject {
     func addNewEventsIntoMainSection(_ events: [PPEvent])
     func setInitialUserInfo(name: String?, image: String?)
     func openProfile(withUser user: PPUserInformation)
+    func updateViewWithNewLike(eventId: Int)
 }
 
 protocol EventsRouterInput: AnyObject {

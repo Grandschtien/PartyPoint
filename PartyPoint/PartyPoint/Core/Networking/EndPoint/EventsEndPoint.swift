@@ -8,10 +8,10 @@
 import Foundation
 
 enum EventsEndPoint {
-    case mainEvents(page: Int)
-    case closeEvents(page: Int, lat: Double, lon: Double)
-    case todayEvents(page: Int)
-    case event(id: Int, placeId: Int)
+    case mainEvents(page: Int, token: String)
+    case closeEvents(page: Int, lat: Double, lon: Double, token: String)
+    case todayEvents(page: Int, token: String)
+    case event(id: Int, placeId: Int, token: String)
 }
 
 extension EventsEndPoint: EndPointType {
@@ -42,7 +42,7 @@ extension EventsEndPoint: EndPointType {
             return "external/close"
         case .todayEvents:
             return "external/today"
-        case let .event(id, placeId):
+        case let .event(id, placeId, _):
             return "/external/\(placeId)/\(id)"
         }
     }
@@ -62,16 +62,24 @@ extension EventsEndPoint: EndPointType {
     
     var task: HTTPTask {
         switch self {
-        case let .mainEvents(page):
-            return .requestParameters(bodyParameters: nil, urlParameters: ["page": page])
-        case let .closeEvents(page, lat, lon):
-            return .requestParameters(bodyParameters: nil, urlParameters: ["page": page,
-                                                                           "lat": lat,
-                                                                           "lon": lon])
-        case let .todayEvents(page):
-            return .requestParameters(bodyParameters: nil, urlParameters: ["page": page])
-        case .event:
-            return .request
+        case let .mainEvents(page, token):
+            return .requestParametersWithHeaders(bodyParameters: nil,
+                                                 urlParameters: ["page": page],
+                                                 additionalParameters: ["Authorization": "Bearer \(token)"])
+        case let .closeEvents(page, lat, lon, token):
+            return .requestParametersWithHeaders(bodyParameters: nil,
+                                                 urlParameters: ["page": page,
+                                                                 "lat": lat,
+                                                                 "lon": lon],
+                                                 additionalParameters: ["Authorization": "Bearer \(token)"])
+        case let .todayEvents(page, token):
+            return .requestParametersWithHeaders(bodyParameters: nil,
+                                                 urlParameters: ["page": page],
+                                                 additionalParameters: ["Authorization": "Bearer \(token)"])
+        case let .event(_, _, token):
+            return .requestParametersWithHeaders(bodyParameters: nil,
+                                                 urlParameters: nil,
+                                                 additionalParameters: ["Authorization": "Bearer \(token)"])
         }
     }
     

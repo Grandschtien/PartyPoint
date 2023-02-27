@@ -49,7 +49,7 @@ extension EventsPresenter: EventsViewOutput {
         interactor.getUserForProfile()
     }
     
-    func eventLiked(eventId: Int, index: Int, section: Int) {
+    func eventLiked(eventId: Int, index: Int, section: SectionType) {
         interactor.eventLiked(eventId: eventId, index: index, section: section)
     }
     
@@ -79,6 +79,10 @@ extension EventsPresenter: EventsViewOutput {
 }
 
 extension EventsPresenter: EventsInteractorOutput {
+    func updateViewWithNewLike(eventId: Int) {
+        view?.updateViewWithNewLike(eventId: eventId)
+    }
+    
     func openProfile(withUser user: PPUserInformation) {
         let profileInfo = makeProfileInfo(from: user)
         router.openProfile(with: profileInfo)

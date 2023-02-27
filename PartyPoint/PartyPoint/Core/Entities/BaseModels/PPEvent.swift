@@ -19,10 +19,12 @@ struct PPEvent: Hashable, Codable {
     let image: String
     let place: Int
     let description, price: String
+    let isLiked: Bool
     
     enum CodingKeys: String, CodingKey {
         case id
         case kudagoID = "kudago_id"
+        case isLiked = "is_liked"
         case title, start, end, location, image, place, description, price
     }
 }

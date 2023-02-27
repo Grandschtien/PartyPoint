@@ -29,7 +29,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
-        let storage = UserDefaults.standard
         coordinator = makeAppCoordinator(window: window)
         coordinator?.start()
     }
@@ -37,15 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func makeAppCoordinator(window: UIWindow) -> AppCoordinatorImpl {
         let storage = UserDefaults.standard
         let userDefaultsManager = UserDefaultsManagerImpl(storage: storage)
-        let keyChainManager = KeyChainManangerImpl()
-        let router = Router<AuthEndPoint>()
-        let authManager = AuthManagerImpl(router: router)
-        let decoder = PPDecoderImpl()
-        let accountManager = PPAccountManagerImpl(decoder: decoder)
-        let validateTokenManager = ValidationTokenManagerImpl(keyChainManager: keyChainManager,
-                                                              authManager: authManager,
-                                                              accountManager: accountManager,
-                                                              decoder: decoder)
+        let validateTokenManager = TokenManagerFabric.assembly()
         return AppCoordinatorImpl(window: window, userDefaultsManager: userDefaultsManager, validateTokenManager: validateTokenManager)
     }
 }

@@ -11,8 +11,7 @@ final class AcceptPasswordAssebly {
     let viewController: UIViewController
 
     static func assemble(email: String) -> AcceptPasswordAssebly {
-        let networkRouter = Router<AuthEndPoint>()
-        let authManager = AuthManagerImpl(router: networkRouter)
+        let authManager = AuthManagerFabric.assembly()
         let presenter = AcceptPasswordPresenterImpl(authManager: authManager, email: email)
         let viewController = AcceptPasswordViewController(presenter: presenter)
         presenter.setView(viewController)

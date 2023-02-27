@@ -127,8 +127,19 @@ extension EventsInteractor: EventsInteractorInput {
         output?.openProfile(withUser: user)
     }
     
-    func eventLiked(eventId: Int, index: Int, section: Int) {
+    func eventLiked(eventId: Int, index: Int, section: SectionType) {
+        let eventId: Int
+        switch section {
+        case .today:
+            eventId = contentProvider.getTodayEventId(withIndex: index).kudagoID
+        case .closest:
+            eventId = contentProvider.getClosestEventId(withIndex: index).kudagoID
+        case .main:
+            eventId = contentProvider.getMainEventId(withIndex: index).kudagoID
+        }
+        output?.updateViewWithNewLike(eventId: eventId)
         
+        //TODO: Implement like manager
     }
     
     func getMainEventId(withIndex index: Int) -> PPEvent {
