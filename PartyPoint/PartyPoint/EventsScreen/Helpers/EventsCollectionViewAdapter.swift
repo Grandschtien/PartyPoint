@@ -9,6 +9,7 @@ import UIKit
 
 protocol EventsCollectionViewAdapterDelegate: AnyObject {
     func eventLiked(eventId: Int, index: Int, section: SectionType)
+    func eventDisliked(eventId: Int, index: Int, section: SectionType)
     func moreTapped(moreType: MoreEventsType)
 }
 
@@ -97,6 +98,12 @@ private extension EventsCollectionViewAdapter {
                 self?.delegate?.eventLiked(eventId: event.id,
                                            index: indexPath.item,
                                            section: section.sectionType)
+            }
+            
+            cell.setDisLikeAction { [weak self] in
+                self?.delegate?.eventDisliked(eventId: event.id,
+                                              index: indexPath.item,
+                                              section: section.sectionType)
             }
             
             return cell

@@ -15,17 +15,20 @@ final class EventsInteractor {
     private let decoder: PPDecoder
     private let contentProvider: EventsContentProvider
     private let accountManager: PPAccountManager
+    private let likeManager: LikeManager
     
     init(eventsManager: EventsManager,
          locationManager: LocationManager,
          decoder: PPDecoder,
          contentProvider: EventsContentProvider,
-         accountManager: PPAccountManager) {
+         accountManager: PPAccountManager,
+         likeManager: LikeManager) {
         self.eventsManager = eventsManager
         self.locationManager = locationManager
         self.decoder = decoder
         self.contentProvider = contentProvider
         self.accountManager = accountManager
+        self.likeManager = likeManager
     }
 }
 
@@ -122,24 +125,25 @@ private extension EventsInteractor {
 }
 
 extension EventsInteractor: EventsInteractorInput {
+    func eventDisliked(eventId: Int, index: Int, section: SectionType) {
+        output?.updateViewWithNewLike(eventId: eventId)
+        
+        Task {
+            await likeManager.unlikeEvent(withId: eventId)
+        }
+    }
+    
     func getUserForProfile() {
         guard let user = accountManager.getUser() else { return }
         output?.openProfile(withUser: user)
     }
     
     func eventLiked(eventId: Int, index: Int, section: SectionType) {
-        let eventId: Int
-        switch section {
-        case .today:
-            eventId = contentProvider.getTodayEventId(withIndex: index).kudagoID
-        case .closest:
-            eventId = contentProvider.getClosestEventId(withIndex: index).kudagoID
-        case .main:
-            eventId = contentProvider.getMainEventId(withIndex: index).kudagoID
-        }
         output?.updateViewWithNewLike(eventId: eventId)
         
-        //TODO: Implement like manager
+        Task {
+            await likeManager.likeEvent(withId: eventId)
+        }
     }
     
     func getMainEventId(withIndex index: Int) -> PPEvent {

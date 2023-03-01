@@ -22,13 +22,15 @@ final class EventsContainer {
         let validationTokenManager = TokenManagerFabric.assembly()
         let networkMananger = EventsManagerImpl(router: networkRouter, validationTokenManager: validationTokenManager)
         let decoder = PPDecoderImpl()
+        let likeManager = LikeManagerFabric.assembly()
         let accountManager = PPAccountManagerImpl(decoder: decoder)
         let contentProvider = EventsContentProviderImpl()
         let interactor = EventsInteractor(eventsManager: networkMananger,
                                           locationManager: locationMananger,
                                           decoder: decoder,
                                           contentProvider: contentProvider,
-                                          accountManager: accountManager)
+                                          accountManager: accountManager,
+                                          likeManager: likeManager)
         let presenter = EventsPresenter(router: router, interactor: interactor)
 		let viewController = EventsViewController(output: presenter)
         router.setViewController(viewController)

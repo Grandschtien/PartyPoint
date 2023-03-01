@@ -52,6 +52,10 @@ final class EventCell: UICollectionViewCell {
     func setLikeAction(_ action: @escaping EmptyClosure) {
         likeView.setLikeAction(action)
     }
+    
+    func setDisLikeAction(_ action: @escaping EmptyClosure) {
+        likeView.setDislikeAction(action)
+    }
 }
 
 //MARK: Private methods

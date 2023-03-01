@@ -31,6 +31,11 @@
 		6028E33229AD20CB003129D7 /* TokenManagerFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6028E33129AD20CB003129D7 /* TokenManagerFabric.swift */; };
 		6028E33429AD23A9003129D7 /* AccountManangerFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6028E33329AD23A9003129D7 /* AccountManangerFabric.swift */; };
 		6028E33629AD23E3003129D7 /* AuthManagerFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6028E33529AD23E3003129D7 /* AuthManagerFabric.swift */; };
+		6028E33B29AE221A003129D7 /* LikeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6028E33A29AE221A003129D7 /* LikeManager.swift */; };
+		6028E33D29AE2223003129D7 /* LikeManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6028E33C29AE2223003129D7 /* LikeManagerImpl.swift */; };
+		6028E33F29AE2230003129D7 /* LikeManagerFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6028E33E29AE2230003129D7 /* LikeManagerFabric.swift */; };
+		6028E34129AE2298003129D7 /* LikesEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6028E34029AE2298003129D7 /* LikesEndPoint.swift */; };
+		6028E34329AE61CB003129D7 /* LikeEventListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6028E34229AE61CB003129D7 /* LikeEventListener.swift */; };
 		602AE6BC2972DA69004427A6 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602AE6BB2972DA69004427A6 /* LocationInfo.swift */; };
 		602AE6BF2972E623004427A6 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602AE6BE2972E623004427A6 /* String+Extension.swift */; };
 		6037CA4C296D957600E4BC03 /* PPEventInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6037CA4B296D957600E4BC03 /* PPEventInformation.swift */; };
@@ -276,6 +281,11 @@
 		6028E33129AD20CB003129D7 /* TokenManagerFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManagerFabric.swift; sourceTree = "<group>"; };
 		6028E33329AD23A9003129D7 /* AccountManangerFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManangerFabric.swift; sourceTree = "<group>"; };
 		6028E33529AD23E3003129D7 /* AuthManagerFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManagerFabric.swift; sourceTree = "<group>"; };
+		6028E33A29AE221A003129D7 /* LikeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeManager.swift; sourceTree = "<group>"; };
+		6028E33C29AE2223003129D7 /* LikeManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeManagerImpl.swift; sourceTree = "<group>"; };
+		6028E33E29AE2230003129D7 /* LikeManagerFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeManagerFabric.swift; sourceTree = "<group>"; };
+		6028E34029AE2298003129D7 /* LikesEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesEndPoint.swift; sourceTree = "<group>"; };
+		6028E34229AE61CB003129D7 /* LikeEventListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeEventListener.swift; sourceTree = "<group>"; };
 		602AE6BB2972DA69004427A6 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
 		602AE6BE2972E623004427A6 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		6037CA4B296D957600E4BC03 /* PPEventInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPEventInformation.swift; sourceTree = "<group>"; };
@@ -605,6 +615,17 @@
 			path = ValidationTokenManager;
 			sourceTree = "<group>";
 		};
+		6028E33929AE220A003129D7 /* LikeManager */ = {
+			isa = PBXGroup;
+			children = (
+				6028E33A29AE221A003129D7 /* LikeManager.swift */,
+				6028E33C29AE2223003129D7 /* LikeManagerImpl.swift */,
+				6028E33E29AE2230003129D7 /* LikeManagerFabric.swift */,
+				6028E34229AE61CB003129D7 /* LikeEventListener.swift */,
+			);
+			path = LikeManager;
+			sourceTree = "<group>";
+		};
 		602AE6BD2972DA6E004427A6 /* EventFullInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -752,6 +773,7 @@
 		6060DE6929210AEA0017F7F7 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				6028E33929AE220A003129D7 /* LikeManager */,
 				60FFFE0B29645F4F004DB8D4 /* LocationManager */,
 				602220D9295CD6EE00D2F7B2 /* AuthManager */,
 				60FFFE0A29644E7B004DB8D4 /* EventsNetworkManager */,
@@ -1202,6 +1224,7 @@
 			isa = PBXGroup;
 			children = (
 				60B48CD628EC519D006C6CF5 /* EventsEndPoint.swift */,
+				6028E34029AE2298003129D7 /* LikesEndPoint.swift */,
 				60B48CD828EC5BC2006C6CF5 /* AuthEndPoint.swift */,
 				60B48CD228E5C0A9006C6CF5 /* NetworkEnviroment.swift */,
 			);
@@ -1554,11 +1577,14 @@
 				602220D3295C675600D2F7B2 /* PPUserInformation.swift in Sources */,
 				6097178C287EDE4A0084A63C /* RegisterContainer.swift in Sources */,
 				60A5E3F02969A71000FC8A37 /* CalendarPickerFooterView.swift in Sources */,
+				6028E33B29AE221A003129D7 /* LikeManager.swift in Sources */,
 				603E94DD29AA2FAB0098BE6F /* StatusBarFrame.swift in Sources */,
 				606A9A8D2966FAB300A17F13 /* PPCollectionsLoaderView.swift in Sources */,
 				60FAF6132953446A00982457 /* PPTextFieldDisabledModePresenter.swift in Sources */,
 				6052918C294E084F005B0373 /* RegisterView.swift in Sources */,
 				6071864329AA9AB6003979A1 /* MoreEventsAdapter.swift in Sources */,
+				6028E33F29AE2230003129D7 /* LikeManagerFabric.swift in Sources */,
+				6028E34129AE2298003129D7 /* LikesEndPoint.swift in Sources */,
 				60A5E3E92969A6D500FC8A37 /* MonthMetadata.swift in Sources */,
 				6037CA4E296D969F00E4BC03 /* PPPlace.swift in Sources */,
 				60BB681B298ADC8F00D82CD1 /* Media.swift in Sources */,
@@ -1617,6 +1643,7 @@
 				6028E33429AD23A9003129D7 /* AccountManangerFabric.swift in Sources */,
 				60DB792A28B4CFD80058A3D7 /* EventMapView.swift in Sources */,
 				60918EE128883F7800D9E032 /* EventsScrollDelegate.swift in Sources */,
+				6028E33D29AE2223003129D7 /* LikeManagerImpl.swift in Sources */,
 				60BCB6802965A79B00728ED8 /* UIViewController+Loader.swift in Sources */,
 				60FFFE0729644E6B004DB8D4 /* EventsManager.swift in Sources */,
 				60FFFE0929644E78004DB8D4 /* EventsManagerImpl.swift in Sources */,
@@ -1660,6 +1687,7 @@
 				60FAF60B295342FA00982457 /* PPTextFieldModePresenterProtocol.swift in Sources */,
 				60A5E3EF2969A71000FC8A37 /* CalendarPickerHeaderView.swift in Sources */,
 				60FAF6352953589C00982457 /* PPSpinnerView.swift in Sources */,
+				6028E34329AE61CB003129D7 /* LikeEventListener.swift in Sources */,
 				603E94D729AA0BB20098BE6F /* ProfileInfoStackView.swift in Sources */,
 				602220D8295CBC0400D2F7B2 /* KeyChainManangerImpl.swift in Sources */,
 				60A1E60C28AFAFE500E80D0D /* EventInfoList.swift in Sources */,

@@ -12,6 +12,8 @@ private let LIKE_VIEW_OFFSET: CGFloat = 5
 
 final class PPLikeView: UIView {
     private var likeAction: EmptyClosure?
+    private var dislikeAction: EmptyClosure?
+    
     private let likeImage = UIImageView()
     
     private var isLiked: Bool = false
@@ -36,6 +38,10 @@ extension PPLikeView {
     
     func setLikeAction(_ action: @escaping EmptyClosure) {
         self.likeAction = action
+    }
+    
+    func setDislikeAction(_ action: @escaping EmptyClosure) {
+        self.dislikeAction = action
     }
 }
 
@@ -66,7 +72,7 @@ extension PPLikeView {
 extension PPLikeView {
     @objc
     func likeActionHandler() {
+        isLiked ? dislikeAction?() : likeAction?()
         changeLikeState(isLiked: !isLiked)
-        likeAction?()
     }
 }

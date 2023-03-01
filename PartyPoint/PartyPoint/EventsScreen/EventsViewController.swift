@@ -118,4 +118,8 @@ extension EventsViewController: EventsCollectionViewAdapterDelegate {
     func eventLiked(eventId: Int, index: Int, section: SectionType) {
         output.eventLiked(eventId: eventId, index: index, section: section)
     }
+    
+    func eventDisliked(eventId: Int, index: Int, section: SectionType) {
+        output.eventDisliked(eventId: eventId, index: index, section: section)
+    }
 }

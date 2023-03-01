@@ -41,6 +41,10 @@ extension EventsPresenter: EventsModuleInput {
 }
 
 extension EventsPresenter: EventsViewOutput {
+    func eventDisliked(eventId: Int, index: Int, section: SectionType) {
+        interactor.eventDisliked(eventId: eventId, index: index, section: section)
+    }
+    
     func moreTapped(moreType: MoreEventsType) {
         router.openMore(withType: moreType)
     }

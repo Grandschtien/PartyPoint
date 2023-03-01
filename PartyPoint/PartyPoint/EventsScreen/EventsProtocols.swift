@@ -35,6 +35,7 @@ protocol EventsViewOutput: AnyObject {
     func tappedOnEvents(section: SectionType, index: Int)
     func loadNextPage(_ page: Int)
     func eventLiked(eventId: Int, index: Int, section: SectionType)
+    func eventDisliked(eventId: Int, index: Int, section: SectionType)
     func openProfile()
     func moreTapped(moreType: MoreEventsType)
 }
@@ -46,6 +47,7 @@ protocol EventsInteractorInput: AnyObject {
     func getTodayEventId(withIndex index: Int) -> PPEvent
     func loadNextPageOfMain(page: Int)
     func eventLiked(eventId: Int, index: Int, section: SectionType)
+    func eventDisliked(eventId: Int, index: Int, section: SectionType)
     func getUserForProfile()
 }
 
