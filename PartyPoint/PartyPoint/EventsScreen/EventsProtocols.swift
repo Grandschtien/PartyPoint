@@ -42,9 +42,9 @@ protocol EventsViewOutput: AnyObject {
 
 protocol EventsInteractorInput: AnyObject {
     func loadFirstPages()
-    func getMainEventId(withIndex index: Int) -> PPEvent
-    func getClosestEventId(withIndex index: Int) -> PPEvent
-    func getTodayEventId(withIndex index: Int) -> PPEvent
+    func getMainEventId(withIndex index: Int) -> EventInfo
+    func getClosestEventId(withIndex index: Int) -> EventInfo
+    func getTodayEventId(withIndex index: Int) -> EventInfo
     func loadNextPageOfMain(page: Int)
     func eventLiked(eventId: Int, index: Int, section: SectionType)
     func eventDisliked(eventId: Int, index: Int, section: SectionType)
@@ -52,11 +52,11 @@ protocol EventsInteractorInput: AnyObject {
 }
 
 protocol EventsInteractorOutput: AnyObject {
-    func updateTodaySection(with events: [PPEvent])
-    func updateClosestSection(with events: [PPEvent])
-    func updateMainSection(with events: [PPEvent])
+    func updateTodaySection(with events: [EventInfo])
+    func updateClosestSection(with events: [EventInfo])
+    func updateMainSection(with events: [EventInfo])
     func showError(withReason reason: String)
-    func addNewEventsIntoMainSection(_ events: [PPEvent])
+    func addNewEventsIntoMainSection(_ events: [EventInfo])
     func setInitialUserInfo(name: String?, image: String?)
     func openProfile(withUser user: PPUserInformation)
     func updateViewWithNewLike(eventId: Int)

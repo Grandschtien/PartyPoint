@@ -39,7 +39,7 @@ final class EventsInteractor {
 }
 
 private extension EventsInteractor {
-    func getMain(withPage page: Int) async -> (events: [PPEvent]?, reason: String?) {
+    func getMain(withPage page: Int) async -> (events: [EventInfo]?, reason: String?) {
         let main = await eventsManager.getMainEvents(page: page)
     
         switch main {
@@ -48,14 +48,15 @@ private extension EventsInteractor {
                 return (nil, Localizable.could_not_decode_the_response())
             }
             
-            self.contentProvider.setMainEvents(events)
-            return (events, nil)
+            let eventInfo = EventsConverter.getEventsInfo(events: events)
+            self.contentProvider.setMainEvents(eventInfo)
+            return (eventInfo, nil)
         case let .error(reason):
             return (nil, reason)
         }
     }
     
-    func getToday() async -> [PPEvent]? {
+    func getToday() async -> [EventInfo]? {
         let today = await eventsManager.getTodayEvents(page: 1)
     
         switch today {
@@ -64,14 +65,15 @@ private extension EventsInteractor {
                 return nil
             }
             
-            self.contentProvider.setTodayEvents(events)
-            return events
+            let eventInfo = EventsConverter.getEventsInfo(events: events)
+            self.contentProvider.setTodayEvents(eventInfo)
+            return eventInfo
         case .error(_):
             return nil
         }
     }
     
-    func getClosest() async -> [PPEvent]? {
+    func getClosest() async -> [EventInfo]? {
         let coordinates = locationManager.getCoordinates()
         let closest: EventsManagerImpl.EventsStatus
         if let lat = coordinates.lat, let lon = coordinates.lon {
@@ -83,8 +85,9 @@ private extension EventsInteractor {
                     return nil
                 }
                 
-                self.contentProvider.setClosesEvents(events)
-                return events
+                let eventInfo = EventsConverter.getEventsInfo(events: events)
+                self.contentProvider.setClosesEvents(eventInfo)
+                return eventInfo
             case .error(_):
                 return nil
             }
@@ -99,7 +102,7 @@ private extension EventsInteractor {
         return decoded?.events
     }
     
-    func updateClosestCompiliations(withEvents events: [PPEvent]?) async {
+    func updateClosestCompiliations(withEvents events: [EventInfo]?) async {
         if let events = events {
             await runOnMainThread {
                 output?.updateClosestSection(with: events)
@@ -107,7 +110,7 @@ private extension EventsInteractor {
         }
     }
     
-    func updateTodayCompiliations(withEvents events: [PPEvent]?) async {
+    func updateTodayCompiliations(withEvents events: [EventInfo]?) async {
         if let events = events {
             await runOnMainThread {
                 output?.updateTodaySection(with: events)
@@ -115,7 +118,7 @@ private extension EventsInteractor {
         }
     }
     
-    func updateMainSection(withEvents events: [PPEvent]?, reason: String?) async {
+    func updateMainSection(withEvents events: [EventInfo]?, reason: String?) async {
         await runOnMainThread {
             if let events = events {
                 output?.updateMainSection(with: events)
@@ -152,15 +155,15 @@ extension EventsInteractor: EventsInteractorInput {
         }
     }
     
-    func getMainEventId(withIndex index: Int) -> PPEvent {
+    func getMainEventId(withIndex index: Int) -> EventInfo {
         return contentProvider.getMainEventId(withIndex: index)
     }
     
-    func getClosestEventId(withIndex index: Int) -> PPEvent {
+    func getClosestEventId(withIndex index: Int) -> EventInfo {
         return contentProvider.getClosestEventId(withIndex: index)
     }
     
-    func getTodayEventId(withIndex index: Int) -> PPEvent {
+    func getTodayEventId(withIndex index: Int) -> EventInfo {
         return contentProvider.getTodayEventId(withIndex: index)
     }
     

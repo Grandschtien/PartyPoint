@@ -8,15 +8,15 @@
 import Foundation
 
 protocol EventsContentProvider {
-    func getMainEvents() -> [PPEvent]
-    func getTodayEvents() -> [PPEvent]
-    func getClosesEvents() -> [PPEvent]
+    func getMainEvents() -> [EventInfo]
+    func getTodayEvents() -> [EventInfo]
+    func getClosesEvents() -> [EventInfo]
     
-    func setMainEvents(_ events: [PPEvent])
-    func setTodayEvents(_ events: [PPEvent])
-    func setClosesEvents(_ events: [PPEvent])
+    func setMainEvents(_ events: [EventInfo])
+    func setTodayEvents(_ events: [EventInfo])
+    func setClosesEvents(_ events: [EventInfo])
     
-    func getMainEventId(withIndex index: Int) -> PPEvent
-    func getClosestEventId(withIndex index: Int) -> PPEvent
-    func getTodayEventId(withIndex index: Int) -> PPEvent
+    func getMainEventId(withIndex index: Int) -> EventInfo
+    func getClosestEventId(withIndex index: Int) -> EventInfo
+    func getTodayEventId(withIndex index: Int) -> EventInfo
 }
