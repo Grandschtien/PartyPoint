@@ -29,6 +29,12 @@ final class EventsInteractor {
         self.contentProvider = contentProvider
         self.accountManager = accountManager
         self.likeManager = likeManager
+        
+        likeManager.addListener(self)
+    }
+    
+    deinit  {
+        likeManager.removeListener(self)
     }
 }
 
@@ -182,5 +188,13 @@ extension EventsInteractor: EventsInteractorInput {
                 }
             }
         }
+    }
+}
+
+extension EventsInteractor: LikeEventListener {
+    func likeManager(_ likeManager: LikeManager, didLikeEventWithId id: Int) {
+    }
+    
+    func likeManager(_ likeManager: LikeManager, didREmoveLikeEventWithId id: Int) {
     }
 }

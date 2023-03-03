@@ -7,7 +7,9 @@
 
 import Foundation
 
-protocol LikeManager {
+@objc protocol LikeManager {
     func likeEvent(withId id: Int) async
     func unlikeEvent(withId id: Int) async
+    func addListener(_ subcriber: LikeEventListener)
+    func removeListener(_ subscriber: LikeEventListener) 
 }

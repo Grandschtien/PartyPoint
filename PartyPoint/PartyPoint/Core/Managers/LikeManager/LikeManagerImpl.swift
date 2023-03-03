@@ -8,26 +8,34 @@
 import Foundation
 
 final class LikeManagerImpl: NetworkManager {
-    // implement observer
     private let tokenMananger: ValidationTokenManager
     private let router: Router<LikesEndPoint>
-//    private weak var listeners: [LikeEventListener]? = []
+    private var listeners = ObservableSequence<LikeEventListener>()
     
     init(tokenMananger: ValidationTokenManager, router: Router<LikesEndPoint>) {
         self.tokenMananger = tokenMananger
         self.router = router
     }
-
 }
 
 extension LikeManagerImpl: LikeManager {
+    func addListener(_ subcriber: LikeEventListener) {
+        listeners.addListener(subcriber)
+    }
+    
+    func removeListener(_ subscriber: LikeEventListener) {
+        listeners.removeListener(subscriber)
+    }
+    
     func likeEvent(withId id: Int) async {
         let token = try? await tokenMananger.getAccessToken()
         guard let token = token else { return }
+        listeners.forEach { $0.likeManager?(self, willLikeEventWithId: id) }
         let result = await router.request(.likeEvent(eventId: id, token: token))
         switch getStatus(response: result.response) {
         case .success:
             debugPrint("[DEBUG] - like action for event with id: \(id)")
+            listeners.forEach { $0.likeManager?(self, didLikeEventWithId: id)}
         case let .failure(reason):
             debugPrint("[DEBUG] - like action for event with id: \(id), has failed with reason :\(reason ?? "")")
         }
@@ -36,13 +44,14 @@ extension LikeManagerImpl: LikeManager {
     func unlikeEvent(withId id: Int) async {
         let token = try? await tokenMananger.getAccessToken()
         guard let token = token else { return }
+        listeners.forEach { $0.likeManager?(self, willRemoveLikeEventWithId: id) }
         let result = await router.request(.unlikeEvent(eventId: id, token: token))
         switch getStatus(response: result.response) {
         case .success:
             debugPrint("[DEBUG] - dislike action for event with id: \(id)")
+            listeners.forEach { $0.likeManager?(self, didREmoveLikeEventWithId: id) }
         case let .failure(reason):
             debugPrint("[DEBUG] - dislike action for event with id: \(id), has failed with reason :\(reason ?? "")")
         }
     }
 }
-
