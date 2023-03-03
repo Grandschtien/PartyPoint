@@ -41,8 +41,12 @@ extension EventsPresenter: EventsModuleInput {
 }
 
 extension EventsPresenter: EventsViewOutput {
-    func eventDisliked(eventId: Int, index: Int, section: SectionType) {
-        interactor.eventDisliked(eventId: eventId, index: index, section: section)
+    func eventLiked(index: Int, section: SectionType) {
+        interactor.eventLiked(index: index, section: section)
+    }
+    
+    func eventDisliked(index: Int, section: SectionType) {
+        interactor.eventDisliked(index: index, section: section)
     }
     
     func moreTapped(moreType: MoreEventsType) {
@@ -53,23 +57,9 @@ extension EventsPresenter: EventsViewOutput {
         interactor.getUserForProfile()
     }
     
-    func eventLiked(eventId: Int, index: Int, section: SectionType) {
-        interactor.eventLiked(eventId: eventId, index: index, section: section)
-    }
-    
     func tappedOnEvents(section: SectionType, index: Int) {
-        let event: EventInfo
-        switch section {
-        case .main:
-            event = interactor.getMainEventId(withIndex: index)
-            router.openEventScreen(withId: event.id, and: event.placeId)
-        case .today:
-            event = interactor.getTodayEventId(withIndex: index)
-            router.openEventScreen(withId: event.id, and: event.placeId)
-        case .closest:
-            event = interactor.getClosestEventId(withIndex: index)
-            router.openEventScreen(withId: event.id, and: event.placeId)
-        }
+        let event = interactor.getEvent(withIndex: index, section: section)
+        router.openEventScreen(withId: event.id, and: event.placeId)
     }
     
     func loadNextPage(_ page: Int) {

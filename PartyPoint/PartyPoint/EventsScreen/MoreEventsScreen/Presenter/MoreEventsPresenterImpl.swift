@@ -12,10 +12,12 @@ final class MoreEventsPresenterImpl {
     private weak var view: MoreEventsView?
     private let loader: MoreContentLoader
     private let contentProvider: MoreContentProvider
+    private let likeManager: LikeManager
     
-    init(loader: MoreContentLoader, contentProvider: MoreContentProvider) {
+    init(loader: MoreContentLoader, contentProvider: MoreContentProvider, likeManager: LikeManager) {
         self.loader = loader
         self.contentProvider = contentProvider
+        self.likeManager = likeManager
     }
 }
 
@@ -32,10 +34,28 @@ extension MoreEventsPresenterImpl {
 
 // MARK: MoreEventsPresenter
 extension MoreEventsPresenterImpl: MoreEventsPresenter {
-    //    enum MoreLoaderError: Error {
-    //        case errorWithLoadingData
-    //        case noCoordinates
-    //    }
+    func likeEvent(index: Int) {
+        Task {
+            let eventId = contentProvider.getEvent(withIndex: index).id
+            contentProvider.setLikeEvent(isLiked: true, withIndex: index)
+            await likeManager.likeEvent(withId: eventId)
+            await runOnMainThread {
+                view?.updateViewWithLike(isLiked: true, index: index)
+            }
+        }
+    }
+    
+    func unlikeEvent(index: Int) {
+        Task {
+            let eventId = contentProvider.getEvent(withIndex: index).id
+            contentProvider.setLikeEvent(isLiked: false, withIndex: index)
+            await likeManager.unlikeEvent(withId: eventId)
+            await runOnMainThread {
+                view?.updateViewWithLike(isLiked: false, index: index)
+            }
+        }
+    }
+    
     func onViewDidLoad() {
         view?.setTitle(contentProvider.title)
         view?.setLoaderVisiability(isLoading: true)

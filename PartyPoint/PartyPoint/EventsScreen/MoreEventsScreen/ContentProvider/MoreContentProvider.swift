@@ -11,5 +11,6 @@ protocol MoreContentProvider {
     func getEvent(withIndex index: Int) -> EventInfo
     func likeEvent(withIndex index: Int)
     func appendEvents(_ events: [EventInfo])
+    func setLikeEvent(isLiked: Bool, withIndex index: Int)
     var title: String { get }
 }

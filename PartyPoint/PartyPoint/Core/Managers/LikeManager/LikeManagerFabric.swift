@@ -7,10 +7,10 @@
 
 import Foundation
 
-final class LikeManagerFabric {
-    static func assembly() -> LikeManager {
-        let router = Router<LikesEndPoint>()
-        let tokenMananger = TokenManagerFabric.assembly()
-        return LikeManagerImpl(tokenMananger: tokenMananger, router: router)
-    }
-}
+//final class LikeManagerFabric {
+//    static func assembly() -> LikeManager {
+//        let router = Router<LikesEndPoint>()
+//        let tokenMananger = TokenManagerFabric.assembly()
+//        return LikeManagerImpl(tokenMananger: tokenMananger, router: router)
+//    }
+//}

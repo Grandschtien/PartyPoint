@@ -134,7 +134,9 @@ private extension EventsInteractor {
 }
 
 extension EventsInteractor: EventsInteractorInput {
-    func eventDisliked(eventId: Int, index: Int, section: SectionType) {
+    func eventDisliked(index: Int, section: SectionType) {
+        let eventId = contentProvider.getEventId(withIndex: index, section: section)
+        contentProvider.setLikedEvent(withIndex: index, section: section, isLiked: false)
         output?.updateViewWithNewLike(eventId: eventId)
         
         Task {
@@ -147,7 +149,9 @@ extension EventsInteractor: EventsInteractorInput {
         output?.openProfile(withUser: user)
     }
     
-    func eventLiked(eventId: Int, index: Int, section: SectionType) {
+    func eventLiked(index: Int, section: SectionType) {
+        let eventId = contentProvider.getEventId(withIndex: index, section: section)
+        contentProvider.setLikedEvent(withIndex: index, section: section, isLiked: true)
         output?.updateViewWithNewLike(eventId: eventId)
         
         Task {
@@ -155,16 +159,8 @@ extension EventsInteractor: EventsInteractorInput {
         }
     }
     
-    func getMainEventId(withIndex index: Int) -> EventInfo {
-        return contentProvider.getMainEventId(withIndex: index)
-    }
-    
-    func getClosestEventId(withIndex index: Int) -> EventInfo {
-        return contentProvider.getClosestEventId(withIndex: index)
-    }
-    
-    func getTodayEventId(withIndex index: Int) -> EventInfo {
-        return contentProvider.getTodayEventId(withIndex: index)
+    func getEvent(withIndex index: Int, section: SectionType) -> EventInfo {
+        return contentProvider.getEvent(withIndex: index, section: section)
     }
     
     func loadFirstPages() {
@@ -196,8 +192,16 @@ extension EventsInteractor: EventsInteractorInput {
 
 extension EventsInteractor: LikeEventListener {
     func likeManager(_ likeManager: LikeManager, didLikeEventWithId id: Int) {
+        if !contentProvider.isLikedEvent(withId: id) {
+            contentProvider.setLikedEvent(withId: id, isLiked: true)
+            output?.updateViewWithNewLike(eventId: id)
+        }
     }
     
     func likeManager(_ likeManager: LikeManager, didREmoveLikeEventWithId id: Int) {
+        if contentProvider.isLikedEvent(withId: id) {
+            contentProvider.setLikedEvent(withId: id, isLiked: false)
+            output?.updateViewWithNewLike(eventId: id)
+        }
     }
 }

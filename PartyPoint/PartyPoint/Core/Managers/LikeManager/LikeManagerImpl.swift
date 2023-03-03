@@ -8,13 +8,14 @@
 import Foundation
 
 final class LikeManagerImpl: NetworkManager {
+    static let shared: LikeManager = LikeManagerImpl()
     private let tokenMananger: ValidationTokenManager
     private let router: Router<LikesEndPoint>
     private var listeners = ObservableSequence<LikeEventListener>()
     
-    init(tokenMananger: ValidationTokenManager, router: Router<LikesEndPoint>) {
-        self.tokenMananger = tokenMananger
-        self.router = router
+    private override init() {
+        self.tokenMananger = TokenManagerFabric.assembly()
+        self.router = Router<LikesEndPoint>()
     }
 }
 

@@ -8,7 +8,8 @@
 import UIKit
 
 protocol MoreEventsAdapterDelegate: AnyObject {
-    func eventLiked(eventId: Int, index: Int)
+    func eventLiked(index: Int)
+    func setUnlikeEvent(index: Int)
 }
 
 final class MoreEventsAdapter: NSObject {
@@ -48,6 +49,10 @@ final class MoreEventsAdapter: NSObject {
         applySnapshot()
     }
     
+    func updateEventWithLike(isLiked: Bool, index: Int) {
+        self.items[index].isLiked = isLiked
+    }
+    
     func setTapAction(_ action: @escaping TapOnEventsAction) {
         self.didTapOnEventsAction = action
     }
@@ -69,8 +74,11 @@ private extension MoreEventsAdapter {
             cell.configure(withEvent: event)
             
             cell.setLikeAction { [weak self] in
-                self?.delegate?.eventLiked(eventId: event.id,
-                                           index: indexPath.item)
+                self?.delegate?.eventLiked(index: indexPath.item)
+            }
+            
+            cell.setDisLikeAction { [weak self] in
+                self?.delegate?.setUnlikeEvent(index: indexPath.item)
             }
             
             return cell

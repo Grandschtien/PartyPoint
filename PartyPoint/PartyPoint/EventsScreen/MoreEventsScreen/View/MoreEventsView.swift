@@ -12,4 +12,5 @@ protocol MoreEventsView: AnyObject {
     func update(withEvents evetns: [EventInfo])
     func showError(reason: String)
     func openEvenScreen(eventId: Int, placeId: Int)
+    func updateViewWithLike(isLiked: Bool, index: Int)
 }

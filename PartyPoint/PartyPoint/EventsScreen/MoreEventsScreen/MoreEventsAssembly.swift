@@ -21,8 +21,12 @@ final class MoreEventsAssembly {
         let decoder = PPDecoderImpl()
         let systemLocationManager = CLLocationManager()
         let locationManager = LocationManagerImpl(locationManager: systemLocationManager)
-        let contentLoader = MoreContentLoaderImpl(eventsManager: eventsManager, screenType: screenType, locationManager: locationManager, decoder: decoder)
-        let presenter = MoreEventsPresenterImpl(loader: contentLoader, contentProvider: contentProvider)
+        let contentLoader = MoreContentLoaderImpl(eventsManager: eventsManager,
+                                                  screenType: screenType,
+                                                  locationManager: locationManager,
+                                                  decoder: decoder)
+        let likeManager = LikeManagerImpl.shared
+        let presenter = MoreEventsPresenterImpl(loader: contentLoader, contentProvider: contentProvider, likeManager: likeManager)
         let viewController = MoreEventsViewController(presenter: presenter)
         presenter.setView(viewController)
 

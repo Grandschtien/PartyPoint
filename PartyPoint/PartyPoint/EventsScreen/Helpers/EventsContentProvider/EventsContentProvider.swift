@@ -16,7 +16,10 @@ protocol EventsContentProvider {
     func setTodayEvents(_ events: [EventInfo])
     func setClosesEvents(_ events: [EventInfo])
     
-    func getMainEventId(withIndex index: Int) -> EventInfo
-    func getClosestEventId(withIndex index: Int) -> EventInfo
-    func getTodayEventId(withIndex index: Int) -> EventInfo
+    func getEventId(withIndex index: Int, section: SectionType) -> Int
+    func getEvent(withIndex index: Int, section: SectionType) -> EventInfo
+    func setLikedEvent(withIndex index: Int, section: SectionType, isLiked: Bool)
+    func setLikedEvent(withId id: Int, isLiked: Bool)
+
+    func isLikedEvent(withId id: Int) -> Bool
 }

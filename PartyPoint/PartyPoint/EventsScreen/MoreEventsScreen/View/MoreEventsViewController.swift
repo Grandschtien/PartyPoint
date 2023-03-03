@@ -51,6 +51,14 @@ private extension MoreEventsViewController {
         contentView.setOnButtonTapped { [weak self] index in
             self?.presenter.tappedOnEvent(index: index)
         }
+        
+        contentView.setLikeAction { [weak self] index in
+            self?.presenter.likeEvent(index: index)
+        }
+        
+        contentView.setUnlikeAction { [weak self] index in
+            self?.presenter.unlikeEvent(index: index)
+        }
     }
     
     func setupUI() {
@@ -60,6 +68,10 @@ private extension MoreEventsViewController {
 
 // MARK: MoreEventsView
 extension MoreEventsViewController: MoreEventsView {
+    func updateViewWithLike(isLiked: Bool, index: Int) {
+        contentView.setLikeOnEvent(withIndex: index, isLiked: isLiked)
+    }
+    
     func showError(reason: String) {
         
     }

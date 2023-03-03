@@ -13,12 +13,16 @@ private let ITEM_SIZE: CGSize = CGSize(width: 334.scale(), height: 194.scale())
 final class MoreEventsContentView: UIView {
     typealias LoadNextPageAction = (Int) -> Void
     typealias TapOnEventsAction = (Int) -> Void
+    typealias LikeAction = (Int) -> Void
+    typealias UnlikeAction = (Int) -> Void
     
     // MARK: Private properties
     private let navigationBar = PlainNavigationBar()
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private lazy var adapter = MoreEventsAdapter(collectionView)
     
+    private var likeAction: LikeAction?
+    private var unlikeAction: UnlikeAction?
     // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,6 +38,7 @@ final class MoreEventsContentView: UIView {
 // MARK: Private methods
 private extension MoreEventsContentView {
     func setupUI() {
+        adapter.delegate = self
         self.backgroundColor = Colors.mainColor()
         self.addSubview(navigationBar)
         self.addSubview(collectionView)
@@ -88,6 +93,28 @@ extension MoreEventsContentView {
     func setLoadNextPage(_ action: @escaping LoadNextPageAction) {
         adapter.setLoadNextPageAction(action)
     }
+    
+    func setLikeAction(_ action: @escaping LikeAction) {
+        likeAction = action
+    }
+    
+    func setUnlikeAction(_ action: @escaping LikeAction) {
+        unlikeAction = action
+    }
+    
+    func setLikeOnEvent(withIndex index: Int, isLiked: Bool) {
+        adapter.updateEventWithLike(isLiked: isLiked, index: index)
+    }
 }
 
+// MARK: - MoreEventsAdapterDelegate -
+extension MoreEventsContentView: MoreEventsAdapterDelegate {
+    func eventLiked(index: Int) {
+        likeAction?(index)
+    }
+    
+    func setUnlikeEvent(index: Int) {
+        unlikeAction?(index)
+    }
+}
 

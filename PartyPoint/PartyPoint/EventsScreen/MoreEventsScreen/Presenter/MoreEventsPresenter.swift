@@ -12,5 +12,7 @@ protocol MoreEventsPresenter: AnyObject {
     func onViewDidLoad()
     func loadNextPage(page: Int)
     func tappedOnEvent(index: Int)
+    func likeEvent(index: Int)
+    func unlikeEvent(index: Int)
 }
 

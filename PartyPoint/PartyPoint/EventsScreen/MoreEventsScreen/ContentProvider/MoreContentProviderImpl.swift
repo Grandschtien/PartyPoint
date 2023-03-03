@@ -17,6 +17,10 @@ final class MoreContentProviderImpl {
 }
 
 extension MoreContentProviderImpl: MoreContentProvider {
+    func setLikeEvent(isLiked: Bool, withIndex index: Int) {
+        events[index].isLiked = isLiked
+    }
+    
     func likeEvent(withIndex index: Int) {
         events[index].isLiked = true
     }

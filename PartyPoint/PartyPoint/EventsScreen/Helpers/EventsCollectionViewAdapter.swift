@@ -8,8 +8,8 @@
 import UIKit
 
 protocol EventsCollectionViewAdapterDelegate: AnyObject {
-    func eventLiked(eventId: Int, index: Int, section: SectionType)
-    func eventDisliked(eventId: Int, index: Int, section: SectionType)
+    func eventLiked(index: Int, section: SectionType)
+    func eventDisliked(index: Int, section: SectionType)
     func moreTapped(moreType: MoreEventsType)
 }
 
@@ -95,14 +95,12 @@ private extension EventsCollectionViewAdapter {
             cell.configure(withEvent: event)
             let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
             cell.setLikeAction { [weak self] in
-                self?.delegate?.eventLiked(eventId: event.id,
-                                           index: indexPath.item,
+                self?.delegate?.eventLiked(index: indexPath.item,
                                            section: section.sectionType)
             }
             
             cell.setDisLikeAction { [weak self] in
-                self?.delegate?.eventDisliked(eventId: event.id,
-                                              index: indexPath.item,
+                self?.delegate?.eventDisliked(index: indexPath.item,
                                               section: section.sectionType)
             }
             
