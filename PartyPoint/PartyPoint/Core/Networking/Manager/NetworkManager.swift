@@ -55,6 +55,11 @@ class NetworkManager {
         case failure(String?)
     }
     
+    enum DefaultResultOfRequest {
+        case success(Data?)
+        case failure(String?)
+    }
+    
     static let enviroment: NetworkEnviroment = .debug
     
     internal func handleNetworkResponse(_ response: HTTPURLResponse?) -> ResponseResult {

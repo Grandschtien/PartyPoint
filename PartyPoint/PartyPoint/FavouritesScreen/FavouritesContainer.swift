@@ -14,13 +14,17 @@ final class FavouritesContainer {
 	private(set) weak var router: FavouritesRouterInput!
 
 	static func assemble(with context: FavouritesContext) -> FavouritesContainer {
-        let router = FavouritesRouter()
-        let interactor = FavouritesInteractor()
+        let router = FavouritesRouter(appCoordinator: context.appCoordinator)
+        let likeManager = LikeManagerImpl.shared
+        let accountManager = AccountManangerFabric.assembly()
+        let favoritesMananger = FavoriteManagerFactory.assembly()
+        let interactor = FavouritesInteractor(likeManager: likeManager, accountMananger: accountManager, favoritesMananger: favoritesMananger, decoder: PPDecoderImpl(), contentProvider: FvoritesContentProviderImpl())
         let presenter = FavouritesPresenter(router: router, interactor: interactor)
 		let viewController = FavouritesViewController(output: presenter)
 
 		presenter.view = viewController
 		presenter.moduleOutput = context.moduleOutput
+        router.setViewController(viewController)
 
 		interactor.output = presenter
 
@@ -35,5 +39,6 @@ final class FavouritesContainer {
 }
 
 struct FavouritesContext {
+    let appCoordinator: AppCoordinator
 	weak var moduleOutput: FavouritesModuleOutput?
 }

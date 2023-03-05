@@ -17,3 +17,12 @@ struct ProfileInfo {
         return name + " " + surname
     }
 }
+
+extension ProfileInfo {
+    init(user: PPUserInformation) {
+        self.name = user.name
+        self.surname = user.surname
+        self.email = user.surname
+        self.imageUrl = URL(string: user.imageUrl ?? "")
+    }
+}

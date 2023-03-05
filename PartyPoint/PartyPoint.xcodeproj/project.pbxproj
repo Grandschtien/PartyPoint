@@ -33,7 +33,6 @@
 		6028E33629AD23E3003129D7 /* AuthManagerFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6028E33529AD23E3003129D7 /* AuthManagerFabric.swift */; };
 		6028E33B29AE221A003129D7 /* LikeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6028E33A29AE221A003129D7 /* LikeManager.swift */; };
 		6028E33D29AE2223003129D7 /* LikeManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6028E33C29AE2223003129D7 /* LikeManagerImpl.swift */; };
-		6028E33F29AE2230003129D7 /* LikeManagerFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6028E33E29AE2230003129D7 /* LikeManagerFabric.swift */; };
 		6028E34129AE2298003129D7 /* LikesEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6028E34029AE2298003129D7 /* LikesEndPoint.swift */; };
 		6028E34329AE61CB003129D7 /* LikeEventListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6028E34229AE61CB003129D7 /* LikeEventListener.swift */; };
 		602AE6BC2972DA69004427A6 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602AE6BB2972DA69004427A6 /* LocationInfo.swift */; };
@@ -72,6 +71,12 @@
 		60498018297D6FC00096EB8E /* CostEventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60498017297D6FC00096EB8E /* CostEventInfo.swift */; };
 		6049801A297D70540096EB8E /* PeopleEventnfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60498019297D70540096EB8E /* PeopleEventnfoModel.swift */; };
 		6052918C294E084F005B0373 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6052918B294E084F005B0373 /* RegisterView.swift */; };
+		605EE1C529B4C27B00B5D871 /* FavoritesMananger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EE1C429B4C27B00B5D871 /* FavoritesMananger.swift */; };
+		605EE1C729B4C28700B5D871 /* FavoritesManangerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EE1C629B4C28700B5D871 /* FavoritesManangerImpl.swift */; };
+		605EE1C929B4C2F700B5D871 /* FavoriteEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EE1C829B4C2F700B5D871 /* FavoriteEndPoint.swift */; };
+		605EE1CB29B4C35500B5D871 /* FavoriteManagerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EE1CA29B4C35500B5D871 /* FavoriteManagerFactory.swift */; };
+		605EE1CD29B4C8D300B5D871 /* FavoritesContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EE1CC29B4C8D300B5D871 /* FavoritesContentProvider.swift */; };
+		605EE1CF29B4C8DE00B5D871 /* FvoritesContentProviderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605EE1CE29B4C8DE00B5D871 /* FvoritesContentProviderImpl.swift */; };
 		6060C91028ED86D800E6E593 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6060C91228ED86D800E6E593 /* Localizable.strings */; };
 		6060DE6B29210AF50017F7F7 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6060DE6A29210AF50017F7F7 /* AuthManager.swift */; };
 		6060DE6D29210BD30017F7F7 /* ValidationTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6060DE6C29210BD30017F7F7 /* ValidationTokenManager.swift */; };
@@ -286,7 +291,6 @@
 		6028E33529AD23E3003129D7 /* AuthManagerFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManagerFabric.swift; sourceTree = "<group>"; };
 		6028E33A29AE221A003129D7 /* LikeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeManager.swift; sourceTree = "<group>"; };
 		6028E33C29AE2223003129D7 /* LikeManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeManagerImpl.swift; sourceTree = "<group>"; };
-		6028E33E29AE2230003129D7 /* LikeManagerFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeManagerFabric.swift; sourceTree = "<group>"; };
 		6028E34029AE2298003129D7 /* LikesEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesEndPoint.swift; sourceTree = "<group>"; };
 		6028E34229AE61CB003129D7 /* LikeEventListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeEventListener.swift; sourceTree = "<group>"; };
 		602AE6BB2972DA69004427A6 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
@@ -325,6 +329,12 @@
 		60498017297D6FC00096EB8E /* CostEventInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostEventInfo.swift; sourceTree = "<group>"; };
 		60498019297D70540096EB8E /* PeopleEventnfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleEventnfoModel.swift; sourceTree = "<group>"; };
 		6052918B294E084F005B0373 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		605EE1C429B4C27B00B5D871 /* FavoritesMananger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMananger.swift; sourceTree = "<group>"; };
+		605EE1C629B4C28700B5D871 /* FavoritesManangerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManangerImpl.swift; sourceTree = "<group>"; };
+		605EE1C829B4C2F700B5D871 /* FavoriteEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEndPoint.swift; sourceTree = "<group>"; };
+		605EE1CA29B4C35500B5D871 /* FavoriteManagerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManagerFactory.swift; sourceTree = "<group>"; };
+		605EE1CC29B4C8D300B5D871 /* FavoritesContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesContentProvider.swift; sourceTree = "<group>"; };
+		605EE1CE29B4C8DE00B5D871 /* FvoritesContentProviderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FvoritesContentProviderImpl.swift; sourceTree = "<group>"; };
 		6060C91128ED86D800E6E593 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6060C91328ED870900E6E593 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		6060C91428ED870900E6E593 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
@@ -626,7 +636,6 @@
 			children = (
 				6028E33A29AE221A003129D7 /* LikeManager.swift */,
 				6028E33C29AE2223003129D7 /* LikeManagerImpl.swift */,
-				6028E33E29AE2230003129D7 /* LikeManagerFabric.swift */,
 				6028E34229AE61CB003129D7 /* LikeEventListener.swift */,
 			);
 			path = LikeManager;
@@ -756,6 +765,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		605EE1C329B4C26900B5D871 /* FavouritesManager */ = {
+			isa = PBXGroup;
+			children = (
+				605EE1C429B4C27B00B5D871 /* FavoritesMananger.swift */,
+				605EE1C629B4C28700B5D871 /* FavoritesManangerImpl.swift */,
+				605EE1CA29B4C35500B5D871 /* FavoriteManagerFactory.swift */,
+			);
+			path = FavouritesManager;
+			sourceTree = "<group>";
+		};
 		6060C90D28ED86BA00E6E593 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -779,6 +798,7 @@
 		6060DE6929210AEA0017F7F7 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				605EE1C329B4C26900B5D871 /* FavouritesManager */,
 				6028E33929AE220A003129D7 /* LikeManager */,
 				60FFFE0B29645F4F004DB8D4 /* LocationManager */,
 				602220D9295CD6EE00D2F7B2 /* AuthManager */,
@@ -908,6 +928,8 @@
 			isa = PBXGroup;
 			children = (
 				60918ED92888334B00D9E032 /* FavouritesCollectionAdapter.swift */,
+				605EE1CC29B4C8D300B5D871 /* FavoritesContentProvider.swift */,
+				605EE1CE29B4C8DE00B5D871 /* FvoritesContentProviderImpl.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1235,6 +1257,7 @@
 				6028E34029AE2298003129D7 /* LikesEndPoint.swift */,
 				60B48CD828EC5BC2006C6CF5 /* AuthEndPoint.swift */,
 				60B48CD228E5C0A9006C6CF5 /* NetworkEnviroment.swift */,
+				605EE1C829B4C2F700B5D871 /* FavoriteEndPoint.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -1601,7 +1624,6 @@
 				60FAF6132953446A00982457 /* PPTextFieldDisabledModePresenter.swift in Sources */,
 				6052918C294E084F005B0373 /* RegisterView.swift in Sources */,
 				6071864329AA9AB6003979A1 /* MoreEventsAdapter.swift in Sources */,
-				6028E33F29AE2230003129D7 /* LikeManagerFabric.swift in Sources */,
 				6028E34129AE2298003129D7 /* LikesEndPoint.swift in Sources */,
 				60A5E3E92969A6D500FC8A37 /* MonthMetadata.swift in Sources */,
 				6037CA4E296D969F00E4BC03 /* PPPlace.swift in Sources */,
@@ -1641,8 +1663,10 @@
 				60A7259B29A8C4850085ADE2 /* EventsContentProvider.swift in Sources */,
 				60918EF428895D3D00D9E032 /* AbstractEventsViewController.swift in Sources */,
 				604147B128D4D9C90052F60D /* EndPointType.swift in Sources */,
+				605EE1C929B4C2F700B5D871 /* FavoriteEndPoint.swift in Sources */,
 				6073B8752881962700AF07FA /* EventsTypeHeaderHeader.swift in Sources */,
 				60EAE93E28AFCD0700030055 /* LayoutHelper.swift in Sources */,
+				605EE1C529B4C27B00B5D871 /* FavoritesMananger.swift in Sources */,
 				608160462962CFA0006B0919 /* PPAccountManagerImpl.swift in Sources */,
 				60A1E60A28AFACD400E80D0D /* EventView.swift in Sources */,
 				602220D5295CBA9000D2F7B2 /* KeyChainMananger.swift in Sources */,
@@ -1723,6 +1747,7 @@
 				60971789287EDE4A0084A63C /* RegisterViewController.swift in Sources */,
 				60971778287DBBD50084A63C /* DynamicStackWithTF.swift in Sources */,
 				603E94D929AA0F7C0098BE6F /* ProfileInfo.swift in Sources */,
+				605EE1C729B4C28700B5D871 /* FavoritesManangerImpl.swift in Sources */,
 				607F850B2980506F0042D77F /* DefaultEventView.swift in Sources */,
 				60CACCB129B20617008D031C /* ObserverElement.swift in Sources */,
 				60498014297D67B50096EB8E /* PlaceAnnotationInfo.swift in Sources */,
@@ -1758,6 +1783,7 @@
 				60C23215298A5E040092949E /* UserDefaultsManager.swift in Sources */,
 				609716DB287D75230084A63C /* AppDelegate.swift in Sources */,
 				60BB681F298AE5AF00D82CD1 /* Data+append.swift in Sources */,
+				605EE1CF29B4C8DE00B5D871 /* FvoritesContentProviderImpl.swift in Sources */,
 				6070D43228ABDE1F0054F61B /* EventPresenter.swift in Sources */,
 				60CED3FB2993DB7300C59FAB /* AcceptPasswordPresenterImpl.swift in Sources */,
 				60A5E3EE2969A71000FC8A37 /* CalendarDateCollectionViewCell.swift in Sources */,
@@ -1775,8 +1801,10 @@
 				60FAF60D2953436300982457 /* PPTextFieldMode.swift in Sources */,
 				60FAF62B2953559F00982457 /* PPButton.swift in Sources */,
 				60B48CD328E5C0A9006C6CF5 /* NetworkEnviroment.swift in Sources */,
+				605EE1CB29B4C35500B5D871 /* FavoriteManagerFactory.swift in Sources */,
 				604147B528D4DAC20052F60D /* HTTPTask.swift in Sources */,
 				6073B8722881942A00AF07FA /* PPEvent.swift in Sources */,
+				605EE1CD29B4C8D300B5D871 /* FavoritesContentProvider.swift in Sources */,
 				60DA33B428802FF6004E52A3 /* UIStackView+convenieceInit.swift in Sources */,
 				600D25F3299A781300189AC7 /* ChangePasswordViewController.swift in Sources */,
 				603B506128EDEA4A00A83214 /* R.generated.swift in Sources */,

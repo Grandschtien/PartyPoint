@@ -1,19 +1,17 @@
 //
-//  LikesEndPoint.swift
+//  FavoriteEndPoint.swift
 //  PartyPoint
 //
-//  Created by Егор Шкарин on 28.02.2023.
+//  Created by Егор Шкарин on 05.03.2023.
 //
 
 import Foundation
 
-enum LikesEndPoint {
-    case likeEvent(eventId: Int, token: String)
-    case unlikeEvent(eventId: Int, token: String)
+enum FavoriteEndPoint {
     case getFavourites(userId: Int, token: String)
 }
 
-extension LikesEndPoint: EndPointType {
+extension FavoriteEndPoint: EndPointType {
     
     var enviromentslBaseUrl: String {
         switch NetworkManager.enviroment {
@@ -35,10 +33,6 @@ extension LikesEndPoint: EndPointType {
     
     var path: String {
         switch self {
-        case let .likeEvent(eventId, _):
-            return "\(eventId)/like"
-        case let .unlikeEvent(eventId, _):
-            return "\(eventId)/dislike"
         case let .getFavourites(userId, _):
             return "likes/\(userId)"
         }
@@ -46,26 +40,14 @@ extension LikesEndPoint: EndPointType {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .likeEvent:
-            return .post
         case .getFavourites:
             return .get
-        case .unlikeEvent:
-            return .post
         }
     }
     
     var task: HTTPTask {
         switch self {
-        case let .likeEvent(_, token):
-            return .requestParametersWithHeaders(bodyParameters: nil,
-                                                 urlParameters: nil,
-                                                 additionalParameters: ["Authorization": "Bearer \(token)"])
         case let .getFavourites(_, token):
-            return .requestParametersWithHeaders(bodyParameters: nil,
-                                                 urlParameters: nil,
-                                                 additionalParameters: ["Authorization": "Bearer \(token)"])
-        case let .unlikeEvent(_, token):
             return .requestParametersWithHeaders(bodyParameters: nil,
                                                  urlParameters: nil,
                                                  additionalParameters: ["Authorization": "Bearer \(token)"])

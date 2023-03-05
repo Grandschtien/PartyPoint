@@ -50,11 +50,11 @@ private extension MainFlowCoordinator {
     }
     
     func setupFavourites() {
-        guard let navController = navigationControllers[.favourites] else {
+        guard let navController = navigationControllers[.favourites], let appCoordinator = appCoordinator else {
             fatalError("wtf no Search")
         }
         
-        let context = FavouritesContext(moduleOutput: nil)
+        let context = FavouritesContext(appCoordinator: appCoordinator, moduleOutput: nil)
         
         let container = FavouritesContainer.assemble(with: context)
         navController.setViewControllers([container.viewController], animated: false)

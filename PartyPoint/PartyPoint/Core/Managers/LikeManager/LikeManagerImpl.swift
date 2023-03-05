@@ -33,12 +33,14 @@ extension LikeManagerImpl: LikeManager {
         guard let token = token else { return }
         listeners.forEach { $0.likeManager?(self, willLikeEventWithId: id) }
         let result = await router.request(.likeEvent(eventId: id, token: token))
-        switch getStatus(response: result.response) {
-        case .success:
-            debugPrint("[DEBUG] - like action for event with id: \(id)")
-            listeners.forEach { $0.likeManager?(self, didLikeEventWithId: id)}
-        case let .failure(reason):
-            debugPrint("[DEBUG] - like action for event with id: \(id), has failed with reason :\(reason ?? "")")
+        await runOnMainThread {
+            switch getStatus(response: result.response) {
+            case .success:
+                debugPrint("[DEBUG] - like action for event with id: \(id)")
+                listeners.forEach { $0.likeManager?(self, didLikeEventWithId: id)}
+            case let .failure(reason):
+                debugPrint("[DEBUG] - like action for event with id: \(id), has failed with reason :\(reason ?? "")")
+            }
         }
     }
     
@@ -47,12 +49,14 @@ extension LikeManagerImpl: LikeManager {
         guard let token = token else { return }
         listeners.forEach { $0.likeManager?(self, willRemoveLikeEventWithId: id) }
         let result = await router.request(.unlikeEvent(eventId: id, token: token))
-        switch getStatus(response: result.response) {
-        case .success:
-            debugPrint("[DEBUG] - dislike action for event with id: \(id)")
-            listeners.forEach { $0.likeManager?(self, didREmoveLikeEventWithId: id) }
-        case let .failure(reason):
-            debugPrint("[DEBUG] - dislike action for event with id: \(id), has failed with reason :\(reason ?? "")")
+        await runOnMainThread {
+            switch getStatus(response: result.response) {
+            case .success:
+                debugPrint("[DEBUG] - dislike action for event with id: \(id)")
+                listeners.forEach { $0.likeManager?(self, didREmoveLikeEventWithId: id) }
+            case let .failure(reason):
+                debugPrint("[DEBUG] - dislike action for event with id: \(id), has failed with reason :\(reason ?? "")")
+            }
         }
     }
 }
