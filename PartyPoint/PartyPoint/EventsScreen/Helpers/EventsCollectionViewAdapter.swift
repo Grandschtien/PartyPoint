@@ -68,7 +68,9 @@ final class EventsCollectionViewAdapter: NSObject {
     func updateLikeState(eventId: Int) {
         sections.mutateEach { section in
             section.items.mutateEach { event in
-                if event.id == eventId { event.isLiked = !event.isLiked }
+                if event.id == eventId {
+                    event.isLiked = !event.isLiked
+                }
             }
         }
         applySnapshot()

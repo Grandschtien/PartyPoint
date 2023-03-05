@@ -136,8 +136,6 @@ private extension EventsInteractor {
 extension EventsInteractor: EventsInteractorInput {
     func eventDisliked(index: Int, section: SectionType) {
         let eventId = contentProvider.getEventId(withIndex: index, section: section)
-        contentProvider.setLikedEvent(withIndex: index, section: section, isLiked: false)
-        output?.updateViewWithNewLike(eventId: eventId)
         
         Task {
             await likeManager.unlikeEvent(withId: eventId)
@@ -151,8 +149,6 @@ extension EventsInteractor: EventsInteractorInput {
     
     func eventLiked(index: Int, section: SectionType) {
         let eventId = contentProvider.getEventId(withIndex: index, section: section)
-        contentProvider.setLikedEvent(withIndex: index, section: section, isLiked: true)
-        output?.updateViewWithNewLike(eventId: eventId)
         
         Task {
             await likeManager.likeEvent(withId: eventId)
