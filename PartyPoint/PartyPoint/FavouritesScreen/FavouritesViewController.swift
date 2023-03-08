@@ -16,6 +16,7 @@ final class FavouritesViewController: AbstractEventsViewController {
     }()
     
     private let output: FavouritesViewOutput
+    private let nothing_placeholder = FavouritesEmptyView()
 
     init(output: FavouritesViewOutput) {
         self.output = output
@@ -42,6 +43,11 @@ final class FavouritesViewController: AbstractEventsViewController {
     
     internal override func setupUI() {
         super.setupUI()
+        view.addSubview(nothing_placeholder)
+        nothing_placeholder.isHidden = true
+        nothing_placeholder.snp.makeConstraints {
+            $0.left.top.right.bottom.equalToSuperview()
+        }
     }
 }
 
@@ -67,28 +73,25 @@ extension FavouritesViewController: FavouritesViewInput {
     }
     
     func updateView(withInfo info: [EventInfo]) {
+        nothing_placeholder.isHidden = true
+        setCollectionViewVisiabylity(isHidden: false)
         favouritesCollectionAdapter.configure(info)
     }
     
     func showNothingLiked() {
-        // to do
+        setLoaderIfNeeded(isLoading: false)
+        setCollectionViewVisiabylity(isHidden: true)
+        nothing_placeholder.isHidden = false
     }
     
     func showError(reason: String) {
-        // to do
+        setLoaderIfNeeded(isLoading: false)
+        nothing_placeholder.isHidden = true
+        setErrorViewVisibility(isHidden: false)
+        setCollectionViewVisiabylity(isHidden: true)
     }
     
     func showUserInfo(name: String, avatar: String?) {
         setupNaviagtionBar(name: name, avatar: avatar)
-    }
-}
-
-extension FavouritesViewController: EventsDelegate {
-    func loadNetxtPage(page: Int) {
-        // do nothing 
-    }
-    
-    func didTapOnEvent(_ event: EventInfo) {
-        
     }
 }

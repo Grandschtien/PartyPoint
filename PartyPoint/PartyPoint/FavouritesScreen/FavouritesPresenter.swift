@@ -73,4 +73,8 @@ extension FavouritesPresenter: FavouritesInteractorOutput {
     func tapOnEvent(index: Int) {
         interactor.getEventId(withIndex: index)
     }
+    
+    func removeEvent(withIndex index: Int) {
+        view?.removeItem(atIndex: index)
+    }
 }

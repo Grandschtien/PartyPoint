@@ -13,6 +13,7 @@ private let TITLE_LABEL_FONT_SIZE: CGFloat = 16 * SCREEN_SCALE_BY_HEIGHT
 class AbstractEventsViewController: UIViewController {
     
     internal let navigationBar = PPProfileNavigationBar()
+    private let connectionErrorView = PPConnectionErrorView()
     internal lazy var eventsCollection: UICollectionView = {
         let collection = UICollectionView(
             frame: .zero,
@@ -35,7 +36,7 @@ class AbstractEventsViewController: UIViewController {
                                     height: navigationBar.height)
         navigationItem.titleView = navigationBar
         view.addSubview(eventsCollection)
-        
+        setupErrorConnectionView()
         setupConstraints()
     }
     
@@ -51,6 +52,22 @@ class AbstractEventsViewController: UIViewController {
     
     func setOpenProfileAction(_ action: @escaping EmptyClosure) {
         navigationBar.setOpenProfileAction(action)
+    }
+    
+    func setCollectionViewVisiabylity(isHidden: Bool) {
+        eventsCollection.isHidden = isHidden
+    }
+    
+    func setupErrorConnectionView() {
+        self.view.addSubview(connectionErrorView)
+        connectionErrorView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        connectionErrorView.isHidden = true
+    }
+    
+    func setErrorViewVisibility(isHidden: Bool) {
+        connectionErrorView.isHidden = isHidden
     }
 }
 

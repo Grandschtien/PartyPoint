@@ -44,8 +44,8 @@ protocol FavouritesInteractorOutput: AnyObject {
     func dataLoaded(info: [EventInfo])
     func dataIsEmpy()
     func requestFailed(reason: String)
-    func removeElement(atIndex index: Int)
-    func openEvent(withId id: Int, placeId: Int) 
+    func openEvent(withId id: Int, placeId: Int)
+    func removeEvent(withIndex index: Int)
 }
 
 protocol FavouritesRouterInput: AnyObject {

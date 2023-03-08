@@ -39,7 +39,7 @@ final class FavouritesCollectionAdapter: NSObject {
     }
     
     func configure(_ items: [EventInfo]) {
-        self.items.append(contentsOf: items)
+        self.items = items
         applySnapshot()
     }
     

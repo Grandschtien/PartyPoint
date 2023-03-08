@@ -101,6 +101,8 @@
 		6071864B29AAA0A1003979A1 /* MoreContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6071864A29AAA0A1003979A1 /* MoreContentProvider.swift */; };
 		6071864D29AAA0AA003979A1 /* MoreContentProviderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6071864C29AAA0AA003979A1 /* MoreContentProviderImpl.swift */; };
 		6071864F29AAA46F003979A1 /* MoreEventsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6071864E29AAA46F003979A1 /* MoreEventsType.swift */; };
+		6073312C29B8BB9200862941 /* FavouritesEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073312B29B8BB9200862941 /* FavouritesEmptyView.swift */; };
+		6073312E29B8C4C500862941 /* PPConnectionErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073312D29B8C4C500862941 /* PPConnectionErrorView.swift */; };
 		6073B8702881936A00AF07FA /* EventsCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073B86F2881936A00AF07FA /* EventsCollectionViewAdapter.swift */; };
 		6073B8722881942A00AF07FA /* PPEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073B8712881942A00AF07FA /* PPEvent.swift */; };
 		6073B8752881962700AF07FA /* EventsTypeHeaderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6073B8742881962700AF07FA /* EventsTypeHeaderHeader.swift */; };
@@ -362,6 +364,8 @@
 		6071864A29AAA0A1003979A1 /* MoreContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreContentProvider.swift; sourceTree = "<group>"; };
 		6071864C29AAA0AA003979A1 /* MoreContentProviderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreContentProviderImpl.swift; sourceTree = "<group>"; };
 		6071864E29AAA46F003979A1 /* MoreEventsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreEventsType.swift; sourceTree = "<group>"; };
+		6073312B29B8BB9200862941 /* FavouritesEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesEmptyView.swift; sourceTree = "<group>"; };
+		6073312D29B8C4C500862941 /* PPConnectionErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPConnectionErrorView.swift; sourceTree = "<group>"; };
 		6073B86F2881936A00AF07FA /* EventsCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewAdapter.swift; sourceTree = "<group>"; };
 		6073B8712881942A00AF07FA /* PPEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPEvent.swift; sourceTree = "<group>"; };
 		6073B8742881962700AF07FA /* EventsTypeHeaderHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTypeHeaderHeader.swift; sourceTree = "<group>"; };
@@ -1102,6 +1106,7 @@
 				60971727287D83360084A63C /* FavouritesProtocols.swift */,
 				60971728287D83360084A63C /* FavouritesInteractor.swift */,
 				60971729287D83360084A63C /* FavouritesContainer.swift */,
+				6073312B29B8BB9200862941 /* FavouritesEmptyView.swift */,
 			);
 			path = FavouritesScreen;
 			sourceTree = "<group>";
@@ -1155,6 +1160,7 @@
 				60918EF5288AA5F400D9E032 /* ImagePicker.swift */,
 				60BCB67B296599A500728ED8 /* PPLIkeView.swift */,
 				60BCB67D2965A47F00728ED8 /* PPScrollableLabel.swift */,
+				6073312D29B8C4C500862941 /* PPConnectionErrorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1624,6 +1630,7 @@
 				60FAF6132953446A00982457 /* PPTextFieldDisabledModePresenter.swift in Sources */,
 				6052918C294E084F005B0373 /* RegisterView.swift in Sources */,
 				6071864329AA9AB6003979A1 /* MoreEventsAdapter.swift in Sources */,
+				6073312E29B8C4C500862941 /* PPConnectionErrorView.swift in Sources */,
 				6028E34129AE2298003129D7 /* LikesEndPoint.swift in Sources */,
 				60A5E3E92969A6D500FC8A37 /* MonthMetadata.swift in Sources */,
 				6037CA4E296D969F00E4BC03 /* PPPlace.swift in Sources */,
@@ -1673,6 +1680,7 @@
 				6071863D29AA9A42003979A1 /* MoreEventsPresenterImpl.swift in Sources */,
 				6070D43328ABDE1F0054F61B /* EventRouter.swift in Sources */,
 				60971721287D824A0084A63C /* ProfileProtocols.swift in Sources */,
+				6073312C29B8BB9200862941 /* FavouritesEmptyView.swift in Sources */,
 				602220D1295C4F2500D2F7B2 /* PPToken.swift in Sources */,
 				604147B328D4DA480052F60D /* HTTPMethod.swift in Sources */,
 				603E94D529AA058E0098BE6F /* ManageProfileConfiguration.swift in Sources */,

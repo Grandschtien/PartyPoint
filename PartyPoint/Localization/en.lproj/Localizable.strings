@@ -152,3 +152,10 @@
 "delete_account" = "Delete account";
 
 "no_token" = "No token";
+
+"no_favorites_title" = "Nothing in favourites yet";
+"no_favorites_subtitle" = "Click on the hearts in the events and add here";
+
+"no_connection_title" = "Problems with your internet connection";
+"no_connection_subtitle" = "Please check your connection and refresh the page";
+"refresh" = "Refresh";
