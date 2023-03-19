@@ -28,6 +28,8 @@ class AbstractEventsViewController: UIViewController {
         return collection
     }()
     
+    private var navigationTransform: CGAffineTransform?
+    
     internal func setupUI() {
         view.backgroundColor = Colors.miniColor()
         navigationBar.frame = .init(x: 0,
@@ -38,6 +40,11 @@ class AbstractEventsViewController: UIViewController {
         view.addSubview(eventsCollection)
         setupErrorConnectionView()
         setupConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.transform = navigationTransform ?? .identity
     }
     
     func setupConstraints() {
@@ -77,6 +84,7 @@ extension AbstractEventsViewController: EventsScrollDelegate {
         let offset = scrollView.contentOffset.y + safeAreaTop
         let alpha = 1 - ((scrollView.contentOffset.y + safeAreaTop) / safeAreaTop)
         navigationBar.alpha = alpha
+        navigationTransform = .init(translationX: 0, y: min(0, -offset))
         navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
     }
 }

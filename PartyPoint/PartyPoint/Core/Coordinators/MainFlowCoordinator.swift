@@ -73,7 +73,7 @@ private extension MainFlowCoordinator {
         if #available(iOS 13, *) {
             let navigationBarAppearance = UINavigationBarAppearance()
             navigationBarAppearance.configureWithTransparentBackground()
-            navigationBarAppearance.backgroundColor = Colors.mainColor()
+            navigationBarAppearance.backgroundColor = .clear
             UINavigationBar.appearance().standardAppearance = navigationBarAppearance
             UINavigationBar.appearance().compactAppearance = navigationBarAppearance
             UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
@@ -102,8 +102,7 @@ private extension MainFlowCoordinator {
                                           image: navControllerKey.unselectedImage,
                                           selectedImage: navControllerKey.image)            
             navigationController.tabBarItem = tabBarItem
-            UINavigationBar.appearance().barTintColor = Colors.mainColor()
-            UINavigationBar.appearance().backgroundColor = Colors.mainColor()
+            navigationController.isNavigationBarHidden = false
             result[navControllerKey] = navigationController
         }
         return result

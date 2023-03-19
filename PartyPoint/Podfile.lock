@@ -1,4 +1,5 @@
 PODS:
+  - lottie-ios (4.1.3)
   - R.swift (6.1.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
@@ -6,23 +7,26 @@ PODS:
   - SwiftSoup (2.5.3)
 
 DEPENDENCIES:
+  - lottie-ios
   - R.swift
   - SnapKit (~> 5.6.0)
   - SwiftSoup
 
 SPEC REPOS:
   trunk:
+    - lottie-ios
     - R.swift
     - R.swift.Library
     - SnapKit
     - SwiftSoup
 
 SPEC CHECKSUMS:
+  lottie-ios: d0954d3150061f662ed0adf96ef98d7421864c47
   R.swift: ec98ff71c4ab2f6fd01dd077e5afd15e63a4834c
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftSoup: 33e8d374021a6c332788f78fa29a93227d8a7699
 
-PODFILE CHECKSUM: 6c78fc246d974a1ba8919480fa60a0dc64d27d5a
+PODFILE CHECKSUM: 194d09c578a0c55fe2f0eff9577edd5b9bec5b4c
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.0

@@ -102,7 +102,7 @@ extension EventPresenter: EventViewOutput {
     func changeVisibilityOfNavBar(offset: CGFloat) {
         if offset <= 76 {
             let title = interactor.getTitle().capitalizedFirst
-            view?.showNavBar(withTitle: title)
+            view?.showNavBar()
         } else {
             view?.hideNavBar()
         }

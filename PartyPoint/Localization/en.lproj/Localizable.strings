@@ -159,3 +159,13 @@
 "no_connection_title" = "Problems with your internet connection";
 "no_connection_subtitle" = "Please check your connection and refresh the page";
 "refresh" = "Refresh";
+
+"search_title" = "Search";
+
+"search_default_title" = "Start typing";
+"search_default_subtitle" = "The search happens for every letter, so we won't miss anything 😉";
+
+"search_bar_title" = "Enter a query";
+
+"search_empty_results_title" = "We tried very hard, but nothing came up 😔";
+"search_empty_results_subtitle" = "Try searching for the words in the event description";

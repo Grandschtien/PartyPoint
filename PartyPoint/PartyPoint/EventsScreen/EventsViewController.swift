@@ -37,7 +37,6 @@ final class EventsViewController: AbstractEventsViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
-        navigationBar.backgroundColor = Colors.mainColor()
     }
     
     override func setupUI() {
@@ -81,6 +80,7 @@ extension EventsViewController: EventsViewInput {
     }
     
     func updateTodaySection(with section: Section<EventInfo>) {
+        setErrorViewVisibility(isHidden: true)
         eventsCollectionAdapter.addSection(section)
     }
     
@@ -93,8 +93,7 @@ extension EventsViewController: EventsViewInput {
     }
     
     func updateView(withError reason: String) {
-        //TODO: implement error
-        debugPrint(reason)
+        setErrorViewVisibility(isHidden: false)
     }
     
     func changeCollectionViewVisibility(isHidden: Bool) {
@@ -113,7 +112,6 @@ extension EventsViewController: EventsViewInput {
 extension EventsViewController: EventsCollectionViewAdapterDelegate {
     func eventLiked(index: Int, section: SectionType) {
         output.eventLiked(index: index, section: section)
-
     }
     
     func eventDisliked(index: Int, section: SectionType) {

@@ -9,22 +9,10 @@
 import UIKit
 
 final class EventViewController: UIViewController {
-    enum NavigatioBarState {
-        case hidden
-        case noHidden
-    }
-    
     private let output: EventViewOutput
     
-    private let navigationBar = NavigationBarWithLogoAndActions(
-        image: nil,
-        frame: .zero,
-        buttons: [.back, .share],
-        isImageNeed: false,
-        isTitleNeeded: true
-    )
+    private let navigationBar = SharingNavigationBar()
     private let eventView = EventView()
-    private var navBarCurrentState: NavigatioBarState = .hidden
     
     init(output: EventViewOutput) {
         self.output = output
@@ -40,6 +28,12 @@ final class EventViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         output.onViewDidLoad()
+        setupNavigationBar()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.transform = .identity
     }
     
     override func loadView() {
@@ -49,17 +43,20 @@ final class EventViewController: UIViewController {
 
 private extension EventViewController {
     func setupUI() {
-        navigationController?.isNavigationBarHidden = true
         view.backgroundColor = Colors.mainColor()
         eventView.delegate = self
-        view.addSubview(navigationBar)
-        
-        navigationBar.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(statusBarFrame.height)
-            $0.leading.trailing.equalToSuperview()
-        }
+        setupNavigationBar()
         
         setActions()
+    }
+    
+    func setupNavigationBar() {
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        navigationController?.isNavigationBarHidden = false
+        navigationBar.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: navigationBar.height)
+        navigationBar.backgroundColor = .clear
+        navigationBar.fontColor(color: .clear)
+        navigationItem.titleView = navigationBar
     }
     
     func setActions() {
@@ -81,7 +78,7 @@ extension EventViewController: EventViewDelegate {
 
 extension EventViewController: EventViewInput {
     func setupView(withInfo info: EventFullInfo) {
-        navigationBar.setTitle(info.title, isHidden: true)
+        navigationBar.setTitle(info.title)
         eventView.configureView(withEvent: info)
     }
     
@@ -90,16 +87,24 @@ extension EventViewController: EventViewInput {
         isHidden ? hideLoader() : showLoader()
     }
     
-    func showNavBar(withTitle title: String) {
-        navigationBar.setTitle(title, isHidden: false)
-        navigationBar.backgroundColor = Colors.mainColor()
-        changeStatusBarColor(Colors.mainColor())
+    func showNavBar() {
+        UIView.animate(withDuration: 0.3) { [self] in
+            changeStatusBarColor(Colors.mainColor())
+            navigationController?.navigationBar.barTintColor = Colors.mainColor()
+            navigationController?.navigationBar.backgroundColor = Colors.mainColor()
+            navigationController?.navigationBar.tintColor = Colors.mainColor()
+            navigationBar.fontColor(color: Colors.miniColor())
+        }
     }
     
     func hideNavBar() {
-        navigationBar.setTitle("", isHidden: true)
-        navigationBar.backgroundColor = .clear
-        changeStatusBarColor(.clear)
+        UIView.animate(withDuration: 0.3) { [self] in
+            changeStatusBarColor(.clear)
+            navigationController?.navigationBar.barTintColor = .clear
+            navigationController?.navigationBar.backgroundColor = .clear
+            navigationController?.navigationBar.tintColor = .clear
+            navigationBar.fontColor(color: .clear)
+        }
     }
 }
 

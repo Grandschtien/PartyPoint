@@ -11,7 +11,7 @@ private let BACK_BUTTON_SIZE: CGFloat = 30.scale()
 private let BACK_BUTTON_LEFT_OFFSET: CGFloat = 14
 private let TITLE_FONT_SIZE: CGFloat = 16.scale()
 private let NAV_BAR_HEIGHT: CGFloat = 42.scale()
- 
+
 class PlainNavigationBar: UIView {
     private var backAction: EmptyClosure?
     
@@ -42,6 +42,15 @@ class PlainNavigationBar: UIView {
 }
 
 private extension PlainNavigationBar {
+    func setupBackButton() {
+        backButton.setImage(Images.chevronBack(), for: .normal)
+        backButton.addTarget(self, action: #selector(backActionHandler), for: .touchUpInside)
+    }
+    
+    func setupTitleLabel() {
+        titleLabel.textColor = Colors.miniColor()
+        titleLabel.font = Fonts.sfProDisplaySemibold(size: TITLE_FONT_SIZE)
+    }
     func setupUI() {
         self.addSubview(titleLabel)
         self.addSubview(backButton)
@@ -61,16 +70,6 @@ private extension PlainNavigationBar {
         titleLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
-    }
-    
-    func setupBackButton() {
-        backButton.setImage(Images.chevronBack(), for: .normal)
-        backButton.addTarget(self, action: #selector(backActionHandler), for: .touchUpInside)
-    }
-    
-    func setupTitleLabel() {
-        titleLabel.textColor = Colors.miniColor()
-        titleLabel.font = Fonts.sfProDisplaySemibold(size: TITLE_FONT_SIZE)
     }
 }
 

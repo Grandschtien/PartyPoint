@@ -75,6 +75,7 @@ extension FavouritesViewController: FavouritesViewInput {
     func updateView(withInfo info: [EventInfo]) {
         nothing_placeholder.isHidden = true
         setCollectionViewVisiabylity(isHidden: false)
+        setErrorViewVisibility(isHidden: true)
         favouritesCollectionAdapter.configure(info)
     }
     

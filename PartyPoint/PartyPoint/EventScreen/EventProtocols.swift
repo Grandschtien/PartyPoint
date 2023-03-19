@@ -18,7 +18,7 @@ protocol EventModuleOutput: AnyObject {
 protocol EventViewInput: AnyObject {
     func setLoaderVisibility(isHidden: Bool)
     func setupView(withInfo info: EventFullInfo)
-    func showNavBar(withTitle title: String)
+    func showNavBar()
     func hideNavBar()
 }
 
