@@ -13,13 +13,13 @@ class ObservableSequence<T: AnyObject> {
     func addListener(_ subcriber: T) {
         subscribers = subscribers.filter { $0.value != nil }
         
-        if !subscribers.contains(where: {$0.matches(subcriber) }) {
+        if !subscribers.contains(where: { $0.matches(subcriber) }) {
             subscribers.append(ObserverElement(value: subcriber))
         }
     }
     
     func removeListener(_ subscriber: T) {
-        subscribers = subscribers.filter { $0.value != nil && !$0.matches(subscriber)}
+        subscribers = subscribers.filter { $0.value != nil && !$0.matches(subscriber) }
     }
 }
 

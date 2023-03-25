@@ -35,7 +35,6 @@ final class LocationView: UIView {
     }
 }
 
-
 private extension LocationView {
     func setupUI() {
         dateLabel.font = labelsFont

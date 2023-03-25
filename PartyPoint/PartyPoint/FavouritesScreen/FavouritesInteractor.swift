@@ -96,11 +96,11 @@ extension FavouritesInteractor: FavouritesInteractorInput {
 }
 
 extension FavouritesInteractor: LikeEventListener {
-    func likeManager(_ likeManager: LikeManager, didREmoveLikeEventWithId id: Int) {
-        loadFavourites()
+    func likeManager(_ likeManager: LikeManager, didLikeEvent event: PPEventWrapper?) {
+        print(event)
     }
     
-    func likeManager(_ likeManager: LikeManager, didLikeEventWithId id: Int) {
-        loadFavourites()
+    func likeManager(_ likeManager: LikeManager, didRemoveLikeEvent event: PPEventWrapper?) {
+        print(event)
     }
 }

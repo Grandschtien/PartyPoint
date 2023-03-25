@@ -25,6 +25,12 @@ extension FavouritesPresenter: FavouritesModuleInput {
 }
 
 extension FavouritesPresenter: FavouritesViewOutput {
+    func tryToRefresh() {
+        view?.setLoaderIfNeeded(isLoading: true)
+        view?.isNoConnectionViewNeeded(isHidden: true)
+        interactor.loadFavourites()
+    }
+    
     func getUserProfile() {
         interactor.getUserProfile()
     }

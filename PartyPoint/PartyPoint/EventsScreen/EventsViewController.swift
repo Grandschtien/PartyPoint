@@ -63,6 +63,10 @@ private extension EventsViewController {
         setOpenProfileAction {
             self.output.openProfile()
         }
+        
+        setRefreshAction { [weak self] in
+            self?.output.tryToReloadData()
+        }
     }
 }
 
@@ -93,7 +97,11 @@ extension EventsViewController: EventsViewInput {
     }
     
     func updateView(withError reason: String) {
-        setErrorViewVisibility(isHidden: false)
+        setReasonToErrorView(reason: reason)
+    }
+    
+    func showErrorViewIfNeeded(isHidden: Bool) {
+        setErrorViewVisibility(isHidden: isHidden)
     }
     
     func changeCollectionViewVisibility(isHidden: Bool) {

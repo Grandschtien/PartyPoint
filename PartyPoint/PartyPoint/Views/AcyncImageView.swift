@@ -34,7 +34,7 @@ final class AcyncImageView: UIImageView {
         guard let url = url else {
             return
         }
-        
+        setDefaultImage()
         urlString = url.absoluteString
         
         
@@ -62,7 +62,7 @@ final class AcyncImageView: UIImageView {
         case .profile:
             self.image = Images.profile_person()
         case .event:
-            self.image = nil
+            self.image = Images.image_placeholder()
         case .profileMain:
             self.image = Images.profile_image()
         }

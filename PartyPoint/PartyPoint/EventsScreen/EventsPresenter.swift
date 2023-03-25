@@ -70,6 +70,12 @@ extension EventsPresenter: EventsViewOutput {
         view?.showLoaderView()
         interactor.loadFirstPages()
     }
+    
+    func tryToReloadData() {
+        view?.showErrorViewIfNeeded(isHidden: true)
+        view?.showLoaderView()
+        interactor.loadFirstPages()
+    }
 }
 
 extension EventsPresenter: EventsInteractorOutput {
@@ -94,6 +100,7 @@ extension EventsPresenter: EventsInteractorOutput {
         let section = makeSection(withInfo: events, title: Localizable.today(), moreType: .today, ofType: .today)
         view?.hideLoaderView()
         view?.updateTodaySection(with: section)
+        view?.showErrorViewIfNeeded(isHidden: true)
     }
     
     func updateClosestSection(with events: [EventInfo]) {
@@ -111,6 +118,7 @@ extension EventsPresenter: EventsInteractorOutput {
     func showError(withReason reason: String) {
         view?.hideLoaderView()
         view?.changeCollectionViewVisibility(isHidden: true)
+        view?.showErrorViewIfNeeded(isHidden: false)
         view?.updateView(withError: reason)
     }
 }

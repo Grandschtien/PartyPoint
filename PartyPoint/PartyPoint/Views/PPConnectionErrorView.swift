@@ -39,6 +39,10 @@ final class PPConnectionErrorView: UIView {
     func setRefreshAction(_ action: @escaping EmptyClosure) {
         self.refreshAction = action
     }
+    
+    func updateView(withError reason: String) {
+        subtitleLabel.text = reason
+    }
 }
 
 private extension PPConnectionErrorView {
@@ -88,14 +92,13 @@ private extension PPConnectionErrorView {
     }
     
     func setupTitleLabel() {
-        titleLabel.text = Localizable.no_connection_title()
+        titleLabel.text = Localizable.error()
         titleLabel.font = Fonts.sfProDisplayBold(size: TITLE_FONT_SIZE)
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = .center
     }
     
     func setupSubtitleLabel() {
-        subtitleLabel.text = Localizable.no_connection_subtitle()
         subtitleLabel.font = Fonts.sfProDisplayMedium(size: SUBTITLE_FONT_SIZE)
         subtitleLabel.numberOfLines = 2
         subtitleLabel.textAlignment = .center

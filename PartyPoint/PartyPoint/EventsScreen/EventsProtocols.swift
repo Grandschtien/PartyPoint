@@ -28,6 +28,7 @@ protocol EventsViewInput: AnyObject {
 
     func showLoaderView()
     func hideLoaderView()
+    func showErrorViewIfNeeded(isHidden: Bool)
 }
 
 protocol EventsViewOutput: AnyObject {
@@ -38,6 +39,7 @@ protocol EventsViewOutput: AnyObject {
     func eventDisliked(index: Int, section: SectionType)
     func openProfile()
     func moreTapped(moreType: MoreEventsType)
+    func tryToReloadData()
 }
 
 protocol EventsInteractorInput: AnyObject {

@@ -254,6 +254,7 @@
 		60EAE93C28AFC6F500030055 /* EventHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAE93B28AFC6F500030055 /* EventHeaderLabel.swift */; };
 		60EAE93E28AFCD0700030055 /* LayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAE93D28AFCD0700030055 /* LayoutHelper.swift */; };
 		60EAE94028AFCD9D00030055 /* UIView+Scales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EAE93F28AFCD9D00030055 /* UIView+Scales.swift */; };
+		60EFDDEC29CF3D5C000C37C0 /* PPEventWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EFDDEB29CF3D5C000C37C0 /* PPEventWrapper.swift */; };
 		60FAF60B295342FA00982457 /* PPTextFieldModePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAF60A295342FA00982457 /* PPTextFieldModePresenterProtocol.swift */; };
 		60FAF60D2953436300982457 /* PPTextFieldMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAF60C2953436300982457 /* PPTextFieldMode.swift */; };
 		60FAF60F295343DD00982457 /* PPTextFieldDefaultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAF60E295343DD00982457 /* PPTextFieldDefaultPresenter.swift */; };
@@ -535,6 +536,7 @@
 		60EAE93B28AFC6F500030055 /* EventHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeaderLabel.swift; sourceTree = "<group>"; };
 		60EAE93D28AFCD0700030055 /* LayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutHelper.swift; sourceTree = "<group>"; };
 		60EAE93F28AFCD9D00030055 /* UIView+Scales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Scales.swift"; sourceTree = "<group>"; };
+		60EFDDEB29CF3D5C000C37C0 /* PPEventWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPEventWrapper.swift; sourceTree = "<group>"; };
 		60FAF60A295342FA00982457 /* PPTextFieldModePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPTextFieldModePresenterProtocol.swift; sourceTree = "<group>"; };
 		60FAF60C2953436300982457 /* PPTextFieldMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPTextFieldMode.swift; sourceTree = "<group>"; };
 		60FAF60E295343DD00982457 /* PPTextFieldDefaultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPTextFieldDefaultPresenter.swift; sourceTree = "<group>"; };
@@ -818,13 +820,6 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
-		60498012297D67AB0096EB8E /* LocalModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LocalModels;
-			sourceTree = "<group>";
-		};
 		6052918A294E083B005B0373 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -892,7 +887,6 @@
 		6070D42B28ABDDFB0054F61B /* EventScreen */ = {
 			isa = PBXGroup;
 			children = (
-				60498012297D67AB0096EB8E /* LocalModels */,
 				60A1E60828AFAB9E00E80D0D /* EventViews */,
 				6070D42C28ABDE1F0054F61B /* EventPresenter.swift */,
 				6070D42D28ABDE1F0054F61B /* EventRouter.swift */,
@@ -969,6 +963,7 @@
 		6073B873288194B100AF07FA /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				60EFDDEA29CF3D4E000C37C0 /* Wrappers */,
 				60BCB67129658F0E00728ED8 /* InfoModels */,
 				60BCB67029658F0100728ED8 /* BaseModels */,
 			);
@@ -1452,6 +1447,14 @@
 			path = EventSubviews;
 			sourceTree = "<group>";
 		};
+		60EFDDEA29CF3D4E000C37C0 /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				60EFDDEB29CF3D5C000C37C0 /* PPEventWrapper.swift */,
+			);
+			path = Wrappers;
+			sourceTree = "<group>";
+		};
 		60FAF608295342AE00982457 /* TextField */ = {
 			isa = PBXGroup;
 			children = (
@@ -1861,6 +1864,7 @@
 				603A592A29C62F7800A0052A /* SearchManager.swift in Sources */,
 				600D25F2299A781300189AC7 /* ChangePasswordContentView.swift in Sources */,
 				602AE6BF2972E623004427A6 /* String+Extension.swift in Sources */,
+				60EFDDEC29CF3D5C000C37C0 /* PPEventWrapper.swift in Sources */,
 				60918EE82888630D00D9E032 /* UserInfo.swift in Sources */,
 				602220CF295C4F1B00D2F7B2 /* PPUser.swift in Sources */,
 				60B48CCF28E5B837006C6CF5 /* NetworkRouter.swift in Sources */,

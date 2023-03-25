@@ -187,17 +187,19 @@ extension EventsInteractor: EventsInteractorInput {
 }
 
 extension EventsInteractor: LikeEventListener {
-    func likeManager(_ likeManager: LikeManager, didLikeEventWithId id: Int) {
-        if !contentProvider.isLikedEvent(withId: id) {
-            contentProvider.setLikedEvent(withId: id, isLiked: true)
-            output?.updateViewWithNewLike(eventId: id)
+    func likeManager(_ likeManager: LikeManager, didRemoveLikeEvent event: PPEventWrapper?) {
+        guard let event = event else { return }
+        if contentProvider.isLikedEvent(withId: event.id) {
+            contentProvider.setLikedEvent(withId: event.id, isLiked: false)
+            output?.updateViewWithNewLike(eventId: event.id)
         }
     }
     
-    func likeManager(_ likeManager: LikeManager, didREmoveLikeEventWithId id: Int) {
-        if contentProvider.isLikedEvent(withId: id) {
-            contentProvider.setLikedEvent(withId: id, isLiked: false)
-            output?.updateViewWithNewLike(eventId: id)
+    func likeManager(_ likeManager: LikeManager, didLikeEvent event: PPEventWrapper?) {
+        guard let event = event else { return }
+        if !contentProvider.isLikedEvent(withId: event.id) {
+            contentProvider.setLikedEvent(withId: event.id, isLiked: true)
+            output?.updateViewWithNewLike(eventId: event.id)
         }
     }
 }

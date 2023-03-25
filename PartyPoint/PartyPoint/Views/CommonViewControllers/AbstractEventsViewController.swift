@@ -14,6 +14,7 @@ class AbstractEventsViewController: UIViewController {
     
     internal let navigationBar = PPProfileNavigationBar()
     private let connectionErrorView = PPConnectionErrorView()
+    
     internal lazy var eventsCollection: UICollectionView = {
         let collection = UICollectionView(
             frame: .zero,
@@ -61,6 +62,10 @@ class AbstractEventsViewController: UIViewController {
         navigationBar.setOpenProfileAction(action)
     }
     
+    func setRefreshAction(_ action: @escaping EmptyClosure) {
+        self.connectionErrorView.setRefreshAction(action)
+    }
+    
     func setCollectionViewVisiabylity(isHidden: Bool) {
         eventsCollection.isHidden = isHidden
     }
@@ -75,6 +80,10 @@ class AbstractEventsViewController: UIViewController {
     
     func setErrorViewVisibility(isHidden: Bool) {
         connectionErrorView.isHidden = isHidden
+    }
+    
+    func setReasonToErrorView(reason: String) {
+        connectionErrorView.updateView(withError: reason)
     }
 }
 

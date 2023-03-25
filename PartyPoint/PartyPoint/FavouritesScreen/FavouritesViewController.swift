@@ -43,6 +43,7 @@ final class FavouritesViewController: AbstractEventsViewController {
     
     internal override func setupUI() {
         super.setupUI()
+        view.backgroundColor = Colors.mainColor()
         view.addSubview(nothing_placeholder)
         nothing_placeholder.isHidden = true
         nothing_placeholder.snp.makeConstraints {
@@ -60,6 +61,10 @@ private extension FavouritesViewController {
         favouritesCollectionAdapter.setTapOnEventAction { [weak self] index in
             self?.output.tapOnEvent(index: index)
         }
+        
+        setRefreshAction { [weak self] in
+            self?.output.tryToRefresh()
+        }
     }
 }
 
@@ -70,6 +75,10 @@ extension FavouritesViewController: FavouritesViewInput {
     
     func setLoaderIfNeeded(isLoading: Bool) {
         self.showLoaderIfNeeded(isLoading: isLoading)
+    }
+    
+    func isNoConnectionViewNeeded(isHidden: Bool) {
+        setErrorViewVisibility(isHidden: isHidden)
     }
     
     func updateView(withInfo info: [EventInfo]) {
@@ -86,6 +95,7 @@ extension FavouritesViewController: FavouritesViewInput {
     }
     
     func showError(reason: String) {
+        setReasonToErrorView(reason: reason)
         setLoaderIfNeeded(isLoading: false)
         nothing_placeholder.isHidden = true
         setErrorViewVisibility(isHidden: false)

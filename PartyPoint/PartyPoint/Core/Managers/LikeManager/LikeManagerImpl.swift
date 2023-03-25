@@ -12,10 +12,19 @@ final class LikeManagerImpl: NetworkManager {
     private let tokenMananger: ValidationTokenManager
     private let router: Router<LikesEndPoint>
     private var listeners = ObservableSequence<LikeEventListener>()
+    private let decoder: PPDecoder
     
     private override init() {
         self.tokenMananger = TokenManagerFabric.assembly()
         self.router = Router<LikesEndPoint>()
+        self.decoder = PPDecoderImpl()
+    }
+    
+    private func getEventWrapper(data: Data?) -> PPEventWrapper? {
+        guard let data = data,
+              let event = decoder.parseJSON(from: data, type: PPEvent.self)
+        else { return nil }
+        return PPEventWrapper(event: event)
     }
 }
 
@@ -31,13 +40,16 @@ extension LikeManagerImpl: LikeManager {
     func likeEvent(withId id: Int) async {
         let token = try? await tokenMananger.getAccessToken()
         guard let token = token else { return }
+        
         listeners.forEach { $0.likeManager?(self, willLikeEventWithId: id) }
         let result = await router.request(.likeEvent(eventId: id, token: token))
+        
         await runOnMainThread {
             switch getStatus(response: result.response) {
             case .success:
                 debugPrint("[DEBUG] - like action for event with id: \(id)")
-                listeners.forEach { $0.likeManager?(self, didLikeEventWithId: id)}
+                let eventWrapper = getEventWrapper(data: result.data)
+                listeners.forEach { $0.likeManager?(self, didLikeEvent: eventWrapper)}
             case let .failure(reason):
                 debugPrint("[DEBUG] - like action for event with id: \(id), has failed with reason :\(reason ?? "")")
             }
@@ -47,13 +59,16 @@ extension LikeManagerImpl: LikeManager {
     func unlikeEvent(withId id: Int) async {
         let token = try? await tokenMananger.getAccessToken()
         guard let token = token else { return }
+        
         listeners.forEach { $0.likeManager?(self, willRemoveLikeEventWithId: id) }
         let result = await router.request(.unlikeEvent(eventId: id, token: token))
+        
         await runOnMainThread {
             switch getStatus(response: result.response) {
             case .success:
                 debugPrint("[DEBUG] - dislike action for event with id: \(id)")
-                listeners.forEach { $0.likeManager?(self, didREmoveLikeEventWithId: id) }
+                let eventWrapper = getEventWrapper(data: result.data)
+                listeners.forEach { $0.likeManager?(self, didRemoveLikeEvent: eventWrapper) }
             case let .failure(reason):
                 debugPrint("[DEBUG] - dislike action for event with id: \(id), has failed with reason :\(reason ?? "")")
             }

@@ -21,11 +21,13 @@ protocol FavouritesViewInput: AnyObject {
     func showNothingLiked()
     func showError(reason: String)
     func setLoaderIfNeeded(isLoading: Bool)
+    func isNoConnectionViewNeeded(isHidden: Bool)
     func removeItem(atIndex index: Int)
 }
 
 protocol FavouritesViewOutput: AnyObject {
     func onViewDidLoad()
+    func tryToRefresh()
     func updateView()
     func getUserProfile()
     func tapOnEvent(index: Int)
