@@ -29,7 +29,6 @@ final class ProfileContentView: UIView {
     private let horizontalStackView = UIStackView()
     private let aboutAppView = ManageProfileView()
     private let exitButton = PPButton(style: .ghost(titleColor: Colors.miniColor() ?? .white), size: .s)
-    private let deleteAccountButton = PPButton(style: .ghost(titleColor: Colors.buttonColor() ?? .white), size: .s)
     private let verticalStackView = UIStackView()
     
     override init(frame: CGRect) {
@@ -51,7 +50,7 @@ final class ProfileContentView: UIView {
     }
     
     func setExitButtonLoader(isLoading: Bool) {
-        exitButton.isLoading = true
+        exitButton.isLoading = isLoading
     }
     
     func setExitAction(_ action: @escaping EmptyClosure) {
@@ -69,7 +68,6 @@ private extension ProfileContentView {
         verticalStackView.addArrangedSubview(horizontalStackView)
         verticalStackView.addArrangedSubview(aboutAppView)
         verticalStackView.addArrangedSubview(exitButton)
-        verticalStackView.addArrangedSubview(deleteAccountButton)
         
         horizontalStackView.addArrangedSubview(changeCityView)
         horizontalStackView.addArrangedSubview(changePasswordView)
@@ -81,7 +79,6 @@ private extension ProfileContentView {
         setupChangePasswordView()
         setupInviteFriendVeiw()
         setupExitButton()
-        setupDeleteAccountButton()
         
         setupConstraints()
         
@@ -123,22 +120,15 @@ private extension ProfileContentView {
             $0.height.equalTo(INVITE_FRIEND_VIEW_HEIGHT)
         }
         
-        [deleteAccountButton, exitButton].forEach { button in
-            button.snp.makeConstraints {
-                $0.left.right.equalToSuperview()
-                $0.height.equalTo(BUTTON_HEIGHT)
-            }
+        exitButton.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.height.equalTo(BUTTON_HEIGHT)
         }
     }
     
     func setupExitButton() {
         exitButton.setTitle(Localizable.exit(), for: .normal)
         exitButton.addTarget(self, action: #selector(exitActionHandler), for: .touchUpInside)
-    }
-    
-    func setupDeleteAccountButton() {
-        deleteAccountButton.setTitle(Localizable.delete_account(), for: .normal)
-        deleteAccountButton.addTarget(self, action: #selector(deleteAccountActionHandler), for: .touchUpInside)
     }
     
     func setupNavigationBar() {

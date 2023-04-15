@@ -41,7 +41,7 @@ extension ProfilePresenter: ProfileViewOutput {
 
 extension ProfilePresenter: ProfileInteractorOutput {
     func showErrorWhenExit(reason: String) {
-        // showing error after exit button
+        view?.setLoaderVisibility(isLoading: false)
     }
     
     func performSuccessExit() {

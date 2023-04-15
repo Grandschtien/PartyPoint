@@ -33,7 +33,7 @@ private extension EventsPresenter {
     func makeProfileInfo(from model: PPUserInformation) -> ProfileInfo {
         let imageUrl = model.imageUrl ?? ""
         let imageURl = URL(string: imageUrl)
-        return ProfileInfo(name: model.name, surname: model.surname, email: model.surname, imageUrl: imageURl)
+        return ProfileInfo(name: model.name, surname: model.surname, email: model.email, imageUrl: imageURl)
     }
 }
 
