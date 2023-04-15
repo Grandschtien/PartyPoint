@@ -46,10 +46,4 @@ final class EventViewWithButton: DefaultEventView {
         subtitleLabel.text = cost.cost
         actionButton.setTitle(cost.buttonTitle, for: .normal)
     }
-    
-    func configure(forPeople people: PeopleEventnfoModel) {
-        titleLabel.text = people.title
-        subtitleLabel.text = people.amount
-        actionButton.setTitle(people.buttonTitle, for: .normal)
-    }
 }

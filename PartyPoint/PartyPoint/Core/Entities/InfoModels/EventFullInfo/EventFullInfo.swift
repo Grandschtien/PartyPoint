@@ -13,6 +13,5 @@ struct EventFullInfo {
     let location: LocationInfo
     let description: String
     let cost: CostEventInfo
-    let peopleAmount: PeopleEventnfoModel
     let placeAnnotation: PlaceAnnotationInfo
 }

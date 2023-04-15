@@ -16,11 +16,11 @@ extension SearchEndPoint: EndPointType {
     var enviromentslBaseUrl: String {
         switch NetworkManager.enviroment {
         case .qa:
-            return "https://diplomatest.site/api/events/external/search"
+            return "https://diplomatest.site/api/events/external"
         case .production:
-            return "https://diplomatest.site/api/events/external/search"
+            return "https://diplomatest.site/api/events/external"
         case .debug:
-            return "https://diplomatest.site/api/events/external/search"
+            return "https://diplomatest.site/api/events/external"
         }
     }
     
@@ -34,7 +34,7 @@ extension SearchEndPoint: EndPointType {
     var path: String {
         switch self {
         case .search:
-            return ""
+            return "/search"
         }
     }
     

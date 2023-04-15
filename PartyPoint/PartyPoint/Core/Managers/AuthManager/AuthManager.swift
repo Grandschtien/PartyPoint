@@ -14,5 +14,5 @@ protocol AuthManager {
     func sendCofirmCode(toEmail email: String) async -> AuthManagerImpl.AuthStatus
     func checkConfirmCode(email: String, code: Int) async -> AuthManagerImpl.AuthStatus
     func sendNewPassword(email: String, password: String) async -> AuthManagerImpl.AuthStatus
-    func logout() async -> AuthManagerImpl.AuthStatus
+    func logout(accessToken: String, refreshToken: String) async -> AuthManagerImpl.AuthStatus
 }

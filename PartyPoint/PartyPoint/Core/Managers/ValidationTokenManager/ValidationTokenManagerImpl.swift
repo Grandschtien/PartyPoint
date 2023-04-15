@@ -7,14 +7,14 @@
 
 import Foundation
 
+enum ValidationTokenErrors: Error {
+    case savingFaild
+    case cannotRefreshToken
+    case invalidData
+    case noSavedTokens
+}
+
 final class ValidationTokenManagerImpl {
-    enum ValidationTokenErrors: Error {
-        case savingFaild
-        case cannotRefreshToken
-        case invalidData
-        case noSavedTokens
-    }
-    
     private let keyChainManager: KeyChainMananger
     private let authManager: AuthManager
     private let accountManager: PPAccountManager
@@ -126,6 +126,13 @@ extension ValidationTokenManagerImpl: ValidationTokenManager {
                 throw error
             }
         }
+    }
+    
+    func getValidTokens() async throws -> (access: String, refresh: String) {
+        let accessToken = try await getAccessToken()
+        let refreshToken = try getCurrentTokens().refresh
+        
+        return (accessToken, refreshToken)
     }
     
     func getCurrentTokens() throws -> (access: String, refresh: String) {

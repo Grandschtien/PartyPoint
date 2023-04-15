@@ -1,31 +1,34 @@
 //
-//  FavouritesViewController.swift
+//  FavouriteScreenViewController.swift
 //  PartyPoint
 //
-//  Created by Егор Шкарин on 12.07.2022.
+//  Created by Егор Шкарин on 15.04.2023.
 //  
 //
-
 import UIKit
 
-final class FavouritesViewController: AbstractEventsViewController {
+final class FavouriteScreenViewController: AbstractEventsViewController {
+    
+    // MARK: Private propeties
+    private let presenter: FavouriteScreenPresenter
+    
     private lazy var favouritesCollectionAdapter: FavouritesCollectionAdapter = {
         let adapter = FavouritesCollectionAdapter(eventsCollection)
         adapter.scrollDelegate = self
+        adapter.delegate = self
         return adapter
     }()
     
-    private let output: FavouritesViewOutput
     private let nothing_placeholder = FavouritesEmptyView()
 
-    init(output: FavouritesViewOutput) {
-        self.output = output
-        
+    // MARK: Init
+    init(presenter: FavouriteScreenPresenter) {
+        self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
     
     @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         return nil
     }
     
@@ -33,7 +36,7 @@ final class FavouritesViewController: AbstractEventsViewController {
         super.viewDidLoad()
         setupUI()
         setupActions()
-        output.onViewDidLoad()
+        presenter.onViewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +46,27 @@ final class FavouritesViewController: AbstractEventsViewController {
     
     internal override func setupUI() {
         super.setupUI()
+        prepareForAppear()
+    }
+}
+
+// MARK: Private methods
+private extension FavouriteScreenViewController {
+    func setupActions() {
+        setOpenProfileAction { [weak self] in
+            self?.presenter.getUserProfile()
+        }
+        
+        favouritesCollectionAdapter.setTapOnEventAction { [weak self] index in
+            self?.presenter.didTapOnEvent(withIndex: index)
+        }
+        
+        setRefreshAction { [weak self] in
+            self?.presenter.tryToRefresh()
+        }
+    }
+    
+    func prepareForAppear() {
         view.backgroundColor = Colors.mainColor()
         view.addSubview(nothing_placeholder)
         nothing_placeholder.isHidden = true
@@ -52,25 +76,22 @@ final class FavouritesViewController: AbstractEventsViewController {
     }
 }
 
-private extension FavouritesViewController {
-    func setupActions() {
-        setOpenProfileAction { [weak self] in
-            self?.output.getUserProfile()
-        }
-        
-        favouritesCollectionAdapter.setTapOnEventAction { [weak self] index in
-            self?.output.tapOnEvent(index: index)
-        }
-        
-        setRefreshAction { [weak self] in
-            self?.output.tryToRefresh()
-        }
-    }
+// MARK: Public methods
+extension FavouriteScreenViewController {
+    
 }
 
-extension FavouritesViewController: FavouritesViewInput {
-    func removeItem(atIndex index: Int) {
-        favouritesCollectionAdapter.removeElemnt(atIndex: index)
+// MARK: FavouriteScreenView
+extension FavouriteScreenViewController: FavouriteScreenView {
+    func updateWithNewEvent(eventInfo: EventInfo) {
+        favouritesCollectionAdapter.appedElement(eventInfo)
+        nothing_placeholder.isHidden = true
+        setCollectionViewVisiabylity(isHidden: false)
+        setErrorViewVisibility(isHidden: true)
+    }
+    
+    func deleteEvent(eventInfo: EventInfo) {
+        favouritesCollectionAdapter.removeElement(eventInfo)
     }
     
     func setLoaderIfNeeded(isLoading: Bool) {
@@ -94,6 +115,10 @@ extension FavouritesViewController: FavouritesViewInput {
         nothing_placeholder.isHidden = false
     }
     
+    func validateAdatpter() {
+        favouritesCollectionAdapter.removeAll()
+    }
+    
     func showError(reason: String) {
         setReasonToErrorView(reason: reason)
         setLoaderIfNeeded(isLoading: false)
@@ -104,5 +129,11 @@ extension FavouritesViewController: FavouritesViewInput {
     
     func showUserInfo(name: String, avatar: String?) {
         setupNaviagtionBar(name: name, avatar: avatar)
+    }
+}
+
+extension FavouriteScreenViewController: FavouritesCollectionAdapterDelegate {
+    func eventDisliked(eventInfo: EventInfo) {
+        presenter.eventDisliked(eventInfo: eventInfo)
     }
 }

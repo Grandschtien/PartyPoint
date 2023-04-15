@@ -53,10 +53,8 @@ private extension MainFlowCoordinator {
         guard let navController = navigationControllers[.favourites], let appCoordinator = appCoordinator else {
             fatalError("wtf no Search")
         }
-        
-        let context = FavouritesContext(appCoordinator: appCoordinator, moduleOutput: nil)
-        
-        let container = FavouritesContainer.assemble(with: context)
+                
+        let container = FavouriteScreenAssembly.assemble(appCoordinator: appCoordinator)
         navController.setViewControllers([container.viewController], animated: false)
     }
     

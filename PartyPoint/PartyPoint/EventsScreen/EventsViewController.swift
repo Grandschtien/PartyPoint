@@ -85,6 +85,7 @@ extension EventsViewController: EventsViewInput {
     
     func updateTodaySection(with section: Section<EventInfo>) {
         setErrorViewVisibility(isHidden: true)
+        setCollectionViewVisiabylity(isHidden: false)
         eventsCollectionAdapter.addSection(section)
     }
     

@@ -8,7 +8,7 @@
 import Foundation
 
 func runOnMainThread(code: EmptyClosure) async {
-    await MainActor.run{
+    await MainActor.run {
         code()
     }
 }

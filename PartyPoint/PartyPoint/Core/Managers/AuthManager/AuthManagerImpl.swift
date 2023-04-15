@@ -94,7 +94,13 @@ final class AuthManagerImpl: NetworkManager, AuthManager {
         }
     }
     
-    func logout() async -> AuthStatus {
-        return .authorized(data: nil)
+    func logout(accessToken: String, refreshToken: String) async -> AuthStatus {
+        let result = await router.request(.logout(accessToken: accessToken, refreshToken: refreshToken))
+        switch getStatus(response: result.response) {
+        case .success:
+            return .authorized(data: nil)
+        case let .failure(reason):
+            return .nonAuthoraized(reason: reason)
+        }
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 @objc protocol LikeManager {
     func likeEvent(withId id: Int) async
     func unlikeEvent(withId id: Int) async
+    func loadFvourites(userId id: Int) async throws -> Data
     func addListener(_ subcriber: LikeEventListener)
     func removeListener(_ subscriber: LikeEventListener) 
 }

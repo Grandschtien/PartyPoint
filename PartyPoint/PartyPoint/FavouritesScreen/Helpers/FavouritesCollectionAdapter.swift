@@ -7,6 +7,9 @@
 
 import UIKit
 
+protocol FavouritesCollectionAdapterDelegate: AnyObject {
+    func eventDisliked(eventInfo: EventInfo)
+}
 
 final class FavouritesCollectionAdapter: NSObject {
     typealias TapOnEventsAction = (Int) -> Void
@@ -24,6 +27,7 @@ final class FavouritesCollectionAdapter: NSObject {
     private weak var collectionView: UICollectionView?
     
     weak var scrollDelegate: EventsScrollDelegate?
+    weak var delegate: FavouritesCollectionAdapterDelegate?
     
     private var didTapOnEventsAction: TapOnEventsAction?
     
@@ -48,6 +52,21 @@ final class FavouritesCollectionAdapter: NSObject {
         applySnapshot()
     }
     
+    func removeAll() {
+        self.items = []
+        applySnapshot()
+    }
+    
+    func removeElement(_ element: EventInfo) {
+        self.items.removeAll { $0.id == element.id }
+        applySnapshot()
+    }
+    
+    func appedElement(_ element: EventInfo) {
+        self.items.insert(element, at: 0)
+        applySnapshot()
+    }
+    
     func setTapOnEventAction(_ action: @escaping TapOnEventsAction) {
         self.didTapOnEventsAction = action
     }
@@ -57,9 +76,16 @@ final class FavouritesCollectionAdapter: NSObject {
         guard let collectionView = collectionView else {
             fatalError("No collection in adapter")
         }
+        
         let dataSource = DataSource(collectionView: collectionView) { (collectionView, indexPath, event) -> UICollectionViewCell in
             let cell = collectionView.dequeueCell(cellType: EventCell.self, for: indexPath)
+            let item = self.items[indexPath.item]
             cell.configure(withEvent: event)
+            
+            cell.setDisLikeAction { [weak self] in
+                self?.delegate?.eventDisliked(eventInfo: item)
+            }
+            
             return cell
         }
         return dataSource

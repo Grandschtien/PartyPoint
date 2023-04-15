@@ -9,7 +9,5 @@ import Foundation
 
 struct PeopleEventnfoModel {
     let title: String
-    let amount: String
     let buttonTitle: String
-    var isGoing: Bool
 }

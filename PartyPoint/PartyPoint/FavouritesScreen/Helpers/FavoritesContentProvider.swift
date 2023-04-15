@@ -12,4 +12,8 @@ protocol FavoritesContentProvider {
     func removeItem(withIndex index: Int)
     func updateContent(withInfo info: [EventInfo])
     func removeItemWithId(id: Int) -> Int
+    func appendNewEvent(event: EventInfo)
+    func removeEvent(event: EventInfo)
+    func getEvents() -> [EventInfo]
+    func getEvent(byId id: Int) -> EventInfo? 
 }

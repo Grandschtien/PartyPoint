@@ -60,7 +60,7 @@ class NetworkManager {
         case failure(String?)
     }
     
-    static let enviroment: NetworkEnviroment = .debug
+    static let enviroment: NetworkEnviroment = .qa
     
     internal func handleNetworkResponse(_ response: HTTPURLResponse?) -> ResponseResult {
         guard let response = response else { return .failure(NetworkResponse.noData.reasonString) }

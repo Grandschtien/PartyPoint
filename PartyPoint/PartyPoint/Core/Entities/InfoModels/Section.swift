@@ -21,7 +21,7 @@ extension Section: Hashable {
     }
     
     static func == (lhs: Section, rhs: Section) -> Bool {
-      lhs.id == rhs.id
+        lhs.id == rhs.id
     }
 }
 

@@ -10,7 +10,7 @@ import Foundation
 
 enum AuthEndPoint {
     case login(email: String, passwd: String)
-    case logout
+    case logout(accessToken: String, refreshToken: String)
     case refresh(refreshToken: String)
     case signUp(name: String,
                 surname: String,
@@ -87,8 +87,10 @@ extension AuthEndPoint: EndPointType {
             return .requestParameters(bodyParameters: ["email": email,
                                                        "password": passwd],
                                       urlParameters: nil)
-        case .logout:
-            return .request
+        case let .logout(accessToken, refreshToken):
+            return .requestParametersWithHeaders(bodyParameters: ["refresh_token": refreshToken],
+                                                 urlParameters: nil,
+                                                 additionalParameters: ["Authorization": "Bearer \(accessToken)"])
         case let .refresh(refreshTocken):
             return .requestParameters(bodyParameters: ["refresh_token": refreshTocken],
                                       urlParameters: nil)

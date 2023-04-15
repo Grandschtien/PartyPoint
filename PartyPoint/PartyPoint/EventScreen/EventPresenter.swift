@@ -27,13 +27,11 @@ private extension EventPresenter {
         let imageURL = URL(string: event.event.image)
         let placeAnnotation = createPlaceAnnotation(event: event)
         let cost = createCostInfo(event: event)
-        let peopleAmount = createPeopleAmountInfo(event: event)
         return EventFullInfo(imageURL: imageURL,
                              title: event.event.title.capitalizedFirst,
                              location: locationInfo,
                              description: event.event.description.clearFromHTMLTags(),
                              cost: cost,
-                             peopleAmount: peopleAmount,
                              placeAnnotation: placeAnnotation)
     }
     
@@ -50,16 +48,6 @@ private extension EventPresenter {
         let buttonTitle = Localizable.pay_on_foreign_site()
         let orgURL = URL(string: event.place.siteURL)
         return CostEventInfo(title: title, cost: cost, buttonTitle: buttonTitle, orginazerURL: orgURL)
-    }
-    
-    func createPeopleAmountInfo(event: PPEventInformation) -> PeopleEventnfoModel {
-        let title = Localizable.people_amount()
-        let amount = "\(event.peopleCount)"
-        let buttonTitle = event.isGoing ? Localizable.dont_go() : Localizable.will_go()
-        return PeopleEventnfoModel(title: title,
-                                   amount: amount,
-                                   buttonTitle: buttonTitle,
-                                   isGoing: event.isGoing)
     }
     
     func validateDate(start: Date, end: Date) -> (date: String, time: String) {
@@ -101,7 +89,6 @@ extension EventPresenter: EventViewOutput {
     
     func changeVisibilityOfNavBar(offset: CGFloat) {
         if offset <= 76 {
-            let title = interactor.getTitle().capitalizedFirst
             view?.showNavBar()
         } else {
             view?.hideNavBar()

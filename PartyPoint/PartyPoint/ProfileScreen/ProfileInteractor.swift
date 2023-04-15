@@ -33,25 +33,29 @@ extension ProfileInteractor: ProfileInteractorInput {
     
     func exit() {
         Task {
-            let result = await authManager.logout()
-            switch result {
-            case .authorized:
-                await runOnMainThread {
-                    tokenManager.removeTokens()
-                    accountManager.removeUser()
-                    output?.performSuccessExit()
-                }
-                
-                print(accountManager.getUser())
-                print(try? await tokenManager.getAccessToken())
-            case let .nonAuthoraized(reason):
-                await runOnMainThread {
-                    guard let reason = reason else {
-                        output?.showErrorWhenExit(reason: Localizable.somthing_goes_wrong())
-                        return
+            do {
+                let tokens = try await tokenManager.getValidTokens()
+                let result = await authManager.logout(accessToken: tokens.access, refreshToken: tokens.refresh)
+                switch result {
+                case .authorized:
+                    await runOnMainThread {
+                        tokenManager.removeTokens()
+                        accountManager.removeUser()
+                        output?.performSuccessExit()
                     }
-                    output?.showErrorWhenExit(reason: reason)
+                case let .nonAuthoraized(reason):
+                    await runOnMainThread {
+                        guard let reason = reason else {
+                            output?.showErrorWhenExit(reason: Localizable.somthing_goes_wrong())
+                            return
+                        }
+                        output?.showErrorWhenExit(reason: reason)
+                    }
                 }
+            } catch ValidationTokenErrors.noSavedTokens {
+                output?.showErrorWhenExit(reason: Localizable.no_token())
+            } catch {
+                debugPrint("[DEBUG] - Error was accured when user tried to logout, reason: \(error.localizedDescription)")
             }
         }
     }

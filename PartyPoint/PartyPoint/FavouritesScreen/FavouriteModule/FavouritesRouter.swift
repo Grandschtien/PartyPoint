@@ -14,16 +14,14 @@ final class FavouritesRouter: BaseRouter {
     init(appCoordinator: AppCoordinator) {
         self.appCoordinator = appCoordinator
     }
-}
-
-extension FavouritesRouter: FavouritesRouterInput {
+    
     func openProfileScreen(withInfo info: ProfileInfo) {
         let context = ProfileContext(profileInfo: info, appCoordinator: appCoordinator)
         let assembly = ProfileContainer.assemble(with: context)
         push(vc: assembly.viewController, animated: true)
     }
     
-    func opneEvent(withId id: Int, placeId: Int) {
+    func openEvent(withId id: Int, placeId: Int) {
         let context = EventContext(eventId: id, placeId: placeId)
         let container = EventContainer.assemble(with: context)
         container.viewController.hidesBottomBarWhenPushed = true
