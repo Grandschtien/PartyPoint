@@ -24,6 +24,7 @@ final class Router<EndPoint: EndPointType>: NetworkRouter {
         } catch NetworkError.encodingFailed {
             return (nil, nil, NetworkError.encodingFailed)
         } catch {
+            print(error.localizedDescription)
             return (nil, nil, NetworkError.noInternetConnection)
         }
     }
