@@ -84,12 +84,12 @@ private extension SearchScreenViewController {
     }
     
     func setupActions() {
-        resultView.setLikeAction { index in
-            
+        resultView.setLikeAction { [weak self] index in
+            self?.presenter.eventLiked(with: index)
         }
         
-        resultView.setUnlikeAction { index in
-            
+        resultView.setUnlikeAction { [weak self] index in
+            self?.presenter.eventUnliked(with: index)
         }
         
         resultView.setOnButtonTapped { [weak self] index in

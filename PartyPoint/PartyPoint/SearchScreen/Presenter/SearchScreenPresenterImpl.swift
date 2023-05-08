@@ -12,9 +12,11 @@ final class SearchScreenPresenterImpl {
     private weak var view: SearchScreenView?
     private var timer: Timer?
     private let contentLoader: SearchContentLoader
+    private let likeManager: LikeManager
     
-    init(contentLoader: SearchContentLoader) {
+    init(contentLoader: SearchContentLoader, likeManager: LikeManager) {
         self.contentLoader = contentLoader
+        self.likeManager = likeManager
     }
 }
 
@@ -32,6 +34,20 @@ extension SearchScreenPresenterImpl {
 
 // MARK: SearchScreenPresenter
 extension SearchScreenPresenterImpl: SearchScreenPresenter {
+    func eventLiked(with index: Int) {
+        Task {
+            let event = contentLoader.getEvent(byIndex: index)
+            await likeManager.likeEvent(withId: event.id)
+        }
+    }
+    
+    func eventUnliked(with index: Int) {
+        Task {
+            let event = contentLoader.getEvent(byIndex: index)
+            await likeManager.unlikeEvent(withId: event.id)
+        }
+    }
+    
     func willPresentSearch() {
         view?.setVisibilityOfResultsView(isHidden: false)
         view?.setVisibilityOfDefaultView(isHidden: true)

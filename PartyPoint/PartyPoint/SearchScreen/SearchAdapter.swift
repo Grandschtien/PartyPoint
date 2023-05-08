@@ -30,7 +30,7 @@ final class SearchAdapter: NSObject {
     
     private weak var collectionView: UICollectionView?
     
-    weak var delegate: MoreEventsAdapterDelegate?
+    weak var delegate: SearchAdapterDelegate?
     
     private lazy var dataSource: DataSource = setupDataSource()
     

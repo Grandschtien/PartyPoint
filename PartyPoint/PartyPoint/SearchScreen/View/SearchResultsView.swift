@@ -26,6 +26,7 @@ final class SearchResultsView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
+        adapter.delegate = self
     }
     
     @available(*, unavailable)

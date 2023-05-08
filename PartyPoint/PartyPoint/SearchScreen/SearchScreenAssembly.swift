@@ -15,7 +15,8 @@ final class SearchScreenAssembly {
         let searchManager = SearchManangerFactory.assembly()
         let decoder = PPDecoderImpl()
         let contentLoader = SearchContentLoaderImpl(searchManager: searchManager, decoder: decoder)
-        let presenter = SearchScreenPresenterImpl(contentLoader: contentLoader)
+        let likeManager = LikeManagerImpl.shared
+        let presenter = SearchScreenPresenterImpl(contentLoader: contentLoader, likeManager: likeManager)
         let viewController = SearchScreenViewController(presenter: presenter)
         presenter.setView(viewController)
 
