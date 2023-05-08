@@ -35,6 +35,8 @@ private extension ProfileViewController {
     func setupUI() {
         view.addSubview(contentView)
         navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        
         contentView.snp.makeConstraints {
             $0.left.right.bottom.equalToSuperview()
             $0.top.equalToSuperview()
@@ -70,4 +72,10 @@ extension ProfileViewController: ProfileViewInput {
     }
 }
 
+
+extension ProfileViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+}
 

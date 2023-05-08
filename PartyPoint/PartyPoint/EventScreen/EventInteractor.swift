@@ -71,4 +71,8 @@ extension EventInteractor: EventInteractorInput {
     func getTitle() -> String {
         return eventInformation?.event.title ?? ""
     }
+    
+    func getSiteUrl() -> URL? {
+        return URL(string: eventInformation?.place.siteURL ?? "")
+    }
 }

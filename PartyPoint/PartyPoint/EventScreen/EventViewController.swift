@@ -53,6 +53,7 @@ private extension EventViewController {
     func setupNavigationBar() {
         self.navigationItem.setHidesBackButton(true, animated: false)
         navigationController?.isNavigationBarHidden = false
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
         navigationBar.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: navigationBar.height)
         navigationBar.backgroundColor = .clear
         navigationBar.fontColor(color: .clear)
@@ -66,6 +67,10 @@ private extension EventViewController {
         
         navigationBar.setShareAction {
             //TODO: Share action
+        }
+        
+        eventView.setOpenSuperviserSite { [weak self] in
+            self?.output.openSuperviserSite()
         }
     }
 }
@@ -108,4 +113,8 @@ extension EventViewController: EventViewInput {
     }
 }
 
-
+extension EventViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+}

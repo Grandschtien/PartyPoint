@@ -12,6 +12,9 @@ private let BUTTON_HEIGHT: CGFloat = 57.scale()
 private let FONT_SIZE: CGFloat = 15.scale()
 
 final class EventViewWithButton: DefaultEventView {
+    
+    private var openSuperviserSite: EmptyClosure?
+    
     private let subtitleLabel = UILabel()
     private let actionButton = PPButton(style: .primary, size: .m)
     
@@ -22,6 +25,7 @@ final class EventViewWithButton: DefaultEventView {
         super.setupUI()
         subtitleLabel.numberOfLines = 0
         subtitleLabel.font = Fonts.sfProDisplayBold(size: FONT_SIZE)
+        actionButton.addTarget(self, action: #selector(openSuperviserSiteHandler), for: .touchUpInside)
     }
     
     override var titleText: String { return "" }
@@ -45,5 +49,16 @@ final class EventViewWithButton: DefaultEventView {
         titleLabel.text = cost.title
         subtitleLabel.text = cost.cost.isEmpty ? Localizable.no_information() : cost.cost
         actionButton.setTitle(cost.buttonTitle, for: .normal)
+    }
+    
+    func setOpenSuperviserSiteAction(_ action: @escaping EmptyClosure) {
+        self.openSuperviserSite = action
+    }
+}
+
+extension EventViewWithButton {
+    @objc
+    func openSuperviserSiteHandler() {
+        openSuperviserSite?()
     }
 }

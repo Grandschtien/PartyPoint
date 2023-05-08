@@ -56,6 +56,10 @@ extension EventView {
     func setVisibility(isHidden: Bool) {
         scrollView.isHidden = isHidden
     }
+    
+    func setOpenSuperviserSite(_ action: @escaping EmptyClosure) {
+        self.eventInfoView.setOpenSuperviserSite(action)
+    }
 }
 
 extension EventView: UIScrollViewDelegate {

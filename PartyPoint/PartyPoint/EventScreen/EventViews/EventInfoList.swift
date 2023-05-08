@@ -48,6 +48,10 @@ final class EventInfoView: UIView {
         descriptionView.configure(withDescription: info.description)
         costView.configure(forCost: info.cost)
     }
+    
+    func setOpenSuperviserSite(_ action: @escaping EmptyClosure) {
+        self.costView.setOpenSuperviserSiteAction(action)
+    }
 }
 
 private extension EventInfoView {

@@ -14,4 +14,8 @@ extension EventRouter: EventRouterInput {
     func backToPrevController() {
         pop(animated: true)
     }
+    
+    func openSuperviserSite(with url: URL) {
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
 }

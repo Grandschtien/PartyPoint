@@ -78,6 +78,11 @@ extension EventPresenter: EventModuleInput {
 }
 
 extension EventPresenter: EventViewOutput {
+    func openSuperviserSite() {
+        guard let url = interactor.getSiteUrl() else { return }
+        router.openSuperviserSite(with: url)
+    }
+    
     func backAction() {
         router.backToPrevController()
     }

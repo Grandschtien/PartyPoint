@@ -63,6 +63,7 @@ private extension MoreEventsViewController {
     
     func setupUI() {
         navigationController?.isNavigationBarHidden = true
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 }
 
@@ -92,5 +93,11 @@ extension MoreEventsViewController: MoreEventsView {
         let eventContext = EventContext(eventId: eventId, placeId: placeId)
         let assembly = EventContainer.assemble(with: eventContext)
         self.navigationController?.pushViewController(assembly.viewController, animated: true)
+    }
+}
+
+extension MoreEventsViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
