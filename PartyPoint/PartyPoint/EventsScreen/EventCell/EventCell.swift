@@ -80,7 +80,7 @@ private extension EventCell {
             $0.bottom.equalToSuperview().inset(VERTICAL_STACK_VIEW_BOTTOM_OFFSET)
         }
         
-        [nameLabel, dateLabel].forEach{ label in
+        [nameLabel, dateLabel].forEach { label in
             label.snp.makeConstraints {
                 $0.left.right.equalToSuperview()
             }
@@ -107,6 +107,8 @@ private extension EventCell {
         
         dateLabel.font = Fonts.sfProDisplaySemibold(size: DATE_FONT)
         dateLabel.textColor = Colors.miniColor()
+        
+        imageView.contentMode = .scaleAspectFill
         
         setupConstraints()
     }
