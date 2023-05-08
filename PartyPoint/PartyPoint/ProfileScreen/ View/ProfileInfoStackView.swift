@@ -81,6 +81,7 @@ private extension ProfileInfoStackView {
         avatarImageView.layer.cornerRadius = AVATAR_SIZE / 2
         avatarImageView.backgroundColor = Colors.miniColor()
         avatarImageView.contentMode = .center
+        avatarImageView.clipsToBounds = true
     }
     
     func setupEmailLabel() {

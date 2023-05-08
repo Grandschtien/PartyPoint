@@ -53,6 +53,10 @@ private extension ProfileViewController {
         contentView.setChangePasswordAction { [weak self] in
             self?.output.changePasswordActionTapped()
         }
+        
+        contentView.setChangeCityAction { [weak self] in
+            self?.output.changeCityActionTapped()
+        }
     }
 }
 

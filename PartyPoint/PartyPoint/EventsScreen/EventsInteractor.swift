@@ -171,7 +171,7 @@ extension EventsInteractor: EventsInteractorInput {
             await updateMainSection(withEvents: main.events, reason: main.reason)
         }
         let user = accountManager.getUser()
-        output?.setInitialUserInfo(name: user?.name, image: user?.imageUrl)
+        output?.setInitialUserInfo(name: user?.name, image: user?.imgUrl)
     }
     
     func loadNextPageOfMain(page: Int) {

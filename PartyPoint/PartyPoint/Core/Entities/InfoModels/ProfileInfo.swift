@@ -23,6 +23,6 @@ extension ProfileInfo {
         self.name = user.name
         self.surname = user.surname
         self.email = user.email
-        self.imageUrl = URL(string: user.imageUrl ?? "")
+        self.imageUrl = URL(string: user.imgUrl ?? "")
     }
 }

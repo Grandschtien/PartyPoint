@@ -99,6 +99,12 @@
 		6060DE6D29210BD30017F7F7 /* ValidationTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6060DE6C29210BD30017F7F7 /* ValidationTokenManager.swift */; };
 		6060DE702921145A0017F7F7 /* EnterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6060DE6F2921145A0017F7F7 /* EnterView.swift */; };
 		606960992A09261600E7DD9E /* UserEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606960982A09261600E7DD9E /* UserEndPoint.swift */; };
+		606960A52A092F5400E7DD9E /* ChooseCityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069609E2A092F5400E7DD9E /* ChooseCityPresenter.swift */; };
+		606960A62A092F5400E7DD9E /* ChooseCityPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069609F2A092F5400E7DD9E /* ChooseCityPresenterImpl.swift */; };
+		606960A72A092F5400E7DD9E /* ChooseCityAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606960A02A092F5400E7DD9E /* ChooseCityAssembly.swift */; };
+		606960A82A092F5400E7DD9E /* ChooseCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606960A22A092F5400E7DD9E /* ChooseCityView.swift */; };
+		606960A92A092F5400E7DD9E /* ChooseCityContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606960A32A092F5400E7DD9E /* ChooseCityContentView.swift */; };
+		606960AA2A092F5400E7DD9E /* ChooseCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606960A42A092F5400E7DD9E /* ChooseCityViewController.swift */; };
 		606A9A8D2966FAB300A17F13 /* PPCollectionsLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A9A8C2966FAB300A17F13 /* PPCollectionsLoaderView.swift */; };
 		606BEE6A298CD6F900C73395 /* MultipartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BEE69298CD6F900C73395 /* MultipartRequest.swift */; };
 		6070D43228ABDE1F0054F61B /* EventPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42C28ABDE1F0054F61B /* EventPresenter.swift */; };
@@ -379,6 +385,12 @@
 		6060DE6C29210BD30017F7F7 /* ValidationTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTokenManager.swift; sourceTree = "<group>"; };
 		6060DE6F2921145A0017F7F7 /* EnterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterView.swift; sourceTree = "<group>"; };
 		606960982A09261600E7DD9E /* UserEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndPoint.swift; sourceTree = "<group>"; };
+		6069609E2A092F5400E7DD9E /* ChooseCityPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCityPresenter.swift; sourceTree = "<group>"; };
+		6069609F2A092F5400E7DD9E /* ChooseCityPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCityPresenterImpl.swift; sourceTree = "<group>"; };
+		606960A02A092F5400E7DD9E /* ChooseCityAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCityAssembly.swift; sourceTree = "<group>"; };
+		606960A22A092F5400E7DD9E /* ChooseCityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCityView.swift; sourceTree = "<group>"; };
+		606960A32A092F5400E7DD9E /* ChooseCityContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCityContentView.swift; sourceTree = "<group>"; };
+		606960A42A092F5400E7DD9E /* ChooseCityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCityViewController.swift; sourceTree = "<group>"; };
 		606A9A8C2966FAB300A17F13 /* PPCollectionsLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPCollectionsLoaderView.swift; sourceTree = "<group>"; };
 		606BEE69298CD6F900C73395 /* MultipartRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartRequest.swift; sourceTree = "<group>"; };
 		6070D42C28ABDE1F0054F61B /* EventPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPresenter.swift; sourceTree = "<group>"; };
@@ -907,6 +919,35 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		6069609C2A092F5400E7DD9E /* ChooseCityScreen */ = {
+			isa = PBXGroup;
+			children = (
+				6069609D2A092F5400E7DD9E /* Presenter */,
+				606960A02A092F5400E7DD9E /* ChooseCityAssembly.swift */,
+				606960A12A092F5400E7DD9E /* View */,
+			);
+			path = ChooseCityScreen;
+			sourceTree = "<group>";
+		};
+		6069609D2A092F5400E7DD9E /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				6069609E2A092F5400E7DD9E /* ChooseCityPresenter.swift */,
+				6069609F2A092F5400E7DD9E /* ChooseCityPresenterImpl.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		606960A12A092F5400E7DD9E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				606960A22A092F5400E7DD9E /* ChooseCityView.swift */,
+				606960A32A092F5400E7DD9E /* ChooseCityContentView.swift */,
+				606960A42A092F5400E7DD9E /* ChooseCityViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6070D42B28ABDDFB0054F61B /* EventScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -1193,6 +1234,7 @@
 		609716FF287D820C0084A63C /* ProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
+				6069609C2A092F5400E7DD9E /* ChooseCityScreen */,
 				603E94E029AA39C00098BE6F /* ProfileContentProvider */,
 				603E94D329AA053D0098BE6F /*  View */,
 				60918EE42888624100D9E032 /* Helpers */,
@@ -1754,6 +1796,7 @@
 				60BB681B298ADC8F00D82CD1 /* Media.swift in Sources */,
 				6073B87B2881A01800AF07FA /* EventCell.swift in Sources */,
 				60C4FB3329AB814A00E4DDFF /* PPRefreshControl.swift in Sources */,
+				606960A72A092F5400E7DD9E /* ChooseCityAssembly.swift in Sources */,
 				6037CA4C296D957600E4BC03 /* PPEventInformation.swift in Sources */,
 				60498011297D50DF0096EB8E /* MKMapView+Extensions.swift in Sources */,
 				60971731287D840A0084A63C /* InitialRouter.swift in Sources */,
@@ -1784,6 +1827,7 @@
 				60DB792228B419940058A3D7 /* LocationView.swift in Sources */,
 				60B48CD928EC5BC3006C6CF5 /* AuthEndPoint.swift in Sources */,
 				6071863C29AA9A42003979A1 /* MoreEventsPresenter.swift in Sources */,
+				606960A92A092F5400E7DD9E /* ChooseCityContentView.swift in Sources */,
 				60971796287EDE5D0084A63C /* FogotPasswordProtocols.swift in Sources */,
 				6071864F29AAA46F003979A1 /* MoreEventsType.swift in Sources */,
 				600D25F1299A781300189AC7 /* ChangePasswordView.swift in Sources */,
@@ -1819,6 +1863,7 @@
 				60BCB6802965A79B00728ED8 /* UIViewController+Loader.swift in Sources */,
 				60FFFE0729644E6B004DB8D4 /* EventsManager.swift in Sources */,
 				60FFFE0929644E78004DB8D4 /* EventsManagerImpl.swift in Sources */,
+				606960A82A092F5400E7DD9E /* ChooseCityView.swift in Sources */,
 				6071864029AA9A42003979A1 /* MoreEventsView.swift in Sources */,
 				606BEE6A298CD6F900C73395 /* MultipartRequest.swift in Sources */,
 				6097171F287D824A0084A63C /* ProfileRouter.swift in Sources */,
@@ -1857,6 +1902,7 @@
 				603E94CA29A90A110098BE6F /* SearchScreenView.swift in Sources */,
 				605BAA9129EAC154007C45F2 /* FavouriteScreenAssembly.swift in Sources */,
 				603E94CC29A90D640098BE6F /* PPProfileNavigationBar.swift in Sources */,
+				606960A52A092F5400E7DD9E /* ChooseCityPresenter.swift in Sources */,
 				60971763287D9BD80084A63C /* NavigationBarWithLogo.swift in Sources */,
 				600D25EF299A781300189AC7 /* ChangePasswordPresenterImpl.swift in Sources */,
 				60FAF60F295343DD00982457 /* PPTextFieldDefaultPresenter.swift in Sources */,
@@ -1882,6 +1928,7 @@
 				604147BE28D4DED60052F60D /* JSONParameterEncoder.swift in Sources */,
 				60971789287EDE4A0084A63C /* RegisterViewController.swift in Sources */,
 				60971778287DBBD50084A63C /* DynamicStackWithTF.swift in Sources */,
+				606960AA2A092F5400E7DD9E /* ChooseCityViewController.swift in Sources */,
 				603E94D929AA0F7C0098BE6F /* ProfileInfo.swift in Sources */,
 				607F850B2980506F0042D77F /* DefaultEventView.swift in Sources */,
 				60CACCB129B20617008D031C /* ObserverElement.swift in Sources */,
@@ -1967,6 +2014,7 @@
 				6071864129AA9A42003979A1 /* MoreEventsAssembly.swift in Sources */,
 				60971733287D84CA0084A63C /* InitialAssembly.swift in Sources */,
 				60DA4CEB28BE131C00B7E428 /* BaseRouter.swift in Sources */,
+				606960A62A092F5400E7DD9E /* ChooseCityPresenterImpl.swift in Sources */,
 				609716DD287D75230084A63C /* SceneDelegate.swift in Sources */,
 				60EAE93C28AFC6F500030055 /* EventHeaderLabel.swift in Sources */,
 				60FAF62D2953560700982457 /* PPButton+Parameters.swift in Sources */,

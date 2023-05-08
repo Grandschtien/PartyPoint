@@ -15,7 +15,7 @@ struct PPUserInformation {
     let email: String
     let city: String?
     let about: String?
-    let imageUrl: String?
+    let imgUrl: String?
 }
 
 extension PPUserInformation: Codable {
@@ -26,7 +26,7 @@ extension PPUserInformation: Codable {
         case dateOfBirth
         case city
         case about
-        case imageUrl
+        case imgUrl
         case email
     }
 }

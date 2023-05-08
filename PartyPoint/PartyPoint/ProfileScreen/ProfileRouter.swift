@@ -23,7 +23,8 @@ extension ProfileRouter: ProfileRouterInput {
     }
     
     func openChangeCityScreen() {
-        // modally presented screen
+        let assembly = ChooseCityAssembly.assemble()
+        self.present(vc: assembly.viewController, animated: true)
     }
     
     func navigateBack() {

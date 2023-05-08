@@ -105,6 +105,7 @@ private extension PPProfileNavigationBar {
         avatarImageView.image = Images.profile_image()
         avatarImageView.contentMode = .center
         avatarImageView.backgroundColor = Colors.miniColor()
+        avatarImageView.clipsToBounds = true
     }
     
     func setupNameLabel() {

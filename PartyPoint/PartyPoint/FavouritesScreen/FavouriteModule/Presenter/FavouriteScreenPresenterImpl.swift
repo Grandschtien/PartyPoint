@@ -41,7 +41,7 @@ private extension FavouriteScreenPresenterImpl {
         Task {
             await runOnMainThread {
                 view?.setLoaderIfNeeded(isLoading: true)
-                view?.showUserInfo(name: user.name, avatar: user.imageUrl)
+                view?.showUserInfo(name: user.name, avatar: user.imgUrl)
             }
             
             let data = try? await likeManager.loadFvourites(userId: user.id)

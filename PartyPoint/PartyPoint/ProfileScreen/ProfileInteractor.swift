@@ -40,7 +40,7 @@ extension ProfileInteractor: ProfileInteractorInput {
                     output?.openChangePasswordScreen(with: token)
                 }
             } catch {
-                // handle error
+                debugPrint("[DEBUG] - Password did not change. Error: \(error.localizedDescription)")
             }
         }
     }
