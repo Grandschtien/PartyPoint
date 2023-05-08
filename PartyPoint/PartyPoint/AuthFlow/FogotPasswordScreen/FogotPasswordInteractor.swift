@@ -38,9 +38,9 @@ extension FogotPasswordInteractor: FogotPasswordInteractorInput {
             
             await runOnMainThread {
                 switch status {
-                case .authorized:
+                case .success:
                     performSuccessFlow(email: email)
-                case let .nonAuthoraized(reason):
+                case let .failure(reason):
                     performFailureFlow(reason: reason)
                 }
             }

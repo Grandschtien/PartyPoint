@@ -37,6 +37,10 @@ private extension ChangePasswordViewController {
         contentView.setSendNewPasswordAction { [weak self] passwrd, checkPassword in
             self?.presenter.sendNewPassword(password: passwrd, checkPassword: checkPassword)
         }
+        
+        contentView.setBackAction { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
     }
 }
 
@@ -65,6 +69,10 @@ extension ChangePasswordViewController: ChangePasswordView {
             if controller.isKind(of: EnterViewController.self) {
                 navigationController.popToViewController(controller, animated: true)
                 break
+            }
+            
+            if controller.isKind(of: ProfileViewController.self) {
+                navigationController.popToViewController(controller, animated: true)
             }
         }
     }

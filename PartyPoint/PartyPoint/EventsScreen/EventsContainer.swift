@@ -23,7 +23,7 @@ final class EventsContainer {
         let networkMananger = EventsManagerImpl(router: networkRouter, validationTokenManager: validationTokenManager)
         let decoder = PPDecoderImpl()
         let likeManager = LikeManagerImpl.shared
-        let accountManager = PPAccountManagerImpl(decoder: decoder)
+        let accountManager = AccountManangerFabric.assembly()
         let contentProvider = EventsContentProviderImpl()
         let interactor = EventsInteractor(eventsManager: networkMananger,
                                           locationManager: locationMananger,

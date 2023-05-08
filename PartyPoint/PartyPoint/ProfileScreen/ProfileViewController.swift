@@ -49,6 +49,10 @@ private extension ProfileViewController {
         contentView.setExitAction { [weak self] in
             self?.output.exitActionTapped()
         }
+        
+        contentView.setChangePasswordAction { [weak self] in
+            self?.output.changePasswordActionTapped()
+        }
     }
 }
 

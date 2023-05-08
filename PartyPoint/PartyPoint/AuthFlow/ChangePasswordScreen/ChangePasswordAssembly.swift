@@ -11,10 +11,15 @@ import UIKit
 final class ChangePasswordAssembly {
     let viewController: UIViewController
 
-    static func assemble(email: String) -> ChangePasswordAssembly {
+    // creditail - может быть токеном или почтой, зависит от контекста
+    static func assemble(creditail: String, state: ChangePasswordPresenterImpl.ChangePasswordState) -> ChangePasswordAssembly {
         let networkRouter = Router<AuthEndPoint>()
         let authManager = AuthManagerImpl(router: networkRouter)
-        let presenter = ChangePasswordPresenterImpl(email: email, authManager: authManager)
+        let accountManager = AccountManangerFabric.assembly()
+        let presenter = ChangePasswordPresenterImpl(email: creditail,
+                                                    authManager: authManager,
+                                                    accounManager: accountManager,
+                                                    state: state)
         let viewController = ChangePasswordViewController(presenter: presenter)
         presenter.setView(viewController)
 

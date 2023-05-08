@@ -31,19 +31,33 @@ extension ProfileInteractor: ProfileInteractorInput {
         output?.showUserInfo(info: profileContentProvider.getUser())
     }
     
+    func openChangePasswordScreen() {
+        Task {
+            do {
+                let token = try await tokenManager.getAccessToken()
+                
+                await runOnMainThread {
+                    output?.openChangePasswordScreen(with: token)
+                }
+            } catch {
+                // handle error
+            }
+        }
+    }
+    
     func exit() {
         Task {
             do {
                 let tokens = try await tokenManager.getValidTokens()
                 let result = await authManager.logout(accessToken: tokens.access, refreshToken: tokens.refresh)
                 switch result {
-                case .authorized:
+                case .success:
                     await runOnMainThread {
                         tokenManager.removeTokens()
                         accountManager.removeUser()
                         output?.performSuccessExit()
                     }
-                case let .nonAuthoraized(reason):
+                case let .failure(reason):
                     await runOnMainThread {
                         guard let reason = reason else {
                             output?.showErrorWhenExit(reason: Localizable.somthing_goes_wrong())

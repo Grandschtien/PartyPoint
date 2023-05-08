@@ -109,6 +109,10 @@ extension ChangePasswordContentView {
         self.sendAction = action
     }
     
+    func setBackAction(_ action: @escaping EmptyClosure) {
+        self.navigationBar.setBackAction(action)
+    }
+    
     func setIsLoading(isLoading: Bool) {
         confirmButton.isLoading = isLoading
     }

@@ -19,7 +19,7 @@ final class RegisterContainer {
         let authManager = AuthManagerFabric.assembly()
         let keyChainManager = KeyChainManangerImpl()
         let decoder = PPDecoderImpl()
-        let accountMananger = PPAccountManagerImpl(decoder: decoder)
+        let accountMananger = AccountManangerFabric.assembly()
         let userDefaultsManager = UserDefaultsManagerImpl(storage: UserDefaults.standard)
         let validationTokenManager = ValidationTokenManagerImpl(keyChainManager: keyChainManager,
                                                                 authManager: authManager,

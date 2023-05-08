@@ -76,9 +76,9 @@ extension RegisterInteractor: RegisterInteractorInput {
         Task {
             let authStatus = await authManager.register(with: info)
             switch authStatus {
-            case let .authorized(data):
+            case let .success(data):
                 await performRegisterFlow(withData: data)
-            case let .nonAuthoraized(reason):
+            case let .failure(reason):
                 await performRegisterFaildFlow(reason: reason)
             }
         }

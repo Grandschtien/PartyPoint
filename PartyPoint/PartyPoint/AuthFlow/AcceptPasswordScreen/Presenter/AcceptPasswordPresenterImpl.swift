@@ -48,9 +48,9 @@ extension AcceptPasswordPresenterImpl: AcceptPasswordPresenter {
                 await runOnMainThread {
                     view?.showLoader(isLoading: false)
                     switch result {
-                    case .authorized:
+                    case .success:
                         view?.performSuccess(email: email)
-                    case let .nonAuthoraized(reason):
+                    case let .failure(reason):
                         if let reason = reason {
                             view?.showError(reason: reason)
                         } else {

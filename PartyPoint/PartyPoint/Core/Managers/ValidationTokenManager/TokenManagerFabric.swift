@@ -13,7 +13,7 @@ final class TokenManagerFabric {
         let networkRouter = Router<AuthEndPoint>()
         let authManager = AuthManagerImpl(router: networkRouter)
         let decoder = PPDecoderImpl()
-        let accountManager = PPAccountManagerImpl(decoder: decoder)
+        let accountManager = AccountManangerFabric.assembly()
         return ValidationTokenManagerImpl(keyChainManager: keychainManager,
                                           authManager: authManager,
                                           accountManager: accountManager,

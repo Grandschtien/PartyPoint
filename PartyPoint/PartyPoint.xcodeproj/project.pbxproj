@@ -98,6 +98,7 @@
 		6060DE6B29210AF50017F7F7 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6060DE6A29210AF50017F7F7 /* AuthManager.swift */; };
 		6060DE6D29210BD30017F7F7 /* ValidationTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6060DE6C29210BD30017F7F7 /* ValidationTokenManager.swift */; };
 		6060DE702921145A0017F7F7 /* EnterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6060DE6F2921145A0017F7F7 /* EnterView.swift */; };
+		606960992A09261600E7DD9E /* UserEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606960982A09261600E7DD9E /* UserEndPoint.swift */; };
 		606A9A8D2966FAB300A17F13 /* PPCollectionsLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A9A8C2966FAB300A17F13 /* PPCollectionsLoaderView.swift */; };
 		606BEE6A298CD6F900C73395 /* MultipartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BEE69298CD6F900C73395 /* MultipartRequest.swift */; };
 		6070D43228ABDE1F0054F61B /* EventPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6070D42C28ABDE1F0054F61B /* EventPresenter.swift */; };
@@ -377,6 +378,7 @@
 		6060DE6A29210AF50017F7F7 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		6060DE6C29210BD30017F7F7 /* ValidationTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTokenManager.swift; sourceTree = "<group>"; };
 		6060DE6F2921145A0017F7F7 /* EnterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterView.swift; sourceTree = "<group>"; };
+		606960982A09261600E7DD9E /* UserEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndPoint.swift; sourceTree = "<group>"; };
 		606A9A8C2966FAB300A17F13 /* PPCollectionsLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPCollectionsLoaderView.swift; sourceTree = "<group>"; };
 		606BEE69298CD6F900C73395 /* MultipartRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartRequest.swift; sourceTree = "<group>"; };
 		6070D42C28ABDE1F0054F61B /* EventPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPresenter.swift; sourceTree = "<group>"; };
@@ -1343,6 +1345,7 @@
 				60B48CD828EC5BC2006C6CF5 /* AuthEndPoint.swift */,
 				60B48CD228E5C0A9006C6CF5 /* NetworkEnviroment.swift */,
 				603A592F29C6306100A0052A /* SearchEndPoint.swift */,
+				606960982A09261600E7DD9E /* UserEndPoint.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -1897,6 +1900,7 @@
 				60FFFE0F29645F6B004DB8D4 /* LocationManagerImpl.swift in Sources */,
 				60CED3F52993DB3600C59FAB /* AcceptPasswordViewController.swift in Sources */,
 				60FAF6182953496700982457 /* PPButtonBase.swift in Sources */,
+				606960992A09261600E7DD9E /* UserEndPoint.swift in Sources */,
 				60971720287D824A0084A63C /* ProfileViewController.swift in Sources */,
 				60FAF61C29534A9700982457 /* PPTextFieldRightViewButton.swift in Sources */,
 				60971795287EDE5D0084A63C /* FogotPasswordViewController.swift in Sources */,

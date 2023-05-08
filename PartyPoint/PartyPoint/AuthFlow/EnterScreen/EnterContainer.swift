@@ -19,7 +19,7 @@ final class EnterContainer {
         let authManager = AuthManagerFabric.assembly()
         let decoder = PPDecoderImpl()
         let keyChainManager = KeyChainManangerImpl()
-        let accountManager = PPAccountManagerImpl(decoder: decoder)
+        let accountManager = AccountManangerFabric.assembly()
         let validationTokenManager = ValidationTokenManagerImpl(keyChainManager: keyChainManager,
                                                                 authManager: authManager,
                                                                 accountManager: accountManager,

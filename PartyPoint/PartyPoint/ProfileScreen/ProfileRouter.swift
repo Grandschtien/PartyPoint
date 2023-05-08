@@ -17,6 +17,15 @@ final class ProfileRouter: BaseRouter {
 }
 
 extension ProfileRouter: ProfileRouterInput {
+    func openChangePasswordScreen(token: String) {
+        let assembly = ChangePasswordAssembly.assemble(creditail: token, state: .profile)
+        self.push(vc: assembly.viewController, animated: true)
+    }
+    
+    func openChangeCityScreen() {
+        // modally presented screen
+    }
+    
     func navigateBack() {
         pop(animated: true)
     }

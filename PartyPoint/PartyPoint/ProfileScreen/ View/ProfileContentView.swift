@@ -21,6 +21,8 @@ private let BUTTON_HEIGHT: CGFloat = 44.scale()
 final class ProfileContentView: UIView {
     
     private var exitAction: EmptyClosure?
+    private var changePasswordAction: EmptyClosure?
+    private var changeCityAction: EmptyClosure?
     
     private let navigationBar = PlainNavigationBar()
     private let profileInfo = ProfileInfoStackView()
@@ -47,6 +49,14 @@ final class ProfileContentView: UIView {
     
     func setBackAction(_ action: @escaping EmptyClosure) {
         navigationBar.setBackAction(action)
+    }
+    
+    func setChangePasswordAction(_ action: @escaping EmptyClosure) {
+        changePasswordAction = action
+    }
+    
+    func setChangeCityAction(_ action: @escaping EmptyClosure) {
+        changeCityAction = action
     }
     
     func setExitButtonLoader(isLoading: Bool) {
@@ -137,10 +147,12 @@ private extension ProfileContentView {
     
     func setupChangeCityView() {
         changeCityView.configure(configuration: .changeCity)
+        changeCityView.addTapRecognizer(target: self, #selector(changeCityActionHandler))
     }
     
     func setupChangePasswordView() {
         changePasswordView.configure(configuration: .chnagePassword)
+        changePasswordView.addTapRecognizer(target: self, #selector(changePasswordActionHandler))
     }
     
     func setupInviteFriendVeiw() {
@@ -166,7 +178,12 @@ private extension ProfileContentView {
     }
     
     @objc
-    func deleteAccountActionHandler() {
-        
+    func changePasswordActionHandler() {
+        changePasswordAction?()
+    }
+    
+    @objc
+    func changeCityActionHandler() {
+        changeCityAction?()
     }
 }

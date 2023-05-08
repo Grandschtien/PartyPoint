@@ -10,6 +10,7 @@ import Foundation
 final class AccountManangerFabric {
     static func assembly() -> PPAccountManager {
         let decoder = PPDecoderImpl()
-        return PPAccountManagerImpl(decoder: decoder)
+        let router = Router<UserEndPoint>()
+        return PPAccountManagerImpl(decoder: decoder, router: router)
     }
 }

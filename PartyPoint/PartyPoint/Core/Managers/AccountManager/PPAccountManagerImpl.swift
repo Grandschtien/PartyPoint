@@ -7,13 +7,15 @@
 
 import Foundation
 
-final class PPAccountManagerImpl {
+final class PPAccountManagerImpl: NetworkManager {
     private let storage: KeyValueStorage = UserDefaults.standard
     private let decoder: PPDecoder
     private let kCurrentUser = "current_user"
+    private let router: Router<UserEndPoint>
     
-    init(decoder: PPDecoder) {
+    init(decoder: PPDecoder, router: Router<UserEndPoint>) {
         self.decoder = decoder
+        self.router = router
     }
 }
 
@@ -35,5 +37,15 @@ extension PPAccountManagerImpl: PPAccountManager {
         guard let data = data else { return nil }
         let userInfo = decoder.parseJSON(from: data, type: PPUser.self)
         return userInfo
+    }
+    
+    func changePassword(token: String, password: String) async -> DefaultResultOfRequest {
+        let result = await router.request(.changePassword(token: token, passwd: password))
+        switch getStatus(response: result.response) {
+        case .success:
+            return .success(result.data)
+        case let .failure(reason):
+            return .failure(reason)
+        }
     }
 }

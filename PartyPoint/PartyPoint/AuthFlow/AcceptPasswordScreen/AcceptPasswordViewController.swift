@@ -48,7 +48,7 @@ extension AcceptPasswordViewController: AcceptPassswordView {
     }
     
     func performSuccess(email: String){
-        let changePasswordAssembly = ChangePasswordAssembly.assemble(email: email)
+        let changePasswordAssembly = ChangePasswordAssembly.assemble(creditail: email, state: .resetPassword)
         self.navigationController?.pushViewController(changePasswordAssembly.viewController,
                                                       animated: true)
     }

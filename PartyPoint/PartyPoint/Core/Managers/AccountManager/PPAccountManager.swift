@@ -11,5 +11,6 @@ protocol PPAccountManager {
     func setUser(user: PPUserInformation)
     func getUser() -> PPUserInformation?
     func removeUser()
+    func changePassword(token: String, password: String) async -> NetworkManager.DefaultResultOfRequest
     func parseUserInformation(data: Data?) -> PPUser?
 }

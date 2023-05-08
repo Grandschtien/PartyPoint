@@ -25,6 +25,14 @@ extension ProfilePresenter: ProfileModuleInput {
 }
 
 extension ProfilePresenter: ProfileViewOutput {
+    func changePasswordActionTapped() {
+        interactor.openChangePasswordScreen()
+    }
+    
+    func changeCityActionTapped() {
+        router.openChangeCityScreen()
+    }
+    
     func exitActionTapped() {
         view?.setLoaderVisibility(isLoading: true)
         interactor.exit()
@@ -40,20 +48,16 @@ extension ProfilePresenter: ProfileViewOutput {
 }
 
 extension ProfilePresenter: ProfileInteractorOutput {
+    func openChangePasswordScreen(with token: String) {
+        router.openChangePasswordScreen(token: token)
+    }
+    
     func showErrorWhenExit(reason: String) {
         view?.setLoaderVisibility(isLoading: false)
     }
     
     func performSuccessExit() {
         router.exit()
-    }
-    
-    func showErrorWhenAccountDelete(reason: String) {
-        // showing error after account delete button
-    }
-    
-    func preformSuccessAccountRemoving() {
-        
     }
     
     func showUserInfo(info: ProfileInfo) {

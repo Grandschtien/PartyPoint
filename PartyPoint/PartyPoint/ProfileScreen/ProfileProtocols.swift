@@ -23,23 +23,27 @@ protocol ProfileViewInput: AnyObject {
 protocol ProfileViewOutput: AnyObject {
     func backActionTapped()
     func exitActionTapped()
+    func changePasswordActionTapped()
+    func changeCityActionTapped()
     func onViewDidLoad()
 }
 
 protocol ProfileInteractorInput: AnyObject {
     func getUser()
     func exit()
+    func openChangePasswordScreen()
 }
 
 protocol ProfileInteractorOutput: AnyObject {
     func showUserInfo(info: ProfileInfo)
     func showErrorWhenExit(reason: String)
     func performSuccessExit()
-    func showErrorWhenAccountDelete(reason: String)
-    func preformSuccessAccountRemoving()
+    func openChangePasswordScreen(with token: String)
 }
 
 protocol ProfileRouterInput: AnyObject {
     func navigateBack()
     func exit()
+    func openChangePasswordScreen(token: String)
+    func openChangeCityScreen()
 }

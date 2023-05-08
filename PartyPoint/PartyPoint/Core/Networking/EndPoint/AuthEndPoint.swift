@@ -67,7 +67,7 @@ extension AuthEndPoint: EndPointType {
         case .login:
             return .post
         case .logout:
-            return .get
+            return .post
         case .refresh:
             return .post
         case .signUp:

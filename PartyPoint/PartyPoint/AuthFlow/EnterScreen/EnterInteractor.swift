@@ -80,9 +80,9 @@ extension EnterInteractor: EnterInteractorInput {
         Task {
             let status = await authManager.login(with: email, password: password)
             switch status {
-            case let .authorized(data):
+            case let .success(data):
                 await performAuthorizedFlow(withData: data, email: email)
-            case let .nonAuthoraized(reason):
+            case let .failure(reason):
                 await performNonAthorizedFlow(withReason: reason)
             }
         }
