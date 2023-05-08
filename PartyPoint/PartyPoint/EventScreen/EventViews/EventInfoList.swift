@@ -80,8 +80,8 @@ private extension EventInfoView {
             $0.leading.equalToSuperview().offset(HORISONTAL_OFFSET)
             $0.trailing.equalToSuperview().inset(HORISONTAL_OFFSET)
         }
-        self.addSubview(mapView)
-
+        
+        addSubview(mapView)
         mapView.snp.makeConstraints {
             $0.top.equalTo(costView.snp.bottom).offset(VERTICAL_OFFSET)
             $0.leading.equalToSuperview().offset(HORISONTAL_OFFSET)

@@ -31,7 +31,9 @@ final class LocationView: UIView {
     func configure(with info: LocationInfo) {
         locationLabel.set(text: info.address, leftIcon: Images.location(), rightIcon: nil)
         dateLabel.set(text: info.date, leftIcon: Images.calendar(), rightIcon: nil)
-        timeLabel.set(text: info.time, leftIcon: Images.time(), rightIcon: nil)
+        if !info.time.isEmpty {
+            timeLabel.set(text: info.time, leftIcon: Images.time(), rightIcon: nil)
+        }
     }
 }
 

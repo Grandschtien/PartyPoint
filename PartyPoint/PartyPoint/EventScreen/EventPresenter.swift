@@ -55,9 +55,8 @@ private extension EventPresenter {
         let startDate = start.toString()
         let endDate = end.toString()
         if startDate == endDate {
-            let hour = calendar.component(.hour, from: start)
-            let minutes = calendar.component(.minute, from: start)
-            return (startDate, "\(hour):\(minutes)")
+            let time = start.toString(format: "HH:mm")
+            return (startDate, time)
         } else {
             let timeInStartDate = start.toString(format: "HH:mm")
             let timeInEndDate = end.toString(format: "HH:mm")
@@ -70,7 +69,8 @@ private extension EventPresenter {
         let start = Date(timeIntervalSince1970: TimeInterval(event.event.start))
         let end = Date(timeIntervalSince1970: TimeInterval(event.event.end))
         let validatatedDate = validateDate(start: start, end: end)
-        return LocationInfo(address: event.place.address, date: validatatedDate.date, time: validatatedDate.time)
+        
+        return LocationInfo(address: event.place.address, date: validatatedDate.date, time: validatatedDate.time == "00:00" ? "" : validatatedDate.time)
     }
 }
 

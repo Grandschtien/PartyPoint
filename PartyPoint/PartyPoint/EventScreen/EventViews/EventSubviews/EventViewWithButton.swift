@@ -43,7 +43,7 @@ final class EventViewWithButton: DefaultEventView {
     
     func configure(forCost cost: CostEventInfo) {
         titleLabel.text = cost.title
-        subtitleLabel.text = cost.cost
+        subtitleLabel.text = cost.cost.isEmpty ? Localizable.no_information() : cost.cost
         actionButton.setTitle(cost.buttonTitle, for: .normal)
     }
 }
