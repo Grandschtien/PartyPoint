@@ -14,6 +14,7 @@
 		600B7D6B2A0A4A5C00FC26D5 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B7D6A2A0A4A5C00FC26D5 /* CityCell.swift */; };
 		600B7D722A0A59C200FC26D5 /* Notification+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B7D712A0A59C200FC26D5 /* Notification+Names.swift */; };
 		600B7D752A0A845000FC26D5 /* HalfScreenPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B7D742A0A845000FC26D5 /* HalfScreenPresentationController.swift */; };
+		600B7D772A0A99E100FC26D5 /* Array + uniq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B7D762A0A99E100FC26D5 /* Array + uniq.swift */; };
 		600B8CE4295604910002B53E /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B8CE3295604910002B53E /* GlobalFunctions.swift */; };
 		600D25EF299A781300189AC7 /* ChangePasswordPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600D25E8299A781300189AC7 /* ChangePasswordPresenterImpl.swift */; };
 		600D25F0299A781300189AC7 /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600D25E9299A781300189AC7 /* ChangePasswordPresenter.swift */; };
@@ -93,7 +94,6 @@
 		605BAA9129EAC154007C45F2 /* FavouriteScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605BAA8A29EAC154007C45F2 /* FavouriteScreenAssembly.swift */; };
 		605BAA9229EAC154007C45F2 /* FavouriteScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605BAA8C29EAC154007C45F2 /* FavouriteScreenViewController.swift */; };
 		605BAA9329EAC154007C45F2 /* FavouriteScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605BAA8D29EAC154007C45F2 /* FavouriteScreenView.swift */; };
-		605BAA9429EAC154007C45F2 /* FavouriteScreenContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605BAA8E29EAC154007C45F2 /* FavouriteScreenContentView.swift */; };
 		605E329F29C6FD9E00D6E79C /* SearchViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E329E29C6FD9E00D6E79C /* SearchViewConfiguration.swift */; };
 		605E32A129C6FF6900D6E79C /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E32A029C6FF6900D6E79C /* SearchEmptyView.swift */; };
 		605E32A329C707DB00D6E79C /* SearchAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E32A229C707DB00D6E79C /* SearchAdapter.swift */; };
@@ -303,6 +303,7 @@
 		600B7D6A2A0A4A5C00FC26D5 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
 		600B7D712A0A59C200FC26D5 /* Notification+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Names.swift"; sourceTree = "<group>"; };
 		600B7D742A0A845000FC26D5 /* HalfScreenPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfScreenPresentationController.swift; sourceTree = "<group>"; };
+		600B7D762A0A99E100FC26D5 /* Array + uniq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + uniq.swift"; sourceTree = "<group>"; };
 		600B8CE3295604910002B53E /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		600D25E8299A781300189AC7 /* ChangePasswordPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenterImpl.swift; sourceTree = "<group>"; };
 		600D25E9299A781300189AC7 /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenter.swift; sourceTree = "<group>"; };
@@ -382,7 +383,6 @@
 		605BAA8A29EAC154007C45F2 /* FavouriteScreenAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteScreenAssembly.swift; sourceTree = "<group>"; };
 		605BAA8C29EAC154007C45F2 /* FavouriteScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteScreenViewController.swift; sourceTree = "<group>"; };
 		605BAA8D29EAC154007C45F2 /* FavouriteScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteScreenView.swift; sourceTree = "<group>"; };
-		605BAA8E29EAC154007C45F2 /* FavouriteScreenContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteScreenContentView.swift; sourceTree = "<group>"; };
 		605E329E29C6FD9E00D6E79C /* SearchViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewConfiguration.swift; sourceTree = "<group>"; };
 		605E32A029C6FF6900D6E79C /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
 		605E32A229C707DB00D6E79C /* SearchAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAdapter.swift; sourceTree = "<group>"; };
@@ -896,7 +896,6 @@
 				6073312B29B8BB9200862941 /* FavouritesEmptyView.swift */,
 				605BAA8C29EAC154007C45F2 /* FavouriteScreenViewController.swift */,
 				605BAA8D29EAC154007C45F2 /* FavouriteScreenView.swift */,
-				605BAA8E29EAC154007C45F2 /* FavouriteScreenContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1223,6 +1222,7 @@
 				60C4FB3629AB893D00E4DDFF /* UIScrollView+RefreshControl.swift */,
 				60CACCB629B2191F008D031C /* Array+Extensions.swift */,
 				600B7D712A0A59C200FC26D5 /* Notification+Names.swift */,
+				600B7D762A0A99E100FC26D5 /* Array + uniq.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1842,6 +1842,7 @@
 				60B48CD728EC519D006C6CF5 /* EventsEndPoint.swift in Sources */,
 				60C4FB3729AB893D00E4DDFF /* UIScrollView+RefreshControl.swift in Sources */,
 				60A5E3E82969A6D500FC8A37 /* Day.swift in Sources */,
+				600B7D772A0A99E100FC26D5 /* Array + uniq.swift in Sources */,
 				60971761287D94710084A63C /* AppButton.swift in Sources */,
 				60DB792028B4062E0058A3D7 /* CommonCollectionViewAdapter.swift in Sources */,
 				603E94C929A90A110098BE6F /* SearchResultsView.swift in Sources */,
@@ -1896,7 +1897,6 @@
 				6097171F287D824A0084A63C /* ProfileRouter.swift in Sources */,
 				6060DE702921145A0017F7F7 /* EnterView.swift in Sources */,
 				60971787287EDE4A0084A63C /* RegisterPresenter.swift in Sources */,
-				605BAA9429EAC154007C45F2 /* FavouriteScreenContentView.swift in Sources */,
 				60BCB6772965943B00728ED8 /* AcyncImageView.swift in Sources */,
 				60FAF623295350AA00982457 /* UILabel+lockerImages.swift in Sources */,
 				60BCB67329658F1F00728ED8 /* EventInfo.swift in Sources */,

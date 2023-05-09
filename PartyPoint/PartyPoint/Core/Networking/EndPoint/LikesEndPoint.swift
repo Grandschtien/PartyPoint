@@ -10,7 +10,7 @@ import Foundation
 enum LikesEndPoint {
     case likeEvent(eventId: Int, token: String)
     case unlikeEvent(eventId: Int, token: String)
-    case getFavourites(userId: Int, token: String)
+    case getFavourites(page: Int, userId: Int, token: String)
 }
 
 extension LikesEndPoint: EndPointType {
@@ -39,7 +39,7 @@ extension LikesEndPoint: EndPointType {
             return "\(eventId)/like"
         case let .unlikeEvent(eventId, _):
             return "\(eventId)/dislike"
-        case let .getFavourites(userId, _):
+        case let .getFavourites(_, userId, _):
             return "likes/\(userId)"
         }
     }
@@ -61,9 +61,9 @@ extension LikesEndPoint: EndPointType {
             return .requestParametersWithHeaders(bodyParameters: nil,
                                                  urlParameters: nil,
                                                  additionalParameters: ["Authorization": "Bearer \(token)"])
-        case let .getFavourites(_, token):
+        case let .getFavourites(page, _, token):
             return .requestParametersWithHeaders(bodyParameters: nil,
-                                                 urlParameters: nil,
+                                                 urlParameters: ["page": "\(page)"],
                                                  additionalParameters: ["Authorization": "Bearer \(token)"])
         case let .unlikeEvent(_, token):
             return .requestParametersWithHeaders(bodyParameters: nil,

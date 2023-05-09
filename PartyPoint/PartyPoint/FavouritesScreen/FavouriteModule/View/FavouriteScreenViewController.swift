@@ -61,8 +61,8 @@ private extension FavouriteScreenViewController {
             self?.presenter.didTapOnEvent(withIndex: index)
         }
         
-        setRefreshAction { [weak self] in
-            self?.presenter.tryToRefresh()
+        favouritesCollectionAdapter.setLoadNextPageAction { [weak self] page in
+            self?.presenter.loadNextPage(page: page)
         }
     }
     
@@ -129,6 +129,10 @@ extension FavouriteScreenViewController: FavouriteScreenView {
     
     func showUserInfo(name: String, avatar: String?) {
         setupNaviagtionBar(name: name, avatar: avatar)
+    }
+    
+    func updateWithNewPage(withInfo info: [EventInfo]) {
+        favouritesCollectionAdapter.update(with: info)
     }
 }
 

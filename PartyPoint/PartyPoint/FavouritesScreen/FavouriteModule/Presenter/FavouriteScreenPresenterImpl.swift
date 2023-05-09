@@ -36,7 +36,7 @@ final class FavouriteScreenPresenterImpl {
 
 // MARK: Private methods
 private extension FavouriteScreenPresenterImpl {
-    func loadFavourites() {
+    func loadInitialFavourites() {
         guard let user = accountMananger.getUser() else { return }
         Task {
             await runOnMainThread {
@@ -44,7 +44,7 @@ private extension FavouriteScreenPresenterImpl {
                 view?.showUserInfo(name: user.name, avatar: user.imgUrl)
             }
             
-            let data = try? await likeManager.loadFvourites(userId: user.id)
+            let data = try? await likeManager.loadFvourites(page: 1, userId: user.id)
             
             await runOnMainThread {
                 view?.setLoaderIfNeeded(isLoading: false)
@@ -59,14 +59,47 @@ private extension FavouriteScreenPresenterImpl {
                 }
                 
                 var eventsInfo = EventsConverter.getEventsInfo(events: events)
-                let likedInThisSession = contentProvider.getEvents()
                 
-                if !likedInThisSession.isEmpty {
-                    eventsInfo = likedInThisSession + eventsInfo
-                }
+                let existsEvents = contentProvider.getEvents()
+                let mergedEvents = existsEvents + eventsInfo
+                eventsInfo = uniqById(eventsInfo: mergedEvents)
                 
                 contentProvider.updateContent(withInfo: eventsInfo)
                 view?.updateView(withInfo: eventsInfo)
+            }
+        }
+    }
+    
+    func uniqById(eventsInfo: [EventInfo]) -> [EventInfo] {
+        var result = [EventInfo]()
+        
+        for info in eventsInfo {
+            if !result.contains(where: { $0.id == info.id }) {
+                result.append(info)
+            }
+        }
+        
+        return result
+    }
+    
+    func loadNextPageOfFavourites(page: Int) {
+        guard let user = accountMananger.getUser() else { return }
+        Task {
+            let data = try? await likeManager.loadFvourites(page: page, userId: user.id)
+            
+            await runOnMainThread {
+                guard let data = data else {
+                    return
+                }
+                
+                guard let events = decoder.parseJSON(from: data, type: PPEvents.self)?.events else {
+                    return
+                }
+                
+                let eventsInfo = EventsConverter.getEventsInfo(events: events)
+                
+                contentProvider.appendNewContent(info: eventsInfo)
+                view?.updateWithNewPage(withInfo: eventsInfo)
             }
         }
     }
@@ -82,7 +115,11 @@ extension FavouriteScreenPresenterImpl {
 // MARK: FavouriteScreenPresenter
 extension FavouriteScreenPresenterImpl: FavouriteScreenPresenter {
     func onViewDidLoad() {
-        loadFavourites()
+        loadInitialFavourites()
+    }
+    
+    func loadNextPage(page: Int) {
+        loadNextPageOfFavourites(page: page)
     }
     
     func getUserProfile() {
@@ -94,10 +131,6 @@ extension FavouriteScreenPresenterImpl: FavouriteScreenPresenter {
     func didTapOnEvent(withIndex index: Int) {
         let event = contentProvider.getEvent(withIndex: index)
         router.openEvent(withId: event.id, placeId: event.placeId)
-    }
-    
-    func tryToRefresh() {
-        loadFavourites()
     }
     
     func eventDisliked(withIndex index: Int) {

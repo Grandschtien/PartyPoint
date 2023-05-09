@@ -10,6 +10,7 @@ protocol FavouriteScreenView: AnyObject {
     func setLoaderIfNeeded(isLoading: Bool)
     func isNoConnectionViewNeeded(isHidden: Bool)
     func updateView(withInfo info: [EventInfo])
+    func updateWithNewPage(withInfo info: [EventInfo])
     func showNothingLiked()
     func showError(reason: String)
     func showUserInfo(name: String, avatar: String?)

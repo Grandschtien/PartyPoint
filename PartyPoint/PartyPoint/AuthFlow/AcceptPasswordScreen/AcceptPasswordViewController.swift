@@ -28,6 +28,12 @@ final class AcceptPasswordViewController: UIViewController {
                               btnTitle: Localizable.confirm(),
                               textFieldPlaceholder: Localizable.code())
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        navigationController?.isNavigationBarHidden = false
+    }
 }
 
 private extension AcceptPasswordViewController {

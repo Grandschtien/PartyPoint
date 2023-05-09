@@ -28,6 +28,10 @@ extension FvoritesContentProviderImpl: FavoritesContentProvider {
         favorites = info
     }
     
+    func appendNewContent(info: [EventInfo]) {
+        favorites.append(contentsOf: info)
+    }
+    
     func appendNewEvent(event: EventInfo) {
         favorites.insert(event, at: 0)
     }

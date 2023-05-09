@@ -28,6 +28,12 @@ final class FogotPasswordViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        navigationController?.isNavigationBarHidden = false
+    }
 }
 
 private extension FogotPasswordViewController {

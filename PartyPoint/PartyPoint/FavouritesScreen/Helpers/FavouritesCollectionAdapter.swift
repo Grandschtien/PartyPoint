@@ -13,7 +13,8 @@ protocol FavouritesCollectionAdapterDelegate: AnyObject {
 
 final class FavouritesCollectionAdapter: NSObject {
     typealias TapOnEventsAction = (Int) -> Void
-    
+    typealias LoadNextPageAction = (Int) -> Void
+
     enum FavoriteSection {
         case main
     }
@@ -23,7 +24,10 @@ final class FavouritesCollectionAdapter: NSObject {
     typealias Layout = UICollectionViewCompositionalLayout
     
     private var items: [EventInfo]
-
+    private var currentPage = 1
+    
+    private var loadNextPageAction: LoadNextPageAction?
+    
     private weak var collectionView: UICollectionView?
     
     weak var scrollDelegate: EventsScrollDelegate?
@@ -44,6 +48,11 @@ final class FavouritesCollectionAdapter: NSObject {
     
     func configure(_ items: [EventInfo]) {
         self.items = items
+        applySnapshot()
+    }
+    
+    func update(with items: [EventInfo]) {
+        self.items.append(contentsOf: items)
         applySnapshot()
     }
     
@@ -69,6 +78,10 @@ final class FavouritesCollectionAdapter: NSObject {
     
     func setTapOnEventAction(_ action: @escaping TapOnEventsAction) {
         self.didTapOnEventsAction = action
+    }
+    
+    func setLoadNextPageAction(_ action: @escaping LoadNextPageAction) {
+        self.loadNextPageAction = action
     }
     
     //MARK: - DataSource
@@ -125,5 +138,17 @@ extension FavouritesCollectionAdapter: UICollectionViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollDelegate?.collectionViewDidScroll(scrollView)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        if dataSource.snapshot().numberOfSections - 1 == indexPath.section {
+            let currentSection = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            if dataSource.snapshot().numberOfItems(inSection: currentSection) - 1 == indexPath.row {
+                currentPage += 1
+                loadNextPageAction?(currentPage)
+            }
+        }
     }
 }

@@ -12,7 +12,7 @@ protocol FavouriteScreenPresenter: AnyObject {
     func onViewDidLoad()
     func getUserProfile()
     func didTapOnEvent(withIndex index: Int)
-    func tryToRefresh()
     func eventDisliked(eventInfo: EventInfo)
+    func loadNextPage(page: Int)
 }
 

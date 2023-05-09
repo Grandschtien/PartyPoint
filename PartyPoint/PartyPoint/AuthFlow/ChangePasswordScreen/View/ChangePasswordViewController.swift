@@ -29,6 +29,12 @@ final class ChangePasswordViewController: UIViewController {
     override func loadView() {
         view = contentView
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationItem.setHidesBackButton(true, animated: false)
+        navigationController?.isNavigationBarHidden = false
+    }
 }
 
 // MARK: Private methods

@@ -78,10 +78,10 @@ extension LikeManagerImpl: LikeManager {
         }
     }
     
-    func loadFvourites(userId id: Int) async throws -> Data {
+    func loadFvourites(page: Int, userId id: Int) async throws -> Data {
         do {
             let token = try await tokenMananger.getAccessToken()
-            let result = await router.request(.getFavourites(userId: id, token: token))
+            let result = await router.request(.getFavourites(page: page, userId: id, token: token))
             guard let data = result.data else { throw NetworkError.emptyData }
             if let error = result.error { throw error }
             return data

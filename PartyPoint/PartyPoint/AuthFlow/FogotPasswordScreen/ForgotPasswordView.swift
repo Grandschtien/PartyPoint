@@ -105,7 +105,7 @@ private extension ForgotPasswordView {
     func setupConstraints() {
         navigationBar.snp.makeConstraints {
             $0.left.right.equalToSuperview()
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.top.equalTo(view.snp.top).offset(statusBarFrame.height)
         }
         
         if let stackView = stackView {

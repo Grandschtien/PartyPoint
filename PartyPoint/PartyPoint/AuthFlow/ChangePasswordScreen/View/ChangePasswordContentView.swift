@@ -62,7 +62,7 @@ private extension ChangePasswordContentView {
     func setupConstraints() {
         navigationBar.snp.makeConstraints {
             $0.left.right.equalToSuperview()
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.top.equalTo(view.snp.top).offset(statusBarFrame.height)
         }
         
         titleLabel.snp.makeConstraints {
