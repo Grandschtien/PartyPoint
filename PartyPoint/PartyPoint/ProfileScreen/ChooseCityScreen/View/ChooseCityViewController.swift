@@ -35,11 +35,6 @@ final class ChooseCityViewController: UIViewController {
         presenter.viewDidLoad()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        presenter.viewDidDisappear()
-    }
-    
     func setActions() {
         contentView.setCloseAction { [weak self] in
             self?.dismiss(animated: true)
@@ -48,6 +43,10 @@ final class ChooseCityViewController: UIViewController {
         contentView.setChooseCityAction { [weak self] city in
             self?.presenter.updateChosenCity(city: city)
         }
+        
+        contentView.setConfirmChoseAction { [weak self] in
+            self?.presenter.confirmChose()
+        }
     }
 }
 
@@ -55,5 +54,9 @@ final class ChooseCityViewController: UIViewController {
 extension ChooseCityViewController: ChooseCityView {
     func setCurrentCity(city: String) {
         contentView.setChosenCity(city)
+    }
+    
+    func dismiss() {
+        self.dismiss(animated: true)
     }
 }

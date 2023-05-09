@@ -24,6 +24,9 @@ extension ProfileRouter: ProfileRouterInput {
     
     func openChangeCityScreen(with city: String) {
         let assembly = ChooseCityAssembly.assemble(with: city)
+        assembly.viewController.modalPresentationStyle = .custom
+        guard let currentViewController = currentViewController as? ProfileViewController else { return }
+        assembly.viewController.transitioningDelegate = currentViewController
         self.present(vc: assembly.viewController, animated: true)
     }
     

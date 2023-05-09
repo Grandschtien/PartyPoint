@@ -66,10 +66,10 @@ final class EventsCollectionViewAdapter: NSObject {
     }
     
     func updateLikeState(eventId: Int) {
-        sections.mutateEach { section in
-            section.items.mutateEach { event in
-                if event.id == eventId {
-                    event.isLiked = !event.isLiked
+        for indexOfSection in 0..<sections.count {
+            for indexOfItem in 0..<sections[indexOfSection].items.count {
+                if sections[indexOfSection].items[indexOfItem].id == eventId {
+                    sections[indexOfSection].items[indexOfItem].isLiked = !sections[indexOfSection].items[indexOfItem].isLiked
                 }
             }
         }

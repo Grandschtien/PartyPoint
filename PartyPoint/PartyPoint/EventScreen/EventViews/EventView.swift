@@ -51,6 +51,7 @@ extension EventView {
     func configureView(withEvent event: EventFullInfo) {
         backgroundImageView.setImage(url: event.imageURL)
         eventInfoView.configure(withInfo: event)
+        layoutIfNeeded()
     }
     
     func setVisibility(isHidden: Bool) {

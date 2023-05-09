@@ -131,9 +131,13 @@ extension EventsPresenter: EventsInteractorOutput {
     }
     
     func updateMainSection(with events: [EventInfo]) {
-        let section = makeSection(withInfo: events, title: Localizable.main(), moreType: .main, ofType: .main)
-        view?.hideLoaderView()
-        view?.updateMainSection(with: section)
+        if events.isEmpty {
+            // handle "in this city nithing happens"
+        } else {
+            let section = makeSection(withInfo: events, title: Localizable.main(), moreType: .main, ofType: .main)
+            view?.hideLoaderView()
+            view?.updateMainSection(with: section)
+        }
     }
 
     func showError(withReason reason: String) {

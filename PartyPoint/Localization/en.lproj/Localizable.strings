@@ -180,3 +180,6 @@
 "kaz" = "Kazan";
 "ekb" = "Yekaterinburg";
 "nsk" = "Novosibirsk";
+
+"select_city" = "Select a city";
+"done" = "Done";

@@ -33,11 +33,19 @@ extension ChooseCityPresenterImpl: ChooseCityPresenter {
         view?.setCurrentCity(city: chosenCity)
     }
     
-    func viewDidDisappear() {
-        guard var user = accountMananger.getUser() else { return }
+    func confirmChose() {
+        guard var user = accountMananger.getUser() else {
+            view?.dismiss()
+            return
+        }
+        guard user.city != chosenCity else {
+            view?.dismiss()
+            return
+        }
         user.city = chosenCity
         accountMananger.setUser(user: user)
         notificationCenter.post(name: .cityDidChanged, object: nil)
+        view?.dismiss()
     }
     
     func updateChosenCity(city: String) {

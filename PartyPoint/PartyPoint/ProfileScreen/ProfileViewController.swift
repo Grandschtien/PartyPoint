@@ -89,3 +89,9 @@ extension ProfileViewController: UIGestureRecognizerDelegate {
     }
 }
 
+extension ProfileViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+           return HalfScreenPresentationController(presentedViewController: presented, presenting: presenting)
+       }
+}
+

@@ -13,6 +13,7 @@
 		600B7D692A0A450E00FC26D5 /* ChooseCityAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B7D682A0A450E00FC26D5 /* ChooseCityAdapter.swift */; };
 		600B7D6B2A0A4A5C00FC26D5 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B7D6A2A0A4A5C00FC26D5 /* CityCell.swift */; };
 		600B7D722A0A59C200FC26D5 /* Notification+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B7D712A0A59C200FC26D5 /* Notification+Names.swift */; };
+		600B7D752A0A845000FC26D5 /* HalfScreenPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B7D742A0A845000FC26D5 /* HalfScreenPresentationController.swift */; };
 		600B8CE4295604910002B53E /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B8CE3295604910002B53E /* GlobalFunctions.swift */; };
 		600D25EF299A781300189AC7 /* ChangePasswordPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600D25E8299A781300189AC7 /* ChangePasswordPresenterImpl.swift */; };
 		600D25F0299A781300189AC7 /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600D25E9299A781300189AC7 /* ChangePasswordPresenter.swift */; };
@@ -232,7 +233,6 @@
 		60BCB67329658F1F00728ED8 /* EventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB67229658F1F00728ED8 /* EventInfo.swift */; };
 		60BCB6752965913B00728ED8 /* Date+Fromatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB6742965913B00728ED8 /* Date+Fromatters.swift */; };
 		60BCB6772965943B00728ED8 /* AcyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB6762965943B00728ED8 /* AcyncImageView.swift */; };
-		60BCB6792965956C00728ED8 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB6782965956C00728ED8 /* PhotoManager.swift */; };
 		60BCB67C296599A500728ED8 /* PPLIkeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB67B296599A500728ED8 /* PPLIkeView.swift */; };
 		60BCB67E2965A47F00728ED8 /* PPScrollableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB67D2965A47F00728ED8 /* PPScrollableLabel.swift */; };
 		60BCB6802965A79B00728ED8 /* UIViewController+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BCB67F2965A79B00728ED8 /* UIViewController+Loader.swift */; };
@@ -302,6 +302,7 @@
 		600B7D682A0A450E00FC26D5 /* ChooseCityAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityAdapter.swift; sourceTree = "<group>"; };
 		600B7D6A2A0A4A5C00FC26D5 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
 		600B7D712A0A59C200FC26D5 /* Notification+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Names.swift"; sourceTree = "<group>"; };
+		600B7D742A0A845000FC26D5 /* HalfScreenPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfScreenPresentationController.swift; sourceTree = "<group>"; };
 		600B8CE3295604910002B53E /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		600D25E8299A781300189AC7 /* ChangePasswordPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenterImpl.swift; sourceTree = "<group>"; };
 		600D25E9299A781300189AC7 /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenter.swift; sourceTree = "<group>"; };
@@ -526,7 +527,6 @@
 		60BCB67229658F1F00728ED8 /* EventInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfo.swift; sourceTree = "<group>"; };
 		60BCB6742965913B00728ED8 /* Date+Fromatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Fromatters.swift"; sourceTree = "<group>"; };
 		60BCB6762965943B00728ED8 /* AcyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcyncImageView.swift; sourceTree = "<group>"; };
-		60BCB6782965956C00728ED8 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		60BCB67B296599A500728ED8 /* PPLIkeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPLIkeView.swift; sourceTree = "<group>"; };
 		60BCB67D2965A47F00728ED8 /* PPScrollableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPScrollableLabel.swift; sourceTree = "<group>"; };
 		60BCB67F2965A79B00728ED8 /* UIViewController+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loader.swift"; sourceTree = "<group>"; };
@@ -606,6 +606,14 @@
 				600B7D642A0A405700FC26D5 /* DeeplinkManagerImpl.swift */,
 			);
 			path = DeepLinkManager;
+			sourceTree = "<group>";
+		};
+		600B7D732A0A843A00FC26D5 /* PresentationControllers */ = {
+			isa = PBXGroup;
+			children = (
+				600B7D742A0A845000FC26D5 /* HalfScreenPresentationController.swift */,
+			);
+			path = PresentationControllers;
 			sourceTree = "<group>";
 		};
 		600D25E6299A781300189AC7 /* ChangePasswordScreen */ = {
@@ -926,7 +934,6 @@
 				608160442962CF8B006B0919 /* AccountManager */,
 				602220DC295CDDCE00D2F7B2 /* ValidationTokenManager */,
 				602220D6295CBBF100D2F7B2 /* KeyChainManager */,
-				60BCB67A2965956F00728ED8 /* PhotoManager */,
 				60C23218298A5E110092949E /* UserDefaultsManager */,
 			);
 			path = Managers;
@@ -1290,6 +1297,7 @@
 		6097175F287D94150084A63C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				600B7D732A0A843A00FC26D5 /* PresentationControllers */,
 				60C4FB3129AB813A00E4DDFF /* RefreshControl */,
 				603E94D029A90F0E0098BE6F /* CommonViewControllers */,
 				603E94CD29A90E400098BE6F /* NaviagtionBars */,
@@ -1448,14 +1456,6 @@
 				603E94D829AA0F7C0098BE6F /* ProfileInfo.swift */,
 			);
 			path = InfoModels;
-			sourceTree = "<group>";
-		};
-		60BCB67A2965956F00728ED8 /* PhotoManager */ = {
-			isa = PBXGroup;
-			children = (
-				60BCB6782965956C00728ED8 /* PhotoManager.swift */,
-			);
-			path = PhotoManager;
 			sourceTree = "<group>";
 		};
 		60C23218298A5E110092949E /* UserDefaultsManager */ = {
@@ -1816,6 +1816,7 @@
 				6052918C294E084F005B0373 /* RegisterView.swift in Sources */,
 				6071864329AA9AB6003979A1 /* MoreEventsAdapter.swift in Sources */,
 				6073312E29B8C4C500862941 /* PPConnectionErrorView.swift in Sources */,
+				600B7D752A0A845000FC26D5 /* HalfScreenPresentationController.swift in Sources */,
 				6028E34129AE2298003129D7 /* LikesEndPoint.swift in Sources */,
 				60A5E3E92969A6D500FC8A37 /* MonthMetadata.swift in Sources */,
 				6037CA4E296D969F00E4BC03 /* PPPlace.swift in Sources */,
@@ -2028,7 +2029,6 @@
 				603E94B729A8F7E20098BE6F /* ProfileContentView.swift in Sources */,
 				60971737287D87C90084A63C /* UIView+Constraints.swift in Sources */,
 				603A592E29C62F8C00A0052A /* SearchManangerFactory.swift in Sources */,
-				60BCB6792965956C00728ED8 /* PhotoManager.swift in Sources */,
 				60FAF61E29534D7B00982457 /* PPTextFieldColorProvider.swift in Sources */,
 				6042172328BBE67F0063BF68 /* AnyView.swift in Sources */,
 				60247AD529940CB800B67915 /* AcceptPasswordAssembly.swift in Sources */,

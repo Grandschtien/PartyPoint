@@ -8,4 +8,5 @@
 
 protocol ChooseCityView: AnyObject {
     func setCurrentCity(city: String)
+    func dismiss()
 }

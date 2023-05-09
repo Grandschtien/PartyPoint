@@ -46,7 +46,7 @@ extension ProfileInteractor: ProfileInteractorInput {
     }
     
     func getCurrentCHosenCity() -> String {
-        return profileContentProvider.getUser().city
+        return accountManager.getUser()?.city ?? "msk"
     }
     
     func exit() {

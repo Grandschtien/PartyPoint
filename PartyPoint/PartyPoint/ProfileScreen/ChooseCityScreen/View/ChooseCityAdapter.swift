@@ -40,8 +40,6 @@ final class ChooseCityAdapter: NSObject {
     private weak var tableView: UITableView?
     private var cities: [Cities] = Cities.allCases
     private var chosenCity: Cities?
-    private var selectedIndexes = [[IndexPath.init(row: 0, section: 0)], [IndexPath.init(row: 0, section: 1)]]
-
     
     init(tableView: UITableView) {
         self.tableView = tableView
@@ -75,15 +73,9 @@ extension ChooseCityAdapter: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chosenCity = cities[indexPath.row]
         
-        if !self.selectedIndexes[indexPath.section].contains(indexPath) {
-            self.selectedIndexes[indexPath.section].removeAll()
-            
-            self.selectedIndexes[indexPath.section].append(indexPath)
-            
-            self.chosenCity = chosenCity
-            tableView.reloadData()
+        self.chosenCity = chosenCity
+        tableView.reloadData()
 
-            chooseCityAction?(chosenCity.rawValue)
-        }
+        chooseCityAction?(chosenCity.rawValue)
     }
 }
