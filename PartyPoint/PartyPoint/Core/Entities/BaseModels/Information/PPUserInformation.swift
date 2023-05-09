@@ -13,7 +13,7 @@ struct PPUserInformation {
     let surname: String
     let dateOfBirth: String
     let email: String
-    let city: String?
+    var city: String = "msk"
     let about: String?
     let imgUrl: String?
 }

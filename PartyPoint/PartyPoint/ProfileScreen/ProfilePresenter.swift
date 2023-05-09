@@ -30,7 +30,8 @@ extension ProfilePresenter: ProfileViewOutput {
     }
     
     func changeCityActionTapped() {
-        router.openChangeCityScreen()
+        let city = interactor.getCurrentCHosenCity()
+        router.openChangeCityScreen(with: city)
     }
     
     func exitActionTapped() {

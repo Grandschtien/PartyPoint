@@ -32,6 +32,7 @@ protocol ProfileInteractorInput: AnyObject {
     func getUser()
     func exit()
     func openChangePasswordScreen()
+    func getCurrentCHosenCity() -> String 
 }
 
 protocol ProfileInteractorOutput: AnyObject {
@@ -45,5 +46,5 @@ protocol ProfileRouterInput: AnyObject {
     func navigateBack()
     func exit()
     func openChangePasswordScreen(token: String)
-    func openChangeCityScreen()
+    func openChangeCityScreen(with city: String)
 }

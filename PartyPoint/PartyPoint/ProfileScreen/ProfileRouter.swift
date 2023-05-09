@@ -22,8 +22,8 @@ extension ProfileRouter: ProfileRouterInput {
         self.push(vc: assembly.viewController, animated: true)
     }
     
-    func openChangeCityScreen() {
-        let assembly = ChooseCityAssembly.assemble()
+    func openChangeCityScreen(with city: String) {
+        let assembly = ChooseCityAssembly.assemble(with: city)
         self.present(vc: assembly.viewController, animated: true)
     }
     

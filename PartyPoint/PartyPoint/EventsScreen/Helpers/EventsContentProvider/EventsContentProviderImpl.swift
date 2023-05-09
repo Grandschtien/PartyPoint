@@ -101,4 +101,10 @@ extension EventsContentProviderImpl: EventsContentProvider {
 
         return false
     }
+    
+    func clearContentProvider() {
+        mainEvents.removeAll()
+        todayEvents.removeAll()
+        closestEvents.removeAll()
+    }
 }

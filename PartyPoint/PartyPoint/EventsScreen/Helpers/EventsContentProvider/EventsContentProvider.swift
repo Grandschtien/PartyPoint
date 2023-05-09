@@ -22,4 +22,6 @@ protocol EventsContentProvider {
     func setLikedEvent(withId id: Int, isLiked: Bool)
 
     func isLikedEvent(withId id: Int) -> Bool
+    
+    func clearContentProvider()
 }

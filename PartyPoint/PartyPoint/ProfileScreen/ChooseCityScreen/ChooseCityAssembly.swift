@@ -11,8 +11,9 @@ import UIKit
 final class ChooseCityAssembly {
     let viewController: UIViewController
 
-    static func assemble() -> ChooseCityAssembly {
-        let presenter = ChooseCityPresenterImpl()
+    static func assemble(with city: String) -> ChooseCityAssembly {
+        let accountManager = AccountManangerFabric.assembly()
+        let presenter = ChooseCityPresenterImpl(chosenCity: city, accountManager: accountManager)
         let viewController = ChooseCityViewController(presenter: presenter)
         presenter.setView(viewController)
 

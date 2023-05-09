@@ -17,10 +17,12 @@ final class EventsManagerImpl: NetworkManager {
     
     private let router: Router<EventsEndPoint>
     private let validationTokenManager: ValidationTokenManager
+    private let accountManager: PPAccountManager
     
-    init(router: Router<EventsEndPoint>, validationTokenManager: ValidationTokenManager) {
+    init(router: Router<EventsEndPoint>, validationTokenManager: ValidationTokenManager, accountManager: PPAccountManager) {
         self.router = router
         self.validationTokenManager = validationTokenManager
+        self.accountManager = accountManager
     }
 }
 
@@ -41,7 +43,8 @@ extension EventsManagerImpl: EventsManager {
     func getTodayEvents(page: Int) async -> EventsManagerImpl.EventsStatus {
         let token = try? await validationTokenManager.getAccessToken()
         guard let token = token else { return .error(reason: Localizable.no_token()) }
-        let result = await router.request(.todayEvents(page: page, token: token))
+        guard let user = accountManager.getUser() else { return .error(reason: Localizable.somthing_goes_wrong())}
+        let result = await router.request(.todayEvents(city: user.city, page: page, token: token))
         return getStatusOfEvents(result: result)
     }
     
@@ -55,7 +58,8 @@ extension EventsManagerImpl: EventsManager {
     func getMainEvents(page: Int) async -> EventsManagerImpl.EventsStatus {
         let token = try? await validationTokenManager.getAccessToken()
         guard let token = token else { return .error(reason: Localizable.no_token()) }
-        let result = await router.request(.mainEvents(page: page, token: token))
+        guard let user = accountManager.getUser() else { return .error(reason: Localizable.somthing_goes_wrong())}
+        let result = await router.request(.mainEvents(city: user.city, page: page, token: token))
         return getStatusOfEvents(result: result)
     }
     

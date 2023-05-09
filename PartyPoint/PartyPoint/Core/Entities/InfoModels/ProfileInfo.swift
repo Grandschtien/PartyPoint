@@ -11,6 +11,7 @@ struct ProfileInfo {
     let name: String
     let surname: String
     let email: String
+    let city: String
     let imageUrl: URL?
     
     var fullName: String {
@@ -23,6 +24,7 @@ extension ProfileInfo {
         self.name = user.name
         self.surname = user.surname
         self.email = user.email
+        self.city = user.city
         self.imageUrl = URL(string: user.imgUrl ?? "")
     }
 }

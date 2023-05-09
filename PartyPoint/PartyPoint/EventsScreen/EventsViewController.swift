@@ -116,6 +116,10 @@ extension EventsViewController: EventsViewInput {
     func hideLoaderView() {
         self.hideLoader()
     }
+    
+    func clearAdapter() {
+        eventsCollectionAdapter.clear()
+    }
 }
 
 extension EventsViewController: EventsCollectionViewAdapterDelegate {

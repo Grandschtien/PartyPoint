@@ -184,6 +184,10 @@ extension EventsInteractor: EventsInteractorInput {
             }
         }
     }
+    
+    func clearEvents() {
+        contentProvider.clearContentProvider()
+    }
 }
 
 extension EventsInteractor: LikeEventListener {

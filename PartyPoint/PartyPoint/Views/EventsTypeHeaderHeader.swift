@@ -59,6 +59,7 @@ extension EventsTypeHeaderHeader {
         self.addSubview(header)
         
         setupConstraints()
+        moreButton.isHidden = true
     }
     
     func setupConstraints() {

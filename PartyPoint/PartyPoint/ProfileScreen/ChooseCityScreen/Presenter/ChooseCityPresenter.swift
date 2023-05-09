@@ -9,6 +9,8 @@
 import Foundation
 
 protocol ChooseCityPresenter: AnyObject {
-    
+    func viewDidLoad()
+    func viewDidDisappear()
+    func updateChosenCity(city: String)
 }
 

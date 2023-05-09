@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3233E86075F39992F50F926C /* libPods-PartyPoint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9AFC6FDA648A3B4E855628 /* libPods-PartyPoint.a */; };
+		600B7D632A0A404B00FC26D5 /* DeeplinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B7D622A0A404B00FC26D5 /* DeeplinkManager.swift */; };
+		600B7D652A0A405700FC26D5 /* DeeplinkManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B7D642A0A405700FC26D5 /* DeeplinkManagerImpl.swift */; };
+		600B7D692A0A450E00FC26D5 /* ChooseCityAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B7D682A0A450E00FC26D5 /* ChooseCityAdapter.swift */; };
+		600B7D6B2A0A4A5C00FC26D5 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B7D6A2A0A4A5C00FC26D5 /* CityCell.swift */; };
+		600B7D722A0A59C200FC26D5 /* Notification+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B7D712A0A59C200FC26D5 /* Notification+Names.swift */; };
 		600B8CE4295604910002B53E /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B8CE3295604910002B53E /* GlobalFunctions.swift */; };
 		600D25EF299A781300189AC7 /* ChangePasswordPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600D25E8299A781300189AC7 /* ChangePasswordPresenterImpl.swift */; };
 		600D25F0299A781300189AC7 /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600D25E9299A781300189AC7 /* ChangePasswordPresenter.swift */; };
@@ -291,6 +296,12 @@
 		13FE3655220E715413942E29 /* Pods-PartyPoint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyPoint.debug.xcconfig"; path = "Target Support Files/Pods-PartyPoint/Pods-PartyPoint.debug.xcconfig"; sourceTree = "<group>"; };
 		4A9AFC6FDA648A3B4E855628 /* libPods-PartyPoint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PartyPoint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8C843A9687CC642B83F694 /* Pods-PartyPoint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyPoint.release.xcconfig"; path = "Target Support Files/Pods-PartyPoint/Pods-PartyPoint.release.xcconfig"; sourceTree = "<group>"; };
+		600B7D622A0A404B00FC26D5 /* DeeplinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkManager.swift; sourceTree = "<group>"; };
+		600B7D642A0A405700FC26D5 /* DeeplinkManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkManagerImpl.swift; sourceTree = "<group>"; };
+		600B7D662A0A40D700FC26D5 /* PartyPointRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PartyPointRelease.entitlements; sourceTree = "<group>"; };
+		600B7D682A0A450E00FC26D5 /* ChooseCityAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityAdapter.swift; sourceTree = "<group>"; };
+		600B7D6A2A0A4A5C00FC26D5 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
+		600B7D712A0A59C200FC26D5 /* Notification+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Names.swift"; sourceTree = "<group>"; };
 		600B8CE3295604910002B53E /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		600D25E8299A781300189AC7 /* ChangePasswordPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenterImpl.swift; sourceTree = "<group>"; };
 		600D25E9299A781300189AC7 /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenter.swift; sourceTree = "<group>"; };
@@ -588,6 +599,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		600B7D612A0A403A00FC26D5 /* DeepLinkManager */ = {
+			isa = PBXGroup;
+			children = (
+				600B7D622A0A404B00FC26D5 /* DeeplinkManager.swift */,
+				600B7D642A0A405700FC26D5 /* DeeplinkManagerImpl.swift */,
+			);
+			path = DeepLinkManager;
+			sourceTree = "<group>";
+		};
 		600D25E6299A781300189AC7 /* ChangePasswordScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -896,6 +916,7 @@
 		6060DE6929210AEA0017F7F7 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				600B7D612A0A403A00FC26D5 /* DeepLinkManager */,
 				60EFDDFA29CFA19B000C37C0 /* CoreDataManager */,
 				603A592829C62F6800A0052A /* SearchManager */,
 				6028E33929AE220A003129D7 /* LikeManager */,
@@ -944,6 +965,8 @@
 				606960A22A092F5400E7DD9E /* ChooseCityView.swift */,
 				606960A32A092F5400E7DD9E /* ChooseCityContentView.swift */,
 				606960A42A092F5400E7DD9E /* ChooseCityViewController.swift */,
+				600B7D682A0A450E00FC26D5 /* ChooseCityAdapter.swift */,
+				600B7D6A2A0A4A5C00FC26D5 /* CityCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1102,6 +1125,7 @@
 		609716D9287D75230084A63C /* PartyPoint */ = {
 			isa = PBXGroup;
 			children = (
+				600B7D662A0A40D700FC26D5 /* PartyPointRelease.entitlements */,
 				60E627E0292391DF0074151C /* PartyPoint.entitlements */,
 				609716E8287D752B0084A63C /* Info.plist */,
 				609716EE287D75940084A63C /* Core */,
@@ -1191,6 +1215,7 @@
 				603E94DC29AA2FAB0098BE6F /* StatusBarFrame.swift */,
 				60C4FB3629AB893D00E4DDFF /* UIScrollView+RefreshControl.swift */,
 				60CACCB629B2191F008D031C /* Array+Extensions.swift */,
+				600B7D712A0A59C200FC26D5 /* Notification+Names.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1787,6 +1812,7 @@
 				603E94DD29AA2FAB0098BE6F /* StatusBarFrame.swift in Sources */,
 				606A9A8D2966FAB300A17F13 /* PPCollectionsLoaderView.swift in Sources */,
 				60FAF6132953446A00982457 /* PPTextFieldDisabledModePresenter.swift in Sources */,
+				600B7D652A0A405700FC26D5 /* DeeplinkManagerImpl.swift in Sources */,
 				6052918C294E084F005B0373 /* RegisterView.swift in Sources */,
 				6071864329AA9AB6003979A1 /* MoreEventsAdapter.swift in Sources */,
 				6073312E29B8C4C500862941 /* PPConnectionErrorView.swift in Sources */,
@@ -1938,6 +1964,7 @@
 				60918EF6288AA5F400D9E032 /* ImagePicker.swift in Sources */,
 				603E94DB29AA1C030098BE6F /* PlainNavigationBar.swift in Sources */,
 				60FAF62029534DD100982457 /* PPToast.swift in Sources */,
+				600B7D632A0A404B00FC26D5 /* DeeplinkManager.swift in Sources */,
 				605BAA9029EAC154007C45F2 /* FavouriteScreenPresenter.swift in Sources */,
 				60FAF61A295349F000982457 /* UIControl+extensions.swift in Sources */,
 				603E94E229AA39D00098BE6F /* ProfileContentProviderImpl.swift in Sources */,
@@ -1968,6 +1995,7 @@
 				60C23215298A5E040092949E /* UserDefaultsManager.swift in Sources */,
 				609716DB287D75230084A63C /* AppDelegate.swift in Sources */,
 				60BB681F298AE5AF00D82CD1 /* Data+append.swift in Sources */,
+				600B7D692A0A450E00FC26D5 /* ChooseCityAdapter.swift in Sources */,
 				605EE1CF29B4C8DE00B5D871 /* FvoritesContentProviderImpl.swift in Sources */,
 				6070D43228ABDE1F0054F61B /* EventPresenter.swift in Sources */,
 				60CED3FB2993DB7300C59FAB /* AcceptPasswordPresenterImpl.swift in Sources */,
@@ -2007,8 +2035,10 @@
 				603E94C829A90A110098BE6F /* SearchScreenViewController.swift in Sources */,
 				608160482962D108006B0919 /* UserDefaults+KeyValueStorage.swift in Sources */,
 				6073B8702881936A00AF07FA /* EventsCollectionViewAdapter.swift in Sources */,
+				600B7D722A0A59C200FC26D5 /* Notification+Names.swift in Sources */,
 				60A9E5E92992B5F600ACF95F /* UIView+SimpleRecognizers.swift in Sources */,
 				6073B87728819A2F00AF07FA /* Section.swift in Sources */,
+				600B7D6B2A0A4A5C00FC26D5 /* CityCell.swift in Sources */,
 				60BB681D298AE49800D82CD1 /* MultipartDataEncoder.swift in Sources */,
 				605E329F29C6FD9E00D6E79C /* SearchViewConfiguration.swift in Sources */,
 				6071864129AA9A42003979A1 /* MoreEventsAssembly.swift in Sources */,
@@ -2215,8 +2245,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = PartyPoint/PartyPoint.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_ENTITLEMENTS = PartyPoint/PartyPointRelease.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -2237,7 +2267,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.egorshkarin.PartyPoint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = distribution_egor_profile;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = universallinkswithpushes;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

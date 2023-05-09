@@ -57,7 +57,14 @@ private extension FavouriteScreenPresenterImpl {
                     view?.showNothingLiked()
                     return
                 }
-                let eventsInfo = EventsConverter.getEventsInfo(events: events)
+                
+                var eventsInfo = EventsConverter.getEventsInfo(events: events)
+                let likedInThisSession = contentProvider.getEvents()
+                
+                if !likedInThisSession.isEmpty {
+                    eventsInfo = likedInThisSession + eventsInfo
+                }
+                
                 contentProvider.updateContent(withInfo: eventsInfo)
                 view?.updateView(withInfo: eventsInfo)
             }

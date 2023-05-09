@@ -20,10 +20,10 @@ final class EventsContainer {
         let locationMananger = LocationManagerImpl(locationManager: systemLocationMananger)
         let networkRouter = Router<EventsEndPoint>()
         let validationTokenManager = TokenManagerFabric.assembly()
-        let networkMananger = EventsManagerImpl(router: networkRouter, validationTokenManager: validationTokenManager)
+        let accountManager = AccountManangerFabric.assembly()
+        let networkMananger = EventsManagerImpl(router: networkRouter, validationTokenManager: validationTokenManager, accountManager: accountManager)
         let decoder = PPDecoderImpl()
         let likeManager = LikeManagerImpl.shared
-        let accountManager = AccountManangerFabric.assembly()
         let contentProvider = EventsContentProviderImpl()
         let interactor = EventsInteractor(eventsManager: networkMananger,
                                           locationManager: locationMananger,

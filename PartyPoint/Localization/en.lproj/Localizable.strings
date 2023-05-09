@@ -172,3 +172,11 @@
 "error" = "Error";
 
 "no_information" = "No information";
+
+/* Названия городов */
+"msk" = "Moscow";
+"spb" = "St. Petersburg";
+"nn" = "Nizhny Novgorod";
+"kaz" = "Kazan";
+"ekb" = "Yekaterinburg";
+"nsk" = "Novosibirsk";

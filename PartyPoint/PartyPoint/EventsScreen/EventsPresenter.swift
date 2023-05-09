@@ -15,10 +15,16 @@ final class EventsPresenter {
     
 	private let router: EventsRouterInput
 	private let interactor: EventsInteractorInput
+    private let notificationCenter = NotificationCenter.default
     
     init(router: EventsRouterInput, interactor: EventsInteractorInput) {
         self.router = router
         self.interactor = interactor
+        addListeners()
+    }
+    
+    deinit {
+        removeListeners()
     }
 }
 
@@ -31,9 +37,20 @@ private extension EventsPresenter {
     }
     
     func makeProfileInfo(from model: PPUserInformation) -> ProfileInfo {
-        let imageUrl = model.imgUrl ?? ""
-        let imageURl = URL(string: imageUrl)
-        return ProfileInfo(name: model.name, surname: model.surname, email: model.email, imageUrl: imageURl)
+        return ProfileInfo(user: model)
+    }
+    
+    func addListeners() {
+        notificationCenter.addObserver(self, selector: #selector(updateEventsWithNewCity), name: .cityDidChanged, object: nil)
+    }
+    
+    func removeListeners() {
+        notificationCenter.removeObserver(self, name: .cityDidChanged, object: nil)
+    }
+    
+    @objc
+    func updateEventsWithNewCity() {
+        tryToReloadData()
     }
 }
 
@@ -72,6 +89,8 @@ extension EventsPresenter: EventsViewOutput {
     }
     
     func tryToReloadData() {
+        interactor.clearEvents()
+        view?.clearAdapter()
         view?.showErrorViewIfNeeded(isHidden: true)
         view?.showLoaderView()
         interactor.loadFirstPages()
@@ -97,6 +116,7 @@ extension EventsPresenter: EventsInteractorOutput {
     }
     
     func updateTodaySection(with events: [EventInfo]) {
+        if events.isEmpty { return }
         let section = makeSection(withInfo: events, title: Localizable.today(), moreType: .today, ofType: .today)
         view?.hideLoaderView()
         view?.updateTodaySection(with: section)
@@ -104,6 +124,7 @@ extension EventsPresenter: EventsInteractorOutput {
     }
     
     func updateClosestSection(with events: [EventInfo]) {
+        if events.isEmpty { return }
         let section = makeSection(withInfo: events, title: Localizable.closest(), moreType: .closest, ofType: .closest)
         view?.hideLoaderView()
         view?.updateClosestSection(with: section)

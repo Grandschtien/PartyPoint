@@ -29,6 +29,7 @@ protocol EventsViewInput: AnyObject {
     func showLoaderView()
     func hideLoaderView()
     func showErrorViewIfNeeded(isHidden: Bool)
+    func clearAdapter()
 }
 
 protocol EventsViewOutput: AnyObject {
@@ -49,6 +50,7 @@ protocol EventsInteractorInput: AnyObject {
     func eventLiked(index: Int, section: SectionType)
     func eventDisliked(index: Int, section: SectionType)
     func getUserForProfile()
+    func clearEvents()
 }
 
 protocol EventsInteractorOutput: AnyObject {

@@ -11,6 +11,7 @@ import SnapKit
 private let CLOSE_BUTTON_SIZE: CGFloat = 35.scale()
 private let CLOSE_BUTTON_RIGHT_INSET: CGFloat = 20.scale()
 private let CLOSE_BUTTON_TOP_OFFSET: CGFloat = 20.scale()
+private let TABLEVIEW_BOTTOM_OFFSET: CGFloat = 10
 
 final class ChooseCityContentView: UIView {
     
@@ -18,6 +19,8 @@ final class ChooseCityContentView: UIView {
     
     // MARK: Private properties
     private let closeButton = UIButton()
+    private let tableView = UITableView()
+    private lazy var adapter = ChooseCityAdapter(tableView: tableView)
     
     // MARK: Init
     override init(frame: CGRect) {
@@ -37,10 +40,12 @@ private extension ChooseCityContentView {
         self.backgroundColor = Colors.mainColor()
         
         self.addSubview(closeButton)
+        self.addSubview(tableView)
         
         setupConstraints()
         
         setupCloseButton()
+        setupTableView()
     }
     
     func setupConstraints() {
@@ -48,6 +53,12 @@ private extension ChooseCityContentView {
             $0.size.equalTo(CLOSE_BUTTON_SIZE)
             $0.top.equalToSuperview().offset(CLOSE_BUTTON_TOP_OFFSET)
             $0.right.equalToSuperview().inset(CLOSE_BUTTON_RIGHT_INSET)
+        }
+        
+        tableView.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.top.equalTo(closeButton.snp.bottom).offset(TABLEVIEW_BOTTOM_OFFSET)
+            $0.bottom.equalToSuperview()
         }
     }
     
@@ -57,12 +68,28 @@ private extension ChooseCityContentView {
         closeButton.addTarget(self, action: #selector(closeActionHadler), for: .touchUpInside)
         closeButton.setImage(Images.close_button(), for: .normal)
     }
+    
+    func setupTableView() {
+        tableView.backgroundColor = Colors.mainColor()
+        tableView.delegate = adapter
+        tableView.dataSource = adapter
+        tableView.allowsMultipleSelection = false
+        tableView.registerCell(cellType: CityCell.self)
+    }
 }
 
 // MARK: Public methods
 extension ChooseCityContentView {
     func setCloseAction(_ action: @escaping EmptyClosure) {
         self.closeAction = action
+    }
+    
+    func setChosenCity(_ city: String) {
+        self.adapter.setChosenCity(city: city)
+    }
+    
+    func setChooseCityAction(_ action: @escaping (String) -> Void) {
+        adapter.setChooseCityAction(action)
     }
 }
 

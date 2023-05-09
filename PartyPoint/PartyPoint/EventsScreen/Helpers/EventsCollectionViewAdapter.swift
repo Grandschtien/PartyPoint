@@ -76,6 +76,10 @@ final class EventsCollectionViewAdapter: NSObject {
         applySnapshot()
     }
     
+    func clear() {
+        sections.removeAll()
+    }
+    
     func setTapAction(_ action: @escaping TapOnEventsAction) {
         self.didTapOnEventsAction = action
     }

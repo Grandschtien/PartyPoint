@@ -8,9 +8,9 @@
 import Foundation
 
 enum EventsEndPoint {
-    case mainEvents(page: Int, token: String)
+    case mainEvents(city: String, page: Int, token: String)
     case closeEvents(page: Int, lat: Double, lon: Double, token: String)
-    case todayEvents(page: Int, token: String)
+    case todayEvents(city: String, page: Int, token: String)
     case event(id: Int, placeId: Int, token: String)
 }
 
@@ -62,9 +62,9 @@ extension EventsEndPoint: EndPointType {
     
     var task: HTTPTask {
         switch self {
-        case let .mainEvents(page, token):
+        case let .mainEvents(city, page, token):
             return .requestParametersWithHeaders(bodyParameters: nil,
-                                                 urlParameters: ["page": page],
+                                                 urlParameters: ["page": page, "city": city],
                                                  additionalParameters: ["Authorization": "Bearer \(token)"])
         case let .closeEvents(page, lat, lon, token):
             return .requestParametersWithHeaders(bodyParameters: nil,
@@ -72,9 +72,9 @@ extension EventsEndPoint: EndPointType {
                                                                  "lat": lat,
                                                                  "lon": lon],
                                                  additionalParameters: ["Authorization": "Bearer \(token)"])
-        case let .todayEvents(page, token):
+        case let .todayEvents(city, page, token):
             return .requestParametersWithHeaders(bodyParameters: nil,
-                                                 urlParameters: ["page": page],
+                                                 urlParameters: ["page": page, "city": city],
                                                  additionalParameters: ["Authorization": "Bearer \(token)"])
         case let .event(_, _, token):
             return .requestParametersWithHeaders(bodyParameters: nil,
