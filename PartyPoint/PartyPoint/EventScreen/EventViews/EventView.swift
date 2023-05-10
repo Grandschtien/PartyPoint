@@ -17,6 +17,8 @@ private let COLOR_BACKGROUND_OFFSET = -20.scale()
 private let SCROLL_VIEW_INSETS = 46.scale()
 
 final class EventView: UIView {
+    
+    private let navigationBar = SharingNavigationBar()
     private let scrollView = UIScrollView()
     private let backgroundImageView = AcyncImageView(placeHolderType: .event)
     private let eventInfoView = EventInfoView(frame: .zero)
@@ -61,6 +63,30 @@ extension EventView {
     func setOpenSuperviserSite(_ action: @escaping EmptyClosure) {
         self.eventInfoView.setOpenSuperviserSite(action)
     }
+    
+    func showNavBar() {
+        navigationBar.backgroundColor = Colors.mainColor()
+        navigationBar.tintColor = Colors.mainColor()
+        navigationBar.fontColor(color: Colors.miniColor())
+    }
+    
+    func hideNavBar() {
+        navigationBar.backgroundColor = .clear
+        navigationBar.tintColor = .clear
+        navigationBar.fontColor(color: .clear)
+    }
+    
+    func setNavigatioNBarTitle(title: String) {
+        navigationBar.setTitle(title)
+    }
+    
+    func setBackAction(_ action: @escaping EmptyClosure) {
+        navigationBar.setBackAction(action)
+    }
+    
+    func setShareAction(_ action: @escaping EmptyClosure) {
+        navigationBar.setShareAction(action)
+    }
 }
 
 extension EventView: UIScrollViewDelegate {
@@ -96,11 +122,18 @@ private extension EventView {
         backColorView.layer.cornerRadius = CORNER_RADIUS
         
         addSubview(scrollView)
+        addSubview(navigationBar)
         scrollView.addSubview(imageContainer)
         scrollView.addSubview(backColorView)
         scrollView.addSubview(backgroundImageView)
         scrollView.addSubview(backgroundOfContentListView)
         backgroundOfContentListView.addSubview(eventInfoView)
+        
+        navigationBar.snp.makeConstraints {
+            $0.height.equalTo(navigationBar.height)
+            $0.left.right.equalToSuperview()
+            $0.top.equalToSuperview().offset(statusBarFrame.height)
+        }
 
         scrollView.snp.makeConstraints {
             $0.top.left.bottom.right.equalToSuperview()
@@ -138,6 +171,12 @@ private extension EventView {
         scrollView.bringSubviewToFront(backColorView)
         scrollView.bringSubviewToFront(backgroundOfContentListView)
         scrollView.contentInset.bottom = SCROLL_VIEW_INSETS
+        
+        setupNavigatioBar()
+    }
+    
+    func setupNavigatioBar() {
+        navigationBar.fontColor(color: .clear)
     }
     
     func makeScrollViewSize() {

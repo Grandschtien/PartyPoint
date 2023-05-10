@@ -35,6 +35,12 @@ final class MoreEventsViewController: UIViewController {
         setupUI()
         presenter.onViewDidLoad()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 }
 
 // MARK: Private methods

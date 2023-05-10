@@ -9,7 +9,7 @@ import SnapKit
 private let BUTTONS_SIZE: CGFloat = 30.scale()
 private let BACK_BUTTON_LEFT_OFFSET: CGFloat = 14
 private let TITLE_FONT_SIZE: CGFloat = 16.scale()
-private let NAV_BAR_HEIGHT: CGFloat = 50.scale()
+private let NAV_BAR_HEIGHT: CGFloat = 42.scale()
 private let TITLE_LABEL_HORIZONTAL_OFFSETS: CGFloat = 20
 
 final class SharingNavigationBar: UIView {
@@ -55,6 +55,7 @@ final class SharingNavigationBar: UIView {
 private extension SharingNavigationBar {
     func setupUI() {
         self.addSubview(horizontalStackView)
+        self.backgroundColor = .clear
         horizontalStackView.addArrangedSubview(backButton)
         horizontalStackView.addArrangedSubview(titleLabel)
         horizontalStackView.addArrangedSubview(sharingButton)
@@ -69,7 +70,8 @@ private extension SharingNavigationBar {
     func setupConstraints() {
         let titleWidth = UIScreen.main.bounds.width - TITLE_LABEL_HORIZONTAL_OFFSETS * 2 - BUTTONS_SIZE * 2
         horizontalStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.left.right.equalToSuperview().inset(BACK_BUTTON_LEFT_OFFSET)
+            $0.top.bottom.equalToSuperview()
         }
         
         backButton.snp.makeConstraints {

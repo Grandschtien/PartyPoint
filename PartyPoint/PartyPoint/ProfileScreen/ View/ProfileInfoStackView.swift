@@ -80,7 +80,7 @@ private extension ProfileInfoStackView {
     func setupImageView() {
         avatarImageView.layer.cornerRadius = AVATAR_SIZE / 2
         avatarImageView.backgroundColor = Colors.miniColor()
-        avatarImageView.contentMode = .center
+        avatarImageView.tintColor = Colors.miniColor()
         avatarImageView.clipsToBounds = true
     }
     

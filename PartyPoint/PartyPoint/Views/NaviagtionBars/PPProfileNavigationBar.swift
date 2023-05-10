@@ -103,7 +103,6 @@ private extension PPProfileNavigationBar {
     func setupAvatarImageView() {
         avatarImageView.layer.cornerRadius = AVATAR_IMAGE_SIZE / 2
         avatarImageView.image = Images.profile_image()
-        avatarImageView.contentMode = .center
         avatarImageView.backgroundColor = Colors.miniColor()
         avatarImageView.clipsToBounds = true
     }
