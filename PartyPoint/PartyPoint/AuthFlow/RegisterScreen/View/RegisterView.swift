@@ -227,8 +227,6 @@ private extension RegisterView {
         scrollView.addSubview(surnameTextField)
         scrollView.addSubview(emailTextField)
         scrollView.addSubview(dobTextField)
-        //TODO: Uncomment later
-//        scrollView.addSubview(cityTextField)
         scrollView.addSubview(passwordTextField)
         scrollView.addSubview(checkPasswordTextField)
         scrollView.addSubview(registerButton)
@@ -237,10 +235,11 @@ private extension RegisterView {
     
     func setupUserImage() {
         userImage.clipsToBounds = true
-        userImage.contentMode = .center
         userImage.isUserInteractionEnabled = true
         userImage.backgroundColor = Colors.miniColor()
         userImage.image = Images.personPhoto()
+        userImage.layer.borderWidth = 1.0
+        userImage.layer.borderColor = Colors.miniColor()?.cgColor
         userImage.addTapRecognizer(target: self, #selector(choosePhoto))
     }
     

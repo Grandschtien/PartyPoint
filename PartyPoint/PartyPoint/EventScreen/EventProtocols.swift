@@ -24,6 +24,7 @@ protocol EventViewInput: AnyObject {
 
 protocol EventViewOutput: AnyObject {
     func backAction()
+    func shareEvent()
     func onViewDidLoad()
     func changeVisibilityOfNavBar(offset: CGFloat)
     func openSuperviserSite()
@@ -31,6 +32,7 @@ protocol EventViewOutput: AnyObject {
 
 protocol EventInteractorInput: AnyObject {
     func loadEvent()
+    func getEventUrl() -> URL?
     func getTitle() -> String
     func getSiteUrl() -> URL?
 }
@@ -43,4 +45,5 @@ protocol EventInteractorOutput: AnyObject {
 protocol EventRouterInput: AnyObject {
     func backToPrevController()
     func openSuperviserSite(with url: URL)
+    func openShareSheeet(with url: URL)
 }

@@ -20,7 +20,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
-        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         window?.overrideUserInterfaceStyle = .dark
@@ -31,6 +30,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         coordinator = makeAppCoordinator(window: window)
         coordinator?.start()
+        
+        UniversalLinksManagerImpl.shared.hadnleUrlIfNeeded(with: connectionOptions.userActivities.first)
     }
     
     func makeAppCoordinator(window: UIWindow) -> AppCoordinatorImpl {
@@ -38,6 +39,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let userDefaultsManager = UserDefaultsManagerImpl(storage: storage)
         let validateTokenManager = TokenManagerFabric.assembly()
         return AppCoordinatorImpl(window: window, userDefaultsManager: userDefaultsManager, validateTokenManager: validateTokenManager)
+    }
+    
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+            UniversalLinksManagerImpl.shared.hadnleUrlIfNeeded(with: userActivity)
+        }
     }
 }
 

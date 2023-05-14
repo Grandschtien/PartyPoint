@@ -9,7 +9,7 @@
 import Foundation
 
 final class EventInteractor {
-	weak var output: EventInteractorOutput?
+    weak var output: EventInteractorOutput?
     private let eventId: Int
     private let placeId: Int
     private let eventsManager: EventsManager
@@ -54,6 +54,10 @@ private extension EventInteractor {
 }
 
 extension EventInteractor: EventInteractorInput {
+    func getEventUrl() -> URL? {
+        return EventUrlBuilder.buidURL(placeId: eventInformation?.place.kudaGoID, eventId: eventInformation?.event.kudagoID)
+    }
+    
     func loadEvent() {
         Task {
             let eventStatus = await eventsManager.getEvent(withId: eventId, and: placeId)

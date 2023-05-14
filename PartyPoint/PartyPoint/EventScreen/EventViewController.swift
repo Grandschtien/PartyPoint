@@ -66,8 +66,8 @@ private extension EventViewController {
             self?.output.backAction()
         }
 
-        eventView.setShareAction {
-            //TODO: Share action
+        eventView.setShareAction { [weak self] in
+            self?.output.shareEvent()
         }
         
         eventView.setOpenSuperviserSite { [weak self] in

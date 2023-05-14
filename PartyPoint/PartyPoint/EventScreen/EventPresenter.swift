@@ -51,7 +51,6 @@ private extension EventPresenter {
     }
     
     func validateDate(start: Date, end: Date) -> (date: String, time: String) {
-        let calendar = Calendar.current
         let startDate = start.toString()
         let endDate = end.toString()
         if startDate == endDate {
@@ -85,6 +84,12 @@ extension EventPresenter: EventViewOutput {
     
     func backAction() {
         router.backToPrevController()
+    }
+    
+    func shareEvent() {
+        let url = interactor.getEventUrl()
+        guard let url = url else { return }
+        router.openShareSheeet(with: url)
     }
     
     func onViewDidLoad() {
