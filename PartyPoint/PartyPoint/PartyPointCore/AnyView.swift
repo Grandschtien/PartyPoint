@@ -12,7 +12,9 @@ protocol AnyView {
 }
 
 extension AnyView where Self: UIView {
-    var view: UIView { return self }
+    var view: UIView {
+        return self
+    }
 }
 
 extension UIView: AnyView {}
