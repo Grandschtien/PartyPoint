@@ -91,3 +91,11 @@ iOSInjectionProject/
 
 #R.swift
 *.generated.swift
+
+# Projects
+*.xcodeproj
+*.xcworkspace
+
+# Tuist
+graph.dot
+Drived/
