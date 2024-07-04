@@ -19,11 +19,11 @@ final class EventHeaderLabel: UILabel {
         
         switch labelType {
         case .main:
-            self.font = R.font.sfProDisplayBold(size: 28.scale())
+            self.font = PartyPointFontFamily.SFProDisplay.bold.font(size: 28.scale())
             self.textColor = .white
             self.numberOfLines = 0
         case .secondary:
-            self.font = R.font.sfProDisplayBold(size: 24.scale())
+            self.font = PartyPointFontFamily.SFProDisplay.bold.font(size: 24.scale())
             self.textColor = .white
         }
     }

@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import UIKit
 
 private let TITLE_FONT_SIZE: CGFloat = 16.scale()
 private let SUBTITLE_FONT_SIZE: CGFloat = 14.scale()
@@ -32,7 +33,7 @@ final class FavouritesEmptyView: UIView {
 
 private extension FavouritesEmptyView {
     func setupUI() {
-        self.backgroundColor = R.color.mainColor()
+        self.backgroundColor = PartyPointAsset.mainColor.color
         self.addSubview(stackView)
         stackView.addArrangedSubview(icon)
         stackView.addArrangedSubview(titleLabel)
@@ -69,20 +70,20 @@ private extension FavouritesEmptyView {
     }
     
     func setupTitleLabel() {
-        titleLabel.text = R.string.localizable.no_favorites_title()
-        titleLabel.font = R.font.sfProDisplayBold(size: TITLE_FONT_SIZE)
+        titleLabel.text =  PartyPointStrings.Localizable.noFavoritesTitle
+        titleLabel.font = PartyPointFontFamily.SFProDisplay.bold.font(size: TITLE_FONT_SIZE)
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = .center
     }
     
     func setupSubtitleLabel() {
-        subtitle.text = R.string.localizable.no_favorites_subtitle()
-        subtitle.font = R.font.sfProDisplayMedium(size: SUBTITLE_FONT_SIZE)
+        subtitle.text =  PartyPointStrings.Localizable.noFavoritesSubtitle
+        subtitle.font = PartyPointFontFamily.SFProDisplay.medium.font(size: SUBTITLE_FONT_SIZE)
         subtitle.numberOfLines = 2
         subtitle.textAlignment = .center
     }
     
     func setupIcon() {
-        icon.image = R.image.no_favourties()
+        icon.image = PartyPointAsset.noFavourties.image
     }
 }

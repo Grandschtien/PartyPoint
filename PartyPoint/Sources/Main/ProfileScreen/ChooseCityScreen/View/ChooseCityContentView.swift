@@ -47,7 +47,7 @@ final class ChooseCityContentView: UIView {
 // MARK: Private methods
 private extension ChooseCityContentView {
     func setupUI() {
-        self.backgroundColor = R.color.mainColor()
+        self.backgroundColor = PartyPointAsset.mainColor.color
         
         self.addSubview(titleLabel)
         self.addSubview(closeButton)
@@ -88,14 +88,14 @@ private extension ChooseCityContentView {
     }
     
     func setupCloseButton() {
-        closeButton.backgroundColor = R.color.miniColor()?.withAlphaComponent(0.7)
+        closeButton.backgroundColor = PartyPointAsset.miniColor.color.withAlphaComponent(0.7)
         closeButton.layer.cornerRadius = CLOSE_BUTTON_SIZE / 2
         closeButton.addTarget(self, action: #selector(closeActionHadler), for: .touchUpInside)
-        closeButton.setImage(R.image.close_button(), for: .normal)
+        closeButton.setImage(PartyPointAsset.closeButton.image, for: .normal)
     }
     
     func setupTableView() {
-        tableView.backgroundColor = R.color.mainColor()
+        tableView.backgroundColor = PartyPointAsset.mainColor.color
         tableView.delegate = adapter
         tableView.dataSource = adapter
         tableView.allowsMultipleSelection = false
@@ -103,13 +103,13 @@ private extension ChooseCityContentView {
     }
     
     func setupTitleLabel() {
-        titleLabel.font = R.font.sfProDisplayBold(size: TITLE_FONT_SIZE)
-        titleLabel.textColor = R.color.miniColor()
-        titleLabel.text = R.string.localizable.select_city()
+        titleLabel.font = PartyPointFontFamily.SFProDisplay.bold.font(size: TITLE_FONT_SIZE)
+        titleLabel.textColor = PartyPointAsset.miniColor.color
+        titleLabel.text = PartyPointStrings.Localizable.selectCity
     }
     
     func setupConfirmButton() {
-        confirmButton.setTitle(R.string.localizable.done(), for: .normal)
+        confirmButton.setTitle( PartyPointStrings.Localizable.done, for: .normal)
         confirmButton.addTarget(self, action: #selector(confirmChoseHandler), for: .touchUpInside)
     }
 }

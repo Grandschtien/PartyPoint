@@ -22,7 +22,7 @@ final class NavigationBarWithLogoAndActions: NavigationBarWithLogo {
     private let isTitleNeeded: Bool
     
     init(background: UIColor = .clear,
-         image: UIImage? = R.image.logo(),
+         image: UIImage? = PartyPointAsset.logo.image,
          frame: CGRect,
          buttons: Set<Buttons>,
          isImageNeed: Bool = true,
@@ -89,7 +89,7 @@ private extension NavigationBarWithLogoAndActions {
             
             switch buttonsImge {
             case . exit:
-                button.setImage(R.image.exit(), for: .normal)
+                button.setImage(PartyPointAsset.exit.image, for: .normal)
                 button.snp.makeConstraints {
                     $0.right.equalToSuperview().inset(HORIZONTAL_OFFSET_OF_BUTTONS)
                     $0.centerY.equalToSuperview()
@@ -97,14 +97,14 @@ private extension NavigationBarWithLogoAndActions {
                 
                 button.addTarget(self, action: #selector(exitActionTapped), for: .touchUpInside)
             case .back:
-                button.setImage(R.image.chevronBack(), for: .normal)
+                button.setImage(PartyPointAsset.chevronBack.image, for: .normal)
                 button.snp.makeConstraints {
                     $0.left.equalToSuperview().offset(HORIZONTAL_OFFSET_OF_BUTTONS)
                     $0.centerY.equalToSuperview()
                 }
                 button.addTarget(self, action: #selector(backActionTapped), for: .touchUpInside)
             case .share:
-                button.setImage(R.image.shareOutline(), for: .normal)
+                button.setImage(PartyPointAsset.shareOutline.image, for: .normal)
                 button.snp.makeConstraints {
                     $0.right.equalToSuperview().inset(HORIZONTAL_OFFSET_OF_BUTTONS)
                     $0.centerY.equalToSuperview()

@@ -6,7 +6,6 @@
 //
 
 import SnapKit
-
 import UIKit
 
 // MARK: - Constants

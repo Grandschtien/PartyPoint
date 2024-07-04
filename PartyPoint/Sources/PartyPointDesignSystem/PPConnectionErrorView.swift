@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 import SnapKit
 
 private let TITLE_FONT_SIZE: CGFloat = 16.scale()
@@ -47,7 +47,7 @@ final class PPConnectionErrorView: UIView {
 
 private extension PPConnectionErrorView {
     func setupUI() {
-        self.backgroundColor = R.color.mainColor()
+        self.backgroundColor = PartyPointAsset.mainColor.color
         self.addSubview(stackView)
         stackView.addArrangedSubview(icon)
         stackView.addArrangedSubview(titleLabel)
@@ -92,24 +92,24 @@ private extension PPConnectionErrorView {
     }
     
     func setupTitleLabel() {
-        titleLabel.text = R.string.localizable.error()
-        titleLabel.font = R.font.sfProDisplayBold(size: TITLE_FONT_SIZE)
+        titleLabel.text = PartyPointStrings.Localizable.error
+        titleLabel.font = PartyPointFontFamily.SFProDisplay.bold.font(size: TITLE_FONT_SIZE)
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = .center
     }
     
     func setupSubtitleLabel() {
-        subtitleLabel.font = R.font.sfProDisplayMedium(size: SUBTITLE_FONT_SIZE)
+        subtitleLabel.font = PartyPointFontFamily.SFProDisplay.medium.font(size: SUBTITLE_FONT_SIZE)
         subtitleLabel.numberOfLines = 2
         subtitleLabel.textAlignment = .center
     }
     
     func setupIcon() {
-        icon.image = R.image.connection_error()
+        icon.image = PartyPointAsset.connectionError.image
     }
     
     func setupButton() {
-        refreshButton.setTitle(R.string.localizable.refresh(), for: .normal)
+        refreshButton.setTitle(PartyPointStrings.Localizable.refresh, for: .normal)
         refreshButton.addTarget(self, action: #selector(refreshActionHandler), for: .touchUpInside)
     }
 }

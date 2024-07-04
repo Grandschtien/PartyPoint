@@ -45,7 +45,7 @@ private extension EventsInteractor {
         switch main {
         case let .success(data):
             guard let events = makeEvents(data: data) else {
-                return (nil, R.string.localizable.could_not_decode_the_response())
+                return (nil, PartyPointStrings.Localizable.couldNotDecodeTheResponse)
             }
             
             let eventInfo = EventsConverter.getEventsInfo(events: events)
@@ -124,7 +124,7 @@ private extension EventsInteractor {
                 output?.updateMainSection(with: events)
             } else {
                 guard let reason = reason else {
-                    output?.showError(withReason: R.string.localizable.somthing_goes_wrong())
+                    output?.showError(withReason: PartyPointStrings.Localizable.somthingGoesWrong)
                     return
                 }
                 output?.showError(withReason: reason)

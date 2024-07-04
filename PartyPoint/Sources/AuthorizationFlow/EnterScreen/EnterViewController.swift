@@ -6,8 +6,8 @@
 //  
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 final class EnterViewController: UIViewController {
     private let enterView = EnterView()

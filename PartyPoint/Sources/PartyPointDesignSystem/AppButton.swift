@@ -14,9 +14,9 @@ final class AppButton: UIButton {
         super.init(frame: .zero)
         self.setTitle(title, for: .normal)
         self.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
-        self.titleLabel?.font = R.font.sfProDisplaySemibold(size: 20)
+        self.titleLabel?.font = PartyPointFontFamily.SFProDisplay.semibold.font(size: 20)
         self.layer.cornerRadius = 8
-        self.layer.backgroundColor = R.color.buttonColor()?.cgColor
+        self.layer.backgroundColor = PartyPointAsset.buttonColor.color.cgColor
     }
     
     required init?(coder: NSCoder) {

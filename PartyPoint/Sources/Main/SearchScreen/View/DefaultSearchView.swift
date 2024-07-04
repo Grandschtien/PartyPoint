@@ -6,8 +6,8 @@
 //
 
 import SnapKit
-import Lottie
 import UIKit
+import Lottie
 
 private let TITLE_LABEL_FONT_SIZE: CGFloat = 16.scale()
 private let SUBTITLE_LABEL_FONT_SIZE: CGFloat = 14.scale()
@@ -52,7 +52,7 @@ class DefaultSearchView: UIView {
 // MARK: Private methods
 private extension DefaultSearchView {
     func setupUI() {
-        self.backgroundColor = R.color.mainColor()
+        self.backgroundColor = PartyPointAsset.mainColor.color
         
         self.addSubview(verticalStackView)
         verticalStackView.addArrangedSubview(searchIcon)
@@ -92,18 +92,18 @@ private extension DefaultSearchView {
     func setupSearchIcon() {
         searchIcon.contentMode = .scaleAspectFill
         searchIcon.animationSpeed = 1
-        searchIcon.backgroundColor = R.color.mainColor()
+        searchIcon.backgroundColor = PartyPointAsset.mainColor.color
         searchIcon.loopMode = .loop
     }
     
     func setupTitleLabel() {
-        titleLabel.font = R.font.sfProDisplayBold(size: TITLE_LABEL_FONT_SIZE)
+        titleLabel.font = PartyPointFontFamily.SFProDisplay.bold.font(size: TITLE_LABEL_FONT_SIZE)
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = numberOfRowsInTitle
     }
     
     func setupSubtitle() {
-        subtitleLabel.font = R.font.sfProDisplayRegular(size: SUBTITLE_LABEL_FONT_SIZE)
+        subtitleLabel.font = PartyPointFontFamily.SFProDisplay.regular.font(size: SUBTITLE_LABEL_FONT_SIZE)
         subtitleLabel.textAlignment = .center
         subtitleLabel.numberOfLines = 2
     }

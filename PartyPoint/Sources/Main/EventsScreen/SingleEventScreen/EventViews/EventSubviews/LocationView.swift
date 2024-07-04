@@ -10,7 +10,7 @@ import UIKit
 private let LABEL_FONTS_SIZE: CGFloat = 15.scale()
 
 final class LocationView: UIView {
-    private let labelsFont = R.font.sfProDisplayBold(size: LABEL_FONTS_SIZE)
+    private let labelsFont = PartyPointFontFamily.SFProDisplay.bold.font(size: LABEL_FONTS_SIZE)
     
     private let locationLabel = UILabel()
     private let dateLabel = UILabel()
@@ -29,10 +29,10 @@ final class LocationView: UIView {
     }
     
     func configure(with info: LocationInfo) {
-        locationLabel.set(text: info.address, leftIcon: R.image.location(), rightIcon: nil)
-        dateLabel.set(text: info.date, leftIcon: R.image.calendar(), rightIcon: nil)
+        locationLabel.set(text: info.address, leftIcon: PartyPointAsset.location.image, rightIcon: nil)
+        dateLabel.set(text: info.date, leftIcon: PartyPointAsset.calendar.image, rightIcon: nil)
         if !info.time.isEmpty {
-            timeLabel.set(text: info.time, leftIcon: R.image.time(), rightIcon: nil)
+            timeLabel.set(text: info.time, leftIcon: PartyPointAsset.time.image, rightIcon: nil)
         }
     }
 }
@@ -46,9 +46,9 @@ private extension LocationView {
         
         locationLabel.numberOfLines = 0
         
-        dateLabel.textColor = R.color.miniColor()
-        locationLabel.textColor = R.color.miniColor()
-        timeLabel.textColor = R.color.miniColor()
+        dateLabel.textColor = PartyPointAsset.miniColor.color
+        locationLabel.textColor = PartyPointAsset.miniColor.color
+        timeLabel.textColor = PartyPointAsset.miniColor.color
         
         horizontalStack.addArrangedSubview(dateLabel)
         horizontalStack.addArrangedSubview(timeLabel)

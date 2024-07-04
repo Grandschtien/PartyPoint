@@ -31,7 +31,7 @@ final class ProfileContentView: UIView {
     private let changePasswordView = ManageProfileView()
     private let horizontalStackView = UIStackView()
     private let aboutAppView = ManageProfileView()
-    private let exitButton = PPButton(style: .ghost(titleColor: R.color.miniColor() ?? .white), size: .s)
+    private let exitButton = PPButton(style: .ghost(titleColor: PartyPointAsset.manageLabelColor.color), size: .s)
     private let verticalStackView = UIStackView()
     
     override init(frame: CGRect) {
@@ -71,7 +71,7 @@ final class ProfileContentView: UIView {
 
 private extension ProfileContentView {
     func setupUI() {
-        self.backgroundColor = R.color.mainColor()
+        self.backgroundColor = PartyPointAsset.mainColor.color
         self.addSubview(navigationBar)
         self.addSubview(profileInfo)
         self.addSubview(verticalStackView)
@@ -138,12 +138,12 @@ private extension ProfileContentView {
     }
     
     func setupExitButton() {
-        exitButton.setTitle(R.string.localizable.exit(), for: .normal)
+        exitButton.setTitle(PartyPointStrings.Localizable.exit, for: .normal)
         exitButton.addTarget(self, action: #selector(exitActionHandler), for: .touchUpInside)
     }
     
     func setupNavigationBar() {
-        navigationBar.setTitle(R.string.localizable.profile())
+        navigationBar.setTitle(PartyPointStrings.Localizable.profile)
     }
     
     func setupChangeCityView() {

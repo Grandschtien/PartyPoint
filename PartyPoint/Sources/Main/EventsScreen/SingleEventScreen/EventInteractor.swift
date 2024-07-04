@@ -31,13 +31,13 @@ final class EventInteractor {
 private extension EventInteractor {
     func performWithEvent(data: Data?) {
         guard let data = data else {
-            output?.performWithError(reason: R.string.localizable.response_returned_with_no_data_to_decode())
+            output?.performWithError(reason: PartyPointStrings.Localizable.responseReturnedWithNoDataToDecode)
             return
         }
         
         let event = decoder.parseJSON(from: data, type: PPEventInformation.self)
         guard let event = event else {
-            output?.performWithError(reason: R.string.localizable.could_not_decode_the_response())
+            output?.performWithError(reason: PartyPointStrings.Localizable.couldNotDecodeTheResponse)
             return
         }
         eventInformation = event
@@ -46,7 +46,7 @@ private extension EventInteractor {
     
     func performWithError(reason: String?) {
         guard let reason = reason else {
-            output?.performWithError(reason: R.string.localizable.somthing_goes_wrong())
+            output?.performWithError(reason: PartyPointStrings.Localizable.somthingGoesWrong)
             return
         }
         output?.performWithError(reason: reason)

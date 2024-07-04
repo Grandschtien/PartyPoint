@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import UIKit
 import MapKit
 
 private let ROOT_VIEW_CORNER_RADIUS: CGFloat = 20
@@ -17,7 +18,7 @@ final class EventMapView: DefaultEventView {
     
     // MARK: Override methods
     override var titleText: String {
-        return R.string.localizable.on_map()
+        return PartyPointStrings.Localizable.onMap
     }
     
     override func setupUI() {

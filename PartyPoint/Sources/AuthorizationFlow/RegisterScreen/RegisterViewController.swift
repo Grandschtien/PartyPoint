@@ -7,6 +7,7 @@
 //
 
 import SnapKit
+import UIKit
 
 final class RegisterViewController: UIViewController {
     

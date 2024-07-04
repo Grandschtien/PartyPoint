@@ -58,7 +58,7 @@ private extension ChangePasswordPresenterImpl {
                         view?.showError(reason: reason)
                     } else {
                         view?.showLoading(isLoading: false)
-                        view?.showError(reason: R.string.localizable.somthing_goes_wrong())
+                        view?.showError(reason: PartyPointStrings.Localizable.somthingGoesWrong)
                     }
                 }
             }
@@ -85,7 +85,7 @@ extension ChangePasswordPresenterImpl: ChangePasswordPresenter {
         }
         
         if isPasswordMatch(password: password, checkPassword: checkPassword) {
-            view?.showError(reason: R.string.localizable.password_doesnt_match())
+            view?.showError(reason: PartyPointStrings.Localizable.passwordDoesntMatch)
             return
         }
         

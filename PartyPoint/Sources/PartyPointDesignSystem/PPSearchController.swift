@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import UIKit
 
 final class PPSearchController: UISearchController {
     
@@ -26,8 +27,8 @@ final class PPSearchController: UISearchController {
 
 private extension PPSearchController {
     func setupSearchBar() {
-        self.searchBar.placeholder = R.string.localizable.search_bar_title()
+        self.searchBar.placeholder = PartyPointStrings.Localizable.searchBarTitle
         self.searchBar.returnKeyType = .search
-        self.searchBar.tintColor = R.color.miniColor()
+        self.searchBar.tintColor = PartyPointAsset.miniColor.color
     }
 }

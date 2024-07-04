@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import UIKit
 
 class DefaultEventView: UIView {
     internal let titleLabel = EventHeaderLabel(frame: .zero, labelType: .secondary)

@@ -49,7 +49,7 @@ private extension FavouriteScreenPresenterImpl {
             await runOnMainThread {
                 view?.setLoaderIfNeeded(isLoading: false)
                 guard let data = data else {
-                    view?.showError(reason: R.string.localizable.no_connection_title())
+                    view?.showError(reason:  PartyPointStrings.Localizable.noConnectionTitle)
                     return
                 }
                 

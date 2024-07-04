@@ -107,7 +107,7 @@ private extension RegisterPresenter {
         if let normalDate = Date(string: dob) {
             return normalDate.toString(format: "yyyy-MM-dd")
         }
-        view?.showThatDateIsIncorrect(reason: R.string.localizable.show_date_error())
+        view?.showThatDateIsIncorrect(reason: PartyPointStrings.Localizable.showDateError)
         return nil
     }
 }

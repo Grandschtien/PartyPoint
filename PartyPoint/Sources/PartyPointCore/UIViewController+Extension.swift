@@ -17,7 +17,7 @@ extension UIViewController {
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.backgroundColor = R.color.mainColor()
+        navBarAppearance.backgroundColor = PartyPointAsset.mainColor.color
         self.navigationController?.navigationBar.standardAppearance = navBarAppearance
     }
 }

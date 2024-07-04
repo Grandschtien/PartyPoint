@@ -42,30 +42,30 @@ private extension EventsManagerImpl {
 extension EventsManagerImpl: EventsManager {
     func getTodayEvents(page: Int) async -> EventsManagerImpl.EventsStatus {
         let token = try? await validationTokenManager.getAccessToken()
-        guard let token = token else { return .error(reason: R.string.localizable.no_token()) }
-        guard let user = accountManager.getUser() else { return .error(reason: R.string.localizable.somthing_goes_wrong())}
+        guard let token = token else { return .error(reason: PartyPointStrings.Localizable.noToken) }
+        guard let user = accountManager.getUser() else { return .error(reason: PartyPointStrings.Localizable.somthingGoesWrong)}
         let result = await router.request(.todayEvents(city: user.city, page: page, token: token))
         return getStatusOfEvents(result: result)
     }
     
     func getCloseEvents(page: Int, lat: Double, lon: Double) async -> EventsManagerImpl.EventsStatus{
         let token = try? await validationTokenManager.getAccessToken()
-        guard let token = token else { return .error(reason: R.string.localizable.no_token()) }
+        guard let token = token else { return .error(reason: PartyPointStrings.Localizable.noToken) }
         let result = await router.request(.closeEvents(page: page, lat: lat, lon: lon, token: token))
         return getStatusOfEvents(result: result)
     }
     
     func getMainEvents(page: Int) async -> EventsManagerImpl.EventsStatus {
         let token = try? await validationTokenManager.getAccessToken()
-        guard let token = token else { return .error(reason: R.string.localizable.no_token()) }
-        guard let user = accountManager.getUser() else { return .error(reason: R.string.localizable.somthing_goes_wrong())}
+        guard let token = token else { return .error(reason: PartyPointStrings.Localizable.noToken) }
+        guard let user = accountManager.getUser() else { return .error(reason: PartyPointStrings.Localizable.somthingGoesWrong)}
         let result = await router.request(.mainEvents(city: user.city, page: page, token: token))
         return getStatusOfEvents(result: result)
     }
     
     func getEvent(withId id: Int, and placeId: Int) async -> EventsManagerImpl.EventsStatus {
         let token = try? await validationTokenManager.getAccessToken()
-        guard let token = token else { return .error(reason: R.string.localizable.no_token()) }
+        guard let token = token else { return .error(reason: PartyPointStrings.Localizable.noToken) }
         let result =  await router.request(.event(id: id, placeId: placeId, token: token))
         return getStatusOfEvents(result: result)
     }

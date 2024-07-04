@@ -43,7 +43,7 @@ extension PPTextFieldMode {
         // MARK: - Private methods
         
         private func setupFilledTextRightView(textField: UITextField) {
-            let copyImage = R.image.icInputCopyText()
+            let copyImage = PartyPointAsset.icInputCopyText.image
             copyButton.setImage(copyImage, for: .normal)
             
             copyButton.touchUpAction = { _ in
@@ -61,7 +61,7 @@ extension PPTextFieldMode {
         func setupEmptyTextRightView(textField: PPTextField) {
             
             let infoButton = PPTextFieldRightViewButton()
-            let copyImage = R.image.icInputInfo()
+            let copyImage = PartyPointAsset.icInputInfo.image
             infoButton.setImage(copyImage, for: .normal)
             
             textField.rightView = infoButton

@@ -13,10 +13,10 @@ struct ManageProfileConfiguration {
 }
 
 extension ManageProfileConfiguration {
-    static let chnagePassword = ManageProfileConfiguration(title: R.string.localizable.profile_password(),
-                                                           subtitle: R.string.localizable.profile_manage())
-    static let changeCity = ManageProfileConfiguration(title: R.string.localizable.profile_city(),
-                                                       subtitle: R.string.localizable.profile_manage())
-    static let aboutApp = ManageProfileConfiguration(title: R.string.localizable.profile_about_app(),
-                                                     subtitle: R.string.localizable.prfile_read_about_app())
+    static let chnagePassword = ManageProfileConfiguration(title:  PartyPointStrings.Localizable.profilePassword,
+                                                           subtitle: PartyPointStrings.Localizable.profileManage)
+    static let changeCity = ManageProfileConfiguration(title: PartyPointStrings.Localizable.profileCity,
+                                                       subtitle: PartyPointStrings.Localizable.profileManage)
+    static let aboutApp = ManageProfileConfiguration(title: PartyPointStrings.Localizable.profileAboutApp,
+                                                     subtitle: PartyPointStrings.Localizable.prfileReadAboutApp)
 }

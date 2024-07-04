@@ -65,9 +65,9 @@ extension EventView {
     }
     
     func showNavBar() {
-        navigationBar.backgroundColor = R.color.mainColor()
-        navigationBar.tintColor = R.color.mainColor()
-        navigationBar.fontColor(color: R.color.miniColor())
+        navigationBar.backgroundColor = PartyPointAsset.mainColor.color
+        navigationBar.tintColor = PartyPointAsset.mainColor.color
+        navigationBar.fontColor(color: PartyPointAsset.miniColor.color)
     }
     
     func hideNavBar() {
@@ -110,14 +110,14 @@ private extension EventView {
     }
     
     func setupUI() {
-        backgroundOfContentListView.backgroundColor = R.color.mainColor()
+        backgroundOfContentListView.backgroundColor = PartyPointAsset.mainColor.color
         
         
         let imageContainer = UIView()
         imageContainer.backgroundColor = .darkGray
         
         let backColorView = UIView()
-        backColorView.backgroundColor = R.color.mainColor()
+        backColorView.backgroundColor = PartyPointAsset.mainColor.color
         backColorView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         backColorView.layer.cornerRadius = CORNER_RADIUS
         

@@ -16,14 +16,14 @@ class NavigationBarWithLogo: UIView {
     
     internal lazy var imageView: UIView = {
         let view = UIView(frame: .zero)
-        view.layer.contents = R.image.logo()?.cgImage
+        view.layer.contents = PartyPointAsset.logo.image.cgImage
         return view
     }()
     
     internal lazy var title: UILabel = {
        let label = UILabel()
-        label.font = R.font.sfProDisplayBold(size: TITLE_LABLE_FONT_SIZE)
-        label.textColor = R.color.miniColor()
+        label.font = PartyPointFontFamily.SFProDisplay.bold.font(size: TITLE_LABLE_FONT_SIZE)
+        label.textColor = PartyPointAsset.miniColor.color
         return label
     }()
     
@@ -32,7 +32,7 @@ class NavigationBarWithLogo: UIView {
     }
     
     init(background: UIColor = .clear,
-         image: UIImage? = R.image.logo(),
+         image: UIImage? = PartyPointAsset.logo.image,
          frame: CGRect) {
         
         super.init(frame: frame)

@@ -30,30 +30,30 @@ final class InitialViewController: UIViewController {
         let view = UIView(frame: .zero)
         view.layer.cornerRadius = 20
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        view.backgroundColor = R.color.mainColor()
+        view.backgroundColor = PartyPointAsset.mainColor.color
         return view
     }()
     
     private lazy var initLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .left
-        label.font = R.font.sfProDisplaySemibold(size: 25)
-        label.text = R.string.localizable.init_label()
+        label.font = PartyPointFontFamily.SFProDisplay.semibold.font(size: 25)
+        label.text = PartyPointStrings.Localizable.initLabel
         label.numberOfLines = 2
         return label
     }()
     
     private lazy var goButton: PPButton = {
         let button = PPButton(style: .primary, size: .l)
-        button.setTitle(R.string.localizable.go_button_title(), for: .normal)
+        button.setTitle(PartyPointStrings.Localizable.goButtonTitle, for: .normal)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
     }()
     
     private lazy var userOfferLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.font = R.font.sfProDisplaySemibold(size: 12)
-        label.text = R.string.localizable.user_offer()
+        label.font = PartyPointFontFamily.SFProDisplay.semibold.font(size: 12)
+        label.text = PartyPointStrings.Localizable.userOffer
         label.textAlignment = .center
         label.numberOfLines = 2
         label.alpha = 0.5
@@ -77,7 +77,7 @@ final class InitialViewController: UIViewController {
     func setupUI() {
         self.navigationController?.isNavigationBarHidden = true
         
-        view.layer.contents = R.image.concert()?.cgImage
+        view.layer.contents = PartyPointAsset.concert.image.cgImage
         view.addSubview(navigationBar)
         view.addSubview(bottomView)
         bottomView.addSubview(initLabel)

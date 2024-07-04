@@ -25,9 +25,9 @@ final class AcceptPasswordViewController: UIViewController {
     
     override func loadView() {
         view = contentView
-        contentView.configure(with: R.string.localizable.enter_code(),
-                              btnTitle: R.string.localizable.confirm(),
-                              textFieldPlaceholder: R.string.localizable.code())
+        contentView.configure(with: PartyPointStrings.Localizable.enterCode,
+                              btnTitle: PartyPointStrings.Localizable.confirm,
+                              textFieldPlaceholder: PartyPointStrings.Localizable.code)
     }
     
     override func viewWillAppear(_ animated: Bool) {

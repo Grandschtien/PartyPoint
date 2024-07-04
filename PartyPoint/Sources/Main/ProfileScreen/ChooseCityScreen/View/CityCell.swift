@@ -40,7 +40,7 @@ final class CityCell: UITableViewCell {
 
 private extension CityCell {
     func setupUI() {
-        self.backgroundColor = R.color.mainColor()
+        self.backgroundColor = PartyPointAsset.mainColor.color
         self.selectionStyle = .none
         self.contentView.addSubview(checkbox)
         self.contentView.addSubview(titleLabel)
@@ -65,10 +65,10 @@ private extension CityCell {
     }
     
     func setupCheckBox() {
-        checkbox.image = R.image.checkbox()
+        checkbox.image = PartyPointAsset.checkbox.image
     }
     
     func setupTitleLabel() {
-        titleLabel.font = R.font.sfProDisplayMedium(size: TITLE_FONT_SIZE)
+        titleLabel.font = PartyPointFontFamily.SFProDisplay.medium.font(size: TITLE_FONT_SIZE)
     }
 }

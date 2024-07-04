@@ -48,15 +48,15 @@ open class ImagePicker: NSObject {
 
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        if let action = self.action(for: .camera, title: R.string.localizable.take_photo()) {
+        if let action = self.action(for: .camera, title: PartyPointStrings.Localizable.takePhoto) {
             alertController.addAction(action)
         }
         
-        if let action = self.action(for: .photoLibrary, title: R.string.localizable.photo_library()) {
+        if let action = self.action(for: .photoLibrary, title: PartyPointStrings.Localizable.photoLibrary) {
             alertController.addAction(action)
         }
 
-        alertController.addAction(UIAlertAction(title: R.string.localizable.cancel(), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: PartyPointStrings.Localizable.cancel, style: .cancel, handler: nil))
 
         if UIDevice.current.userInterfaceIdiom == .pad {
             alertController.popoverPresentationController?.sourceView = sourceView

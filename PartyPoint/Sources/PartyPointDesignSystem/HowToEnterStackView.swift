@@ -19,11 +19,11 @@ final class HowToEnterStackView: UIStackView {
     
     weak var delegate: HowToEnterStackViewDelegate?
     
-    private let labelsFont = R.font.sfProDisplayBold(size: 15)
+    private let labelsFont = PartyPointFontFamily.SFProDisplay.bold.font(size: 15)
     
     private lazy var enterButton: PPButton = {
         let btn = PPButton(style: .primary, size: .l)
-        btn.setTitle(R.string.localizable.enter_button_title(), for: .normal)
+        btn.setTitle(PartyPointStrings.Localizable.enterButtonTitle, for: .normal)
         btn.addTarget(self, action: #selector(enterButtonPressed), for: .touchUpInside)
         return btn
     }()
@@ -32,10 +32,10 @@ final class HowToEnterStackView: UIStackView {
         let label = UILabel()
         label.font = labelsFont
         label.textAlignment = .center
-        let text = NSMutableAttributedString(string: R.string.localizable.register_label())
-        let currLocAndLen = getCurrLocationAndLenth(str: R.string.localizable.register_label())
+        let text = NSMutableAttributedString(string: PartyPointStrings.Localizable.registerLabel)
+        let currLocAndLen = getCurrLocationAndLenth(str: PartyPointStrings.Localizable.registerLabel)
         text.addAttributes(
-            [.foregroundColor: R.color.buttonColor() ?? UIColor.red],
+            [.foregroundColor: PartyPointAsset.buttonColor.color],
             range: NSRange(location: currLocAndLen.location, length: currLocAndLen.length)
         )
         label.attributedText = text

@@ -13,7 +13,7 @@ struct SearchViewConfiguration {
 }
 
 extension SearchViewConfiguration {
-    static let `default` = SearchViewConfiguration(title: R.string.localizable.search_default_title(),
-                                                   subtitle: R.string.localizable.search_default_subtitle())
-    static let empty = SearchViewConfiguration(title: R.string.localizable.search_empty_results_title(), subtitle: R.string.localizable.search_empty_results_subtitle())
+    static let `default` = SearchViewConfiguration(title: PartyPointStrings.Localizable.searchDefaultTitle,
+                                                   subtitle: PartyPointStrings.Localizable.searchDefaultSubtitle)
+    static let empty = SearchViewConfiguration(title: PartyPointStrings.Localizable.searchEmptyResultsTitle, subtitle: PartyPointStrings.Localizable.searchEmptyResultsSubtitle)
 }

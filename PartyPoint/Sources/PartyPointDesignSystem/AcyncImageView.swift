@@ -41,11 +41,11 @@ final class AcyncImageView: UIImageView {
     private func getDefaultPlaceholder() -> UIImage? {
         switch placeHolderType {
         case .profile:
-            return R.image.profile_person()
+            return PartyPointAsset.profilePerson.image
         case .event:
-            return R.image.image_placeholder()
+            return PartyPointAsset.imagePlaceholder.image
         case .profileMain:
-            return R.image.profile_image()
+            return PartyPointAsset.profileImage.image
         }
     }
 }

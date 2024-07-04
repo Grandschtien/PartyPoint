@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import UIKit
 
 private let DESCRIPTION_FONT_SIZE: CGFloat = 15.scale()
 
@@ -22,14 +23,14 @@ final class DescriptionEventView: DefaultEventView {
     }
     
     override var titleText: String {
-        return R.string.localizable.description()
+        return PartyPointStrings.Localizable.description
     }
     
     override func setupUI() {
         self.addSubview(descriptionLabel)
         super.setupUI()
         descriptionLabel.numberOfLines = 0
-        descriptionLabel.font = R.font.sfProDisplaySemibold(size: DESCRIPTION_FONT_SIZE)
+        descriptionLabel.font = PartyPointFontFamily.SFProDisplay.semibold.font(size: DESCRIPTION_FONT_SIZE)
     }
     
     override func setupConstraints() {

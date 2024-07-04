@@ -36,7 +36,7 @@ private extension EnterInteractor {
             try validationTokenMananger.saveTokens(tokens)
         } catch {
             await runOnMainThread {
-                output?.notAuthorized(withReason: R.string.localizable.somthing_goes_wrong())
+                output?.notAuthorized(withReason: PartyPointStrings.Localizable.somthingGoesWrong)
             }
         }
     }
@@ -44,7 +44,7 @@ private extension EnterInteractor {
     func performNonAthorizedFlow(withReason reason: String?) async {
         guard let reason = reason else {
             await runOnMainThread {
-                output?.notAuthorized(withReason: R.string.localizable.somthing_goes_wrong())
+                output?.notAuthorized(withReason: PartyPointStrings.Localizable.somthingGoesWrong)
             }
             return
         }
@@ -57,7 +57,7 @@ private extension EnterInteractor {
         let userInfo = accountManager.parseUserInformation(data: data)
         guard let userInfo = userInfo  else {
             await runOnMainThread {
-                output?.notAuthorized(withReason: R.string.localizable.somthing_goes_wrong())
+                output?.notAuthorized(withReason: PartyPointStrings.Localizable.somthingGoesWrong)
             }
             return
         }

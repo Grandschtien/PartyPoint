@@ -24,7 +24,7 @@ private extension FogotPasswordInteractor {
     
     func performFailureFlow(reason: String?) {
         guard let reason = reason else {
-            output?.performFailure(reason: R.string.localizable.somthing_goes_wrong())
+            output?.performFailure(reason: PartyPointStrings.Localizable.somthingGoesWrong)
             return
         }
         output?.performFailure(reason: reason)

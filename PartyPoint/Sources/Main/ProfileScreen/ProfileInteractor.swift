@@ -64,14 +64,14 @@ extension ProfileInteractor: ProfileInteractorInput {
                 case let .failure(reason):
                     await runOnMainThread {
                         guard let reason = reason else {
-                            output?.showErrorWhenExit(reason: R.string.localizable.somthing_goes_wrong())
+                            output?.showErrorWhenExit(reason: PartyPointStrings.Localizable.somthingGoesWrong)
                             return
                         }
                         output?.showErrorWhenExit(reason: reason)
                     }
                 }
             } catch ValidationTokenErrors.noSavedTokens {
-                output?.showErrorWhenExit(reason: R.string.localizable.no_token())
+                output?.showErrorWhenExit(reason: PartyPointStrings.Localizable.noToken)
             } catch {
                 debugPrint("[DEBUG] - Error was accured when user tried to logout, reason: \(error.localizedDescription)")
             }

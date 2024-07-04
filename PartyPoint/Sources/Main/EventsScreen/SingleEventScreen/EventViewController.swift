@@ -49,7 +49,7 @@ final class EventViewController: UIViewController {
 
 private extension EventViewController {
     func setupUI() {
-        view.backgroundColor = R.color.mainColor()
+        view.backgroundColor = PartyPointAsset.mainColor.color
         eventView.delegate = self
         setupNavigationBar()
         
@@ -95,7 +95,7 @@ extension EventViewController: EventViewInput {
     
     func showNavBar() {
         UIView.animate(withDuration: 0.3) { [self] in
-            changeStatusBarColor(R.color.mainColor())
+            changeStatusBarColor(PartyPointAsset.mainColor.color)
             eventView.showNavBar()
         }
     }

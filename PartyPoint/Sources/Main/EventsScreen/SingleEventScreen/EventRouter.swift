@@ -23,7 +23,7 @@ extension EventRouter: EventRouterInput {
         let items = [url]
         let actionSheet = UIActivityViewController(activityItems: items, applicationActivities: nil)
         actionSheet.excludedActivityTypes = [.copyToPasteboard]
-        actionSheet.view.backgroundColor = R.color.mainColor()
+        actionSheet.view.backgroundColor = PartyPointAsset.mainColor.color
         present(vc: actionSheet, animated: true)
     }
 }

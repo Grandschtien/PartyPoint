@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import UIKit
 
 final class PPSearchBar: UISearchBar {
     override init(frame: CGRect) {

@@ -1,4 +1,5 @@
 import SnapKit
+import UIKit
 
 private let DAY_LABEL_FONT: CGFloat = 12.scale()
 
@@ -16,7 +17,7 @@ class CalendarPickerHeaderView: UIView {
         return label
     }()
     
-    private let arrowImageView = UIImageView(image: R.image.calendar_chevron())
+    private let arrowImageView = UIImageView(image: PartyPointAsset.calendarChevron.image)
     
     lazy var closeButton: UIButton = {
         let button = UIButton()
@@ -84,7 +85,7 @@ class CalendarPickerHeaderView: UIView {
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        backgroundColor = R.color.mainColor()
+        backgroundColor = PartyPointAsset.mainColor.color
         
         layer.maskedCorners = [
             .layerMinXMinYCorner,
@@ -132,19 +133,19 @@ class CalendarPickerHeaderView: UIView {
     private func dayOfWeekLetter(for dayNumber: Int) -> String {
         switch dayNumber {
         case 1:
-            return R.string.localizable.sunday_letter()
+            return PartyPointStrings.Localizable.sundayLetter
         case 2:
-            return R.string.localizable.monday_letter()
+            return PartyPointStrings.Localizable.mondayLetter
         case 3:
-            return R.string.localizable.tuesday_letter()
+            return PartyPointStrings.Localizable.tuesdayLetter
         case 4:
-            return R.string.localizable.wednesday_letter()
+            return PartyPointStrings.Localizable.wednesdayLetter
         case 5:
-            return R.string.localizable.thoursday_letter()
+            return PartyPointStrings.Localizable.thoursdayLetter
         case 6:
-            return R.string.localizable.friday_letter()
+            return PartyPointStrings.Localizable.fridayLetter
         case 7:
-            return R.string.localizable.saturday_letter()
+            return PartyPointStrings.Localizable.saturdayLetter
         default:
             return ""
         }

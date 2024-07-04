@@ -117,7 +117,7 @@ extension EventsPresenter: EventsInteractorOutput {
     
     func updateTodaySection(with events: [EventInfo]) {
         if events.isEmpty { return }
-        let section = makeSection(withInfo: events, title: R.string.localizable.today(), moreType: .today, ofType: .today)
+        let section = makeSection(withInfo: events, title: PartyPointStrings.Localizable.today, moreType: .today, ofType: .today)
         view?.hideLoaderView()
         view?.updateTodaySection(with: section)
         view?.showErrorViewIfNeeded(isHidden: true)
@@ -125,7 +125,7 @@ extension EventsPresenter: EventsInteractorOutput {
     
     func updateClosestSection(with events: [EventInfo]) {
         if events.isEmpty { return }
-        let section = makeSection(withInfo: events, title: R.string.localizable.closest(), moreType: .closest, ofType: .closest)
+        let section = makeSection(withInfo: events, title: PartyPointStrings.Localizable.closest, moreType: .closest, ofType: .closest)
         view?.hideLoaderView()
         view?.updateClosestSection(with: section)
     }
@@ -134,7 +134,7 @@ extension EventsPresenter: EventsInteractorOutput {
         if events.isEmpty {
             // handle "in this city nithing happens"
         } else {
-            let section = makeSection(withInfo: events, title: R.string.localizable.main(), moreType: .main, ofType: .main)
+            let section = makeSection(withInfo: events, title: PartyPointStrings.Localizable.main, moreType: .main, ofType: .main)
             view?.hideLoaderView()
             view?.updateMainSection(with: section)
         }

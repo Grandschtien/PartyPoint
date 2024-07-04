@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import UIKit
 
 private let STACK_VIEW_SPACING: CGFloat = 22.scale()
 private let STACK_VIEW_HORIZONTAL_OFFSETS: CGFloat = 35.scale()
@@ -31,7 +32,7 @@ final class ForgotPasswordView: UIView {
     
     private lazy var restorePasswdLabel: UILabel = {
         let label = UILabel()
-        label.font = R.font.sfProDisplaySemibold(size: 30.scale())
+        label.font = PartyPointFontFamily.SFProDisplay.semibold.font(size: 30.scale())
         label.numberOfLines = 2
         label.textAlignment = .left
         return label
@@ -89,7 +90,7 @@ final class ForgotPasswordView: UIView {
 
 private extension ForgotPasswordView {
     func setupUI() {
-        view.backgroundColor = R.color.mainColor()
+        view.backgroundColor = PartyPointAsset.mainColor.color
         view.addTapRecognizer(target: self, action: #selector(endEnditing))
         view.addSubview(navigationBar)
         stackView = UIStackView(

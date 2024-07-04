@@ -48,8 +48,8 @@ final class SearchScreenViewController: UIViewController {
 // MARK: Private methods
 private extension SearchScreenViewController {
     func setupUI() {
-        self.view.backgroundColor = R.color.mainColor()
-        title = R.string.localizable.search()
+        self.view.backgroundColor = PartyPointAsset.mainColor.color
+        title = PartyPointStrings.Localizable.search
         
         searchController.delegate = self
         searchController.searchResultsUpdater = self

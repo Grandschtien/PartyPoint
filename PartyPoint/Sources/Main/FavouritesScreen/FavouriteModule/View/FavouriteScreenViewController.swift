@@ -67,7 +67,7 @@ private extension FavouriteScreenViewController {
     }
     
     func prepareForAppear() {
-        view.backgroundColor = R.color.mainColor()
+        view.backgroundColor = PartyPointAsset.mainColor.color
         view.addSubview(nothing_placeholder)
         nothing_placeholder.isHidden = true
         nothing_placeholder.snp.makeConstraints {

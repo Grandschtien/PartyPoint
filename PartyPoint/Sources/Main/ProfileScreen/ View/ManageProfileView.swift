@@ -33,7 +33,7 @@ final class ManageProfileView: UIView {
     
     func configure(configuration: ManageProfileConfiguration) {
         self.titleLabel.text = configuration.title
-        self.manageLabel.set(text: configuration.subtitle, rightIcon: R.image.manage_chevron())
+        self.manageLabel.set(text: configuration.subtitle, rightIcon: PartyPointAsset.manageChevron.image)
     }
 }
 
@@ -49,7 +49,7 @@ private extension ManageProfileView {
     }
     
     func setupSelf() {
-        self.backgroundColor = R.color.miniColor()?.withAlphaComponent(0.1)
+        self.backgroundColor = PartyPointAsset.miniColor.color.withAlphaComponent(0.1)
         self.layer.cornerRadius = VIEW_CONRNER_RADIUS
     }
     
@@ -66,14 +66,14 @@ private extension ManageProfileView {
     }
 
     func setupTitleLabel() {
-        titleLabel.font = R.font.sfProDisplaySemibold(size: TITLE_LABEL_FONT_SIZE)
-        titleLabel.textColor = R.color.miniColor()
+        titleLabel.font = PartyPointFontFamily.SFProDisplay.semibold.font(size: TITLE_LABEL_FONT_SIZE)
+        titleLabel.textColor = PartyPointAsset.miniColor.color
         titleLabel.sizeToFit()
     }
     
     func setupManageLabel() {
-        manageLabel.font = R.font.sfProDisplayMedium(size: MANAGE_LABEL_FONT_SIZE)
-        manageLabel.textColor = R.color.manage_label_color()
+        manageLabel.font = PartyPointFontFamily.SFProDisplay.medium.font(size: MANAGE_LABEL_FONT_SIZE)
+        manageLabel.textColor = PartyPointAsset.manageLabelColor.color
         manageLabel.sizeToFit()
     }
 }

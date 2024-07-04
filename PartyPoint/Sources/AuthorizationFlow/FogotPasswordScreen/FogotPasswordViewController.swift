@@ -9,7 +9,6 @@
 import UIKit
 import SnapKit
 
-
 final class FogotPasswordViewController: UIViewController {
     
     private let forgotPasswordView = ForgotPasswordView()
@@ -42,9 +41,10 @@ private extension FogotPasswordViewController {
         forgotPasswordView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        forgotPasswordView.configure(with: R.string.localizable.restore_password_title(),
-                                     btnTitle: R.string.localizable.send_password_button_title(),
-                                     textFieldPlaceholder: R.string.localizable.email_title_registration())
+        
+        forgotPasswordView.configure(with: PartyPointStrings.Localizable.restorePasswordTitle,
+                                     btnTitle: PartyPointStrings.Localizable.sendPasswordButtonTitle,
+                                     textFieldPlaceholder: PartyPointStrings.Localizable.emailTitleRegistration)
         setActions()
     }
     

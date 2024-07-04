@@ -14,9 +14,7 @@ extension UILabel {
             return
         }
 
-        guard let img = R.image.icLabelLocker()?.withRenderingMode(.alwaysTemplate) else {
-            return
-        }
+        let img = PartyPointAsset.icLabelLocker.image.withRenderingMode(.alwaysTemplate)
 
         let fullString = NSMutableAttributedString(attributedString: attrStr)
         

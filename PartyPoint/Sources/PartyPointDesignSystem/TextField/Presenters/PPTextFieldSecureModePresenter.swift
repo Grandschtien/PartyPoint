@@ -34,8 +34,8 @@ extension PPTextFieldMode {
 
         // MARK: - Private properties
         private func setupButtonImage(button: UIButton, isSecure: Bool) {
-            let eyeImage = R.image.icInputEye()
-            let eyeCrossedImage = R.image.icInputEyeCrossed()
+            let eyeImage = PartyPointAsset.icInputEye.image
+            let eyeCrossedImage = PartyPointAsset.icInputEyeCrossed.image
             let icon = isSecure ? eyeImage : eyeCrossedImage
             button.setImage(icon, for: .normal)
         }

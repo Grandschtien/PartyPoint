@@ -7,6 +7,7 @@
 //
 
 import SnapKit
+import UIKit
 
 private let ITEM_SIZE: CGSize = CGSize(width: 334.scale(), height: 194.scale())
 
@@ -39,7 +40,7 @@ final class MoreEventsContentView: UIView {
 private extension MoreEventsContentView {
     func setupUI() {
         adapter.delegate = self
-        self.backgroundColor = R.color.mainColor()
+        self.backgroundColor = PartyPointAsset.mainColor.color
         self.addSubview(navigationBar)
         self.addSubview(collectionView)
         

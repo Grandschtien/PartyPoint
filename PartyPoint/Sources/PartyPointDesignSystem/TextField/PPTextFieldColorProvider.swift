@@ -11,23 +11,23 @@ struct PPTextFieldColorProvider {
     
     func titleColor(textField: PPTextField) -> UIColor {
         if case .error(_) = textField.displayState {
-            return R.color.text_field_error() ?? .red
+            return PartyPointAsset.textFieldError.color
         } else {
-            return R.color.text_field_error() ?? .gray
+            return PartyPointAsset.textFieldError.color
         }
     }
     
     func borderColor(textField: PPTextField) -> UIColor {
         if textField.isFirstResponder {
-            return R.color.text_field_selected() ?? .blue
+            return PartyPointAsset.textFieldSelected.color
         }
         
         switch textField.displayState {
             
         case .default, .success:
-            return R.color.stroke_color() ?? .gray
+            return PartyPointAsset.strokeColor.color
         case .error(_):
-            return R.color.text_field_error() ?? .red
+            return PartyPointAsset.textFieldError.color
         }
     }
 }

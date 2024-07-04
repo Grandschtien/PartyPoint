@@ -26,14 +26,14 @@ class AbstractEventsViewController: UIViewController {
         
         collection.showsVerticalScrollIndicator = false
         collection.showsHorizontalScrollIndicator = false
-        collection.backgroundColor = R.color.mainColor()
+        collection.backgroundColor = PartyPointAsset.mainColor.color
         return collection
     }()
     
     private var navigationTransform: CGAffineTransform?
     
     internal func setupUI() {
-        view.backgroundColor = R.color.miniColor()
+        view.backgroundColor = PartyPointAsset.miniColor.color
         navigationBar.frame = .init(x: 0,
                                     y: 0,
                                     width: self.view.frame.width,

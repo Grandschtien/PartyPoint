@@ -25,13 +25,13 @@ final class AcceptPasswordPresenterImpl {
 private extension AcceptPasswordPresenterImpl {
     func checkCode(code: String?) -> Int? {
         guard let code = code, !code.isEmpty else {
-            view?.showError(reason: R.string.localizable.fill_in_this_field())
+            view?.showError(reason: PartyPointStrings.Localizable.fillInThisField)
             view?.showLoader(isLoading: false)
             return nil
         }
         
         guard let numericCode = Int(code) else {
-            view?.showError(reason: R.string.localizable.uncorrect_code())
+            view?.showError(reason: PartyPointStrings.Localizable.uncorrectCode)
             return nil
         }
         return numericCode
@@ -54,7 +54,7 @@ extension AcceptPasswordPresenterImpl: AcceptPasswordPresenter {
                         if let reason = reason {
                             view?.showError(reason: reason)
                         } else {
-                            view?.showError(reason: R.string.localizable.somthing_goes_wrong())
+                            view?.showError(reason: PartyPointStrings.Localizable.somthingGoesWrong)
                         }
                     }
                 }

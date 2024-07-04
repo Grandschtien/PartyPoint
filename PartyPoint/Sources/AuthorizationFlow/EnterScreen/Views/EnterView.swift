@@ -64,11 +64,11 @@ final class EnterView: UIView {
     }
     
     func loginTFIsEmpty() {
-        tfStack?.textFields[0].displayState = .error(R.string.localizable.fill_in_this_field())
+        tfStack?.textFields[0].displayState = .error(PartyPointStrings.Localizable.fillInThisField)
     }
     
     func passwordTFIsEmpty() {
-        tfStack?.textFields[1].displayState = .error(R.string.localizable.fill_in_this_field())
+        tfStack?.textFields[1].displayState = .error(PartyPointStrings.Localizable.fillInThisField)
     }
     
     func showUnauthorizeReason(reason: String) {
@@ -86,7 +86,7 @@ final class EnterView: UIView {
 
 private extension EnterView {
     func setupUI() {
-        self.backgroundColor = R.color.mainColor()
+        self.backgroundColor = PartyPointAsset.mainColor.color
         self.addTapRecognizer(target: self, action: #selector(endEnditing))
         self.howToEnterStack.delegate = self
         
@@ -135,15 +135,15 @@ private extension EnterView {
     }
     
     func setupEntryLabel() {
-        entryLabel.font = R.font.sfProDisplayBold(size: 30.scale())
+        entryLabel.font = PartyPointFontFamily.SFProDisplay.bold.font(size: 30.scale())
         entryLabel.numberOfLines = 3
-        entryLabel.text = R.string.localizable.entry_label()
+        entryLabel.text = PartyPointStrings.Localizable.entryLabel
     }
     
     func setupTfStack() {
         let placeholders: [String] = [
-            R.string.localizable.email_title_registration(),
-            R.string.localizable.password_title_registration()
+            PartyPointStrings.Localizable.emailTitleRegistration,
+            PartyPointStrings.Localizable.passwordTitleRegistration
         ]
         tfStack = DynamicStackWithTF(frame: .zero, placeholders: placeholders)
         tfStack?.textFields[0].mode = .clearMode
@@ -152,9 +152,9 @@ private extension EnterView {
     }
     
     func setupForgotPaaswdButton() {
-        forgotPaaswdButton.setTitle(R.string.localizable.forgot_password_button_title(), for: .normal)
-        forgotPaaswdButton.titleLabel?.font = R.font.sfProDisplayBold(size: 14.scale())
-        forgotPaaswdButton.titleLabel?.textColor = R.color.mainColor()?.withAlphaComponent(0.75)
+        forgotPaaswdButton.setTitle(PartyPointStrings.Localizable.forgotPasswordButtonTitle, for: .normal)
+        forgotPaaswdButton.titleLabel?.font = PartyPointFontFamily.SFProDisplay.bold.font(size: 14.scale())
+        forgotPaaswdButton.titleLabel?.textColor = PartyPointAsset.mainColor.color.withAlphaComponent(0.75)
         forgotPaaswdButton.backgroundColor = .clear
         forgotPaaswdButton.addTarget(self, action: #selector(fogotButtonPressed), for: .touchUpInside)
     }

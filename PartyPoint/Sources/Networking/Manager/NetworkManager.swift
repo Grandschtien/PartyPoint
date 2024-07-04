@@ -26,25 +26,25 @@ class NetworkManager {
             case .success:
                 break
             case .authError:
-                return R.string.localizable.you_need_to_be_authenticated_first()
+                return PartyPointStrings.Localizable.youNeedToBeAuthenticatedFirst
             case .wrongPassword:
-                return R.string.localizable.wrong_password_or_email()
+                return PartyPointStrings.Localizable.wrongPasswordOrEmail
             case .badRequest:
-                return R.string.localizable.bad_request()
+                return PartyPointStrings.Localizable.badRequest
             case .serverError:
-                return R.string.localizable.server_error()
+                return PartyPointStrings.Localizable.serverError
             case .outdated:
-                return R.string.localizable.the_url_you_requested_id_outdated()
+                return PartyPointStrings.Localizable.theUrlYouRequestedIdOutdated
             case .failed:
-                return R.string.localizable.network_request_failed()
+                return PartyPointStrings.Localizable.networkRequestFailed
             case .noData:
-                return R.string.localizable.response_returned_with_no_data_to_decode()
+                return PartyPointStrings.Localizable.responseReturnedWithNoDataToDecode
             case .unableToDecode:
-                return R.string.localizable.we_could_not_to_decode_the_response()
+                return PartyPointStrings.Localizable.weCouldNotToDecodeTheResponse
             case .thisEmailAlreadyExists:
-                return R.string.localizable.email_is_already_exists()
+                return PartyPointStrings.Localizable.emailIsAlreadyExists
             case .notFound:
-                return R.string.localizable.not_found()
+                return PartyPointStrings.Localizable.notFound
             }
             return nil
         }
@@ -88,7 +88,7 @@ class NetworkManager {
     
     internal func getStatus(response: URLResponse?) -> ResponseResult {
         guard let response = response else {
-            return .failure(R.string.localizable.network_request_failed())
+            return .failure(PartyPointStrings.Localizable.networkRequestFailed)
         }
         let httpResponse = response as? HTTPURLResponse
         let status = handleNetworkResponse(httpResponse)

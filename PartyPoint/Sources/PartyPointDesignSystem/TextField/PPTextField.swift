@@ -22,9 +22,9 @@ final class PPTextField: UITextField {
             case .default:
                 return nil
             case .error(_):
-                icon = R.image.icInputError()
+                icon = PartyPointAsset.icInputError.image
             case .success:
-                icon = R.image.icInputSuccess()
+                icon = PartyPointAsset.icInputSuccess.image
             }
             
             let button = PPTextFieldRightViewButton()
@@ -146,13 +146,11 @@ final class PPTextField: UITextField {
     
     override var placeholder: String? {
         didSet {
-            guard let placeholder = placeholder,
-                  let color = R.color.mainColor()?.withAlphaComponent(0.5),
-                  let font = R.font.sfProDisplayBold(size: 14) else { return }
+            guard let placeholder = placeholder else { return }
             self.attributedPlaceholder =  NSAttributedString(
                 string: placeholder,
-                attributes: [NSAttributedString.Key.foregroundColor: color,
-                             NSAttributedString.Key.font: font]
+                attributes: [NSAttributedString.Key.foregroundColor: PartyPointAsset.mainColor.color.withAlphaComponent(0.5),
+                             NSAttributedString.Key.font: PartyPointFontFamily.SFProDisplay.bold.font(size: 14) ]
             )
         }
     }
@@ -265,13 +263,13 @@ final class PPTextField: UITextField {
     // MARK: - Private methods
     
     private func initView() {
-        font = R.font.sfProDisplayBold(size: 16)
+        font = PartyPointFontFamily.SFProDisplay.bold.font(size: 16)
         
         borderStyle = .none
         addSubview(borderView)
         
-        tintColor = R.color.mainColor()
-        textColor = R.color.mainColor()
+        tintColor = PartyPointAsset.mainColor.color
+        textColor = PartyPointAsset.mainColor.color
         
         addTarget(self, action: #selector(editingChanged),
                   for: .editingChanged)
@@ -302,7 +300,7 @@ final class PPTextField: UITextField {
             return
         }
         let label = UILabel(frame: .zero)
-        label.font = R.font.sfProDisplayRegular(size: 14)
+        label.font = PartyPointFontFamily.SFProDisplay.regular.font(size: 14)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         self.titleLabel = label
@@ -322,7 +320,7 @@ final class PPTextField: UITextField {
             return
         }
         let label = UILabel(frame: .zero)
-        label.font = R.font.sfProDisplayRegular(size: 14)
+        label.font = PartyPointFontFamily.SFProDisplay.regular.font(size: 14)
         label.numberOfLines = 0
         self.subtitleLabel = label
         addSubview(label)
@@ -335,9 +333,9 @@ final class PPTextField: UITextField {
     
     private func updateStyle() {
         if style == .dark {
-            borderView.backgroundColor = R.color.miniColor()
+            borderView.backgroundColor = PartyPointAsset.miniColor.color
         } else {
-            borderView.backgroundColor = R.color.miniColor()
+            borderView.backgroundColor = PartyPointAsset.miniColor.color
         }
     }
     

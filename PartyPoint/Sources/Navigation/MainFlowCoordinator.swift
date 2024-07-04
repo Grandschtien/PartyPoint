@@ -77,18 +77,18 @@ private extension MainFlowCoordinator {
             UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         }
         tabBarController.tabBar.isTranslucent = false
-        tabBarController.tabBar.barTintColor = R.color.mainColor()
-        tabBarController.tabBar.backgroundColor = R.color.mainColor()
+        tabBarController.tabBar.barTintColor = PartyPointAsset.mainColor.color
+        tabBarController.tabBar.backgroundColor = PartyPointAsset.mainColor.color
         tabBarController.tabBar.shadowImage = nil
         UITabBarItem.appearance().setTitleTextAttributes(
             [
-                .font : R.font.sfProDisplayRegular(size: 12)!,
-                .foregroundColor: R.color.tabBarBarUnselected()!
+                .font : PartyPointFontFamily.SFProDisplay.regular.font(size: 12),
+                .foregroundColor: PartyPointAsset.tabBarBarUnselected.color
             ], for: .selected)
         UITabBarItem.appearance().setTitleTextAttributes(
             [
-                .font : R.font.sfProDisplayRegular(size: 12)!,
-                .foregroundColor: R.color.tabBarBarUnselected()!
+                .font : PartyPointFontFamily.SFProDisplay.regular.font(size: 12),
+                .foregroundColor: PartyPointAsset.tabBarBarUnselected.color
             ], for: .normal)
     }
     
@@ -113,33 +113,33 @@ fileprivate enum NavControllerType: Int, CaseIterable {
     var title: String {
         switch self {
         case .events:
-            return R.string.localizable.events()
+            return PartyPointStrings.Localizable.events
         case .favourites:
-            return R.string.localizable.favorites()
+            return PartyPointStrings.Localizable.favorites
         case .search:
-            return R.string.localizable.search()
+            return PartyPointStrings.Localizable.search
         }
     }
     
-    var image: UIImage? {
+    var image: UIImage {
         switch self {
         case .events:
-            return R.image.wine()?.withRenderingMode(.alwaysOriginal)
+            return PartyPointAsset.wine.image.withRenderingMode(.alwaysOriginal)
         case .favourites:
-            return R.image.heartFill()?.withRenderingMode(.alwaysOriginal)
+            return PartyPointAsset.heartFill.image.withRenderingMode(.alwaysOriginal)
         case .search:
-            return R.image.search()?.withRenderingMode(.alwaysOriginal)
+            return PartyPointAsset.search.image.withRenderingMode(.alwaysOriginal)
         }
     }
     
-    var unselectedImage: UIImage? {
+    var unselectedImage: UIImage {
         switch self {
         case .events:
-            return R.image.unselectedWine()?.withRenderingMode(.alwaysOriginal)
+            return PartyPointAsset.unselectedWine.image.withRenderingMode(.alwaysOriginal)
         case .favourites:
-            return R.image.unselectedHeart()?.withRenderingMode(.alwaysOriginal)
+            return PartyPointAsset.unselectedHeart.image.withRenderingMode(.alwaysOriginal)
         case .search:
-            return R.image.uselectedSearch()?.withRenderingMode(.alwaysOriginal)
+            return PartyPointAsset.uselectedSearch.image.withRenderingMode(.alwaysOriginal)
         }
     }
 }

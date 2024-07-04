@@ -123,13 +123,13 @@ extension PPToastData {
             case .custom(let image, _):
                 return image
             case .done:
-                return R.image.icDoneBanner()
+                return PartyPointAsset.icDoneBanner.image
             case .warning:
-                return R.image.icWarningBanner()
+                return PartyPointAsset.icWarningBanner.image
             case .info:
-                return R.image.icInfoBanner()
+                return PartyPointAsset.icInfoBanner.image
             case .error:
-                return R.image.icErrorBanner()
+                return PartyPointAsset.icErrorBanner.image
             default:
                 return nil
             }

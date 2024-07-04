@@ -6,6 +6,8 @@
 //
 
 import SnapKit
+import UIKit
+
 private let BUTTONS_SIZE: CGFloat = 30.scale()
 private let BACK_BUTTON_LEFT_OFFSET: CGFloat = 14
 private let TITLE_FONT_SIZE: CGFloat = 16.scale()
@@ -91,7 +93,7 @@ private extension SharingNavigationBar {
     }
     
     func setupSharingButton() {
-        sharingButton.setImage(R.image.shareOutline(), for: .normal)
+        sharingButton.setImage(PartyPointAsset.shareOutline.image, for: .normal)
         sharingButton.addTarget(self,
                                 action: #selector(shareActionHandler),
                                 for: .touchUpInside)
@@ -99,15 +101,15 @@ private extension SharingNavigationBar {
     }
     
     func setupBackButton() {
-        backButton.setImage(R.image.chevronBack(), for: .normal)
+        backButton.setImage(PartyPointAsset.chevronBack.image, for: .normal)
         backButton.addTarget(self,
                              action: #selector(backActionHandler),
                              for: .touchUpInside)
     }
     
     func setupTitleLabel() {
-        titleLabel.textColor = R.color.miniColor()
-        titleLabel.font = R.font.sfProDisplaySemibold(size: TITLE_FONT_SIZE)
+        titleLabel.textColor = PartyPointAsset.miniColor.color
+        titleLabel.font = PartyPointFontFamily.SFProDisplay.semibold.font(size: TITLE_FONT_SIZE)
         titleLabel.textAlignment = .center
     }
     

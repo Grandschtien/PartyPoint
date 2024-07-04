@@ -15,6 +15,5 @@ final class NotificationCenterManager {
     
     static func removeObserver(observer: Any,name: NSNotification.Name?, object: Any?) {
         NotificationCenter.default.removeObserver(observer, name: name, object: object)
-
     }
 }

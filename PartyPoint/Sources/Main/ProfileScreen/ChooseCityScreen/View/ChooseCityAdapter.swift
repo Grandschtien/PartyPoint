@@ -20,17 +20,17 @@ final class ChooseCityAdapter: NSObject {
         var fullName: String {
             switch self {
             case .msk:
-                return R.string.localizable.msk()
+                return PartyPointStrings.Localizable.msk
             case .spb:
-                return R.string.localizable.spb()
+                return PartyPointStrings.Localizable.spb
             case .nnv:
-                return R.string.localizable.nn()
+                return PartyPointStrings.Localizable.nn
             case .kzn:
-                return R.string.localizable.kaz()
+                return PartyPointStrings.Localizable.kaz
             case .ekb:
-                return R.string.localizable.ekb()
+                return PartyPointStrings.Localizable.ekb
             case .nsk:
-                return R.string.localizable.nsk()
+                return PartyPointStrings.Localizable.nsk
             }
         }
     }

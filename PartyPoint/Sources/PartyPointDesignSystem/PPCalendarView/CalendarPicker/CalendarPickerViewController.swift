@@ -78,7 +78,7 @@ final class CalendarPickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupActions()
-        collectionView.backgroundColor = R.color.mainColor()
+        collectionView.backgroundColor = PartyPointAsset.mainColor.color
         
         view.addSubview(dimmedBackgroundView)
         container.addSubview(collectionView)

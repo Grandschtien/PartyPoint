@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import UIKit
 
 private let VERTICAL_OFFSET = 12.scale()
 private let HORISONTAL_OFFSET = 15.scale()

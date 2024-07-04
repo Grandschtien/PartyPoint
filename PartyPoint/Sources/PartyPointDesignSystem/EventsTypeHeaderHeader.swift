@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import UIKit
 
 private let HEADER_FONT_SIZE: CGFloat = 24 * SCREEN_SCALE_BY_HEIGHT
 private let MORE_BUTTON_RIGHT_INSET: CGFloat = 10
@@ -19,15 +20,15 @@ final class EventsTypeHeaderHeader: UICollectionReusableView {
     
     private lazy var header: UILabel = {
         let label = UILabel()
-        label.textColor = R.color.miniColor()
-        label.font = R.font.sfProDisplayBold(size: HEADER_FONT_SIZE)
+        label.textColor = PartyPointAsset.miniColor.color
+        label.font = PartyPointFontFamily.SFProDisplay.bold.font(size: HEADER_FONT_SIZE)
         return label
     }()
     
     private lazy var moreButton: UIButton = {
         let btn = UIButton()
-        btn.titleLabel?.font = R.font.sfProDisplayBold(size: HEADER_FONT_SIZE)
-        btn.setTitle(R.string.localizable.more_button_title(), for: .normal)
+        btn.titleLabel?.font = PartyPointFontFamily.SFProDisplay.bold.font(size: HEADER_FONT_SIZE)
+        btn.setTitle(PartyPointStrings.Localizable.moreButtonTitle, for: .normal)
         btn.addTarget(self, action: #selector(moreActionHandler), for: .touchUpInside)
         return btn
     }()

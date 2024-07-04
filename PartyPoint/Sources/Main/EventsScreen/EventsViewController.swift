@@ -41,7 +41,7 @@ final class EventsViewController: AbstractEventsViewController {
     
     override func setupUI() {
         super.setupUI()
-        view.backgroundColor = R.color.mainColor()
+        view.backgroundColor = PartyPointAsset.mainColor.color
         eventsCollection.register(
             EventsTypeHeaderHeader.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,

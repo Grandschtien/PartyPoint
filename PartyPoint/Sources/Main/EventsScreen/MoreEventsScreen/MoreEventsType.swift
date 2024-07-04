@@ -12,7 +12,7 @@ struct MoreEventsType {
 }
 
 extension MoreEventsType: Equatable {
-    static let today = MoreEventsType(title: R.string.localizable.today())
-    static let closest = MoreEventsType(title: R.string.localizable.closest())
-    static let main = MoreEventsType(title: R.string.localizable.main())
+    static let today = MoreEventsType(title: PartyPointStrings.Localizable.today)
+    static let closest = MoreEventsType(title: PartyPointStrings.Localizable.closest)
+    static let main = MoreEventsType(title: PartyPointStrings.Localizable.main)
 }

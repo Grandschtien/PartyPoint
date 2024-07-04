@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import UIKit
 
 private let SUBVIEWS_TOP_OFFSET: CGFloat = 8
 private let BUTTON_HEIGHT: CGFloat = 57.scale()
@@ -24,7 +25,7 @@ final class EventViewWithButton: DefaultEventView {
         self.addSubview(actionButton)
         super.setupUI()
         subtitleLabel.numberOfLines = 0
-        subtitleLabel.font = R.font.sfProDisplayBold(size: FONT_SIZE)
+        subtitleLabel.font = PartyPointFontFamily.SFProDisplay.bold.font(size: FONT_SIZE)
         actionButton.addTarget(self, action: #selector(openSuperviserSiteHandler), for: .touchUpInside)
     }
     
@@ -47,7 +48,7 @@ final class EventViewWithButton: DefaultEventView {
     
     func configure(forCost cost: CostEventInfo) {
         titleLabel.text = cost.title
-        subtitleLabel.text = cost.cost.isEmpty ? R.string.localizable.no_information() : cost.cost
+        subtitleLabel.text = cost.cost.isEmpty ? PartyPointStrings.Localizable.noInformation : cost.cost
         actionButton.setTitle(cost.buttonTitle, for: .normal)
     }
     

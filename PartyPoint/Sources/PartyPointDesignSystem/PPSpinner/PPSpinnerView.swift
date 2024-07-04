@@ -18,9 +18,9 @@ public class PPSpinnerView: UIImageView {
             case .black:
                 return .black
             case .white:
-                return R.color.miniColor()
+                return PartyPointAsset.miniColor.color
             case .main:
-                return R.color.buttonColor()
+                return PartyPointAsset.buttonColor.color
             }
         }
     }
@@ -42,11 +42,11 @@ public class PPSpinnerView: UIImageView {
         func image() -> UIImage? {
             switch self {
             case .s:
-                return R.image.icSpinnerS()
+                return PartyPointAsset.icSpinnerS.image
             case .m:
-                return R.image.icSpinnerM()
+                return PartyPointAsset.icSpinnerM.image
             case .l:
-                return R.image.icSpinnerL()
+                return PartyPointAsset.icSpinnerL.image
             }
         }
     }

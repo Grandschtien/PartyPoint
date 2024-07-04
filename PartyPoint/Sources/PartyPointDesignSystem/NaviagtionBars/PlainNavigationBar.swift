@@ -44,13 +44,13 @@ class PlainNavigationBar: UIView {
 
 private extension PlainNavigationBar {
     func setupBackButton() {
-        backButton.setImage(R.image.chevronBack(), for: .normal)
+        backButton.setImage(PartyPointAsset.chevronBack.image, for: .normal)
         backButton.addTarget(self, action: #selector(backActionHandler), for: .touchUpInside)
     }
     
     func setupTitleLabel() {
-        titleLabel.textColor = R.color.miniColor()
-        titleLabel.font = R.font.sfProDisplaySemibold(size: TITLE_FONT_SIZE)
+        titleLabel.textColor = PartyPointAsset.miniColor.color
+        titleLabel.font = PartyPointFontFamily.SFProDisplay.semibold.font(size: TITLE_FONT_SIZE)
     }
     func setupUI() {
         self.addSubview(titleLabel)

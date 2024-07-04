@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import UIKit
 
 final class PPCollectionsLoaderView: UICollectionReusableView {
     private let spinnerView = PPSpinnerView(type: .s, color: .main)

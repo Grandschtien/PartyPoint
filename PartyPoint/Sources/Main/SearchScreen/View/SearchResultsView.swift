@@ -39,7 +39,7 @@ final class SearchResultsView: UIView {
 // MARK: Private methods
 private extension SearchResultsView {
     func setupUI() {
-        self.backgroundColor = R.color.mainColor()
+        self.backgroundColor = PartyPointAsset.mainColor.color
         
         setupCollectionView()
         self.addSubview(collectionView)

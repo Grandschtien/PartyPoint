@@ -18,7 +18,7 @@ final class SearchManagerImpl: NetworkManager, SearchManager {
     
     func search(lexeme: String, page: Int) async -> DefaultResultOfRequest {
         let token = try? await tokenMananger.getAccessToken()
-        guard let token = token else { return .failure(R.string.localizable.no_token()) }
+        guard let token = token else { return .failure(PartyPointStrings.Localizable.noToken) }
         
         let result = await router.request(.search(lexeme: lexeme, page: page, token: token))
         

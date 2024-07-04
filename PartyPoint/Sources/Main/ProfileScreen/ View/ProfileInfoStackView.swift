@@ -80,18 +80,18 @@ private extension ProfileInfoStackView {
     
     func setupImageView() {
         avatarImageView.layer.cornerRadius = AVATAR_SIZE / 2
-        avatarImageView.backgroundColor = R.color.miniColor()
-        avatarImageView.tintColor = R.color.miniColor()
+        avatarImageView.backgroundColor = PartyPointAsset.miniColor.color
+        avatarImageView.tintColor = PartyPointAsset.miniColor.color
         avatarImageView.clipsToBounds = true
     }
     
     func setupEmailLabel() {
-        emailLabel.textColor = R.color.miniColor()
-        emailLabel.font = R.font.sfProDisplayRegular(size: EMAIL_FONT_SIZE)
+        emailLabel.textColor = PartyPointAsset.miniColor.color
+        emailLabel.font = PartyPointFontFamily.SFProDisplay.regular.font(size: EMAIL_FONT_SIZE)
     }
     
     func setupNameLabel() {
-        nameLabel.textColor = R.color.miniColor()
-        nameLabel.font = R.font.sfProDisplaySemibold(size: NAMEL_FONT_SIZE)
+        nameLabel.textColor = PartyPointAsset.miniColor.color
+        nameLabel.font = PartyPointFontFamily.SFProDisplay.semibold.font(size: NAMEL_FONT_SIZE)
     }
 }

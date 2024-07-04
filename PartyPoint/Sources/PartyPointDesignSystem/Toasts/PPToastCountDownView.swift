@@ -13,8 +13,8 @@ class PPToastCountdownView: UIView {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = R.font.sfProDisplayRegular(size: 14)
-        label.textColor = R.color.mainColor()
+        label.font = PartyPointFontFamily.SFProDisplay.regular.font(size: 14)
+        label.textColor = PartyPointAsset.mainColor.color
         label.textAlignment = .center
         return label
     }()

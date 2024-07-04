@@ -1,4 +1,5 @@
 import SnapKit
+import UIKit
 
 private let BUTTON_LABEL_FONT_SIZE: CGFloat = 17.scale()
 private let SELF_CORENR_RADIUS: CGFloat = 15.scale()
@@ -25,8 +26,8 @@ final class CalendarPickerFooterView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        previousMonthButton.titleLabel?.font = R.font.sfProDisplayMedium(size: BUTTON_LABEL_FONT_SIZE)
-        nextMonthButton.titleLabel?.font = R.font.sfProDisplayMedium(size: BUTTON_LABEL_FONT_SIZE)
+        previousMonthButton.titleLabel?.font = PartyPointFontFamily.SFProDisplay.medium.font(size: BUTTON_LABEL_FONT_SIZE)
+        nextMonthButton.titleLabel?.font = PartyPointFontFamily.SFProDisplay.medium.font(size: BUTTON_LABEL_FONT_SIZE)
     }
     
     func setNextMonthAction(_ action: @escaping EmptyClosure) {
@@ -58,7 +59,7 @@ private extension CalendarPickerFooterView {
     
     func setupUI() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = R.color.mainColor()
+        backgroundColor = PartyPointAsset.mainColor.color
         
         layer.maskedCorners = [
             .layerMinXMaxYCorner,
@@ -79,12 +80,12 @@ private extension CalendarPickerFooterView {
     }
     
     func setupNextButton() {
-        nextMonthButton.titleLabel?.font = R.font.sfProDisplayMedium(size: BUTTON_LABEL_FONT_SIZE)
+        nextMonthButton.titleLabel?.font = PartyPointFontFamily.SFProDisplay.medium.font(size: BUTTON_LABEL_FONT_SIZE)
         nextMonthButton.titleLabel?.textAlignment = .right
         
         if let chevronImage = UIImage(systemName: "chevron.right.circle.fill") {
             let imageAttachment = NSTextAttachment(image: chevronImage)
-            let attributedString = NSMutableAttributedString(string: "\(R.string.localizable.next()) ")
+            let attributedString = NSMutableAttributedString(string: "\(PartyPointStrings.Localizable.next) ")
             
             attributedString.append(
                 NSAttributedString(attachment: imageAttachment)
@@ -92,7 +93,7 @@ private extension CalendarPickerFooterView {
             
             nextMonthButton.setAttributedTitle(attributedString, for: .normal)
         } else {
-            nextMonthButton.setTitle(R.string.localizable.next(), for: .normal)
+            nextMonthButton.setTitle(PartyPointStrings.Localizable.next, for: .normal)
         }
         
         nextMonthButton.titleLabel?.textColor = .label
@@ -101,9 +102,9 @@ private extension CalendarPickerFooterView {
     }
     
     func setupBackButton() {
-        previousMonthButton.titleLabel?.font = R.font.sfProDisplayMedium(size: BUTTON_LABEL_FONT_SIZE)
+        previousMonthButton.titleLabel?.font = PartyPointFontFamily.SFProDisplay.medium.font(size: BUTTON_LABEL_FONT_SIZE)
         previousMonthButton.titleLabel?.textAlignment = .left
-        previousMonthButton.titleLabel?.font = R.font.sfProDisplayMedium(size: BUTTON_LABEL_FONT_SIZE)
+        previousMonthButton.titleLabel?.font = PartyPointFontFamily.SFProDisplay.medium.font(size: BUTTON_LABEL_FONT_SIZE)
         if let chevronImage = UIImage(systemName: "chevron.left.circle.fill") {
             let imageAttachment = NSTextAttachment(image: chevronImage)
             let attributedString = NSMutableAttributedString()
@@ -113,15 +114,15 @@ private extension CalendarPickerFooterView {
             )
             
             attributedString.append(
-                NSAttributedString(string: " \(R.string.localizable.back())")
+                NSAttributedString(string: " \(PartyPointStrings.Localizable.back)")
             )
             
             previousMonthButton.setAttributedTitle(attributedString, for: .normal)
         } else {
-            previousMonthButton.setTitle(R.string.localizable.back(), for: .normal)
+            previousMonthButton.setTitle(PartyPointStrings.Localizable.back, for: .normal)
         }
         
-        previousMonthButton.titleLabel?.textColor = R.color.miniColor()
+        previousMonthButton.titleLabel?.textColor = PartyPointAsset.miniColor.color
         
         previousMonthButton.addTarget(self, action: #selector(didTapPreviousMonthButton), for: .touchUpInside)
     }

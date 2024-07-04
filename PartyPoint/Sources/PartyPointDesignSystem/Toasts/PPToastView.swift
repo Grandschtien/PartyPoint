@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import UIKit
 
 final public class PPToastView: UIView {
 
@@ -53,7 +54,7 @@ final public class PPToastView: UIView {
 
         super.init(frame: .zero)
 
-        backgroundColor = R.color.mainColor()
+        backgroundColor = PartyPointAsset.mainColor.color
         layer.cornerRadius = Constants.cornerRadius
 
         setupView(data: data)
@@ -143,8 +144,8 @@ final public class PPToastView: UIView {
         if let title = data.title, !title.isEmpty {
             let titleLabel = UILabel()
             let fontSize: CGFloat = data.type == .toast ? 14 : 17
-            titleLabel.font = R.font.sfProDisplayBold(size: fontSize)
-            titleLabel.textColor = R.color.mainColor()
+            titleLabel.font = PartyPointFontFamily.SFProDisplay.bold.font(size: fontSize)
+            titleLabel.textColor = PartyPointAsset.mainColor.color
             titleLabel.numberOfLines = 0
             titleLabel.text = title
 
@@ -153,8 +154,8 @@ final public class PPToastView: UIView {
 
         let messageLabel = UILabel()
         let fontSize: CGFloat = data.type == .toast ? 14 : 17
-        messageLabel.font = R.font.sfProDisplayRegular(size: fontSize)
-        messageLabel.textColor = R.color.mainColor()
+        messageLabel.font = PartyPointFontFamily.SFProDisplay.regular.font(size: fontSize)
+        messageLabel.textColor = PartyPointAsset.mainColor.color
         messageLabel.numberOfLines = 0
         messageLabel.text = data.text
 
@@ -173,7 +174,7 @@ final public class PPToastView: UIView {
         let containerView = UIView()
 
         let separator = UIView()
-        separator.backgroundColor = R.color.mainColor()
+        separator.backgroundColor = PartyPointAsset.mainColor.color
         containerView.addSubview(separator)
         separator.snp.makeConstraints {
             $0.top.equalToSuperview().offset(Constants.separatorTopInset)

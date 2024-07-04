@@ -43,9 +43,9 @@ private extension EventPresenter {
     }
     
     func createCostInfo(event: PPEventInformation) -> CostEventInfo {
-        let title = R.string.localizable.cost()
+        let title = PartyPointStrings.Localizable.cost
         let cost = event.event.price
-        let buttonTitle = R.string.localizable.pay_on_foreign_site()
+        let buttonTitle =  PartyPointStrings.Localizable.payOnForeignSite
         let orgURL = URL(string: event.place.siteURL)
         return CostEventInfo(title: title, cost: cost, buttonTitle: buttonTitle, orginazerURL: orgURL)
     }
@@ -109,7 +109,6 @@ extension EventPresenter: EventViewOutput {
 extension EventPresenter: EventInteractorOutput {
     func performWithError(reason: String) {
         view?.setLoaderVisibility(isHidden: true)
-        print(reason)
     }
     
     func performWithEvent(event: PPEventInformation) {

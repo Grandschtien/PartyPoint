@@ -18,22 +18,22 @@ extension UIViewController {
         if let leftButton = buttons.left {
             switch leftButton {
             case .exit:
-                leftBarButton = UIBarButtonItem(image:  R.image.exit(), style: .plain, target: self, action: actions.leftAction)
+                leftBarButton = UIBarButtonItem(image:  PartyPointAsset.exit.image, style: .plain, target: self, action: actions.leftAction)
             case .share:
-                leftBarButton = UIBarButtonItem(image: R.image.shareOutline(), style: .plain, target: self, action: actions.leftAction)
+                leftBarButton = UIBarButtonItem(image: PartyPointAsset.shareOutline.image, style: .plain, target: self, action: actions.leftAction)
             case .back:
-                leftBarButton = UIBarButtonItem(image: R.image.chevronBack(), style: .plain, target: self, action: actions.leftAction)
+                leftBarButton = UIBarButtonItem(image: PartyPointAsset.chevronBack.image, style: .plain, target: self, action: actions.leftAction)
             }
         }
         
         if let rightButton = buttons.right {
             switch rightButton {
             case .exit:
-                rightBarButton = UIBarButtonItem(image: R.image.exit(), style: .plain, target: self, action: actions.rightAction)
+                rightBarButton = UIBarButtonItem(image: PartyPointAsset.exit.image, style: .plain, target: self, action: actions.rightAction)
             case .share:
-                rightBarButton = UIBarButtonItem(image: R.image.shareOutline(), style: .plain, target: self, action: actions.rightAction)
+                rightBarButton = UIBarButtonItem(image: PartyPointAsset.shareOutline.image, style: .plain, target: self, action: actions.rightAction)
             case .back:
-                rightBarButton = UIBarButtonItem(image: R.image.chevronBack(), style: .plain, target: self, action: actions.rightAction)
+                rightBarButton = UIBarButtonItem(image: PartyPointAsset.chevronBack.image, style: .plain, target: self, action: actions.rightAction)
             }
         }
         

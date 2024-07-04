@@ -36,7 +36,7 @@ extension PPTextFieldMode {
                 return
             }
 
-            let clearImage = R.image.icInputClear()
+            let clearImage = PartyPointAsset.icInputClear.image
             clearButton.setImage(clearImage, for: .normal)
 
             clearButton.touchUpAction = { _ in

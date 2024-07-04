@@ -27,8 +27,8 @@ final class ChangePasswordContentView: UIView {
     private let navigationBar = NavigationBarWithLogoAndActions(frame: .zero, buttons: [.back])
     private let titleLabel = UILabel()
     private let textFieldStack = DynamicStackWithTF(placeholders: [
-        R.string.localizable.password_title_registration(),
-        R.string.localizable.check_password_title_registration()
+        PartyPointStrings.Localizable.passwordTitleRegistration,
+        PartyPointStrings.Localizable.checkPasswordTitleRegistration
     ])
     private let confirmButton = PPButton(style: .primary, size: .l)
     
@@ -47,7 +47,7 @@ final class ChangePasswordContentView: UIView {
 // MARK: Private methods
 private extension ChangePasswordContentView {
     func setupUI() {
-        self.backgroundColor = R.color.mainColor()
+        self.backgroundColor = PartyPointAsset.mainColor.color
         self.addSubview(navigationBar)
         self.addSubview(titleLabel)
         self.addSubview(textFieldStack)
@@ -85,8 +85,8 @@ private extension ChangePasswordContentView {
     
     
     func setupTitleLabel() {
-        titleLabel.text = R.string.localizable.insert_new_password()
-        titleLabel.font = R.font.sfProDisplaySemibold(size: TITLE_LABEL_FONT_SIZE)
+        titleLabel.text = PartyPointStrings.Localizable.insertNewPassword
+        titleLabel.font = PartyPointFontFamily.SFProDisplay.semibold.font(size: TITLE_LABEL_FONT_SIZE)
         titleLabel.numberOfLines = 2
     }
     
@@ -98,7 +98,7 @@ private extension ChangePasswordContentView {
     }
     
     func setupConfirmButton() {
-        confirmButton.setTitle(R.string.localizable.change_password(), for: .normal)
+        confirmButton.setTitle(PartyPointStrings.Localizable.changePassword, for: .normal)
         confirmButton.addTarget(self, action: #selector(sendNewPasswordActionHandler),
                                 for: .touchUpInside)
     }
@@ -120,7 +120,7 @@ extension ChangePasswordContentView {
     
     func showTextFieldsIsEmpty() {
         textFieldStack.textFields.forEach {
-            $0.displayState = .error(R.string.localizable.fill_in_this_field())
+            $0.displayState = .error(PartyPointStrings.Localizable.fillInThisField)
         }
     }
     
@@ -131,7 +131,7 @@ extension ChangePasswordContentView {
     func showEmptyFields() {
         textFieldStack.textFields.forEach { field in
             if let text = field.text, text.isEmpty {
-                field.displayState = .error(R.string.localizable.fill_in_this_field())
+                field.displayState = .error(PartyPointStrings.Localizable.fillInThisField)
             }
         }
     }

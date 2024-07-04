@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import UIKit
 
 private let NAVIGATION_BAR_HEIGHT: CGFloat = 42.scale()
 private let AVATAR_IMAGE_SIZE: CGFloat = 30.scale()
@@ -102,19 +103,19 @@ private extension PPProfileNavigationBar {
     
     func setupAvatarImageView() {
         avatarImageView.layer.cornerRadius = AVATAR_IMAGE_SIZE / 2
-        avatarImageView.image = R.image.profile_image()
-        avatarImageView.backgroundColor = R.color.miniColor()
+        avatarImageView.image = PartyPointAsset.profileImage.image
+        avatarImageView.backgroundColor = PartyPointAsset.miniColor.color
         avatarImageView.clipsToBounds = true
     }
     
     func setupNameLabel() {
-        nameLabel.font = R.font.sfProDisplaySemibold(size: NAME_LABEL_FONT_SIZE)
-        nameLabel.textColor = R.color.miniColor()
+        nameLabel.font = PartyPointFontFamily.SFProDisplay.semibold.font(size: NAME_LABEL_FONT_SIZE)
+        nameLabel.textColor = PartyPointAsset.miniColor.color
         nameLabel.numberOfLines = 1
     }
     
     func setupArrowImageView() {
-        arrowImageView.image = R.image.calendar_chevron()
+        arrowImageView.image = PartyPointAsset.calendarChevron.image
     }
 }
 

@@ -1,11 +1,12 @@
 import SnapKit
+import UIKit
 
 final class CalendarDateCollectionViewCell: UICollectionViewCell {
     private lazy var selectionBackgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
-        view.backgroundColor = R.color.buttonColor()
+        view.backgroundColor = PartyPointAsset.buttonColor.color
         return view
     }()
     
@@ -107,7 +108,7 @@ private extension CalendarDateCollectionViewCell {
         accessibilityTraits.insert(.selected)
         accessibilityHint = nil
         
-        numberLabel.textColor = isSmallScreenSize ? R.color.buttonColor() : .white
+        numberLabel.textColor = isSmallScreenSize ? PartyPointAsset.buttonColor.color : .white
         selectionBackgroundView.isHidden = isSmallScreenSize
     }
     
@@ -115,7 +116,7 @@ private extension CalendarDateCollectionViewCell {
         accessibilityTraits.remove(.selected)
         accessibilityHint = "Tap to select"
         
-        numberLabel.textColor = isWithinDisplayedMonth ? R.color.miniColor() : .secondaryLabel
+        numberLabel.textColor = isWithinDisplayedMonth ? PartyPointAsset.miniColor.color : .secondaryLabel
         selectionBackgroundView.isHidden = true
     }
 }

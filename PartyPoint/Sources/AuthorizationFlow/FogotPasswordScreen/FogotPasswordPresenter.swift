@@ -24,7 +24,7 @@ final class FogotPasswordPresenter {
 private extension FogotPasswordPresenter {
     func checkEmail(_ email: String?) -> String? {
         guard let email = email, !email.isEmpty else {
-            view?.showEmailEmpty(errorText: R.string.localizable.empty_email())
+            view?.showEmailEmpty(errorText: PartyPointStrings.Localizable.emptyEmail)
             return nil
         }
         return email

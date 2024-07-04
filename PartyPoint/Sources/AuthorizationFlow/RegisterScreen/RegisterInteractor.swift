@@ -34,7 +34,7 @@ private extension RegisterInteractor {
             try validationTokenMananger.saveTokens(tokens)
         } catch {
             await runOnMainThread {
-                output?.registerFailed(withReason: R.string.localizable.somthing_goes_wrong())
+                output?.registerFailed(withReason: PartyPointStrings.Localizable.somthingGoesWrong)
             }
         }
     }
@@ -43,7 +43,7 @@ private extension RegisterInteractor {
         let userInfo = accountMananger.parseUserInformation(data: data)
         guard let userInfo = userInfo else {
             await runOnMainThread {
-                output?.registerFailed(withReason: R.string.localizable.somthing_goes_wrong())
+                output?.registerFailed(withReason: PartyPointStrings.Localizable.somthingGoesWrong)
             }
             return
         }
@@ -60,7 +60,7 @@ private extension RegisterInteractor {
     func performRegisterFaildFlow(reason: String?) async {
         guard let reason = reason else {
             await runOnMainThread {
-                output?.registerFailed(withReason: R.string.localizable.somthing_goes_wrong())
+                output?.registerFailed(withReason: PartyPointStrings.Localizable.somthingGoesWrong)
             }
             return
         }

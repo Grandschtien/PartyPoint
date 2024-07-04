@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import UIKit
 
 private let REGISTRATION_LABEL_HEIGHT: CGFloat = 40
 private let USER_IMAGE_TOP_OFFSET: CGFloat = 15
@@ -45,8 +46,8 @@ final class RegisterView: UIView {
     
     private lazy var registrationLabel: UILabel = {
         let label = UILabel()
-        label.font = R.font.sfProDisplayBold(size: 36)
-        label.text = R.string.localizable.registration_screen_title()
+        label.font = PartyPointFontFamily.SFProDisplay.bold.font(size: 36)
+        label.text = PartyPointStrings.Localizable.registrationScreenTitle
         return label
     }()
     
@@ -54,9 +55,9 @@ final class RegisterView: UIView {
     
     private let photoLabel: UILabel = {
         let label = UILabel()
-        label.font = R.font.sfProDisplayBold(size: 14)
-        label.text = R.string.localizable.photo_label_title()
-        label.textColor = R.color.miniColor()
+        label.font = PartyPointFontFamily.SFProDisplay.bold.font(size: 14)
+        label.text = PartyPointStrings.Localizable.photoLabelTitle
+        label.textColor = PartyPointAsset.miniColor.color
         label.numberOfLines = 3
         label.textAlignment = .center
         return label
@@ -77,7 +78,7 @@ final class RegisterView: UIView {
     
     private lazy var registerButton: PPButton = {
         let button = PPButton(style: .primary, size: .l)
-        button.setTitle(R.string.localizable.register_button_title(), for: .normal)
+        button.setTitle(PartyPointStrings.Localizable.registerButtonTitle, for: .normal)
         button.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -129,27 +130,27 @@ extension RegisterView {
     }
     
     func showNameIsEmpty() {
-        nameTextField.displayState = .error(R.string.localizable.fill_in_this_field())
+        nameTextField.displayState = .error(PartyPointStrings.Localizable.fillInThisField)
     }
     
     func showSurnameIsEmpty() {
-        surnameTextField.displayState = .error(R.string.localizable.fill_in_this_field())
+        surnameTextField.displayState = .error(PartyPointStrings.Localizable.fillInThisField)
     }
     
     func showEmailIsEmpty() {
-        emailTextField.displayState = .error(R.string.localizable.fill_in_this_field())
+        emailTextField.displayState = .error(PartyPointStrings.Localizable.fillInThisField)
     }
     
     func showDobIsEmpty() {
-        dobTextField.displayState = .error(R.string.localizable.fill_in_this_field())
+        dobTextField.displayState = .error(PartyPointStrings.Localizable.fillInThisField)
     }
     
     func showPasswdIsEmpty() {
-        passwordTextField.displayState = .error(R.string.localizable.fill_in_this_field())
+        passwordTextField.displayState = .error(PartyPointStrings.Localizable.fillInThisField)
     }
     
     func showCheckPasswdIsEmpty() {
-        checkPasswordTextField.displayState = .error(R.string.localizable.fill_in_this_field())
+        checkPasswordTextField.displayState = .error(PartyPointStrings.Localizable.fillInThisField)
     }
     
     func showRegisterFaild(withReason reason: String) {
@@ -157,8 +158,8 @@ extension RegisterView {
     }
     
     func showPasswordIsDifferent() {
-        passwordTextField.displayState = .error(R.string.localizable.password_doesnt_match())
-        checkPasswordTextField.displayState = .error(R.string.localizable.password_doesnt_match())
+        passwordTextField.displayState = .error(PartyPointStrings.Localizable.passwordDoesntMatch)
+        checkPasswordTextField.displayState = .error(PartyPointStrings.Localizable.passwordDoesntMatch)
     }
     
     func hideKeyboard() {
@@ -182,7 +183,7 @@ extension RegisterView {
 // MARK: Private methods
 private extension RegisterView {
     func setupUI() {
-        self.backgroundColor = R.color.mainColor()
+        self.backgroundColor = PartyPointAsset.mainColor.color
         self.addTapRecognizer(target: self, action: #selector(endEnditing))
         
         addSubviews()
@@ -192,13 +193,13 @@ private extension RegisterView {
     }
     
     func setupTextFields() {
-        nameTextField.placeholder = R.string.localizable.name_title_registration()
-        surnameTextField.placeholder = R.string.localizable.surname_title_registration()
-        emailTextField.placeholder = R.string.localizable.email_title_registration()
-        dobTextField.placeholder = R.string.localizable.date_of_birth()
-        cityTextField.placeholder = R.string.localizable.city()
-        passwordTextField.placeholder = R.string.localizable.password_title_registration()
-        checkPasswordTextField.placeholder = R.string.localizable.check_password_title_registration()
+        nameTextField.placeholder = PartyPointStrings.Localizable.nameTitleRegistration
+        surnameTextField.placeholder = PartyPointStrings.Localizable.surnameTitleRegistration
+        emailTextField.placeholder = PartyPointStrings.Localizable.emailTitleRegistration
+        dobTextField.placeholder = PartyPointStrings.Localizable.dateOfBirth
+        cityTextField.placeholder = PartyPointStrings.Localizable.city
+        passwordTextField.placeholder = PartyPointStrings.Localizable.passwordTitleRegistration
+        checkPasswordTextField.placeholder = PartyPointStrings.Localizable.checkPasswordTitleRegistration
         
         passwordTextField.mode = .secureMode
         checkPasswordTextField.mode = .secureMode
@@ -236,10 +237,10 @@ private extension RegisterView {
     func setupUserImage() {
         userImage.clipsToBounds = true
         userImage.isUserInteractionEnabled = true
-        userImage.backgroundColor = R.color.miniColor()
-        userImage.image = R.image.personPhoto()
+        userImage.backgroundColor = PartyPointAsset.miniColor.color
+        userImage.image = PartyPointAsset.personPhoto.image
         userImage.layer.borderWidth = 1.0
-        userImage.layer.borderColor = R.color.miniColor()?.cgColor
+        userImage.layer.borderColor = PartyPointAsset.miniColor.color.cgColor
         userImage.addTapRecognizer(target: self, #selector(choosePhoto))
     }
     

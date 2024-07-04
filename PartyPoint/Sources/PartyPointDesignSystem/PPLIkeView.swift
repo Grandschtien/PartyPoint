@@ -33,7 +33,7 @@ final class PPLikeView: UIView {
 //MARK: Public methods
 extension PPLikeView {
     func changeLikeState(isLiked: Bool) {
-        likeImage.image = isLiked ? R.image.heartFill() : R.image.heartOutline()
+        likeImage.image = isLiked ? PartyPointAsset.heartFill.image : PartyPointAsset.heartOutline.image
         self.isLiked = isLiked
     }
     
@@ -51,9 +51,9 @@ extension PPLikeView {
     func setupUI() {
         self.addSubview(likeImage)
         
-        self.likeImage.image = R.image.heartOutline()
+        self.likeImage.image = PartyPointAsset.heartOutline.image
         self.layer.cornerRadius = LIKE_VIEW_CORNER_RADIUS
-        self.backgroundColor = R.color.miniColor()
+        self.backgroundColor = PartyPointAsset.miniColor.color
         self.layer.opacity = 0.6
         self.clipsToBounds = true
         self.layer.allowsGroupOpacity = false

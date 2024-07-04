@@ -102,12 +102,11 @@ private extension EventCell {
         verticalStackView.axis = .vertical
         verticalStackView.alignment = .leading
         verticalStackView.spacing = VERTICAL_STACK_VIEW_SPACING
+        nameLabel.font = PartyPointFontFamily.SFProDisplay.bold.font(size: NAME_FONT)
+        nameLabel.textColor = PartyPointAsset.miniColor.color
         
-        nameLabel.font = R.font.sfProDisplayBold(size: NAME_FONT)
-        nameLabel.textColor = R.color.miniColor()
-        
-        dateLabel.font = R.font.sfProDisplaySemibold(size: DATE_FONT)
-        dateLabel.textColor = R.color.miniColor()
+        dateLabel.font = PartyPointFontFamily.SFProDisplay.semibold.font(size: DATE_FONT)
+        dateLabel.textColor = PartyPointAsset.miniColor.color
         
         imageView.contentMode = .scaleAspectFill
         
