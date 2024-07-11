@@ -1,68 +1,45 @@
+//
+//  Config.swift
+//  PartyPointManifests
+//
+//  Created by Егор Шкарин on 05.07.2024.
+//
+
 import ProjectDescription
+import ProjectDescriptionHelpers
 
 let project = Project(
-    name: "PartyPoint",
-    options: .options(disableBundleAccessors: true, disableSynthesizedResourceAccessors: true),
-    targets: [
-        .target(
-            name: "PartyPoint",
-            destinations: .iOS,
-            product: .app,
-            bundleId: "com.egorshkarin.PartyPoint",
-            infoPlist: createInfoPlist(forTarget: .debug),
-            sources: ["Sources/**"],
-            resources: [
-                "Sources/Resources/Generated/**",
-                "Sources/Resources/Assets.xcassets/**",
-                "Sources/Resources/Storyboards/**",
-                "Sources/Resources/Fonts/**",
-                "Sources/Resources/Localization/**"
-            ],
-            dependencies: [
-                .xcframework(path: .relativeToRoot("Carthage/Build/Kingfisher.xcframework")),
-                .xcframework(path: .relativeToRoot("Carthage/Build/SnapKit.xcframework")),
-                .xcframework(path: .relativeToRoot("Carthage/Build/Lottie.xcframework")),
-                .xcframework(path: .relativeToRoot("Carthage/Build/SwiftSoup.xcframework"))
-            ]
+    name: Constants.appName,
+    options: .options(
+        automaticSchemesOptions: .enabled(
+            targetSchemesGrouping: .byNameSuffix(
+                build: ["_Testing", "_Interface"],
+                test: ["_Tests"],
+                run: []
+            ),
+            codeCoverageEnabled: true,
+            testLanguage: "ru",
+            testRegion: "RU"
+        ),
+        developmentRegion: "ru",
+        textSettings: .textSettings(
+            usesTabs: false,
+            indentWidth: 4,
+            tabWidth: 4,
+            wrapsLines: true
         )
-    ]
+    ),
+    settings: .settings(
+        base: [
+            "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
+            "EAGER_LINKING": true,
+            "ENABLE_MODULE_VERIFIER": true,
+            "ENABLE_USER_SCRIPT_SANDBOXING": true,
+            "IPHONEOS_DEPLOYMENT_TARGET": "15.0",
+            "MARKETING_VERSION": .string(Constants.version.description),
+            "OTHER_LDFLAGS": "-ObjC",
+        ],
+        configurations: [.current]
+    ),
+    targets: Constants.projectTargets
 )
-
-public enum PartyPointTarget {
-    case debug
-    case adHoc
-    case release
-}
-
-func createInfoPlist(forTarget target: PartyPointTarget) -> InfoPlist {
-    return .extendingDefault(with: [
-        "NSCameraUsageDescription" : .string("We need camera, to take your photo"),
-        "NSLocationWhenInUseUsageDescription": .string("We use location to find events near you"),
-        "UIAppFonts": .array([
-            .string("SFProDisplay-Black.ttf"),
-            .string("SFProDisplay-Bold.ttf"),
-            .string("SFProDisplay-Semibold.ttf"),
-            .string("SFProDisplay-Regular.ttf")
-        ]),
-        "CFBundleVersion": .string("1.0"),
-        "CFBundleShortVersionString": .string("1.0"),
-        "CFBundleIdentifier": .string("${PRODUCT_BUNDLE_IDENTIFIER}"),
-        "CFBundleExecutable": .string("${EXECUTABLE_NAME}"),
-        "CFBundleDisplayName": .string("${PRODUCT_NAME}"),
-        "UISupportedInterfaceOrientations": .array([.string("UIInterfaceOrientationPortrait")]),
-        "LSMinimumSystemVersion": .string("16.0"),
-        "CFBundlePackageType": .string("APPL"),
-        "UILaunchStoryboardName": .string("LaunchScreen"),
-        "UIApplicationSceneManifest": .dictionary([
-            "UIApplicationSupportsMultipleScenes": .boolean(true),
-            "UISceneConfigurations": .dictionary([
-                "UIWindowSceneSessionRoleApplication": .array([
-                    .dictionary([
-                        "UISceneConfigurationName": .string("Default Configuration"),
-                        "UISceneDelegateClassName": .string("$(PRODUCT_MODULE_NAME).SceneDelegate")
-                    ])
-                ])
-            ])
-        ])
-    ])
-}
