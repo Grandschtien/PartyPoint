@@ -17,13 +17,14 @@ public enum Constants {
     public static let version: Version = "0.1.0"
     
     public static let projectTargets = [
-        app,
+        app, appTests,
         assets,
         core, coreTests,
         designSystem, designSystemTests,
         databases, databasesTests,
         navigation, navigationTests,
-        networking, networkingTests
+        networking, networkingTests,
+        uitests
     ]
     
     public static let projectDependencies: [TargetDependency] = [

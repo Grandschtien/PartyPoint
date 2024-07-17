@@ -18,8 +18,8 @@ let app = Target.target(
     product: .app,
     bundleId: "\(Constants.organizationIdentifier).\(targetName)",
     infoPlist: .extendingSharedDefault(with: [
-        "NSCameraUsageDescription" : .string("We need camera, to take your photo"),
-        "NSLocationWhenInUseUsageDescription": .string("We use location to find events near you"),
+        "NSCameraUsageDescription" : .string("We need camera, to take your photo or choose one for your profile picture"),
+        "NSLocationWhenInUseUsageDescription": .string("We use location to find nearest event for you"),
         "UIAppFonts": .array([
             .string("SFProDisplay-Black.ttf"),
             .string("SFProDisplay-Bold.ttf"),
@@ -30,7 +30,7 @@ let app = Target.target(
         "CFBundleExecutable": .string("${EXECUTABLE_NAME}"),
         "CFBundleDisplayName": .string("${PRODUCT_NAME}"),
         "UISupportedInterfaceOrientations": .array([.string("UIInterfaceOrientationPortrait")]),
-        "LSMinimumSystemVersion": .string("16.0"),
+        "LSMinimumSystemVersion": .string("{IPHONEOS_DEPLOYMENT_TARGET}"),
         "CFBundlePackageType": .string("APPL"),
         "UILaunchStoryboardName": .string("LaunchScreen"),
         "UIApplicationSceneManifest": .dictionary([
@@ -48,7 +48,8 @@ let app = Target.target(
     sources: [
         "\(basePath)/Sources/**",
     ],
-    dependencies: dependecies
+    dependencies: dependecies,
+    settings: .settings(configurations: Configuration.current)
 )
 
 let appTests = Target.target(

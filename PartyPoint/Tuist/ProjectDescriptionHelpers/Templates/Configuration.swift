@@ -8,25 +8,32 @@
 import ProjectDescription
 
 public extension Configuration {
-    static var current: Self {
-        let rawValue = Environment.configuration.getString(default: "debug").lowercased()
-        let settings: SettingsDictionary = [
-            "SWIFT_ACTIVE_COMPILATION_CONDITIONS": .string(rawValue.uppercased()),
-        ]
+    static var current: [Self] {
+        let rawValue = Environment.configuration.getString(default: "alpha").lowercased()
+
+        let debugConfiguration: Self = .debug(
+            name: "Alpha",
+            xcconfig: .path("./PartyPoint-Debug.xcconfig")
+        )
         
+        let releaseConfiguration: Self = .release(
+            name: "Store",
+            xcconfig: .path("./PartyPoint-Store.xcconfig")
+        )
+                
         switch rawValue {
-        case "debug": return .debug(name: "Debug", settings: settings)
-        case "alpha": return .release(name: "alpha", settings: settings)
-        case "release": return .release(name: "Release", settings: settings)
-        default: return .debug(name: "Debug", settings: settings)
+        case "alpha":
+            return [debugConfiguration]
+        case "store":
+            return [releaseConfiguration, debugConfiguration]
+        default:
+            return [debugConfiguration]
         }
     }
-    
-    var isDebug: Bool { name.rawValue.lowercased() == "debug" }
-    
+        
     var isAlpha: Bool { name.rawValue.lowercased() == "alpha" }
     
-    var isRelease: Bool { name.rawValue.lowercased() == "release" }
+    var isRelease: Bool { name.rawValue.lowercased() == "store" }
 }
 
 extension Configuration: CustomStringConvertible {
