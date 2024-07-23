@@ -48,6 +48,9 @@ let app = Target.target(
     sources: [
         "\(basePath)/Sources/**",
     ],
+    resources: [
+        "\(basePath)/Resources/**"
+    ],
     dependencies: dependecies,
     settings: .settings(configurations: Configuration.current)
 )

@@ -27,3 +27,7 @@ public extension TargetDependency {
     static let uitests = TargetDependency.target(name: targetName)
 }
 
+public extension String {
+    static var uitests = targetName
+}
+

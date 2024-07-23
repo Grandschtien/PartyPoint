@@ -7,6 +7,4 @@
 
 import ProjectDescription
 
-let config = Config(
-    compatibleXcodeVersions: .exact("15.4")
-    )
+let config = Config(compatibleXcodeVersions: .all)

@@ -12,12 +12,12 @@ public extension Configuration {
         let rawValue = Environment.configuration.getString(default: "alpha").lowercased()
 
         let debugConfiguration: Self = .debug(
-            name: "Alpha",
+            name: ConfigurationName.alpha,
             xcconfig: .path("./PartyPoint-Debug.xcconfig")
         )
         
         let releaseConfiguration: Self = .release(
-            name: "Store",
+            name: ConfigurationName.store,
             xcconfig: .path("./PartyPoint-Store.xcconfig")
         )
                 
@@ -38,4 +38,14 @@ public extension Configuration {
 
 extension Configuration: CustomStringConvertible {
     public var description: String { name.rawValue }
+}
+
+extension ConfigurationName {
+    public static var alpha: ConfigurationName {
+        .configuration("Alpha")
+    }
+    
+    public static var store: ConfigurationName {
+        .configuration("Store")
+    }
 }

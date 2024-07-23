@@ -16,7 +16,6 @@ let assets = Target.target(
     product: .framework,
     bundleId: "\(Constants.organizationIdentifier).\(targetName)",
     resources: [
-        "\(basePath)/Generated/**",
         "\(basePath)/Assets.xcassets/**",
         "\(basePath)/Storyboards/**",
         "\(basePath)/Fonts/**",
