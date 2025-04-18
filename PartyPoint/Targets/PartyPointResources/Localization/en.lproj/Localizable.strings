@@ -1,0 +1,185 @@
+/* На первой экране лейбл */
+"init_label" = "Hangouts of your city in one application 💃";
+
+/* На первом экране лейбр пользовательского соглашения */
+"user_offer" = "By clicking “Hang out“, you accept the user agreement and privacy policy";
+
+/* На первом экране заголовок кнопки */
+"go_button_title" = "Hang out!";
+
+/* На экране входа заголовок экрана */
+"entry_label" = "Welcome to PartyPoint";
+
+/* Кнопка забыли пароль на экране входа */
+"forgot_password_button_title" = "Forgot your password?";
+
+/* Кнопка "Войти" на экаране входа*/
+"enter_button_title" = "Enter";
+
+/* Кнопка для регистрации на экране входа */
+"register_label" = "Don't have an account? Register";
+
+/* Текст для "или" */
+"or_label" = "or";
+
+/* Кнопка входа без аккаунта на экране входа */
+"without_account_label_title" = "Login without an account";
+
+/* Подпись к фото на эране регистарции */
+"photo_label_title" = "A photo is optional, but with it it will be easier for other people to understand who you are 😉";
+
+/* Кнопка регистрации на экране регистрации */
+"register_button_title" = "Register";
+
+/* Заголовок экрана регитсрации */
+"registration_screen_title" = "Registration";
+
+/* Кнопка восстановления пароля*/
+"restore_password_title" = "Password recovery";
+
+/* Загловки на экране регистрации */
+"name_title_registration" = "Name";
+
+"surname_title_registration" = "Surname";
+
+"email_title_registration" = "Email";
+
+"date_of_birth" = "Date of birth";
+
+"city" = "City";
+
+"password_title_registration" = "Password";
+
+"check_password_title_registration" = "Repeat password";
+
+"send_password_button_title" = "Send confirmation code";
+
+/* Заголовки на таб баре и нав баре */
+"events_title" = "Events";
+
+"favourites_title" = "Favourites";
+
+"about_me_label_title" = "About me";
+
+/* Заголовки на экране профиля */
+"about_me_text_view_placeholder" = "Press me";
+
+"save_changes_button_title" = "Save changes 🖋";
+
+"more_button_title" = "More";
+
+/* Ошибки сети*/
+"you_need_to_be_authenticated_first" = "You need to be authenticated first";
+"wrong_password_or_email" = "Wrong password or email";
+"bad_request" = "Bad request";
+"server_error" = "Something's happened on the server, we're already fixing it 🤖";
+"the_url_you_requested_id_outdated" = "The url you requested id outdated";
+"network_request_failed" = "Something with the internet, try reloading the page 🤷‍♂️";
+"response_returned_with_no_data_to_decode" = "Response returned with no data to decode";
+"we_could_not_to_decode_the_response" = "We could not to decode the response";
+"email_is_already_exists" = "This email is already taken";
+"somthing_goes_wrong" = "Somthing goes wrong";
+"not_found" = "Code 404, not found";
+
+/* Ошибки текстовых полей */
+"fill_in_this_field" = "Fill in this field";
+"password_doesnt_match" = "Passwords do not match";
+
+/* Заголовки на главном экране */
+"today" = "Today";
+"closest" = "The closest to you";
+"main" = "Main";
+
+/* Ошибки на главном экране */
+"could_not_decode_the_response" = "Could not decode the response";
+
+/* Days of week first letters */
+"sunday_letter" = "S";
+"monday_letter" = "M";
+"tuesday_letter" = "T";
+"wednesday_letter" = "W";
+"thoursday_letter" = "T";
+"friday_letter" = "F";
+"saturday_letter" = "S";
+
+/* Options next and back on calendar view */
+"next" = "Next";
+"back" = "Back";
+
+/* Тайтлы на экране евента */
+"on_map" = "On the map";
+"cost" = "Cost";
+"people_amount" = "People";
+"description" = "Description";
+
+/* Тайтлы на кнопках */
+"pay_on_foreign_site" = "Pay on the host\nsite";
+"will_go" = "I will go!";
+"dont_go" = "I changed my mind :(";
+"show_date_error" = "Please, write a correct date";
+
+/* Тайтлы для Image picker */
+"take_photo" = "Take photo";
+"photo_library" = "Photo library";
+"cancel" = "Cancel";
+
+/* Строки для флоу восстановления пароля */
+"empty_email" = "Please, fill the email field.";
+
+/* Для вьюхи с кодом подтверждения */
+"enter_code" = "Enter the confirmation code";
+"code" = "Code";
+"confirm" = "Comfirm";
+"uncorrect_code" = "Code is uncorrect";
+
+/* Экран восстановления пароля */
+"insert_new_password" = "Enter\nnew password";
+"change_password" = "Change password";
+
+/* Таб бар */
+"events" = "Events";
+"favorites" = "Favorites";
+"search" = "Search";
+
+/* Локализация для профиля */
+"profile_city" = "City";
+"profile_password" = "Password";
+"profile_manage" = "Manage";
+"profile_about_app" = "About app";
+"prfile_read_about_app" = "Read";
+"profile" = "Profile";
+"exit" = "Exit";
+"delete_account" = "Delete account";
+
+"no_token" = "No token";
+
+"no_favorites_title" = "Nothing in favourites yet";
+"no_favorites_subtitle" = "Click on the hearts in the events and add here";
+
+"no_connection_title" = "Problems with your internet connection";
+"no_connection_subtitle" = "Please check your connection and refresh the page";
+"refresh" = "Refresh";
+
+"search_title" = "Search";
+
+"search_default_title" = "Start typing";
+"search_default_subtitle" = "The search happens for every letter, so we won't miss anything 😉";
+
+"search_bar_title" = "Enter a query";
+
+"search_empty_results_title" = "We tried very hard, but nothing came up 😔";
+"search_empty_results_subtitle" = "Try searching for the words in the event description";
+"error" = "Error";
+
+"no_information" = "No information";
+
+/* Названия городов */
+"msk" = "Moscow";
+"spb" = "St. Petersburg";
+"nn" = "Nizhny Novgorod";
+"kaz" = "Kazan";
+"ekb" = "Yekaterinburg";
+"nsk" = "Novosibirsk";
+
+"select_city" = "Select a city";
+"done" = "Done";

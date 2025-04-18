@@ -1,0 +1,7 @@
+
+github "SnapKit/SnapKit" ~> 5.0.0
+github "airbnb/lottie-ios" "master"	
+github "scinfu/SwiftSoup"
+
+
+git "git@github.com:onevcat/Kingfisher.git"
